@@ -42,7 +42,7 @@ Route::post('/contacts', 'Front\BrowseController@setQueueContact');
 Route::get('projects/{id}', 'Front\ProjectsController@getProject');
 Route::get('/service_category', 'Front\ServiceController@getServiceCategories');
 Route::get('autocomplete/search', 'Front\ProjectsController@autcompleteCity');
-Route::get('services/{id}', 'Front\ServiceController@getServices');
+Route::get('/service_detail/{id}', 'Front\ServiceController@getServices');
 Route::post('/analytics', 'Front\ServiceController@getAnalysis');
 Route::post('/contact_analytcs', 'Front\ProfileController@contactAnalysis');
 

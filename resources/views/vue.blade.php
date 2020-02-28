@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- Google Tag Manager -->
     <script async defer>
         (function(w, d, s, l, i) {
@@ -27,8 +27,8 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    {{--<link rel="preload" href="css/vuetify.css" as="vuetify" onload="this.onload=null;this.rel='stylesheet'"> --}}
-    {{-- <link rel="preload" href="css/main-color.css" as="main-color" onload="this.onload=null;this.rel='stylesheet'" id="colors"> --}}
+    {{--<link rel="preload" href="/css/vuetify.css" as="vuetify" onload="this.onload=null;this.rel='stylesheet'"> --}}
+    {{-- <link rel="preload" href="/css/main-color.css" as="main-color" onload="this.onload=null;this.rel='stylesheet'" id="colors"> --}}
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script defer src="{{ mix('js/vue/entry-client.js') }}"></script>
@@ -59,22 +59,22 @@
     <!-- Scripts
 ================================================== -->
 
-    <link rel="stylesheet" href="css/colors/celadon.css" id="colors" async defer>
+    <link rel="stylesheet" href="/css/colors/celadon.css" id="colors" async defer>
     <link rel="stylesheet" href="/website/plugins/nano-gallery/css/nanogallery2.css" async defer>
-    <script type="text/javascript" src="js/scripts/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="js/scripts/mmenu.min.js"></script>
-    <script type="text/javascript" src="js/scripts/chosen.min.js"></script>
-    <script type="text/javascript" src="js/scripts/slick.min.js"></script>
-    <script type="text/javascript" src="js/scripts/rangeslider.min.js"></script>
-    <script type="text/javascript" src="js/scripts/magnific-popup.min.js"></script>
-    <script type="text/javascript" src="js/scripts/waypoints.min.js"></script>
-    <script type="text/javascript" src="js/scripts/counterup.min.js"></script>
-    <script type="text/javascript" src="js/scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/scripts/tooltips.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/mmenu.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/chosen.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/slick.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/rangeslider.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/waypoints.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/counterup.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/scripts/tooltips.min.js"></script>
     <!-- <script type="text/javascript" src="js/scripts/tooltips.min.js" async defer></script> -->
     <!-- <script type="text/javascript" src="js/front/bootstrap.js"></script> -->
     <script src="/website/plugins/nano-gallery/jquery.nanogallery2.core.js"></script>
-    <script type="text/javascript" src="js/scripts/custom.js" async defer></script>
+    <script type="text/javascript" src="/js/scripts/custom.js" async defer></script>
     <!-- Google Autocomplete -->
 
     <script>
@@ -98,12 +98,12 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
     <!-- Typed Script -->
-    <script type="text/javascript" src="js/scripts/typed.js" async defer></script>
+    <script type="text/javascript" src="/js/scripts/typed.js" async defer></script>
 
 
     <!-- Style Switcher
 ================================================== -->
-    <script src="js/scripts/switcher.js" async defer></script>
+    <script src="/js/scripts/switcher.js" async defer></script>
 
     {{-- <div id="style-switcher">
 	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>

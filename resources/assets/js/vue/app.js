@@ -6,7 +6,8 @@ import VueLazyload from 'vue-lazyload';
 import * as VueGoogleMaps from "vue2-google-maps";
 import VeeValidate from 'vee-validate';
 import id from './components/front/locale-id';
-import VueAnalytics from 'vue-analytics'
+import VueAnalytics from 'vue-analytics';
+import VueScrollTo from 'vue-scrollto';
 
 Vue.directive('click-outside', {
 	bind: function (el, binding, vnode) {
@@ -42,6 +43,7 @@ Vue.use(VueAnalytics, {
 })
 
 Vue.use(VueLazyload);
+Vue.use(VueScrollTo);
 
 import { EventBus } from './components/front/event-bus';
 

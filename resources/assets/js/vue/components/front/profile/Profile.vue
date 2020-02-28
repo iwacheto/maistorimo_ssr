@@ -281,7 +281,7 @@ export default {
     },
     async getProfile() {
       try {
-        let res = await axios.get("profiles/" + this.id);
+        let res = await axios.get("/profiles/" + this.id);
         this.profile = res.data;
         this.vendorDetails.user = res.data.vendor_details.id;
         this.contactAnalytic("profile");

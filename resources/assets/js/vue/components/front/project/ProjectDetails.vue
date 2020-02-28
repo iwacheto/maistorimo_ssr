@@ -1,6 +1,6 @@
 <template>
-  <div class="header-container">
-    <div v-if="images" class="listing-slider mfp-gallery-container margin-bottom-0">
+  <div>
+    <div v-if="images" class="listing-slider mfp-gallery-container">
       <gallery :images="images" :index="index" @close="index = null"></gallery>
       <div
         class="image"
@@ -323,7 +323,7 @@ export default {
      getCookies() {},
     async getProjectDetails() {
       try {
-        const res = await axios.get("projects/" + this.id);
+        const res = await axios.get("/projects/" + this.id);
         this.projectDetails = res.data.project;
         this.vendorDetails = res.data.vendor;
         this.city = res.data.project.city;
@@ -371,19 +371,6 @@ export default {
 
   padding-top: 190px;
   padding-bottom: 150px;
-}
-
-.mfp-gallery-container {
-  margin-top: 75px;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
-  height: 400px;
-  overflow: hidden;
-  display: flex;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .image {

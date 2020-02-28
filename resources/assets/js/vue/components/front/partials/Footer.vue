@@ -38,9 +38,9 @@
 
 						<ul class="social-icons margin-top-20">
 							<li><a class="facebook" target="_blank" href="https://www.facebook.com/%D0%9C%D0%B0%D0%B9%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%BC%D0%BE-262442748017349"><i class="icon-facebook"></i></a></li>
-							{{-- <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+							<!-- {{-- <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
 						<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-						<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li> --}}
+						<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li> --}} -->
 						</ul>
 
 					</div>

@@ -20,8 +20,7 @@ class ServiceController extends Controller
             'projectServices',
             'projectServices.sProject',
         ])->find($id);
-        // dd(strip_tags($service->first_description));
-        $service->projectServices->map(function ($serviceProject) {
+       $service->projectServices->map(function ($serviceProject) {
             $serviceProject->sProject->main_image = $serviceProject->sProject->ProjectMainImage ? $serviceProject->sProject->ProjectMainImage->url : "";
         });
         $service->first_description = strip_tags($service->first_description);

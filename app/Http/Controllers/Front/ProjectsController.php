@@ -37,13 +37,10 @@ class ProjectsController extends Controller
             'tags.tag',
             'city',
             'projectServices.service',
-
         ])->find($id);
-         
-          $project->description=strip_tags($project->description);
+
+        $project->description = strip_tags($project->description);
         $vendor = VendorDetail::where('user', $project->user)->first();
-
-
         return [
             'project' => $project,
             'vendor'  => $vendor
@@ -59,7 +56,7 @@ class ProjectsController extends Controller
             ->leftjoin('project_gallery', 'project_gallery.id', 'projects.id')
             // ->where('project_gallery.main', 1)
             ->where('object_analytics.date', $today)->orderBy('object_analytics.count', 'DESC')->limit(10)->get();
-            // return $projects;
+        // return $projects;
         if (count($projects) < 5) {
             $projects = DB::table('projects')
                 ->selectRaw('projects.id, projects.title ,SUM(object_analytics.count) as count,project_gallery.url')

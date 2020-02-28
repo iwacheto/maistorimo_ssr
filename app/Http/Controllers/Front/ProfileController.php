@@ -20,7 +20,6 @@ class ProfileController extends Controller
             'websiteSettings',
             'services',
         ])->find($id);
-        // dd($user->toArray());
         // dd($user['projects'][0]['ProjectMainImage']['url']);
         foreach ($user['projects'] as &$project) {
             $project['mainImage'] = $project['ProjectMainImage']['url'];

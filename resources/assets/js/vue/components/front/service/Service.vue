@@ -1,28 +1,7 @@
 <template>
-  <div>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Books",
-        "item": "https://example.com/books"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "The Lord of the Rings",
-        "item": "https://example.com/books/the-lord-of-the-rings"
-      }
-    ]
-  }
-    </script>
-    <!-- Service -->
-    <div class="container">
-      <div class="row margin-top-45">
+  
+    <div class="container mfp-gallery-container">
+      <div class="row">
         <!-- Services -->
         <div class="col-lg-9 col-md-8 padding-right-30">
           <!-- Img -->
@@ -237,8 +216,7 @@
       </div>
       <!-- Sidebar / End -->
     </div>
-    <!-- <script v-html="jsonld" type="application/ld+json"></script> -->
-  </div>
+  
 </template>
 
 <script>
@@ -301,17 +279,10 @@ export default {
     async getServicetDetails() {
       let self = this;
       try {
-        let res = await axios.get("services/" + this.id);
+        let res = await axios.get("/service_detail/" + this.id);
         this.servicetDetails = res.data.service;
         this.vendorDetails = res.data.vendor ? res.data.vendor : {};
         this.projectDetails = res.data.service.project_services;
-        // Vue.nextTick(function() {
-        //   self.servicetDetails = res.data.service;
-        //   self.vendorDetails = res.data.vendor;
-        //   self.projectDetails = res.data.service.project_services;
-        //  });
-
-        //  console.log(this.vendorDetails.id)
         let currentDateWithFormat = new Date()
           .toJSON()
           .slice(0, 10)
