@@ -2,11 +2,13 @@
     <div id="app">
         <FrontHeader />
         <router-view></router-view>
+        <Footer />
     </div>
 </template>
 
 <script>
 import FrontHeader from './front/partials/Header';
+import Footer from './front/partials/Footer';
 
 export default {
     data() {
@@ -14,6 +16,7 @@ export default {
     },
     components: {
         FrontHeader,
+        Footer,
     },
 };
 </script>

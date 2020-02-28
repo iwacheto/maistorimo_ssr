@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Index from './components/front/homepage/Index';
 import ListingsList from "./components/front/listings/List.vue";
 import Services  from './components/front/listings/Services.vue';
+
 import Browse from "./components/front/browse/Browse.vue";
 import ViewListing from "./components/front/listings/View.vue";
 import ProjectDetails from './components/front/project/ProjectDetails';
@@ -22,7 +23,7 @@ const routes = [
     { path: '/project/details/:id', component: ProjectDetails, name: 'ProjectDetails', props: true },
 	{ path: '/service/details/:id', component: Service, name: 'Service', props: true },
 	{ path: '/listings/:filters?', component: ListingsList, name: 'ListingsList', props: true },
-	{ path: '/services/:filters?', component: Services, name: 'Services', props: true },
+	{ path: '/Services/:filters?', component: Services, name: 'Services', props: true },
 	{ path: '/listing/:id', component: ViewListing, name: 'ViewListing', props: true },
 	{ path: '/browse', component: Browse, name: 'Browse', props: true },
 	{ path: '/general_terms', component: GeneralTerms, name: 'GeneralTerms' },

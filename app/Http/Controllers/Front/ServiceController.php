@@ -61,8 +61,8 @@ class ServiceController extends Controller
         $data = $request->all();
         $page = isset($data['page']) ? $data['page'] : 1;
         $perPage = 10;
-        // return $data;
-        if ($data['filters']) {
+        // dd($data);
+       if ($request->has('filters')) {
             $filters = json_decode($data['filters'], 1);
             $query = Service::select('*');
             foreach ($filters as $filterName => $value) {
@@ -73,7 +73,7 @@ class ServiceController extends Controller
             }
             return $query->offset(($page - 1) * $perPage)->limit($perPage)->orderBy('created_at', 'DESC')->get();
         } else {
-            $services = $query->offset(($page - 1) * $perPage)->limit($perPage)->orderBy('created_at', 'DESC')->get();
+            $services = Service::offset(($page - 1) * $perPage)->limit($perPage)->orderBy('created_at', 'DESC')->get();
             return $services;
         }
     }
