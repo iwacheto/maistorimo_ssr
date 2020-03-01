@@ -165,6 +165,10 @@ Auth::routes();
 
 // Route::get('/', 'WelcomeController');
 
+Route::get('admin/{url?}', 'VendorController');
+
 Route::get('/{url?}', 'VueController');
 
-// Route::get('react/{url?}', 'ReactController');
+
+
+

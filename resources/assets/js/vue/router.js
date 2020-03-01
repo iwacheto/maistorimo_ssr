@@ -31,6 +31,7 @@ const routes = [
 	{ path: '/profile/:id', component: Profile, name: 'Profile', props: true },
 	{ path: '/contacts', component: Contacts, name: 'Contacts' },
 	{ path: '/blog', component: AllArticles, name: 'AllArticles', props: true },
+	
 	{ path: '/blog/articles/:url?/:id', component: Article, name: 'Article', props: true },
 ];
 
