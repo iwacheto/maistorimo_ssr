@@ -14,8 +14,6 @@
 Route::pattern('url', '.*');
 
 Route::group(array('domain' => '{subdomain}.maistorimo.gpb'), function () {
-
-    
     Route::get('/', 'Website\WebsiteController@index');
     Route::get('/about', 'Website\WebsiteController@about');
     Route::get('/contact', 'Website\WebsiteController@contact');
@@ -30,7 +28,7 @@ Route::group(array('domain' => '{subdomain}.maistorimo.gpb'), function () {
 Route::get('all-projects', 'Front\ProjectsController@getProjects');
 Route::get('projects', 'Front\ProjectsController@applyFilter');
 Route::get('last_projects', 'Front\ProjectsController@getPopularProjects');
-Route::get('/services', 'Front\ServiceController@applyServiceFilter');
+Route::get('/services_all', 'Front\ServiceController@applyServiceFilter');
 Route::get('/last-services', 'Front\ServiceController@getLastService');
 Route::get('/filter/tag', 'Front\ProjectsController@applybyTagFilter');
 Route::get('browse', 'Front\BrowseController@browse');
@@ -165,6 +163,7 @@ Auth::routes();
 
 // Route::get('/', 'WelcomeController');
 
+// Route::get('admin/{url?}', 'VueController@admin');
 Route::get('admin/{url?}', 'VendorController');
 
 Route::get('/{url?}', 'VueController');

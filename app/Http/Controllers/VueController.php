@@ -11,6 +11,14 @@ class VueController extends Controller
         ]);
     }
 
+    public function admin()
+    {
+        return view('admin', [
+            'packages' => $this->getPackages(),
+        ]);
+    }
+
+
     private function getPackages(): array
     {
         $path = public_path('packages.json');

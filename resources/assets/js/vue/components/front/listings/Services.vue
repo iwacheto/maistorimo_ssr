@@ -212,6 +212,10 @@ import { EventBus } from "../event-bus";
 import InfiniteLoading from "vue-infinite-loading";
 import { project_services_functions } from "../mixins/project_services_functions";
 import axios from "axios";
+import Vue from 'vue'
+import Router from 'vue-router';
+
+Vue.use(Router);
 
 var count = 0;
 
@@ -319,7 +323,7 @@ export default {
     search(query) {
       // console.log("Search");
       axios
-        .get("/services", {
+        .get("/services_all", {
           params: {
             filters: query,
             page: this.page
@@ -340,7 +344,7 @@ export default {
     },
     async infiniteHandler($state) {
       axios
-        .get("/services", {
+        .get("/services_all", {
           params: {
             filters: this.filterQueries,
             page: this.page

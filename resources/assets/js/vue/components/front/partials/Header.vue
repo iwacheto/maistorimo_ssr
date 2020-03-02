@@ -61,7 +61,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/Services">Услуги</a>
+                                    <a href="/services">Услуги</a>
                                     <div class="mega-menu mobile-styles three-columns">
                                         <div
                                             class="mega-menu-section"

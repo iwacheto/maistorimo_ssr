@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+// namespace App\Http\Controllers\Vendor;
+use App\Models\GeneralTerm;
+use Illuminate\Http\Request;
 use App\User;
+use App\Models\VendorDetail;
+use App\Models\WebsiteSetting;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 

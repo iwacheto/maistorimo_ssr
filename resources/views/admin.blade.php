@@ -98,7 +98,7 @@
 	<script type="text/javascript" src="/js/scripts/custom.js"></script>
 
 
-	@include ('layout.footer')
+	@include ('layouts.footer')
 </body>
 
 </html>

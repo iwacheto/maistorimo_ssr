@@ -261,6 +261,10 @@ import { EventBus } from "../event-bus";
 import InfiniteLoading from "vue-infinite-loading";
 import { project_services_functions } from "../mixins/project_services_functions";
 import axios from "axios";
+import Vue from 'vue'
+import Router from 'vue-router';
+
+Vue.use(Router);
 
 var count = 0;
 
