@@ -35,7 +35,6 @@ Route::get('browse', 'Front\BrowseController@browse');
 Route::get('/set_session', 'Front\BrowseController@setSession');
 Route::post('/check_username', 'Front\BrowseController@checkUsername');
 Route::post('/check_email', 'Front\BrowseController@checkEmail');
-// Route::post('/contacts', 'Front\BrowseController@setContact');
 Route::post('/contacts', 'Front\BrowseController@setQueueContact');
 Route::get('projects/{id}', 'Front\ProjectsController@getProject');
 Route::get('/service_category', 'Front\ServiceController@getServiceCategories');
@@ -71,7 +70,7 @@ Route::any('auth-user', 'Vendor\AuthController@isAuth');
 // });
 
 Route::get('/tags/get', 'Vendor\CategoriesController@getTags');
-
+Route::get('/get_user', 'VendorController@getUser');
 
 // Vendor routes
 Route::prefix('vendor')->middleware('auth')->group(function () {

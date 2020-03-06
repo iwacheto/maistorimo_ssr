@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   mounted() {
     return this.snackbarAlert("Проектър бе създаден успешно!");
@@ -72,7 +74,7 @@ export default {
   },
   methods: {
     init() {
-      window.axios.get("/vendor/dashboard/get").then(({ data }) => {
+      axios.get("/vendor/dashboard/get").then(({ data }) => {
         this.user = data.user;
         this.projectsCount = data.projectsCount;
         this.servicesCount = data.servicesCount;
@@ -83,17 +85,16 @@ export default {
       }
       });
     },
-    tutorial() {
-      if(this.user.is_visited==0){
-        console.log('First')
-      } else{
-        console.log('Old')
-      }
-    },
+   
     snackbarAlert(message) {
       this.message = message;
       this.snackbar = true;
     }
+  },
+  computed:{
+      //  user(){
+      //    return this.$store.state.user
+      //  }
   }
 };
 </script>

@@ -47,13 +47,6 @@
 	<!-- Wrapper -->
 	<!-- <div id="app"> -->
 
-		<!-- Header Container
-================================================== -->
-		<!-- <gp-header></gp-header>
-		<div class="clearfix"></div> -->
-		<!-- Header Container / End -->
-
-
 		<!-- Dashboard -->
 		<!-- <div id="dashboard"> -->
 
@@ -98,7 +91,7 @@
 	<script type="text/javascript" src="/js/scripts/custom.js"></script>
 
 
-	@include ('layouts.footer')
+	@include ('layout.footer')
 </body>
 
 </html>

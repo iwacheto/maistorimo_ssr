@@ -12,7 +12,7 @@
       <div class="dashboard-nav-inner">
         <ul>
           <li class="active">
-            <router-link to="/">
+            <router-link to="/admin">
               <i class="sl sl-icon-settings"></i> Табло
             </router-link>
           </li>
@@ -25,10 +25,10 @@
             </a>
             <ul>
               <li>
-                <router-link to="/projects">Проекти</router-link>
+                <router-link to="/admin/projects">Проекти</router-link>
               </li>
               <li>
-                <router-link to="/add-listing">Създай проект</router-link>
+                <router-link to="/admin/add-listing">Създай проект</router-link>
               </li>
             </ul>
           </li>
@@ -40,10 +40,10 @@
             </a>
             <ul>
               <li>
-                <router-link to="/service">Услуги</router-link>
+                <router-link to="/admin/service">Услуги</router-link>
               </li>
               <li>
-                <router-link to="/service/add-service">Създай услуга</router-link>
+                <router-link to="/admin/service/add-service">Създай услуга</router-link>
               </li>
             </ul>
           </li>
@@ -56,10 +56,10 @@
             </a>
             <ul>
               <li>
-                <router-link to="/blog/add-article">Създаване на статия</router-link>
+                <router-link to="/admin/blog/add-article">Създаване на статия</router-link>
               </li>
               <li>
-                <router-link to="/blog/articles">Всички статии</router-link>
+                <router-link to="/admin/blog/articles">Всички статии</router-link>
               </li>
             </ul>
           </li>
@@ -72,21 +72,21 @@
             </a>
             <ul>
               <li>
-                <router-link to="/projects_analitycs">
+                <router-link to="/admin/projects_analitycs">
                   <i class="sl sl-icon-user"></i> Проекти
                 </router-link>
               </li>
             </ul>
             <ul>
               <li>
-                <router-link to="/services_analitycs">
+                <router-link to="/admin/services_analitycs">
                   <i class="sl sl-icon-globe"></i> Услуги
                 </router-link>
               </li>
             </ul>
             <ul>
               <li>
-                <router-link to="/contacts_analitycs">
+                <router-link to="/admin/contacts_analitycs">
                   <i class="sl sl-icon-globe"></i> Контакти
                 </router-link>
               </li>
@@ -96,12 +96,12 @@
 
         <ul data-submenu-title="Акаунт">
           <li>
-            <router-link to="/profile">
+            <router-link to="/admin/profile">
               <i class="sl sl-icon-user"></i> Моят Профил
             </router-link>
           </li>
           <li>
-            <router-link to="/website">
+            <router-link to="/admin/website">
               <i class="sl sl-icon-globe"></i> Настройки Уебсайт
             </router-link>
           </li>
@@ -117,6 +117,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {

@@ -216,10 +216,10 @@ import { VueTagsInput, createTag, createTags } from "@johmun/vue-tags-input";
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import VueGallery from "vue-gallery";
-import Snackbar from "../../global/components/Snackbar.vue";
+import Snackbar from "../partials/Snackbar";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
-import GoogleMap from "../../components/googleMap/GoogleMap";
+import axios from 'axios';
+import GoogleMap from "../googleMap/Map";
 
 export default {
   props: ["id"],

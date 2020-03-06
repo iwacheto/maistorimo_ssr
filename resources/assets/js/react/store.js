@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Store({
     state: {
         packages: [],
+        user:[]
     },
 
     getters: {

@@ -392,8 +392,8 @@
 
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
-import GoogleMap from "../../components/googleMap/GoogleMap";
+import axios from 'axios'
+import GoogleMap from "../googleMap/Map";
 
 export default {
   data() {
@@ -539,7 +539,6 @@ export default {
       },
       activeItem: "home",
       isActiveContent: true,
-      user: laravel.user,
       hasMainImage: false,
       hasLogo: false,
       image: null,
@@ -781,6 +780,11 @@ export default {
       this.activeItem = menuItem;
     }
   },
+  computed: {
+        user() {
+            return this.$store.state.user;
+        },
+    },
   components: {
     GoogleMap
   }

@@ -1,9 +1,11 @@
 <template>
     <div id="app">
-       <Header />
-       <div class="clearfix"></div>
-
-        
+        <Header />
+        <div class="clearfix"></div>
+        <Menu />
+        <div class="dashboard-content">
+            <router-view></router-view>
+        </div>
     </div>
 </template> 
 
@@ -16,12 +18,11 @@ export default {
         return {};
     },
     components: {
-       Header,
-       Menu
+        Header,
+        Menu,
     },
 };
 </script>
 
 <style scoped>
-
 </style>

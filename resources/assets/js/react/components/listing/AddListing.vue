@@ -278,9 +278,9 @@
 import Multiselect from "vue-multiselect";
 import { VueTagsInput, createTag, createTags } from "@johmun/vue-tags-input";
 import vue2Dropzone from "vue2-dropzone";
-import GoogleMap from "../../components/googleMap/GoogleMap";
+import GoogleMap from "../googleMap/Map";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
+import axios from 'axios';
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 
 export default {

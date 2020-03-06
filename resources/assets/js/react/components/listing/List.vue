@@ -74,6 +74,7 @@
 
 <script>
 import "sweetalert2/src/sweetalert2.scss";
+import axios from 'axios';
 
 export default {
   data() {
@@ -112,7 +113,7 @@ export default {
       }
     },
     getProjects(event) {
-      window.axios.get("/vendor/projects/get").then(({ data }) => {
+      axios.get("/vendor/projects/get").then(({ data }) => {
         this.projects = data;
         console.log(this.projects);
       });

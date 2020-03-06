@@ -164,10 +164,11 @@
 </template>
 
 <script>
-import Snackbar from "../../global/components/Snackbar";
+import Snackbar from "../partials/Snackbar";
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import axios from 'axios'
 
 export default {
   name: "EditService",
@@ -334,5 +335,8 @@ export default {
 }
 select.chosen-select-no-single option {
   padding: 8px 0;
+}
+#add-article{
+  margin-top: 45px;
 }
 </style>

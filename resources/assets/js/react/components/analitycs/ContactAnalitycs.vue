@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Listings -->
-    <div class="col-lg-12 col-md-12">
+    <div class="col-lg-12 col-md-12 margin-top-40">
       <div class="col-lg-12">
         <h3 class="comp_an_heading">Избери Дата</h3>
         <div class="col-lg-5">
@@ -184,6 +184,7 @@
 <script>
 import Datepicker from "vuejs-datepicker";
 import { analitycMixin } from "../mixins/analytic";
+import axios from 'axios';
 
 export default {
   mixins: [analitycMixin],
@@ -202,7 +203,7 @@ export default {
   },
   methods: {
     getContacts() {
-      window.axios.get("/vendor/service/contact_analytics").then(({ data }) => {
+      axios.get("/vendor/service/contact_analytics").then(({ data }) => {
         // console.log(data);
         let contact = data;
         this.phone = contact.filter(item => item.type === "phone");

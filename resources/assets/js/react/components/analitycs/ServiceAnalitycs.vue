@@ -1,9 +1,11 @@
 <template>
   <div>
     <!-- Listings -->
-    <div class="col-lg-12 col-md-12">
+    <div class="col-lg-12 col-md-12 margin-top-40">
+
+       <h3 class="comp_an_heading">Избери Дата</h3>
        <div class="col-lg-12">
-        <h3 class="comp_an_heading">Избери Дата</h3>
+       
         <div class="col-lg-5">
           <datepicker
             placeholder="Начална дата"
@@ -29,7 +31,7 @@
         </div>
       </div>
       <div class="dashboard-list-box margin-top-25">
-        <h4>Анализи за проекта</h4>
+        <h4>Анализи за услугата</h4>
         <ul class="analitycs_list">
           <li v-for="service in services" :key="service.id">
             <div class="list-box-listing">
@@ -72,6 +74,7 @@
 <script>
 import Datepicker from "vuejs-datepicker";
 import { analitycMixin } from "../mixins/analytic";
+import axios from 'axios'
 
 export default {
   mixins: [analitycMixin],
@@ -85,7 +88,7 @@ export default {
   },
   methods: {
     getServices() {
-      window.axios.get("/vendor/service/analytics").then(({ data }) => {
+      axios.get("/vendor/service/analytics").then(({ data }) => {
         this.services = data;
       });
     },

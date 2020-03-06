@@ -1,5 +1,5 @@
 <template>
-  <div class="container margin-top-25">
+  <div class="header-container container margin-top-25">
     <!-- Content
     ==================================================-->
     <div class="container">

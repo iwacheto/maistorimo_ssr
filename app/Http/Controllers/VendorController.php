@@ -14,10 +14,25 @@ class VendorController extends Controller
 {
     public function __invoke()
     {
+// \JavaScript::put('user', $user);
+        return view('admin', [
+            'packages' => $this->getPackages(),
+        ]);
+    }
 
+    private function getPackages(): array
+    {
+        $path = public_path('packages.json');
+
+        $contents = file_get_contents($path);
+
+        return json_decode($contents, true);
+    }
+
+    public function getUser(){
         $user = auth()->user();
-        // $user = User::with(['vendorDetails', 'websiteSettings', 'terms', 'vendorDetails.city'])->find($user->id);
-        $user = User::with(['vendorDetails', 'websiteSettings', 'terms', 'vendorDetails.city'])->find(4);
+        $user = User::with(['vendorDetails', 'websiteSettings', 'terms', 'vendorDetails.city'])->find($user->id);
+        // $user = User::with(['vendorDetails', 'websiteSettings', 'terms', 'vendorDetails.city'])->find(4);
         if (!$user->vendorDetails) {
             VendorDetail::insert(
                 [
@@ -44,18 +59,6 @@ class VendorController extends Controller
             );
             $user = User::with(['vendorDetails', 'websiteSettings'])->find($user->id);
         }
-        \JavaScript::put('user', $user);
-        return view('admin', [
-            'packages' => $this->getPackages(),
-        ]);
-    }
-
-    private function getPackages(): array
-    {
-        $path = public_path('packages.json');
-
-        $contents = file_get_contents($path);
-
-        return json_decode($contents, true);
+         return $user;
     }
 }

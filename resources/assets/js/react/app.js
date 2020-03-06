@@ -27,7 +27,7 @@ Vue.use(VueFroala);
 
 // Global register
 Vue.use(VueSweetalert2);
-Vue.use(VueRouter)
+// Vue.use(VueRouter)
 Vue.use(Vuetify)
 Vue.use(ImageUploader);
 Vue.use(VeeValidate);
@@ -40,3 +40,8 @@ export default new Vue({
 
     render: h => h(Vendor),
 });
+
+
+
+
+

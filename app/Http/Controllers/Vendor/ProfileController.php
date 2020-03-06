@@ -46,7 +46,7 @@ class ProfileController extends Controller {
             );
             $user = User::with(['vendorDetails', 'websiteSettings'])->find($user->id);
         }
-        \JavaScript::put('user', $user);
+        // \JavaScript::put('user', $user);
         return view('vendor.index');
     }
 

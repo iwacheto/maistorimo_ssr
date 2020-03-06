@@ -16,6 +16,7 @@
         "babel-preset-react": "^6.24.1",
         "@ckeditor/ckeditor5-build-classic": "^12.4.0",
         "@ckeditor/ckeditor5-vue": "^1.0.1",
+        "@johmun/vue-tags-input": "^2.1.0",
         "cross-env": "^5.1",
         "eslint": "^4.19.1",
         "vee-validate": "^2.2.15",
