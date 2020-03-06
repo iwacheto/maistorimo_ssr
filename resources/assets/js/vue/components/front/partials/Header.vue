@@ -99,7 +99,7 @@
                             <a v-if="!logged" @click="loginPopup" class="button border with-icon">
                                 <i class="sl sl-icon-login"></i> Вход/Регистрация
                             </a>
-                            <a v-else href="/vendor" class="button border with-icon">
+                            <a v-else href="/admin" class="button border with-icon">
                                 <i class="sl sl-icon-login"></i> Администрация
                             </a>
                             <!-- <a href="dashboard-add-listing.html" class="button border with-icon">

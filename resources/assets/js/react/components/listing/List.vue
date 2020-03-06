@@ -11,12 +11,12 @@
           <nav id="breadcrumbs">
             <ul>
               <li>
-                <a href="#">Начало</a>
+                <a href="/">Начало</a>
               </li>
               <li>
-                <a href="#">Информация</a>
+                <a href="/admin">Информация</a>
               </li>
-              <li>Моите Проект</li>
+              <li>Моите Проекти</li>
             </ul>
           </nav>
         </div>
@@ -32,21 +32,21 @@
             <li v-for="(p, index) in projects" :key="p.id">
               <div class="list-box-listing">
                 <div class="list-box-listing-img">
-                  <router-link :to="'/projects/edit/' + p.id">
+                  <router-link :to="'/admin/projects/edit/' + p.id">
                     <img :src="p.project_galleries[0] ? p.project_galleries[0].url : ''" alt />
                   </router-link>
                 </div>
                 <div class="list-box-listing-content">
                   <div class="inner">
                     <h3>
-                      <router-link :to="'/projects/edit/' + p.id">{{ p.title }}</router-link>
+                      <router-link :to="'/admin/projects/edit/' + p.id">{{ p.title }}</router-link>
                     </h3>
                     <div class="star-rating" data-rating="3.5"></div>
                   </div>
                 </div>
               </div>
               <div class="buttons-to-right">
-                <router-link class="button gray" :to="'/projects/edit/' + p.id">
+                <router-link class="button gray" :to="'/admin/projects/edit/' + p.id">
                   <i class="sl sl-icon-note"></i>
                 </router-link>
                 <a @click="alertDeleteProject(p.id, index)" class="button gray">

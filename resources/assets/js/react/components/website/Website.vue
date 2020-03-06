@@ -9,7 +9,7 @@
           <nav id="breadcrumbs">
             <ul>
               <li>
-                <a href="#">Табло</a>
+                <a href="/admin">Табло</a>
               </li>
               <li>Настройки на сайта</li>
             </ul>

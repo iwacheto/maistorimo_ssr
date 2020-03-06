@@ -9,6 +9,7 @@ import VueToastr from 'vue-toastr';
 import * as VueGoogleMaps from "vue2-google-maps";
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import Vendor from './components/Vendor';
+import axios from 'axios';
 
 Vue.use(VueGoogleMaps, {
 	load: {
@@ -32,6 +33,15 @@ Vue.use(Vuetify)
 Vue.use(ImageUploader);
 Vue.use(VeeValidate);
 
+// window.axios = require('axios');
+
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// let token = document.head.querySelector('meta[name="csrf-token"]');
+// if (token) {
+//     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+// } else {
+//     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+// }
 
 export default new Vue({
     store,

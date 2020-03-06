@@ -16,8 +16,6 @@ import ArticlesList from './components/blog/ArticlesList';
 import CreateService from './components/services/CreateService';
 import EditService from './components/services/EditService';
 import ServicesList from './components/services/ServicesList';
-// import VueAnalytics from './components/vue-analytics'
-
 
 
 Vue.use(VueRouter);
@@ -39,11 +37,11 @@ const routes = [
     { path: '/admin/service', component: ServicesList, name: 'ServicesList', props: true },
 	{ path: '/admin/service/add-service', component: CreateService, name: 'CreateService', props: true },
 	{ path: '/admin/service/edit/:id', component: EditService, name: 'EditService', props: true },
-
+	
     
 ];
 
 export default new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     routes,
 });

@@ -78,11 +78,7 @@ export default {
         this.user = data.user;
         this.projectsCount = data.projectsCount;
         this.servicesCount = data.servicesCount;
-        if(this.user.is_visited==0){
-        console.log('First')
-      } else{
-        console.log('Old')
-      }
+     
       });
     },
    

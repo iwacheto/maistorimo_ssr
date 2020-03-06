@@ -163,7 +163,8 @@ Auth::routes();
 // Route::get('/', 'WelcomeController');
 
 // Route::get('admin/{url?}', 'VueController@admin');
-Route::get('admin/{url?}', 'VendorController');
+Route::get('/admin/{url?}', 'VendorController');
+Route::get('/admin/projects', 'VendorController');
 
 Route::get('/{url?}', 'VueController');
 

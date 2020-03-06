@@ -15,25 +15,24 @@
                         </div>
 
                         <!-- Titlebar -->
-                       
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h2>Добавяне на услуга</h2>
-                                    <!-- Breadcrumbs -->
-                                    <nav id="breadcrumbs">
-                                        <ul>
-                                            <li>
-                                                <a href="#">Начало</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Админ Панел</a>
-                                            </li>
-                                            <li>Добавяне на услуга</li>
-                                        </ul>
-                                    </nav>
-                                </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Добавяне на услуга</h2>
+                                <!-- Breadcrumbs -->
+                                <nav id="breadcrumbs">
+                                    <ul>
+                                        <li>
+                                            <a href="/">Начало</a>
+                                        </li>
+                                        <li>
+                                            <a href="/admin">Админ Панел</a>
+                                        </li>
+                                        <li>Добавяне на услуга</li>
+                                    </ul>
+                                </nav>
                             </div>
-                        
+                        </div>
 
                         <!-- Title -->
                         <div class="row with-forms">
@@ -180,6 +179,7 @@
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import vue2Dropzone from 'vue2-dropzone';
+import axios from 'axios';
 
 export default {
     name: 'CreateService',
@@ -212,7 +212,7 @@ export default {
             },
             dropzoneOptionsMain: {
                 url: '/vendor/galleries/uploadImage',
-                maxFiles: 1,
+                 maxFiles: 1,
                 addRemoveLinks: true,
                 thumbnailWidth: 150,
                 maxFilesize: 0.5,
@@ -223,7 +223,7 @@ export default {
     mounted() {
         this.$refs.mytoast.defaultPosition = 'toast-top-center';
         this.$refs.mytoast.defaultStyle = { top: '80px' };
-        // this.getServicesCategory();
+        // this.setToken();
         this.getCategories();
     },
     methods: {
@@ -287,7 +287,9 @@ export default {
             }, 500);
         },
         mainImageUploaded(file, response) {
-            this.service.mainImage = { url: response.url, name: file.name };
+            this.service.mainImage = { url: response.url, name: file.name}
+            
+        
         },
         removedMainImage(file, error, xhr) {
             this.service.mainImage.splice(0, 1);
