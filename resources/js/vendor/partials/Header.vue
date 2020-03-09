@@ -89,7 +89,8 @@
 export default {
   data() {
     return {
-      user: laravel.user,
+      // user: laravel.user,
+      user:[],
       isActive: false
     };
   },
@@ -104,10 +105,20 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+    async getUser() {
+            try {
+                const res = await axios.get('/get_user');
+                this.user=res.data;
+                this.$store.state.user=res.data;
+            } catch (error) {
+                console.log(error);
+            }
+        },
   },
+   
   mounted() {
-    console.log(this.user);
+    this.getUser();
   }
 };
 </script>

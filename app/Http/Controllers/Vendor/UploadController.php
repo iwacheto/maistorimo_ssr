@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class UploadController extends Controller {
 
     public function uploadImage(Request $request) {
-        $user = auth()->user();
+         $user = auth()->user();
         $data = $request->all();
         $file = $data['file']->path();
         \Cloudder::upload($file, $user->name . '/' .  substr($data['file']->getClientOriginalName(), 0, strrpos( $data['file']->getClientOriginalName(), '.')) . uniqid(), ['format' => 'WebP']);

@@ -160,6 +160,7 @@
                                 :options="dropzoneOptionsMain"
                             ></vue-dropzone>
                         </div>
+                       
                         <!-- Section / End -->
 
                         <!-- Row -->
@@ -212,21 +213,31 @@ export default {
             },
             dropzoneOptionsMain: {
                 url: '/vendor/galleries/uploadImage',
-                 maxFiles: 1,
+                maxFiles: 1,
                 addRemoveLinks: true,
                 thumbnailWidth: 150,
                 maxFilesize: 0.5,
                 headers: { 'My-Awesome-Header': 'header value' },
             },
+            
         };
     },
     mounted() {
         this.$refs.mytoast.defaultPosition = 'toast-top-center';
         this.$refs.mytoast.defaultStyle = { top: '80px' };
-        // this.setToken();
         this.getCategories();
+        
     },
     methods: {
+        async test() {
+            try {
+                const responce = await axios.post('https://jsonplaceholder.typicode.com/posts');
+                // this.serCategories = responce.data;
+                console.log(responce.data);
+            } catch (error) {
+                console.log(error);
+            }
+        },
         getCategories() {
             axios.get('/categories/getcat').then(({ data }) => {
                 this.categories = data;
@@ -287,9 +298,8 @@ export default {
             }, 500);
         },
         mainImageUploaded(file, response) {
-            this.service.mainImage = { url: response.url, name: file.name}
-            
-        
+            console.log(file, response)
+            this.service.mainImage = { url: response.url, name: file.name };
         },
         removedMainImage(file, error, xhr) {
             this.service.mainImage.splice(0, 1);
@@ -297,6 +307,7 @@ export default {
     },
     components: {
         vueDropzone: vue2Dropzone,
+        // Dropzone,
     },
 };
 </script>

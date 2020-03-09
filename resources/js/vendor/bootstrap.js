@@ -56,6 +56,7 @@ const store = new Vuex.Store({
 	}
 });
 
+import Vendor from './Vendor';
 import AddListing from "./listing/AddListing.vue";
 import ProjectsList from "./listing/List.vue";
 import Dashboard from "./dashboard/Dashboard.vue";
@@ -118,6 +119,7 @@ window.onload = function () {
 	const app = new Vue({
 		store,
 		el: '#app',
-		router: router
+		router: router,
+		render: h => h(Vendor),
 	});
 };

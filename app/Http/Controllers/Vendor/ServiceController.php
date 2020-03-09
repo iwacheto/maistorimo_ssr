@@ -54,6 +54,7 @@ class ServiceController extends Controller
      */
     public function store(CreateServiceRequest $request)
     {
+        // return $request->all();
         $service = $request->validate([
             'title' => 'required|min:3|max:255|string',
             'firstDescription' => 'required|min:10|string',
@@ -61,6 +62,7 @@ class ServiceController extends Controller
             'mainImage' => 'required',
         ]);
 
+        // return $service;
         if (!$service) {
             return 'Възникна грешка!';
         } else {
