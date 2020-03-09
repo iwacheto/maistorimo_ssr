@@ -78,7 +78,6 @@ export default {
         this.user = data.user;
         this.projectsCount = data.projectsCount;
         this.servicesCount = data.servicesCount;
-     
       });
     },
    

@@ -73,7 +73,6 @@ Route::get('/tags/get', 'Vendor\CategoriesController@getTags');
 Route::get('/get_user', 'VendorController@getUser');
 
 
-Route::post('/upload/uploadImage', 'Vendor\UploadController@uploadImage');
 // Vendor routes
 Route::prefix('vendor')->middleware('auth')->group(function () {
 

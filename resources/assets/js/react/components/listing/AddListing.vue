@@ -108,28 +108,7 @@
                 <span v-if="error.categoryError" class="error">Моля изберете категория!</span>
               </div>
 
-              <!-- <div class="autocomplete">
-                  <h5>
-                    Категории
-                    <span class="required">*</span>
-                    <i
-                      class="tip"
-                      data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
-                    ></i>
-                  </h5>
-                   <span v-if="error.categoryError" class="error">Моля изберете категория!</span>
-                  <input type="text" v-model="search" @input="onChange" class="cityInput" />
-                  <ul v-show="isOpen" class="autocomplete-results">
-                    <li
-                      v-for="(result, i) in results"
-                      :key="i"
-                      @click="setResult(result)"
-                      class="autocomplete-result"
-                    >{{ result.city }}</li>
-                  </ul>
-              </div>-->
-
-              <!-- Type -->
+             <!-- Type -->
               <div class="col-md-6">
                 <h5>
                   Ключови думи
@@ -145,11 +124,7 @@
                   :autocomplete-items="filteredTags"
                   @tags-changed="newTags => project.tags = newTags"
                 />
-                <!-- <vue-tags-input
-                  v-model="tag"
-                  :tags="project.tags"
-                  @tags-changed="newTags => project.tags = newTags"
-                />-->
+               
                 <span v-if="error.tagsError" class="error">Моля напишете ключова дума!</span>
               </div>
             </div>
@@ -354,6 +329,7 @@ export default {
     this.getTags();
     this.getCategories();
     this.getServices();
+    
   },
   methods: {
     showErrors() {
@@ -516,7 +492,7 @@ export default {
     async onChange() {
       this.isOpen = true;
       try {
-        const res = await axios.get("autocomplete/search", {
+        const res = await axios.get("/autocomplete/search", {
           params: { searchQuery: this.search }
         });
 

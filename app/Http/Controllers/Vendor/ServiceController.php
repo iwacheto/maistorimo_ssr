@@ -62,7 +62,6 @@ class ServiceController extends Controller
             'mainImage' => 'required',
         ]);
 
-        // return $service;
         if (!$service) {
             return 'Възникна грешка!';
         } else {

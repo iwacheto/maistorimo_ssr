@@ -227,7 +227,7 @@ export default {
         async onChange() {
             this.isOpen = true;
             try {
-                const res = await axios.get('autocomplete/search', {
+                const res = await axios.get('/autocomplete/search', {
                     params: { searchQuery: this.city },
                 });
 
@@ -267,7 +267,7 @@ ul.autocomplete-results {
     padding: 0;
     margin: 0;
     border: 1px solid #eeeeee;
-    height: 160px;
+    /* height: 160px; */
     overflow: auto;
     background: #fff;
     flex-direction: row;
