@@ -1,20 +1,4 @@
-@tailwind preflight;
 
-a {
-    color: inherit;
-}
-
-h1 {
-    @apply .font-extrabold;
-    @apply .leading-none;
-    @apply .mb-8;
-    @apply .text-lg;
-    @apply .text-orange;
-    @apply .tracking-wide;
-    @apply .uppercase;
-}
-
-@tailwind utilities;
 .sign-in-proj {
     color: #333 !important;
 }
@@ -91,7 +75,53 @@ button.skew {
     position: relative;
     width: 130px;
   }
-  
+  div.contact_error {
+    position: absolute;
+    width: 500px;
+    height: 150px;
+    border: 3px solid#2F855A;
+    color: #2f855a;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    z-index: 9;
+    vertical-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fefefe;
+  }
+  .error_button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: transparent;
+    border: 1px solid #2f855a;
+    /* border-radius:50%  */
+  }
+  .invalid-feedback {
+    color: rgb(248, 70, 106);
+  }
+  .col-md-6 div {
+    min-height: 110px;
+  }
+  .col-md-6 div input {
+    margin-bottom: 15px !important;
+  }
+  .is-invalid {
+    border: 1px solid rgb(248, 70, 106);
+  }
+  h4.headline {
+    color: #48bb78;
+  }
+  div.captcha_content {
+    margin-bottom: 25px;
+  }
+  div.contact_map {
+    max-width: 70%;
+    margin: 30px auto;
+  }
   .autocomplete-results {
     padding: 0;
     margin: 0;
@@ -101,6 +131,9 @@ button.skew {
     background: #fff;
   }
   
+  .service_body img{
+     max-height: 500px;
+  }
   .autocomplete-result {
     list-style: none;
     text-align: left;
@@ -146,6 +179,30 @@ button.skew {
     margin: 5px;
     flex-basis: 18%;
   }
+  .post-content h2,
+  h3 {
+    text-align: center;
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    text-transform: none;
+    color: #333;
+  }
+  .post-meta {
+    justify-content: space-between;
+  }
+  body p {
+    font-size: 18px;
+  }
+  ul li {
+    margin-bottom: 15px;
+  }
+  .post-content ul.post-meta li::after {
+    display: none;
+  }
+  .carousel_link:hover {
+    color: #74aea1 !important;
+  }
+
 /* MEDIA QUERY */
 
 @media screen and (max-width: 1400px) {
@@ -294,7 +351,9 @@ button.skew {
     .checkboxes label {
         font-size: 14px;
     }
-    
+    #titlebar {
+        margin-top: 55px;
+    }
     h3.margin-top-20 {
         margin-top: 5px !important;
         margin-bottom: 5px !important;

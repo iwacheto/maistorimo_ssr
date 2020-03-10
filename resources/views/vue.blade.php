@@ -8,6 +8,7 @@
 
     <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/app.css">
     <!-- Google Tag Manager -->
     <script async defer>
         (function(w, d, s, l, i) {

@@ -30,12 +30,12 @@
                         <nav id="navigation" class="style-1 test_menu">
                             <ul id="responsive">
                                 <li>
-                                    <!-- <router-link to="/">Начало</router-link> -->
-                                    <a href="/">Начало</a>
+                                    <router-link to="/">Начало</router-link>
+                                    <!-- <a href="/">Начало</a> -->
                                 </li>
 
                                 <li>
-                                    <a href="/listings">Проекти</a>
+                                    <router-link to="/listings">Проекти</router-link>
                                     <div class="mega-menu mobile-styles three-columns">
                                         <div
                                             class="mega-menu-section"
@@ -47,13 +47,13 @@
                                                     <!-- <a :href="'/#/listings?mainCategory='+category.title">{{ category.title }}</a> -->
                                                     <i :class="classObject(category.id)"></i>
                                                     <a
-                                                        @click="applyMainCategory(category.children,'/listings')"
+                                                        @click.prevent="applyMainCategory(category.children,'/listings')"
                                                     >{{ category.title }}</a>
                                                 </li>
                                                 <li v-for="cat in category.children" :key="cat.id">
-                                                    <a
-                                                        :href="'/listings?category='+cat.title"
-                                                    >{{ cat.title }}</a>
+                                                    <router-link
+                                                        :to="'/listings?category='+cat.title"
+                                                    >{{ cat.title }}</router-link>
                                                 </li>
                                             </ul>
                                         </div>
@@ -61,7 +61,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/services">Услуги</a>
+                                    <router-link to="/services">Услуги</router-link>
                                     <div class="mega-menu mobile-styles three-columns">
                                         <div
                                             class="mega-menu-section"
@@ -73,13 +73,13 @@
                                                     <!-- <a :href="'/#/services?mainCategory='+category.title">{{ category.title }}</a> -->
                                                     <i :class="classObject(category.id)"></i>
                                                     <a
-                                                        @click="applyMainCategory(category.children,'/services')"
+                                                        @click.prevent="applyMainCategory(category.children,'/services')"
                                                     >{{ category.title }}</a>
                                                 </li>
                                                 <li v-for="cat in category.children" :key="cat.id">
-                                                    <a
-                                                        :href="'/services?category='+cat.title"
-                                                    >{{ cat.title }}</a>
+                                                    <router-link
+                                                        :to="'/services?category='+cat.title"
+                                                    >{{ cat.title }}</router-link>
                                                 </li>
                                             </ul>
                                         </div>

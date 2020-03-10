@@ -17,7 +17,7 @@
             ==================================================-->
             <div class="row">
                 <div class="col-md-12">
-                    <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions"></vue-dropzone>
+                   
                     <!-- Headline -->
                     <h4 class="headline with-border margin-top-0 margin-bottom-35">1. Въведение</h4>
                     <blockquote>
@@ -182,20 +182,12 @@
 </template>
 
 <script>
-import vue2Dropzone from 'vue2-dropzone';
-import 'vue2-dropzone/dist/vue2Dropzone.min.css';
+
 
 export default {
     data() {
         return {
-            dropzoneOptions: {
-                url: '/vendor/galleries/uploadImage',
-                maxFiles: 1,
-                addRemoveLinks: true,
-                thumbnailWidth: 150,
-                maxFilesize: 0.5,
-                headers: { 'My-Awesome-Header': 'header value' },
-            },
+            
         };
     },
     methods: {
@@ -211,16 +203,6 @@ export default {
     created() {
         this.addParagraphs();
     },
-    components: {
-        vueDropzone: vue2Dropzone,
-    },
+   
 };
 </script>
-
-<style>
-@media screen and (max-width: 530px) {
-    #titlebar {
-        margin-top: 55px;
-    }
-}
-</style>

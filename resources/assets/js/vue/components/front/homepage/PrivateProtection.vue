@@ -3,7 +3,7 @@
     <div id="titlebar">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12" id="titlebar">
             <h2>Политика за поверителност</h2>
           </div>
         </div>
@@ -120,6 +120,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>

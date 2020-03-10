@@ -4,14 +4,14 @@
     <div class="contact-map margin-bottom-60">
       <!-- Google Maps -->
       <div id="singleListingMap-container" class="contact_map">
-      <gmap-map :center="center" :zoom="16" style="width:100%;  height: 400px;">
+      <!-- <gmap-map :center="center" :zoom="16" style="width:100%;  height: 400px;">
       <gmap-marker
         :key="index"
         v-for="(m, index) in markers"
         :position="m.position"
         @click="center=m.position"
       ></gmap-marker>
-    </gmap-map>
+    </gmap-map> -->
     </div>
       <!-- Google Maps / End -->
     </div>
@@ -259,10 +259,10 @@ export default {
     },
     createCaptcha() {
       setTimeout(function() {
-        grecaptcha.render("recaptcha", {
-          sitekey: "6Lc9f8kUAAAAAOTS7GfEFiNj30U5mGbIGQsjKMsT",
-          callback: function() {}
-        });
+        // grecaptcha.render("recaptcha", {
+        //   sitekey: "6Lc9f8kUAAAAAOTS7GfEFiNj30U5mGbIGQsjKMsT",
+        //   callback: function() {}
+        // });
       }, 1600);
     },
     // receives a place object via the autocomplete component
@@ -298,53 +298,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-div.contact_error {
-  position: absolute;
-  width: 500px;
-  height: 150px;
-  border: 3px solid#2F855A;
-  color: #2f855a;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 20px;
-  z-index: 9;
-  vertical-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fefefe;
-}
-.error_button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  background: transparent;
-  border: 1px solid #2f855a;
-  /* border-radius:50%  */
-}
-.invalid-feedback {
-  color: rgb(248, 70, 106);
-}
-.col-md-6 div {
-  min-height: 110px;
-}
-.col-md-6 div input {
-  margin-bottom: 15px !important;
-}
-.is-invalid {
-  border: 1px solid rgb(248, 70, 106);
-}
-h4.headline {
-  color: #48bb78;
-}
-div.captcha_content {
-  margin-bottom: 25px;
-}
-div.contact_map {
-  max-width: 70%;
-  margin: 30px auto;
-}
-</style>
