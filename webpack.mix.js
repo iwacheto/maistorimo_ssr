@@ -55,7 +55,9 @@ mix
                         },
                     ],
                 }),
-           ];
+                
+               
+            ];
         }
 
         return config;

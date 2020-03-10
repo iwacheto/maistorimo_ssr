@@ -24,6 +24,7 @@ Vue.directive('click-outside', {
 	},
 });
 
+
 Vue.use(VueGoogleMaps, {
 	load: {
 		key: "AIzaSyCX1iw9Pr-kaeGN7IMHB4LrxzaHSRHJtSM",
@@ -50,7 +51,7 @@ import { EventBus } from './components/front/event-bus';
 
 // Vue.use(axios)
 export default new Vue({
-    store,
+	store,
     router,
 
     render: h => h(App),

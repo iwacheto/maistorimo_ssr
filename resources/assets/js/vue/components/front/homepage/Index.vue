@@ -103,12 +103,12 @@ export default {
         return {
             categories: [],
             // jsonld,
+            // closeCookie:true,
             projects: [],
         };
     },
     created() {
         this.getCategories();
-        // this.getCookies();
         this.getProjects();
     },
     methods: {
@@ -133,9 +133,13 @@ export default {
             }
         },
         getCookies() {
-            // let localCookies = document.cookie;
+           
+            let localCookies = document.cookie;
+            let localCookies='Pesho';
+        
             if (localCookies) {
-                this.closeCookie = false;
+                // this.closeCookie = false;
+                 console.log(localCookies)
             }
         },
         setCategory(category) {
@@ -148,51 +152,52 @@ export default {
             }
         },
         getProjects() {
-            axios.get('/last_projects').then(responce => {
-                this.projects = responce.data;
-                this.$nextTick(function() {
-                    $('.custom_slider_2')
-                        .not('.slick-initialized')
-                        .slick({
-                            infinite: true,
-                            slidesToShow: 5,
-                            slidesToScroll: 1,
-                            dots: true,
-                            arrows: false,
-                            autoplay: true,
-                            autoplaySpeed: 2000,
-                            responsive: [
-                                {
-                                    breakpoint: 1610,
-                                    settings: {
-                                        slidesToShow: 4,
+            axios
+                .get('/last_projects')
+                .then(responce => {
+                    this.projects = responce.data;
+                    this.$nextTick(function() {
+                        $('.custom_slider_2')
+                            .not('.slick-initialized')
+                            .slick({
+                                infinite: true,
+                                slidesToShow: 5,
+                                slidesToScroll: 1,
+                                dots: true,
+                                arrows: false,
+                                autoplay: true,
+                                autoplaySpeed: 2000,
+                                responsive: [
+                                    {
+                                        breakpoint: 1610,
+                                        settings: {
+                                            slidesToShow: 4,
+                                        },
                                     },
-                                },
-                                {
-                                    breakpoint: 1365,
-                                    settings: {
-                                        slidesToShow: 3,
+                                    {
+                                        breakpoint: 1365,
+                                        settings: {
+                                            slidesToShow: 3,
+                                        },
                                     },
-                                },
-                                {
-                                    breakpoint: 1024,
-                                    settings: {
-                                        slidesToShow: 2,
+                                    {
+                                        breakpoint: 1024,
+                                        settings: {
+                                            slidesToShow: 2,
+                                        },
                                     },
-                                },
-                                {
-                                    breakpoint: 767,
-                                    settings: {
-                                        slidesToShow: 1,
+                                    {
+                                        breakpoint: 767,
+                                        settings: {
+                                            slidesToShow: 1,
+                                        },
                                     },
-                                },
-                            ],
-                        });
-                });
-            })
-            .catch(err=> console.log(error));
+                                ],
+                            });
+                    });
+                })
+                .catch(err => console.log(error));
         },
-        
     },
     watch: {
         projects() {},
@@ -204,6 +209,7 @@ export default {
     },
     mounted() {
         this.setSession();
+        this.getCookies();
     },
 };
 </script>
