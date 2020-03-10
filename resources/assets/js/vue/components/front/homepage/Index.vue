@@ -4,7 +4,7 @@
             class="main-search-container centered"
             v-bind:style="{ backgroundImage: 'url(images/main-search-background-01.webp)' }"
         >
-            <FrontSearch></FrontSearch>
+            <!-- <FrontSearch></FrontSearch> -->
         </div>
 
         <!-- Fullwidth Section -->
@@ -20,7 +20,7 @@
             </div>
 
             <!-- Carousel / Start -->
-           
+
             <!-- <div class="simple-fw-slick-carousel custom_slider_2 dots-nav"> -->
             <div class="custom_slider_2 dots-nav">
                 <!-- Listing Item -->
@@ -64,13 +64,12 @@
                         <h3 class="headline centered margin-top-75">
                             <strong class="headline-with-separator">Популярни услуги</strong>
                         </h3>
-                        <SearchResults></SearchResults>
+                        <!-- <SearchResults></SearchResults> -->
                     </div>
                 </div>
             </div>
         </section>
-        <!-- <script v-html="jsonld" , type="application/ld+json"></script> -->
-        <script v-html="jsonld" type="application/ld+json"></script>
+
         <footer>
             <cookie-law theme="dark-lime" v-if="closeCookie">
                 <div slot="message">
@@ -93,49 +92,24 @@
 </template>
 
 <script>
-import SearchResults from '../partials/SearchResults';
-import FrontSearch from '../partials/Search';
+// import SearchResults from '../partials/SearchResults';
+// import FrontSearch from '../partials/Search';
 import { EventBus } from '../event-bus';
 import CookieLaw from 'vue-cookie-law';
 import axios from 'axios';
 
 export default {
-    name: 'Index',
-    created() {
-        this.getCategories();
-        this.getCookies();
-        this.getprojects();
-    },
     data() {
-        const jsonld = {
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'Maistorima',
-            legalName: 'Webrika',
-            url: 'http://www.maistorimo.com',
-            logo: 'images/logo2.png',
-            foundingDate: '2019',
-            address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Ruse str 19',
-                addressLocality: 'floor 3',
-                addressRegion: 'Pleven',
-                postalCode: '5800',
-                addressCountry: 'Bulgaria',
-            },
-            contactPoint: {
-                '@type': 'ContactPoint',
-                contactType: 'customer support',
-                telephone: '[+561-526-8457]',
-                email: 'georgi@webrika.bg',
-            },
-        };
         return {
             categories: [],
-            jsonld,
-            closeCookie: true,
+            // jsonld,
             projects: [],
         };
+    },
+    created() {
+        this.getCategories();
+        // this.getCookies();
+        this.getProjects();
     },
     methods: {
         setSession() {
@@ -159,7 +133,7 @@ export default {
             }
         },
         getCookies() {
-            let localCookies = document.cookie;
+            // let localCookies = document.cookie;
             if (localCookies) {
                 this.closeCookie = false;
             }
@@ -168,19 +142,16 @@ export default {
             if (category === 'all') {
                 EventBus.$emit('filter-reset');
             } else {
-                document.getElementById('search-results').scrollIntoView();
-
+                // document.getElementById('search-results').scrollIntoView();
                 let filters = { category: category.id, title: false };
                 EventBus.$emit('filter-applied', filters);
             }
         },
-        async getprojects() {
-            try {
-                const responce = await axios.get('last_projects');
+        getProjects() {
+            axios.get('/last_projects').then(responce => {
                 this.projects = responce.data;
-                // console.log(this)
                 this.$nextTick(function() {
-                   $('.custom_slider_2')
+                    $('.custom_slider_2')
                         .not('.slick-initialized')
                         .slick({
                             infinite: true,
@@ -218,127 +189,22 @@ export default {
                             ],
                         });
                 });
-            } catch (error) {
-                console.log(error);
-            }
+            })
+            .catch(err=> console.log(error));
         },
+        
     },
     watch: {
         projects() {},
     },
-    components: { SearchResults, FrontSearch, CookieLaw },
+    components: {
+        // SearchResults,
+        // FrontSearch,
+        CookieLaw,
+    },
     mounted() {
         this.setSession();
-        document.title = 'Maistorimo';
-        // SEO Schema
-        // let schema = document.createElement("script");
-        // schema.setAttribute("type", "application/ld+json");
-        // let content =
-        //   '{ "@context" : "https://schema.org"' +
-        //   '{ "firstName":"John" , "lastName":"Doe" },' +
-        //   '{ "firstName":"Anna" , "lastName":"Smith" },' +
-        //   '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
-        // let toJson = JSON.stringify(content);
-        // schema.innerHTML = toJson;
-        // var SSD = document.getElementsByTagName("body")[0].appendChild(schema);
-        // console.log(SSD);
     },
 };
-// OG URL
-// var link = document.createElement("meta");
-// link.setAttribute("property", "og:url");
-// link.content = document.location;
-// var url = document.getElementsByTagName("head")[0].appendChild(link);
-// var title = document.createElement("meta");
-// title.setAttribute("property", "og:title");
-// title.content =
-//   "Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги";
-// var desc = document.getElementsByTagName("head")[0].appendChild(title);
-
-// var link = document.createElement("meta");
-// link.setAttribute("property", "og:image");
-// link.content = "images/logo.png";
-// var head = document.getElementsByTagName("head")[0].appendChild(link);
 </script>
 
-<style scoped>
-a.carousel_link {
-    color: #fff;
-}
-.box-container {
-    display: flex;
-    justify-content: center;
-}
-div.Cookie__content div {
-    display: flex;
-}
-div.Cookie__content button {
-    background: #97d058;
-    padding: 0.625em 3.125em;
-    color: #fff;
-    border-radius: 0;
-    border: 0;
-    font-size: 1em;
-    margin-left: 25px;
-    border-radius: 10px;
-}
-div.Cookie__content button:hover {
-    background: #7ebf36;
-}
-button.Cookie__button {
-    display: none !important;
-}
-
-button.skew {
-    max-height: 65px;
-}
-
-@media screen AND (max-width: 1250px) {
-    .Cookie__content p {
-        font-size: 13px;
-    }
-}
-
-@media screen AND (max-width: 1000px) {
-    div.Cookie--dark-lime {
-        padding: 10px;
-    }
-}
-
-@media screen AND (max-width: 900px) {
-    .cookie_buttons_content {
-        display: flex;
-        flex-direction: column;
-    }
-    .cookie_buttons_content span {
-        min-width: 100px;
-        display: inline-block;
-    }
-    button.skew {
-        max-height: 45px;
-        padding: 5px 10px !important;
-    }
-    button.skew:first-of-type {
-        margin-bottom: 15px;
-    }
-}
-
-@media screen AND (max-width: 800px) {
-    .Cookie--dark-lime {
-        max-height: 150px;
-    }
-    .Cookie__content p {
-        /* overflow: hidden; */
-        /* white-space: nowrap; */
-        /* text-overflow: ellipsis; */
-        font-size: 11px;
-        line-height: 20px;
-    }
-}
-
-@media screen AND (max-width: 450px) {
-    .Cookie--dark-lime {
-        max-height: 180px;
-    }
-}
-</style>

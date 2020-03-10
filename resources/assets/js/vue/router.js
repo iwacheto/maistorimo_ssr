@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import Index from './components/front/homepage/Index';
+import Index from './components/front/homepage/Index';
 // import ListingsList from "./components/front/listings/List.vue";
 // import Services  from './components/front/listings/Services.vue';
 // import Browse from "./components/front/browse/Browse.vue";
@@ -17,7 +17,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
-    // { path: '/', name: 'Index', component: Index , props: true},
+    { path: '/', name: 'Index', component: Index , props: true},
     // { path: '/project/details/:id', component: ProjectDetails, name: 'ProjectDetails', props: true },
 	// { path: '/service/details/:id', component: Service, name: 'Service', props: true },
 	// { path: '/listings/:filters?', component: ListingsList, name: 'ListingsList', props: true },

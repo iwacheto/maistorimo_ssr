@@ -27,7 +27,7 @@ Route::group(array('domain' => '{subdomain}.maistorimo.gpb'), function () {
 //Front Page Project Routes
 Route::get('all-projects', 'Front\ProjectsController@getProjects');
 Route::get('projects', 'Front\ProjectsController@applyFilter');
-Route::get('last_projects', 'Front\ProjectsController@getPopularProjects');
+Route::get('/last_projects', 'Front\ProjectsController@getPopularProjects');
 Route::get('/services_all', 'Front\ServiceController@applyServiceFilter');
 Route::get('/last-services', 'Front\ServiceController@getLastService');
 Route::get('/filter/tag', 'Front\ProjectsController@applybyTagFilter');
