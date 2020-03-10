@@ -181,6 +181,13 @@ button.skew {
     .image {
         flex-basis: 42%;
       }
+/*      
+    .sidebar_menu span.active_span:nth-of-type(2) {
+        display: none;
+    }
+    .sidebar_menu span.active_span:nth-of-type(3) {
+        transform: rotate(-50deg);
+    } */
     .sidebar_menu span.active_span {
         position: absolute;
         transform: rotate(50deg);
@@ -246,6 +253,7 @@ button.skew {
     div.project_content {
         margin-top: 45px;
     }
+   
 }
 
 @media screen and (max-width: 600px) {
@@ -260,7 +268,7 @@ button.skew {
     }
 
     div.project_content {
-        margin-top: 60px;
+        margin-top: 70px;
     }
     div.fixed {
         top: 210px;
@@ -278,10 +286,6 @@ button.skew {
     input[type='text'] {
         padding: 0 10px;
     }
-    h3.margin-top-20 {
-        margin-top: 5px !important;
-        margin-bottom: 5px !important;
-    }
     .checkboxes {
         overflow-y: scroll;
         overflow-x: hidden;
@@ -290,6 +294,12 @@ button.skew {
     .checkboxes label {
         font-size: 14px;
     }
+    
+    h3.margin-top-20 {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+    }
+    
 }
 
 @media screen and (max-width: 760px) {

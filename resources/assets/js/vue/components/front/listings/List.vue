@@ -286,7 +286,7 @@
 
 
 <script>
-// import { EventBus } from '../event-bus';
+import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
 import ClientOnly from 'vue-client-only';
 import { project_services_functions } from '../mixins/project_services_functions';

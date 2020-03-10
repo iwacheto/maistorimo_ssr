@@ -136,14 +136,14 @@
               <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Локация</h3>
 
               <div id="singleListingMap-container">
-                <!-- <google-map
+                <google-map
                   v-if="projectDetails.lat && projectDetails.lng && projectDetails.formatted_address && projectDetails.raw_data"
                   :lat="projectDetails.lat"
                   :lng="projectDetails.lng"
                   :formatted_address="projectDetails.formatted_address"
                   :placeObj="projectDetails.raw_data"
                   :view="true"
-                /> -->
+                />
               </div>
             </div>
           </div>
@@ -281,7 +281,7 @@
 
 <script>
 // import VueGallery from "vue-gallery";
-// import GoogleMap from "../../components/googleMap/GoogleMap";
+import GoogleMap from "../../components/googleMap/GoogleMap";
 import { analyticFunction } from "../mixins/analytic_function";
 import axios from "axios";
 
@@ -356,7 +356,7 @@ export default {
   },
   components: {
     // gallery: VueGallery,
-    // GoogleMap
+    GoogleMap
   }
 };
 // console.log(this.projectDetails);
