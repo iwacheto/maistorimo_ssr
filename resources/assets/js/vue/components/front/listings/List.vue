@@ -276,7 +276,9 @@
                     </div>
                 </div>
             </div>
-            <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
+            <no-ssr>
+                <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
+            </no-ssr>
         </div>
         <!-- <script id="test" v-html="jsonldReturn" type="application/ld+json"></script> -->
     </div>
@@ -284,9 +286,9 @@
 
 
 <script>
-import { EventBus } from '../event-bus';
+// import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
-import { project_services_functions } from '../mixins/project_services_functions';
+// import { project_services_functions } from '../mixins/project_services_functions';
 import axios from 'axios';
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -296,8 +298,8 @@ Vue.use(Router);
 var count = 0;
 
 export default {
-    mixins: [project_services_functions],
-    props: ['filters', 'category', 'city', 'title'],
+    // mixins: [project_services_functions],
+    // props: ['filters', 'category', 'city', 'title'],
     data() {
         const jsonld = {
             '@context': 'https://schema.org',
@@ -362,12 +364,21 @@ export default {
         },
     },
     created() {
-        $('#googleJson').html(this.jsonldReturn);
-        this.getTags();
-        document.title = 'Maistorimo';
-        this.setFilters();
+        // $('#googleJson').html(this.jsonldReturn);
+        // this.getTags();
+        // document.title = 'Maistorimo';
+        // this.setFilters();
     },
     methods: {
+        searchTimeOut() {
+            if (this.timer) {
+                clearTimeout(this.timer);
+                this.timer = null;
+            }
+            this.timer = setTimeout(() => {
+                this.pushToRouter("title", this.filterQueries.title);
+            }, 800);
+        },
         applyTags(val) {
             this.pushToRouter('tags', this.selectTag);
         },
@@ -448,7 +459,8 @@ export default {
                 console.log(error);
             }
         },
-        async infiniteHandler($state) {
+
+        infiniteHandler($state) {
             this.filters = {};
             axios
                 .get('/projects', {
@@ -505,14 +517,6 @@ export default {
             handler: function(newValue) {},
             deep: true,
         },
-        // filters: {
-        //   handler: function(newValue) {
-        //     if (!newValue.title && newValue.category == "null") {
-        //       EventBus.$emit("filter-reset");
-        //     }
-        //   },
-        //   deep: true
-        // },
         $route(to, from) {
             let query = this.$route.query;
             if (Object.keys(query).length === 0) {
@@ -531,100 +535,7 @@ export default {
         },
     },
     components: {
-        InfiniteLoading,
+        // InfiniteLoading,
     },
 };
 </script>
-
-<style scoped>
-@media screen and (max-width: 1000px) {
-    div.gallery_listing.gallery_listing_active {
-        left: 220px;
-    }
-    div.fixed.active_sidebar {
-        transform: translateX(0);
-        left: 20px;
-        display: block;
-        opacity: 1;
-        min-width: 220px;
-    }
-
-    .sidebar_menu span.active_span {
-        position: absolute;
-        transform: rotate(50deg);
-    }
-    .sidebar_menu span.active_span:nth-of-type(2) {
-        display: none;
-    }
-    .sidebar_menu span.active_span:nth-of-type(3) {
-        transform: rotate(-50deg);
-    }
-}
-
-@media screen and (max-width: 766px) {
-    div.gallery_listing {
-        left: 0;
-    }
-    div.gallery_listing.gallery_listing_active {
-        transform: translateX(120px) !important;
-    }
-    div.fixed.active_sidebar {
-        transform: translateX(0);
-        display: block;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 72% !important;
-        background: #fff;
-        z-index: 11111;
-        padding: 20px;
-    }
-    div.project_content {
-        margin-top: 45px;
-    }
-}
-
-@media screen and (max-width: 530px) {
-    .sidebar_menu {
-        top: 155px;
-    }
-
-    div.project_content {
-        margin-top: 60px;
-    }
-    div.fixed {
-        top: 210px;
-    }
-    div.gallery_listing.gallery_listing_active {
-        transform: translateX(60px) !important;
-    }
-    div.margin-top-40 {
-        margin-top: 15px !important;
-    }
-    h3.margin-bottom-30 {
-        margin-bottom: 15px !important;
-    }
-    input,
-    input[type='text'] {
-        padding: 0 10px;
-    }
-    h3.margin-top-20 {
-        margin-top: 5px !important;
-        margin-bottom: 5px !important;
-    }
-    .checkboxes {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        max-height: 180px;
-    }
-    .checkboxes label {
-        font-size: 14px;
-    }
-}
-@media screen and (max-width: 350px) {
-}
-div.gallery_listing.gallery_listing_active {
-    transform: translateX(30px) !important;
-}
-</style>
