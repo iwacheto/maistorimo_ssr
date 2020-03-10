@@ -455,32 +455,3 @@ export default {
 };
 </script>
 
-<style scoped>
-p.form-row-wide:first {
-  height: 140px;
-}
-small {
-  color: crimson;
-  margin-left: 25px;
-  display: block;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  text-transform: none;
-  font-size: 14px;
-}
-.invite_check {
-  color: #8d8c8c;
-  font-size: 15px;
-}
-.invite_check h1 {
-  text-align: center;
-  color: #464444;
-}
-span {
-  display: inline-block;
-  margin-left: 25px;
-  color: crimson;
-}
-</style>
-
-

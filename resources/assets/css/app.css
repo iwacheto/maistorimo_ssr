@@ -15,3 +15,41 @@ h1 {
 }
 
 @tailwind utilities;
+.sign-in-proj {
+    color: #333 !important;
+}
+.my-header {
+    background: #fff !important;
+}
+
+a.sign-in-proj:hover {
+    color: #f91942 !important;
+}
+.im {
+    font-size: 20px;
+}
+p.form-row-wide:first {
+    height: 140px;
+  }
+  small {
+    color: crimson;
+    margin-left: 25px;
+    display: block;
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    text-transform: none;
+    font-size: 14px;
+  }
+  .invite_check {
+    color: #8d8c8c;
+    font-size: 15px;
+  }
+  .invite_check h1 {
+    text-align: center;
+    color: #464444;
+  }
+  span.error {
+    display: inline-block;
+    margin-left: 25px;
+    color: crimson;
+  }

@@ -234,18 +234,3 @@ export default {
     },
 };
 </script>
-<style scoped>
-.sign-in-proj {
-    color: #333 !important;
-}
-.my-header {
-    background: #fff !important;
-}
-
-a.sign-in-proj:hover {
-    color: #f91942 !important;
-}
-.im {
-    font-size: 20px;
-}
-</style>
