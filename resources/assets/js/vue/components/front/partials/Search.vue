@@ -162,13 +162,7 @@ export default {
       this.page = val;
     },
     async getCategories() {
-      // try {
-      //   const res = await axios.get("/categories/get");
-      //   this.categories = res.data;
-      //   this.$store.state.categories = this.categories;
-      // } catch (error) {
-      //   console.log(error.response.data);
-      // }
+      
     },
     applyFilters() {
       let object = this.filters;
@@ -217,52 +211,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.autocomplete {
-  position: relative;
-  width: 130px;
-}
-
-.autocomplete-results {
-  padding: 0;
-  margin: 0;
-  border: 1px solid #eeeeee;
-  height: 120px;
-  overflow: auto;
-  background: #fff;
-}
-
-.autocomplete-result {
-  list-style: none;
-  text-align: left;
-  padding: 4px 2px;
-  cursor: pointer;
-}
-
-.autocomplete-result:hover {
-  background-color: #4aae9b;
-  color: white;
-}
-input#autocomplete-input {
-  background-image: url(/images/marker-24.png);
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: 245px 0;
-  vertical-align: middle;
-}
-@media screen and (max-width: 760px) {
-  .main_video {
-    display: none;
-  }
-  .video-container {
-    /* background-image: url(/images/maistorimo_mobile.jpg);
-      background-size: contain; */
-  }
-}
-@media screen and (max-width: 400px) {
-  .container {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-}
-</style>

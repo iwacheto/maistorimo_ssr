@@ -57,6 +57,9 @@ p.form-row-wide:first {
   a.carousel_link {
     color: #fff;
 }
+.flex-class {
+    display: flex;
+  }
 .box-container {
     display: flex;
     justify-content: center;
@@ -84,6 +87,38 @@ button.Cookie__button {
 button.skew {
     max-height: 65px;
 }
+.autocomplete {
+    position: relative;
+    width: 130px;
+  }
+  
+  .autocomplete-results {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eeeeee;
+    height: 120px;
+    overflow: auto;
+    background: #fff;
+  }
+  
+  .autocomplete-result {
+    list-style: none;
+    text-align: left;
+    padding: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .autocomplete-result:hover {
+    background-color: #4aae9b;
+    color: white;
+  }
+  input#autocomplete-input {
+    background-image: url(/images/marker-24.png);
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 245px 0;
+    vertical-align: middle;
+  }
 
 /* MEDIA QUERY */
 
@@ -122,13 +157,23 @@ button.skew {
         max-height: 150px;
     }
     .Cookie__content p {
-        /* overflow: hidden; */
-        /* white-space: nowrap; */
-        /* text-overflow: ellipsis; */
-        font-size: 11px;
+         font-size: 11px;
         line-height: 20px;
     }
 }
+
+@media screen and (max-width: 760px) {
+    .main_video {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
 
 @media screen AND (max-width: 450px) {
     .Cookie--dark-lime {

@@ -4,7 +4,7 @@
             class="main-search-container centered"
             v-bind:style="{ backgroundImage: 'url(images/main-search-background-01.webp)' }"
         >
-            <!-- <FrontSearch></FrontSearch> -->
+            <FrontSearch></FrontSearch>
         </div>
 
         <!-- Fullwidth Section -->
@@ -64,7 +64,7 @@
                         <h3 class="headline centered margin-top-75">
                             <strong class="headline-with-separator">Популярни услуги</strong>
                         </h3>
-                        <!-- <SearchResults></SearchResults> -->
+                        <SearchResults></SearchResults>
                     </div>
                 </div>
             </div>
@@ -92,8 +92,8 @@
 </template>
 
 <script>
-// import SearchResults from '../partials/SearchResults';
-// import FrontSearch from '../partials/Search';
+import SearchResults from '../partials/SearchResults';
+import FrontSearch from '../partials/Search';
 import { EventBus } from '../event-bus';
 import CookieLaw from 'vue-cookie-law';
 import axios from 'axios';
@@ -198,8 +198,8 @@ export default {
         projects() {},
     },
     components: {
-        // SearchResults,
-        // FrontSearch,
+        SearchResults,
+        FrontSearch,
         CookieLaw,
     },
     mounted() {

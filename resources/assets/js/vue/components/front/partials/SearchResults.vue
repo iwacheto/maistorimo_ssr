@@ -30,8 +30,6 @@
     <!-- Listing Item / End -->
   </div>
 </template>
-<style scoped>
-</style>
 
 <script>
 import { EventBus } from "../event-bus";
@@ -44,14 +42,8 @@ export default {
       services: []
     };
   },
-  computed: {
-    // filters() {
-    // 	return this.$store.getters.filters;
-    // }
-  },
   mounted() {
     EventBus.$on("filter-applied", this.search);
-    // this.getProjects();
     this.getLastService();
     EventBus.$on("filter-reset", this.getProjects);
   },
@@ -132,13 +124,5 @@ export default {
     }
   }
 };
-</script>
 
-<style scoped>
-a.carousel_link {
-  color: #fff;
-}
-.flex-class {
-  display: flex;
-}
-</style>
+</script>
