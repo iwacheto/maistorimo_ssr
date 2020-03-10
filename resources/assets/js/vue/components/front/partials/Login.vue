@@ -332,7 +332,7 @@ export default {
     },
     async checkUsername(){
       try{
-        const responce=await axios.post('check_username',{username:this.registerData.username});
+        const responce=await axios.post('/check_username',{username:this.registerData.username});
         if(responce.data){
            this.error_message=true;
            this.message='Съжаляваме,но потребителското име вече е заето!';
@@ -342,8 +342,8 @@ export default {
       }
     },
      async checkEmail(){
-      try{
-        const responce=await axios.post('check_email',{email:this.registerData.email});
+       try{
+        const responce=await axios.post('/check_email',{email:this.registerData.email});
         if(responce.data){
            this.error_message=true;
            this.message='Съжаляваме,но имейла вече е зает!';
@@ -402,6 +402,8 @@ export default {
       // });
     },
     async login() {
+     console.log(this.loginData.email, ' ',this.loginData.password );
+    //  return
       if (!this.loginData.email || !this.loginData.password) {
         return (this.loginData.commonError =
           "Имейлът или паролата са задължителни!");
