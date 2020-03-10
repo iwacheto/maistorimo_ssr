@@ -312,6 +312,18 @@ export default {
     this.setFilters();
   },
   methods: {
+     async onChange() {
+            this.isOpen = true;
+            try {
+                const res = await axios.get("/autocomplete/search", {
+                    params: { searchQuery: this.city }
+                });
+                this.items = res.data;
+            } catch (error) {
+                console.log(error.response.data);
+            }
+            this.filterResults();
+        },
     async getServicesCategory() {
       try {
         const responce = await axios.get("/service_category");

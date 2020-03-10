@@ -113,18 +113,19 @@ export const project_services_functions = {
             let cat = val.title;
             return cat == this.selectedMain;
         },
-        async onChange() {
-            this.isOpen = true;
-            try {
-                const res = await axios.get("autocomplete/search", {
-                    params: { searchQuery: this.city }
-                });
-                this.items = res.data;
-            } catch (error) {
-                console.log(error.response.data);
-            }
-            this.filterResults();
-        },
+        // async onChange() {
+        //     console.log('City')
+        //     this.isOpen = true;
+        //     try {
+        //         const res = await axios.get("/autocomplete/search", {
+        //             params: { searchQuery: this.city }
+        //         });
+        //         this.items = res.data;
+        //     } catch (error) {
+        //         console.log(error.response.data);
+        //     }
+        //     this.filterResults();
+        // },
         filterResults() {
             this.results = this.items.filter(
                 item =>
