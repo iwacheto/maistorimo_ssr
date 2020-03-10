@@ -30,6 +30,7 @@
         "vee-validate": "^2.2.15",
         "vue": "^2.5.7",
         "vue-analytics": "^5.22.1",
+        "vue-client-only": "^2.0.0",
         "vue-cookie-law": "^1.11.0",
         "vue-froala-wysiwyg": "^3.1.0",
         "vue-gallery": "^2.0.1",

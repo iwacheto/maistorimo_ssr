@@ -276,9 +276,9 @@
                     </div>
                 </div>
             </div>
-            <no-ssr>
+            <client-only placeholder="Loading...">
                 <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
-            </no-ssr>
+            </client-only>
         </div>
         <!-- <script id="test" v-html="jsonldReturn" type="application/ld+json"></script> -->
     </div>
@@ -288,6 +288,7 @@
 <script>
 // import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
+import ClientOnly from 'vue-client-only';
 // import { project_services_functions } from '../mixins/project_services_functions';
 import axios from 'axios';
 import Vue from 'vue';
@@ -365,9 +366,12 @@ export default {
     },
     created() {
         // $('#googleJson').html(this.jsonldReturn);
-        // this.getTags();
         // document.title = 'Maistorimo';
         // this.setFilters();
+        // console.log(this.$store.state)
+    },
+    mounted() {
+        this.getTags();
     },
     methods: {
         searchTimeOut() {
@@ -376,7 +380,7 @@ export default {
                 this.timer = null;
             }
             this.timer = setTimeout(() => {
-                this.pushToRouter("title", this.filterQueries.title);
+                this.pushToRouter('title', this.filterQueries.title);
             }, 800);
         },
         applyTags(val) {
@@ -425,41 +429,39 @@ export default {
         //     console.log(error.response.data);
         //   }
         // },
-        async getTags() {
-            try {
-                const res = await axios.get('tags/get');
-                // console.log(res.data.length);
-                if (res.data.length < 10) {
-                    this.tags = res.data;
-                } else if (res.data.length > 10 && res.data.length < 20) {
-                    let newTag = res.data;
-                    const tag = newTag.sort(function(a, b) {
-                        return b.project_tags_count - a.project_tags_count;
-                    });
-                    this.tags = tag.slice(0, 10);
-                    this.TwentyTags = tag.slice(10, 20);
-                } else if (res.data.length > 20 && res.data.length < 30) {
-                    let newTag = res.data;
-                    const tag = newTag.sort(function(a, b) {
-                        return b.project_tags_count - a.project_tags_count;
-                    });
-                    this.tags = tag.slice(0, 10);
-                    this.TwentyTags = tag.slice(10, 20);
-                    this.ThirtyTags = tag.slice(20, newTag.length);
-                } else {
-                    let newTag = res.data;
-                    const tag = newTag.sort(function(a, b) {
-                        return b.project_tags_count - a.project_tags_count;
-                    });
-                    this.tags = tag.slice(0, 10);
-                    this.TwentyTags = tag.slice(10, 20);
-                    this.ThirtyTags = tag.slice(20, 30);
-                }
-            } catch (error) {
-                console.log(error);
-            }
+        getTags() {
+            axios
+                .get('all_tags')
+                .then(res => {
+                    if (res.data.length < 10) {
+                        this.tags = res.data;
+                    } else if (res.data.length > 10 && res.data.length < 20) {
+                        let newTag = res.data;
+                        const tag = newTag.sort(function(a, b) {
+                            return b.project_tags_count - a.project_tags_count;
+                        });
+                        this.tags = tag.slice(0, 10);
+                        this.TwentyTags = tag.slice(10, 20);
+                    } else if (res.data.length > 20 && res.data.length < 30) {
+                        let newTag = res.data;
+                        const tag = newTag.sort(function(a, b) {
+                            return b.project_tags_count - a.project_tags_count;
+                        });
+                        this.tags = tag.slice(0, 10);
+                        this.TwentyTags = tag.slice(10, 20);
+                        this.ThirtyTags = tag.slice(20, newTag.length);
+                    } else {
+                        let newTag = res.data;
+                        const tag = newTag.sort(function(a, b) {
+                            return b.project_tags_count - a.project_tags_count;
+                        });
+                        this.tags = tag.slice(0, 10);
+                        this.TwentyTags = tag.slice(10, 20);
+                        this.ThirtyTags = tag.slice(20, 30);
+                    }
+                })
+                .catch(err => console.log(err));
         },
-
         infiniteHandler($state) {
             this.filters = {};
             axios
@@ -535,7 +537,8 @@ export default {
         },
     },
     components: {
-        // InfiniteLoading,
+        ClientOnly,
+        InfiniteLoading,
     },
 };
 </script>

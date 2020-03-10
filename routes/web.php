@@ -27,6 +27,7 @@ Route::group(array('domain' => '{subdomain}.maistorimo.gpb'), function () {
 //Front Page Project Routes
 Route::get('all-projects', 'Front\ProjectsController@getProjects');
 Route::get('projects', 'Front\ProjectsController@applyFilter');
+Route::get('all_tags', 'Vendor\CategoriesController@getTags');
 Route::get('/last_projects', 'Front\ProjectsController@getPopularProjects');
 Route::get('/services_all', 'Front\ServiceController@applyServiceFilter');
 Route::get('/last-services', 'Front\ServiceController@getLastService');
@@ -69,7 +70,6 @@ Route::any('auth-user', 'Vendor\AuthController@isAuth');
 //     return Auth::user();
 // });
 
-Route::get('/tags/get', 'Vendor\CategoriesController@getTags');
 Route::get('/get_user', 'VendorController@getUser');
 
 
