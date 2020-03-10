@@ -3,6 +3,7 @@ const glob = require('glob-all');
 const mix = require('laravel-mix');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -54,7 +55,7 @@ mix
                         },
                     ],
                 }),
-            ];
+           ];
         }
 
         return config;

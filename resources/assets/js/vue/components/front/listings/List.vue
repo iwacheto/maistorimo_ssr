@@ -289,7 +289,7 @@
 // import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
 import ClientOnly from 'vue-client-only';
-// import { project_services_functions } from '../mixins/project_services_functions';
+import { project_services_functions } from '../mixins/project_services_functions';
 import axios from 'axios';
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -299,7 +299,7 @@ Vue.use(Router);
 var count = 0;
 
 export default {
-    // mixins: [project_services_functions],
+    mixins: [project_services_functions],
     // props: ['filters', 'category', 'city', 'title'],
     data() {
         const jsonld = {
@@ -420,15 +420,7 @@ export default {
                 this.filters.title = '';
             }, 1200);
         },
-        // async getCategories() {
-        //   try {
-        //     const res = await axios.get("/categories/get");
-        //     this.categories = res.data;
-        //     this.$store.state.categories = this.categories;
-        //   } catch (error) {
-        //     console.log(error.response.data);
-        //   }
-        // },
+        
         getTags() {
             axios
                 .get('all_tags')

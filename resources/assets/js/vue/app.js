@@ -9,6 +9,7 @@ import id from './components/front/locale-id';
 import VueAnalytics from 'vue-analytics';
 import VueScrollTo from 'vue-scrollto';
 
+
 Vue.directive('click-outside', {
 	bind: function (el, binding, vnode) {
 		window.event = function (event) {

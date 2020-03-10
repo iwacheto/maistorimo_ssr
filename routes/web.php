@@ -166,10 +166,10 @@ Auth::routes();
 
 // Route::get('admin/{url?}', 'VueController@admin');
 Route::get('/admin/{url?}', 'VendorController');
-Route::get('/admin/projects', 'VendorController');
+// Route::get('/admin/projects', 'VendorController');
 
 Route::get('/{url?}', 'VueController');
-
+Route::get('/project/details/{url?}', 'VueController');
 
 
 

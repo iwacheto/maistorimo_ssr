@@ -1,7 +1,10 @@
 <template>
   <div>
     <div v-if="images" class="listing-slider mfp-gallery-container">
-      <gallery :images="images" :index="index" @close="index = null"></gallery>
+      
+      <!-- <gallery :images="images" :index="index" @close="index = null"></gallery> -->
+     
+      
       <div
         class="image"
         v-for="(image, imageIndex) in images"
@@ -133,14 +136,14 @@
               <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Локация</h3>
 
               <div id="singleListingMap-container">
-                <google-map
+                <!-- <google-map
                   v-if="projectDetails.lat && projectDetails.lng && projectDetails.formatted_address && projectDetails.raw_data"
                   :lat="projectDetails.lat"
                   :lng="projectDetails.lng"
                   :formatted_address="projectDetails.formatted_address"
                   :placeObj="projectDetails.raw_data"
                   :view="true"
-                />
+                /> -->
               </div>
             </div>
           </div>
@@ -277,8 +280,8 @@
 </template>
 
 <script>
-import VueGallery from "vue-gallery";
-import GoogleMap from "../../components/googleMap/GoogleMap";
+// import VueGallery from "vue-gallery";
+// import GoogleMap from "../../components/googleMap/GoogleMap";
 import { analyticFunction } from "../mixins/analytic_function";
 import axios from "axios";
 
@@ -291,8 +294,8 @@ export default {
       projectDetails: {},
       services: [],
       vendorDetails: {},
-      uniqueToken: document.cookie,
-      windowUrl: window.location,
+      // uniqueToken: document.cookie,
+      // windowUrl: window.location,
       images: [
         "https://dummyimage.com/800/ffffff/000000",
         "https://dummyimage.com/1600/ffffff/000000",
@@ -352,64 +355,9 @@ export default {
     }
   },
   components: {
-    gallery: VueGallery,
-    GoogleMap
+    // gallery: VueGallery,
+    // GoogleMap
   }
 };
 // console.log(this.projectDetails);
 </script>
-
-<style scoped>
-.my-main-search-inner {
-  height: 30vh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 30px;
-  text-align: center;
-
-  padding-top: 190px;
-  padding-bottom: 150px;
-}
-
-.image {
-  float: left;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: 1px solid #ebebeb;
-  margin: 5px;
-  flex-basis: 18%;
-}
-
-@media screen and (max-width: 1400px) {
-  .image {
-    flex-basis: 24%;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .image {
-    flex-basis: 31%;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .image {
-    flex-basis: 42%;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .image {
-    flex-basis: 48%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .image {
-    flex-basis: 96%;
-  }
-}
-</style>
