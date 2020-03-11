@@ -11,7 +11,7 @@ import GeneralTerms from './components/front/homepage/GeneralTerms';
 import PrivateProtection from './components/front/homepage/PrivateProtection';
 // import AllArticles from './components/front/blog/AllArticles';
 // import Article from './components/front/blog/Article';
-// import Profile from './components/front/profile/Profile';
+import Profile from './components/front/profile/Profile';
 import Contacts from './components/front/homepage/Contacts';
 
 Vue.use(VueRouter);
@@ -26,7 +26,7 @@ const routes = [
 	// { path: '/browse', component: Browse, name: 'Browse', props: true },
 	{ path: '/general_terms', component: GeneralTerms, name: 'GeneralTerms' },
 	{ path: '/private_protection', component: PrivateProtection, name: 'PrivateProtection' },
-	// { path: '/profile/:id', component: Profile, name: 'Profile', props: true },
+	{ path: '/profile/:id', component: Profile, name: 'Profile', props: true },
 	{ path: '/contacts', component: Contacts, name: 'Contacts' },
 	// { path: '/blog', component: AllArticles, name: 'AllArticles', props: true },
 	

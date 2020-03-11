@@ -280,7 +280,7 @@
                 <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
             </client-only>
         </div>
-        <!-- <script id="test" v-html="jsonldReturn" type="application/ld+json"></script> -->
+      
     </div>
 </template>
 
@@ -302,31 +302,7 @@ export default {
     mixins: [project_services_functions],
     // props: ['filters', 'category', 'city', 'title'],
     data() {
-        const jsonld = {
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'Maistorima',
-            legalName: 'Webrika',
-            url: 'http://www.maistorimo.com',
-            logo: 'images/logo2.png',
-            description: 'Project',
-            foundingDate: '2019',
-            address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Ruse str 19',
-                addressLocality: 'floor 3',
-                addressRegion: 'Pleven',
-                postalCode: '5800',
-                addressCountry: 'Bulgaria',
-            },
-            contactPoint: {
-                '@type': 'ContactPoint',
-                contactType: 'customer support',
-                telephone: '[+561-526-8457]',
-                email: 'georgi@webrika.bg',
-            },
-        };
-        return {
+       return {
             tags: [],
             // routhWatcher: true,
             showTags: false,
@@ -344,7 +320,6 @@ export default {
             page: 1,
             className: false,
             show_sidebar: false,
-            jsonld,
             results: [],
             isOpen: false,
             filterQueries: {
@@ -357,17 +332,12 @@ export default {
         };
     },
     computed: {
-        jsonldReturn() {
-            return JSON.stringify(this.jsonld);
-        },
         categories() {
             return this.$store.state.projectCategories;
         },
     },
     created() {
-        // $('#googleJson').html(this.jsonldReturn);
-        // document.title = 'Maistorimo';
-        // this.setFilters();
+       this.setFilters();
         // console.log(this.$store.state)
     },
     mounted() {

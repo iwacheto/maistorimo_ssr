@@ -10,6 +10,11 @@ mix
     .react('resources/assets/js/react/entry-client.js', 'public/js/react')
     .react('resources/assets/js/react/entry-server.js', 'public/js/react')
 
+    .js('resources/js/vendor/bootstrap.js', 'public/js/vendor/')
+	.js([
+		'resources/js/vendor/before.js',
+	], 'public/js/vendor/before.js')
+
     .postCss('resources/assets/css/app.css', 'public/css/app.css')
 
     .webpackConfig(() => {
