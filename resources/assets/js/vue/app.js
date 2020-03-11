@@ -8,6 +8,8 @@ import VeeValidate from 'vee-validate';
 import id from './components/front/locale-id';
 import VueAnalytics from 'vue-analytics';
 import VueScrollTo from 'vue-scrollto';
+import VueMeta from 'vue-meta'
+
 
 
 Vue.directive('click-outside', {
@@ -46,7 +48,7 @@ Vue.use(VueAnalytics, {
 
 Vue.use(VueLazyload);
 Vue.use(VueScrollTo);
-// Vue.use(VueGallery);
+Vue.use(VueMeta);
 
 import { EventBus } from './components/front/event-bus';
 

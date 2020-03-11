@@ -3,8 +3,10 @@
 <head>
     <title>Maistorimo</title>
     <meta charset="utf-8">
-    <meta name="description" content="Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- <meta name="description" content="Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+
+ 
 
     <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
     <link rel="stylesheet" href="/css/style.css">
@@ -103,12 +105,12 @@
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
     <!-- Typed Script -->
     <script type="text/javascript" src="/js/scripts/typed.js" async defer></script>
-     <script>
-     let localCookies = document.cookie;
-             if (localCookies) {
-               
-            }
-     </script>
+    <script>
+        let localCookies = document.cookie;
+        if (localCookies) {
+
+        }
+    </script>
 
     <!-- Style Switcher
 ================================================== -->

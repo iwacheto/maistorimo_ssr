@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Store({
     state: {
-        packages: [],
+        // packages: [],
         projectCategories:[],
 		serviceCategories:[],
     },
@@ -18,8 +18,8 @@ export default new Store({
     },
 
     mutations: {
-        setPackages(state, { packages }) {
-            state.packages = packages;
-        },
+        // setPackages(state, { packages }) {
+        //     state.packages = packages;
+        // },
     },
 });

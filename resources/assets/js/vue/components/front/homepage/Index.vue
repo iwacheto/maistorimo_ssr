@@ -99,6 +99,11 @@ import CookieLaw from 'vue-cookie-law';
 import axios from 'axios';
 
 export default {
+     metaInfo: {
+      title: 'My Awesome Webapp',
+      // override the parent template and just use the above title only
+      titleTemplate: 'Pesho'
+    },
     data() {
         return {
             categories: [],

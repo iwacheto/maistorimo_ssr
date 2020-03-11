@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Meta from 'vue-meta'
+
 import Index from './components/front/homepage/Index';
 import ListingsList from "./components/front/listings/List.vue";
 import Services  from './components/front/listings/Services.vue';
@@ -15,6 +17,13 @@ import Profile from './components/front/profile/Profile';
 import Contacts from './components/front/homepage/Contacts';
 
 Vue.use(VueRouter);
+Vue.use(Meta, {
+	keyName: 'metaInfo',
+	attribute: 'data-vue-meta',
+	ssrAttribute: 'data-vue-meta-server-rendered',
+	tagIDKeyName: 'vmid',
+	refreshOnceOnNavigation: true
+  });
 
 const routes = [
     { path: '/', name: 'Index', component: Index , props: true},
