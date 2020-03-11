@@ -368,7 +368,7 @@ export default {
           password: this.registerData.password,
           password_confirmation: this.registerData.confirmPassword
         });
-        window.location.href = "/admin";
+        window.location.href = "/vendor";
       } catch (error) {
         if (error.response.data.errors.name) {
           this.registerData.usernameError = error.response.data.errors.name;
@@ -413,7 +413,7 @@ export default {
           email: this.loginData.email,
           password: this.loginData.password
         });
-        window.location.href = "/admin";
+        window.location.href = "/vendor";
         console.log(res.data);
       } catch (error) {
         if (error.response.data.errors.email) {

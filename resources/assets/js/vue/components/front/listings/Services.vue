@@ -268,7 +268,7 @@ export default {
         };
     },
     created() {
-        // this.setFilters();
+        this.setFilters();
     },
     watch: {
         filters: {

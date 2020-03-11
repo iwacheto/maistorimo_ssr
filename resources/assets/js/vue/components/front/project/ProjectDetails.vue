@@ -8,7 +8,7 @@
                 :src="image"
                 :key="i"
                 @click="index = i"
-            /> -->
+            />-->
             <div
                 class="image"
                 v-for="(image, imageIndex) in images"
@@ -16,7 +16,9 @@
                 @click="handleClick(imageIndex)"
                 :style="{ backgroundImage: 'url(' + image + ')', width: '400px', height: '400px' }"
             ></div>
-             <VueGallerySlideshow :images="images" :index="index" @close="index = null" />
+            <client-only placeholder="Loading...">
+                <VueGallerySlideshow :images="images" :index="index" @close="index = null" />
+            </client-only>
         </div>
 
         <div>
@@ -311,6 +313,7 @@
 
 <script>
 import VueGallerySlideshow from 'vue-gallery-slideshow';
+import ClientOnly from 'vue-client-only';
 import GoogleMap from '../../components/googleMap/GoogleMap';
 import { analyticFunction } from '../mixins/analytic_function';
 import axios from 'axios';
@@ -339,9 +342,9 @@ export default {
             index: null,
         };
     },
-    created() {
+    created() {},
+    mounted() {
         this.getProjectDetails();
-        // this.getCookies();
     },
     watch: {
         projectDetails(value) {
@@ -353,7 +356,6 @@ export default {
         },
     },
     methods: {
-        getCookies() {},
         async getProjectDetails() {
             try {
                 const res = await axios.get('/projects/' + this.id);
@@ -383,7 +385,7 @@ export default {
         },
     },
     components: {
-        // gallery: VueGallery,
+        ClientOnly,
         GoogleMap,
         VueGallerySlideshow,
     },

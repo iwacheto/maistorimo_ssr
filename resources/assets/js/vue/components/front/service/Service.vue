@@ -1,6 +1,6 @@
 <template>
     <!-- <div class="container mfp-gallery-container"> -->
-    <div class="container margin-top-100">
+    <div class="container margin-top-50">
         <div class="row">
             <!-- Services -->
             <div class="col-lg-9 col-md-8 padding-right-30 service_body">
@@ -14,11 +14,11 @@
                     <p v-html="servicetDetails.first_description"></p>
                     <p v-html="servicetDetails.second_description"></p>
                 </div>
-                <div @click="showContent" v-if="showText" class="show_button margin-bottom-25">
+                <div @click="showContent" v-if="showText" class="show_button margin-top-10 margin-bottom-25">
                     Покажи повече
                     <i class="fa fa-fw">&#xf078;</i>
                 </div>
-                <div v-if="!showText" @click="showContent" class="show_button margin-bottom-25">
+                <div v-if="!showText" @click="showContent" class="show_button margin-top-10 margin-bottom-25">
                     Скрий текста
                     <i class="fa fa-fw">&#xf077;</i>
                 </div>
@@ -233,6 +233,9 @@ export default {
         };
     },
     created() {
+       
+    },
+    mounted() {
         this.getServicetDetails();
     },
     watch: {
