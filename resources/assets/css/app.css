@@ -156,6 +156,9 @@ button.skew {
   div.gallery_listing.gallery_listing_active {
     transform: translateX(30px) !important;
 }
+.cookies_content{
+  display: none;
+}
 
 .my-main-search-inner {
     height: 30vh;

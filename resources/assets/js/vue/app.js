@@ -46,6 +46,7 @@ Vue.use(VueAnalytics, {
 
 Vue.use(VueLazyload);
 Vue.use(VueScrollTo);
+// Vue.use(VueGallery);
 
 import { EventBus } from './components/front/event-bus';
 

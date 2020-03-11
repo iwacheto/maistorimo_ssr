@@ -70,7 +70,7 @@
             </div>
         </section>
 
-        <footer>
+        <!-- <footer>
             <cookie-law theme="dark-lime" v-if="closeCookie">
                 <div slot="message">
                     <p>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </cookie-law>
-        </footer>
+        </footer> -->
     </div>
 </template>
 
@@ -133,14 +133,7 @@ export default {
             }
         },
         getCookies() {
-           
-            let localCookies = document.cookie;
-            let localCookies='Pesho';
-        
-            if (localCookies) {
-                // this.closeCookie = false;
-                 console.log(localCookies)
-            }
+            
         },
         setCategory(category) {
             if (category === 'all') {

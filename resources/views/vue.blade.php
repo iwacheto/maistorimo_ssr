@@ -55,6 +55,9 @@
         </script>
         <!-- Back To Top Button -->
         <div id="backtotop"><a href="#"></a></div>
+        <div class="cookies_content">
+            <div>Cookies</div>
+        </div>
     </div>
 
     <!-- Scripts
@@ -100,7 +103,12 @@
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
     <!-- Typed Script -->
     <script type="text/javascript" src="/js/scripts/typed.js" async defer></script>
-
+     <script>
+     let localCookies = document.cookie;
+             if (localCookies) {
+               
+            }
+     </script>
 
     <!-- Style Switcher
 ================================================== -->
