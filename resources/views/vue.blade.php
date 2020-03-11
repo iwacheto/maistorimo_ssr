@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Maistorimo</title>
     <meta charset="utf-8">
-    <!-- <meta name="description" content="Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
- 
-
-    <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/app.css">
     <!-- Google Tag Manager -->
@@ -40,26 +35,24 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84D4G7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-</head>
+    
 
-<body class="transparent-header">
-    <div id="wrapper">
-        {!! ssr('js/vue/entry-server.js')
-        // Share the packages with the server script through context
-        ->context('packages', $packages)
-        // If ssr fails, we need a container to render the app client-side
-        ->fallback('<div id="app"></div>')
-        ->render() !!}
+    {!! ssr('js/vue/entry-server.js')
+    // Share the packages with the server script through context
+    ->context('packages', $packages)
+    // If ssr fails, we need a container to render the app client-side
+    ->fallback('<div id="app"></div>')
+    ->render() !!}
 
-        <script>
-            // Share the packages with the client script through a JS variable
-            window.packages = @json($packages)
-        </script>
-        <!-- Back To Top Button -->
-        <div id="backtotop"><a href="#"></a></div>
-        <div class="cookies_content">
-            <div>Cookies</div>
-        </div>
+    <script>
+        // Share the packages with the client script through a JS variable
+        window.packages = @json($packages)
+    </script>
+    <!-- Back To Top Button -->
+    <div id="backtotop"><a href="#"></a></div>
+    <div class="cookies_content">
+        <div>Cookies</div>
+    </div>
     </div>
 
     <!-- Scripts
@@ -141,6 +134,6 @@
 </div> --}}
     <!-- Style Switcher / End -->
 
-</body>
+    </body>
 
-</html>
+    </html>

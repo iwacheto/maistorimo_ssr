@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </cookie-law>
-        </footer> -->
+        </footer>-->
     </div>
 </template>
 
@@ -99,15 +99,24 @@ import CookieLaw from 'vue-cookie-law';
 import axios from 'axios';
 
 export default {
-     metaInfo: {
-      title: 'My Awesome Webapp',
-      // override the parent template and just use the above title only
-      titleTemplate: 'Pesho'
+    metaInfo() {
+        return {
+            meta: [
+                { name: 'title', content: 'Майсторимо.БГ' },
+                { name: 'description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
+                { property: 'og:type', content: 'website' },
+                { property: 'og:url', content: 'https://maistorimo.bg' },
+                { property: 'og:title', content: 'Майсторимо.БГ' },
+                { property: 'og:description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
+                { property: 'og:image', content: 'https://maistorimo.bg/images/main-search-background-01.webp' },
+            ],
+            titleTemplate: 'Maistorimo',
+        };
     },
     data() {
         return {
             categories: [],
-            // jsonld,
+            description: 'Peshonatora',
             // closeCookie:true,
             projects: [],
         };
@@ -137,9 +146,7 @@ export default {
                 console.log(error.response.data);
             }
         },
-        getCookies() {
-            
-        },
+        getCookies() {},
         setCategory(category) {
             if (category === 'all') {
                 EventBus.$emit('filter-reset');

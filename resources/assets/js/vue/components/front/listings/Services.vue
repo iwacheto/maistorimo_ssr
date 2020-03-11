@@ -236,6 +236,20 @@ Vue.use(Router);
 var count = 0;
 
 export default {
+    metaInfo() {
+        return {
+            meta: [
+                { name: 'title', content: 'Майсторимо.БГ' },
+                { name: 'description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
+                { property: 'og:type', content: 'website' },
+                { property: 'og:url', content: 'https://maistorimo.bg' },
+                { property: 'og:title', content: 'Майсторимо.БГ' },
+                { property: 'og:description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
+                { property: 'og:image', content: 'https://maistorimo.bg/images/main-search-background-01.webp' },
+            ],
+            titleTemplate: 'Maistorimo',
+        };
+    },
    mixins: [project_services_functions],
   data() {
          return {

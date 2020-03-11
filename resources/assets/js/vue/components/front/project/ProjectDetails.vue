@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="images" class="listing-slider mfp-gallery-container">
+        <div v-if="images" class="mfp-gallery-container">
             <!-- <gallery :images="images" :index="index" @close="index = null"></gallery> -->
             <!-- <img
                 class="image"
@@ -319,6 +319,7 @@ import { analyticFunction } from '../mixins/analytic_function';
 import axios from 'axios';
 
 export default {
+   
     mixins: [analyticFunction],
     name: 'ProjectDetails',
     props: ['id'],
@@ -340,6 +341,10 @@ export default {
                 city: '',
             },
             index: null,
+            name: null,
+            content: null,
+            ogUrl: null,
+            ogImage: null,
         };
     },
     created() {},
@@ -347,13 +352,20 @@ export default {
         this.getProjectDetails();
     },
     watch: {
-        projectDetails(value) {
-            // this.removeHead();
-            const title = value.title;
-            const img = value.project_galleries[0].url;
-            const desc = value.description;
-            // this.setHead(title,img,desc);
-        },
+        // projectDetails(value) {
+        //     // this.removeHead();
+        //     console.log(value);
+        //     this.name = value.title;
+        //     this.ogImage = value.project_galleries[0].url;
+        //     const desc = value.description;
+        //     const realDesc = desc
+        //         .split(' ')
+        //         .slice(0, 25)
+        //         .join(' ');
+        //     this.content = realDesc;
+        //     this.ogUrl = 'https://maistorimo.bg/project/details/' + this.id;
+        //     // this.setHead(title,img,desc);
+        // },
     },
     methods: {
         async getProjectDetails() {
@@ -362,6 +374,17 @@ export default {
                 this.projectDetails = res.data.project;
                 this.vendorDetails = res.data.vendor;
                 this.city = res.data.project.city;
+                this.$nextTick(() => {
+                    this.name = res.data.project.title;
+                    this.ogImage = res.data.project.project_galleries[0].url;
+                    const realDesc = res.data.project.description
+                        .split(' ')
+                        .slice(0, 25)
+                        .join(' ');
+                    this.content = realDesc;
+                    this.ogUrl = 'https://maistorimo.bg/project/details/' + this.id;
+                });
+
                 if (res.data.project.project_services.length > 0) {
                     this.services.push(res.data.project.project_services[0].service);
                 }
@@ -389,6 +412,27 @@ export default {
         GoogleMap,
         VueGallerySlideshow,
     },
+    metaInfo() {
+        return {
+            title:  this.name,
+            meta: [
+                { name: 'title', content:  this.content },
+                { name: 'description', content:  this.content },
+                { property: 'og:type', content: 'website' },
+                { property: 'og:url', content: 'https://maistorimo.bg' },
+                { property: 'og:title', content: this.name },
+                { property: 'og:description', content: this.content },
+                { property: 'og:image', content: this.ogImage },
+            ],
+            titleTemplate: this.name,
+        };
+    },
 };
 // console.log(this.projectDetails);
+
+
+
+
 </script>
+
+
