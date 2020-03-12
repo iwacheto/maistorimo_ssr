@@ -40326,22 +40326,27 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         // this.$store.state.projects.title = 'Test';
         // this.$store.state.projects.desc = 'Some long Text';
         // const project=this.$store.state.projects.filter(elem => elem.id == this.id);
+
     },
     asyncData: function asyncData(_ref) {
+        var params = _ref.params;
+
         // return axios.get(`/projects/${params.id}`).then(res => {
         //     return { title: res.data.description };
         // });
-
-        var params = _ref.params;
+        var items = __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get('fetch-projects').then(function (res) {
+            return res.data;
+        });
+        this.$store.commit('SET_PROJECTS', items);
     },
     metaInfo: function metaInfo() {
         return {
             title: this.title,
             //  meta:this.$store.state.posts.find((result) => result.id === 3),
-            meta: [{ name: 'title', content: this.$store.state.project.title }, {
+            meta: [{ name: 'title', content: this.metaTags[0].title }, {
                 vmid: 'description',
                 name: 'description',
-                content: this.$store.state.project.desc
+                content: this.metaTags[0].description
             }, { property: 'og:type', content: 'website' }, { property: 'og:url', content: 'https://maistorimo.bg' }, { property: 'og:title', content: this.name }, { property: 'og:description', content: this.content }, { property: 'og:image', content: this.ogImage }],
             titleTemplate: this.name
         };
@@ -40382,7 +40387,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         // console.log(this.$store.state.projects.filter(elem => elem.id == this.id));
     },
 
-    watch: {},
+    watch: {
+        metaTags: function metaTags() {
+            console.log(this.metaTags);
+        }
+    },
     methods: {
         fetchItem: function fetchItem() {
             // return the Promise from the action
@@ -50344,23 +50353,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     methods: {
         fetch: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-                var items;
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                console.log('Fetch');
-                                _context.next = 3;
-                                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('fetch-projects').then(function (res) {
-                                    return res.data;
-                                });
-
-                            case 3:
-                                items = _context.sent;
-
-                                this.$store.commit('SET_PROJECTS', items);
-
-                            case 5:
                             case 'end':
                                 return _context.stop();
                         }

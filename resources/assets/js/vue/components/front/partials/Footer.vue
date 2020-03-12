@@ -81,15 +81,14 @@ export default {
 //       })
 //   },
     mounted() {
-		// this.fetch();
+		this.fetch();
 	},
     methods: {
         async fetch() {
-			console.log('Fetch')
-            let items = await axios.get(`fetch-projects`).then(res => {
-                return res.data;
-            });
-            this.$store.commit('SET_PROJECTS', projects);
+			// let items = await axios.get(`fetch-projects`).then(res => {
+            //     return res.data;
+            // });
+            // this.$store.commit('SET_PROJECTS', items);
         },
     },
 };

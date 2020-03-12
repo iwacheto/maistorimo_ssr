@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ObjectAnalitycJob;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Project;
@@ -31,6 +32,7 @@ class ProjectsController extends Controller
     public function getProject($id)
     {
 
+        // ObjectAnalitycJob::dispatch($name = true, [], [], [], [])->onQueue('processing');
         $project = Project::with([
             'projectGalleries',
             'tags',

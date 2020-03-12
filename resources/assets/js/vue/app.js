@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import store from './store';
+// import { createStore } from './store2';
 import router from './router';
 import App from './components/App';
 import VueLazyload from 'vue-lazyload';
@@ -26,6 +27,7 @@ Vue.directive('click-outside', {
 	},
 });
 
+// const store = createStore();
 
 Vue.use(VueGoogleMaps, {
 	load: {

@@ -325,25 +325,32 @@ export default {
     name: 'ProjectDetails',
     props: ['id', 'title'],
 
-    // async asyncData({ params }) {
-    //     const { data } = await axios.get(`projects_meta/${params.id}`);
-    //     return { title: 'Peshonatora' };
-    // },
-    // serverPrefetch() {
-    //     this.testName = 'Peshonatora';
-    // },
     serverPrefetch() {
-        return this.fetchUsers();
+        // this.$store.state.projects.title = 'Test';
+        // this.$store.state.projects.desc = 'Some long Text';
+        // const project=this.$store.state.projects.filter(elem => elem.id == this.id);
+     
+    },
+
+    asyncData({ params }) {
+        // return axios.get(`/projects/${params.id}`).then(res => {
+        //     return { title: res.data.description };
+        // });
+   let items = axios.get(`fetch-projects`).then(res => {
+                return res.data;
+            });
+            this.$store.commit('SET_PROJECTS', items);
     },
     metaInfo() {
         return {
-            title: this.title,
+            title: this.title ,
+            //  meta:this.$store.state.posts.find((result) => result.id === 3),
             meta: [
-                { name: 'title', content: this.$store.state.projects.title },
+                { name: 'title', content: this.metaTags[0].title },
                 {
                     vmid: 'description',
                     name: 'description',
-                    content: this.$store.state.projects.desc,
+                    content: this.metaTags[0].description,
                 },
                 { property: 'og:type', content: 'website' },
                 { property: 'og:url', content: 'https://maistorimo.bg' },
@@ -357,7 +364,7 @@ export default {
 
     data() {
         return {
-            projects: this.$store.state.projects,
+            // projects: this.$store.state.projects,
             projectDetails: {},
             services: [],
             vendorDetails: {},
@@ -388,28 +395,17 @@ export default {
     created() {},
     mounted() {
         this.getProjectDetails();
-        console.log(this.$store.state.projects);
+        // console.log(this.$store.state.projects.filter(elem => elem.id == this.id));
     },
     watch: {
-        // projectDetails(value) {
-        //     // this.removeHead();
-        //     console.log(value);
-        //     this.name = value.title;
-        //     this.ogImage = value.project_galleries[0].url;
-        //     const desc = value.description;
-        //     const realDesc = desc
-        //         .split(' ')
-        //         .slice(0, 25)
-        //         .join(' ');
-        //     this.content = realDesc;
-        //     this.ogUrl = 'https://maistorimo.bg/project/details/' + this.id;
-        //     // this.setHead(title,img,desc);
-        // },
+        metaTags(){
+            console.log(this.metaTags);
+        }
     },
     methods: {
-        fetchUsers() {
-            // console.log('Pesho')
-            this.$store.commit('SET_PROJECTS', { title: 'Test', desc: 'Text' });
+        fetchItem() {
+            // return the Promise from the action
+            return this.$store.dispatch('fetchItem', this.$route.params.id);
         },
         async getProjectDetails() {
             try {
