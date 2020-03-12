@@ -308,6 +308,8 @@
                 </div>
             </div>
         </div>
+        <p>{{title}}</p>
+        <!-- <p> {{ articlelist }}</p> -->
     </div>
 </template>
 
@@ -319,12 +321,43 @@ import { analyticFunction } from '../mixins/analytic_function';
 import axios from 'axios';
 
 export default {
-   
     mixins: [analyticFunction],
     name: 'ProjectDetails',
-    props: ['id'],
+    props: ['id', 'title'],
+
+    // async asyncData({ params }) {
+    //     const { data } = await axios.get(`projects_meta/${params.id}`);
+    //     return { title: 'Peshonatora' };
+    // },
+    // serverPrefetch() {
+    //     this.testName = 'Peshonatora';
+    // },
+    serverPrefetch() {
+        return this.fetchUsers();
+    },
+    metaInfo() {
+        return {
+            title: this.title,
+            meta: [
+                { name: 'title', content: this.$store.state.projects.title },
+                {
+                    vmid: 'description',
+                    name: 'description',
+                    content: this.$store.state.projects.desc,
+                },
+                { property: 'og:type', content: 'website' },
+                { property: 'og:url', content: 'https://maistorimo.bg' },
+                { property: 'og:title', content: this.name },
+                { property: 'og:description', content: this.content },
+                { property: 'og:image', content: this.ogImage },
+            ],
+            titleTemplate: this.name,
+        };
+    },
+
     data() {
         return {
+            projects: this.$store.state.projects,
             projectDetails: {},
             services: [],
             vendorDetails: {},
@@ -347,9 +380,15 @@ export default {
             ogImage: null,
         };
     },
+    computed: {
+        metaTags() {
+            return this.$store.state.projects.filter(elem => elem.id == this.id);
+        },
+    },
     created() {},
     mounted() {
         this.getProjectDetails();
+        console.log(this.$store.state.projects);
     },
     watch: {
         // projectDetails(value) {
@@ -368,6 +407,10 @@ export default {
         // },
     },
     methods: {
+        fetchUsers() {
+            // console.log('Pesho')
+            this.$store.commit('SET_PROJECTS', { title: 'Test', desc: 'Text' });
+        },
         async getProjectDetails() {
             try {
                 const res = await axios.get('/projects/' + this.id);
@@ -412,27 +455,8 @@ export default {
         GoogleMap,
         VueGallerySlideshow,
     },
-    metaInfo() {
-        return {
-            title:  this.name,
-            meta: [
-                { name: 'title', content:  this.content },
-                { name: 'description', content:  this.content },
-                { property: 'og:type', content: 'website' },
-                { property: 'og:url', content: 'https://maistorimo.bg' },
-                { property: 'og:title', content: this.name },
-                { property: 'og:description', content: this.content },
-                { property: 'og:image', content: this.ogImage },
-            ],
-            titleTemplate: this.name,
-        };
-    },
 };
 // console.log(this.projectDetails);
-
-
-
-
 </script>
 
 

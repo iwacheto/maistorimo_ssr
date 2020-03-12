@@ -9,10 +9,10 @@
                         <!-- Logo -->
                         <div id="logo">
                             <a href="/">
-                                <img src="images/logo_admin.jpg" alt />
+                                <img src="/images/logo_admin.jpg" alt />
                             </a>
                             <a href="/" class="dashboard-logo">
-                                <img src="images/logo_admin.jpg" alt />
+                                <img src="/images/logo_admin.jpg" alt />
                             </a>
                         </div>
 

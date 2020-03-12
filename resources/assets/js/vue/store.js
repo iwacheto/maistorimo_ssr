@@ -7,8 +7,13 @@ Vue.use(Vuex);
 export default new Store({
     state: {
         // packages: [],
-        projectCategories:[],
-		serviceCategories:[],
+        item: {
+            title:'Pesho',
+            description:'Pesho nosi vsi4ko'
+        },
+        projects:{},
+        projectCategories: [],
+        serviceCategories: [],
     },
 
     getters: {
@@ -18,8 +23,11 @@ export default new Store({
     },
 
     mutations: {
-        // setPackages(state, { packages }) {
-        //     state.packages = packages;
-        // },
+        SET_ITEM(state, item) {
+            state.item = item
+        },
+        SET_PROJECTS(state, projects){
+            state.projects=projects
+        }
     },
 });

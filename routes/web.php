@@ -26,6 +26,7 @@ Route::group(array('domain' => '{subdomain}.maistorimo.gpb'), function () {
 
 //Front Page Project Routes
 Route::get('all-projects', 'Front\ProjectsController@getProjects');
+Route::get('fetch-projects', 'Front\ProjectsController@fetchProjects');
 Route::get('projects', 'Front\ProjectsController@applyFilter');
 Route::get('all_tags', 'Vendor\CategoriesController@getTags');
 Route::get('/last_projects', 'Front\ProjectsController@getPopularProjects');
@@ -43,6 +44,8 @@ Route::get('autocomplete/search', 'Front\ProjectsController@autcompleteCity');
 Route::get('/service_detail/{id}', 'Front\ServiceController@getServices');
 Route::post('/analytics', 'Front\ServiceController@getAnalysis');
 Route::post('/contact_analytcs', 'Front\ProfileController@contactAnalysis');
+
+Route::get('/projects_meta/{id}', 'Front\ProfileController@getMeta');
 
 Route::prefix('profiles')->group(function () {
     Route::get('{id}', 'Front\ProfileController@getProfile');

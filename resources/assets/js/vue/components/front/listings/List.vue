@@ -231,7 +231,7 @@
                             :class="[className ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-12']"
                         >
                             <router-link
-                                :to="'/project/details/' + project.id"
+                                :to="{ name: 'ProjectDetails', params: { title:'ProjectName', id:42 } }"
                                 class="listing-item-container compact"
                             >
                                 <div class="listing-item">
@@ -280,7 +280,6 @@
                 <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
             </client-only>
         </div>
-      
     </div>
 </template>
 
@@ -303,12 +302,23 @@ export default {
         return {
             meta: [
                 { name: 'title', content: 'Майсторимо.БГ' },
-                { name: 'description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
+                {
+                    name: 'description',
+                    content:
+                        'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги',
+                },
                 { property: 'og:type', content: 'website' },
                 { property: 'og:url', content: 'https://maistorimo.bg' },
                 { property: 'og:title', content: 'Майсторимо.БГ' },
-                { property: 'og:description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
-                { property: 'og:image', content: 'https://maistorimo.bg/images/main-search-background-01.webp' },
+                {
+                    property: 'og:description',
+                    content:
+                        'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги',
+                },
+                {
+                    property: 'og:image',
+                    content: 'https://maistorimo.bg/images/main-search-background-01.webp',
+                },
             ],
             titleTemplate: 'Maistorimo',
         };
@@ -316,7 +326,7 @@ export default {
     mixins: [project_services_functions],
     // props: ['filters', 'category', 'city', 'title'],
     data() {
-       return {
+        return {
             tags: [],
             // routhWatcher: true,
             showTags: false,
@@ -351,7 +361,7 @@ export default {
         },
     },
     created() {
-       this.setFilters();
+        this.setFilters();
         // console.log(this.$store.state)
     },
     mounted() {
@@ -404,7 +414,7 @@ export default {
                 this.filters.title = '';
             }, 1200);
         },
-        
+
         getTags() {
             axios
                 .get('all_tags')

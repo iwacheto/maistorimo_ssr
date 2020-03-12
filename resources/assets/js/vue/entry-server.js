@@ -29,7 +29,7 @@ renderVueComponentToString(app, (err, html) => {
         </head>
         <body class="transparent-header">
         <div id="wrapper">
-    
+        <html data-vue-meta-server-rendered <%= meta.htmlAttrs.text() %>>
           ${html}
          
   `);

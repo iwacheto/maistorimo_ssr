@@ -13,7 +13,7 @@
                         <!-- Logo -->
                         <div id="logo">
                             <router-link to="/">
-                                <img src="images/logo2.png" data-sticky-logo="images/logo.png" alt />
+                                <img src="/images/logo2.png" data-sticky-logo="/images/logo.png" alt />
                             </router-link>
                         </div>
 

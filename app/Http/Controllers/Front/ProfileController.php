@@ -49,4 +49,8 @@ class ProfileController extends Controller
             return 'Броячът е увеличен';
         }
     }
+
+    public function getMeta(){
+        return  'Pesho';
+    }
 }

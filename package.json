@@ -15,6 +15,7 @@
         "@ckeditor/ckeditor5-build-classic": "^12.4.0",
         "@ckeditor/ckeditor5-vue": "^1.0.1",
         "@johmun/vue-tags-input": "^2.1.0",
+        "@nuxtjs/axios": "^5.9.5",
         "axios": "^0.17.1",
         "babel-preset-react": "^6.24.1",
         "cross-env": "^5.1",

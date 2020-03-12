@@ -125,4 +125,8 @@ class ProjectsController extends Controller
         $data = City::name($searchQuery)->get();
         return response()->json($data);
     }
+
+    public function fetchProjects(){
+        return Project::all();
+    }
 }

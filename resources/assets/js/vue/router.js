@@ -17,13 +17,7 @@ import Profile from './components/front/profile/Profile';
 import Contacts from './components/front/homepage/Contacts';
 
 Vue.use(VueRouter);
-Vue.use(Meta, {
-	keyName: 'metaInfo',
-	attribute: 'data-vue-meta',
-	ssrAttribute: 'data-vue-meta-server-rendered',
-	tagIDKeyName: 'vmid',
-	refreshOnceOnNavigation: true
-  });
+Vue.use(Meta);
 
 const routes = [
     { path: '/', name: 'Index', component: Index , props: true},
