@@ -1,0 +1,7 @@
+{
+    "/js/vendor/bootstrap.js": "/js/vendor/bootstrap.js",
+    "/js/vue/entry-server.js": "/js/vue/entry-server.js",
+    "/js/vue/entry-client.js": "/js/vue/entry-client.js",
+    "/css/app.css": "/css/app.css",
+    "/js/vendor/before.js": "/js/vendor/before.js"
+}
