@@ -24,6 +24,7 @@ class VueController extends Controller
             $project = Project::with(['projectGalleries'])->where('id', $id)->first();
             $description = strip_tags(str_limit($project->description, 150));
             // dd($project);
+            $title=$project->title;
             SEOMeta::setTitle($project->title);
             SEOMeta::setDescription($description);
 
@@ -44,6 +45,7 @@ class VueController extends Controller
             $servise = Service::where('id', $id)->first();
             $description = strip_tags(str_limit($servise->first_description, 150));
             // dd($servise);
+            $title=$servise->name;
             SEOMeta::setTitle($servise->name);
             SEOMeta::setDescription($description);
 
@@ -61,6 +63,7 @@ class VueController extends Controller
             ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
             ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
         } else {
+            $title='Maistorimo';
             SEOMeta::setTitle('Maistorimo');
             SEOMeta::setDescription('Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги');
             
@@ -82,6 +85,7 @@ class VueController extends Controller
         return view('vue', [
             'packages' => $this->getPackages(),
             'localBusiness' => $localBusiness,
+            'title' => $title,
         ]);
     }
 

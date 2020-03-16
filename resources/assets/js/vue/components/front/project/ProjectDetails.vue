@@ -324,44 +324,11 @@ export default {
     mixins: [analyticFunction],
     name: 'ProjectDetails',
     props: ['id', 'title'],
-
-    serverPrefetch() {
-        // this.$store.state.projects.title = 'Test';
-        // this.$store.state.projects.desc = 'Some long Text';
-        // const project=this.$store.state.projects.filter(elem => elem.id == this.id);
-     
-    },
-
-    asyncData({ params }) {
-        // return axios.get(`/projects/${params.id}`).then(res => {
-        //     return { title: res.data.description };
-        // });
-   let items = axios.get(`fetch-projects`).then(res => {
-                return res.data;
-            });
-            this.$store.commit('SET_PROJECTS', items);
-    },
     metaInfo() {
         return {
-            title: this.title ,
-            //  meta:this.$store.state.posts.find((result) => result.id === 3),
-            meta: [
-                { name: 'title', content: this.title },
-                {
-                    vmid: 'description',
-                    name: 'description',
-                    content: 'test',
-                },
-                { property: 'og:type', content: 'website' },
-                { property: 'og:url', content: 'https://maistorimo.bg' },
-                { property: 'og:title', content: this.name },
-                { property: 'og:description', content: this.content },
-                { property: 'og:image', content: this.ogImage },
-            ],
-            titleTemplate: this.name,
+            meta: [],
         };
     },
-
     data() {
         return {
             // projects: this.$store.state.projects,
@@ -387,26 +354,11 @@ export default {
             ogImage: null,
         };
     },
-    computed: {
-        // metaTags() {
-        //     return this.$store.state.projects.filter(elem => elem.id == this.id);
-        // },
-    },
-    created() {},
     mounted() {
         this.getProjectDetails();
-        // console.log(this.$store.state.projects.filter(elem => elem.id == this.id));
     },
-    watch: {
-        metaTags(){
-            console.log(this.metaTags);
-        }
-    },
+    watch: {},
     methods: {
-        fetchItem() {
-            // return the Promise from the action
-            return this.$store.dispatch('fetchItem', this.$route.params.id);
-        },
         async getProjectDetails() {
             try {
                 const res = await axios.get('/projects/' + this.id);
@@ -415,13 +367,6 @@ export default {
                 this.city = res.data.project.city;
                 this.$nextTick(() => {
                     this.name = res.data.project.title;
-                    this.ogImage = res.data.project.project_galleries[0].url;
-                    const realDesc = res.data.project.description
-                        .split(' ')
-                        .slice(0, 25)
-                        .join(' ');
-                    this.content = realDesc;
-                    this.ogUrl = 'https://maistorimo.bg/project/details/' + this.id;
                 });
 
                 if (res.data.project.project_services.length > 0) {

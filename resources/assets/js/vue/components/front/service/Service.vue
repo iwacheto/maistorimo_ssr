@@ -224,6 +224,11 @@ export default {
     mixins: [analyticFunction],
     name: 'Service',
     props: ['id'],
+     metaInfo() {
+        return {
+            meta: [],
+        };
+    },
     data() {
         return {
             vendorDetails: {},
@@ -231,9 +236,6 @@ export default {
             servicetDetails: {},
             projectDetails: [],
         };
-    },
-    created() {
-       
     },
     mounted() {
         this.getServicetDetails();

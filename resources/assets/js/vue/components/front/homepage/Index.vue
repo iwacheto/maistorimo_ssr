@@ -100,16 +100,7 @@ import axios from 'axios';
 
 export default {
     metaInfo: {
-         meta: [
-                { name: 'title', content: 'Майсторимо.БГ' },
-                { vmid: 'description', name: 'description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
-                { property: 'og:type', content: 'website' },
-                { property: 'og:url', content: 'https://maistorimo.bg' },
-                { property: 'og:title', content: 'Майсторимо.БГ' },
-                { property: 'og:description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' },
-                { property: 'og:image', content: 'https://maistorimo.bg/images/main-search-background-01.webp' },
-            ],
-            titleTemplate: 'Maistorimo',
+        // 
     },
     data() {
         return {
@@ -149,7 +140,6 @@ export default {
             if (category === 'all') {
                 EventBus.$emit('filter-reset');
             } else {
-                // document.getElementById('search-results').scrollIntoView();
                 let filters = { category: category.id, title: false };
                 EventBus.$emit('filter-applied', filters);
             }

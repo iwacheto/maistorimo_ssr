@@ -33813,8 +33813,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     metaInfo: {
-        meta: [{ name: 'title', content: 'Майсторимо.БГ' }, { vmid: 'description', name: 'description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' }, { property: 'og:type', content: 'website' }, { property: 'og:url', content: 'https://maistorimo.bg' }, { property: 'og:title', content: 'Майсторимо.БГ' }, { property: 'og:description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' }, { property: 'og:image', content: 'https://maistorimo.bg/images/main-search-background-01.webp' }],
-        titleTemplate: 'Maistorimo'
+        // 
     },
     data: function data() {
         return {
@@ -33883,7 +33882,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             if (category === 'all') {
                 __WEBPACK_IMPORTED_MODULE_3__event_bus__["a" /* EventBus */].$emit('filter-reset');
             } else {
-                // document.getElementById('search-results').scrollIntoView();
                 var filters = { category: category.id, title: false };
                 __WEBPACK_IMPORTED_MODULE_3__event_bus__["a" /* EventBus */].$emit('filter-applied', filters);
             }
@@ -37863,17 +37861,8 @@ var count = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
     metaInfo: function metaInfo() {
         return {
-            meta: [{ name: 'title', content: 'Майсторимо.БГ' }, {
-                name: 'description',
-                content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги'
-            }, { property: 'og:type', content: 'website' }, { property: 'og:url', content: 'https://maistorimo.bg' }, { property: 'og:title', content: 'Майсторимо.БГ' }, {
-                property: 'og:description',
-                content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги'
-            }, {
-                property: 'og:image',
-                content: 'https://maistorimo.bg/images/main-search-background-01.webp'
-            }],
-            titleTemplate: 'Maistorimo'
+            meta: []
+
         };
     },
 
@@ -39195,8 +39184,8 @@ var count = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
     metaInfo: function metaInfo() {
         return {
-            meta: [{ name: 'title', content: 'Майсторимо.БГ' }, { name: 'description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' }, { property: 'og:type', content: 'website' }, { property: 'og:url', content: 'https://maistorimo.bg' }, { property: 'og:title', content: 'Майсторимо.БГ' }, { property: 'og:description', content: 'Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги' }, { property: 'og:image', content: 'https://maistorimo.bg/images/main-search-background-01.webp' }],
-            titleTemplate: 'Maistorimo'
+            meta: []
+
         };
     },
 
@@ -40316,34 +40305,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     mixins: [__WEBPACK_IMPORTED_MODULE_4__mixins_analytic_function__["a" /* analyticFunction */]],
     name: 'ProjectDetails',
     props: ['id', 'title'],
-
-    serverPrefetch: function serverPrefetch() {
-        // this.$store.state.projects.title = 'Test';
-        // this.$store.state.projects.desc = 'Some long Text';
-        // const project=this.$store.state.projects.filter(elem => elem.id == this.id);
-
-    },
-    asyncData: function asyncData(_ref) {
-        var params = _ref.params;
-
-        // return axios.get(`/projects/${params.id}`).then(res => {
-        //     return { title: res.data.description };
-        // });
-        var items = __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get('fetch-projects').then(function (res) {
-            return res.data;
-        });
-        this.$store.commit('SET_PROJECTS', items);
-    },
     metaInfo: function metaInfo() {
         return {
-            title: this.title,
-            //  meta:this.$store.state.posts.find((result) => result.id === 3),
-            meta: [{ name: 'title', content: this.title }, {
-                vmid: 'description',
-                name: 'description',
-                content: 'test'
-            }, { property: 'og:type', content: 'website' }, { property: 'og:url', content: 'https://maistorimo.bg' }, { property: 'og:title', content: this.name }, { property: 'og:description', content: this.content }, { property: 'og:image', content: this.ogImage }],
-            titleTemplate: this.name
+            meta: []
         };
     },
     data: function data() {
@@ -40366,30 +40330,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             ogImage: null
         };
     },
-
-    computed: {
-        // metaTags() {
-        //     return this.$store.state.projects.filter(elem => elem.id == this.id);
-        // },
-    },
-    created: function created() {},
     mounted: function mounted() {
         this.getProjectDetails();
-        // console.log(this.$store.state.projects.filter(elem => elem.id == this.id));
     },
 
-    watch: {
-        metaTags: function metaTags() {
-            console.log(this.metaTags);
-        }
-    },
+    watch: {},
     methods: {
-        fetchItem: function fetchItem() {
-            // return the Promise from the action
-            return this.$store.dispatch('fetchItem', this.$route.params.id);
-        },
         getProjectDetails: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
                 var _this = this;
 
                 var res, currentDateWithFormat, responce;
@@ -40409,10 +40357,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 this.city = res.data.project.city;
                                 this.$nextTick(function () {
                                     _this.name = res.data.project.title;
-                                    _this.ogImage = res.data.project.project_galleries[0].url;
-                                    var realDesc = res.data.project.description.split(' ').slice(0, 25).join(' ');
-                                    _this.content = realDesc;
-                                    _this.ogUrl = 'https://maistorimo.bg/project/details/' + _this.id;
                                 });
 
                                 if (res.data.project.project_services.length > 0) {
@@ -40450,7 +40394,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             }));
 
             function getProjectDetails() {
-                return _ref2.apply(this, arguments);
+                return _ref.apply(this, arguments);
             }
 
             return getProjectDetails;
@@ -44147,6 +44091,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_analytic_function__["a" /* analyticFunction */]],
     name: 'Service',
     props: ['id'],
+    metaInfo: function metaInfo() {
+        return {
+            meta: []
+        };
+    },
     data: function data() {
         return {
             vendorDetails: {},
@@ -44155,7 +44104,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             projectDetails: []
         };
     },
-    created: function created() {},
     mounted: function mounted() {
         this.getServicetDetails();
     },
