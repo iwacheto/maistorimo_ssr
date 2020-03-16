@@ -30,7 +30,7 @@
 								<a @click="alertDeleteService(service.id, index)" class="button gray">
 									<i class="sl sl-icon-close"></i>
 								</a>
-								<a target="_blank" :href="'/#/service/details/'+service.id" class="button gray">
+								<a target="_blank" :href="'/service/details/'+service.id" class="button gray">
 									<i class="sl sl-icon-globe"></i>
 								</a>
 							</div>
