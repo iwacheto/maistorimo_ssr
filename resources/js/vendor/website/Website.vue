@@ -437,7 +437,7 @@ import GoogleMap from '../../components/googleMap/GoogleMap';
 export default {
     data() {
         return {
-            user: [],
+            user:laravel.user,
             errorTexts: [
                 {
                     text: 'The website settings.home text may not be greater than 1000 characters.',
@@ -641,7 +641,7 @@ export default {
         };
     },
     created() {
-        this.getUser();
+        // this.getUser();
     },
     mounted() {
         this.hasMainImage = this.user.website_settings.main_image ? true : false;
@@ -652,16 +652,7 @@ export default {
     },
     watch: {},
     methods: {
-        async getUser() {
-            try {
-                const res = await axios.get('/get_user');
-                this.user = res.data;
-                this.$store.state.user = res.data;
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        showErrors() {
+       showErrors() {
             if (this.hasLogo) {
                 this.error.showStyleError = false;
             } else {
@@ -804,11 +795,6 @@ export default {
         },
         setActive(menuItem) {
             this.activeItem = menuItem;
-        },
-    },
-    computed: {
-        user() {
-            return this.$store.state.user;
         },
     },
     components: {

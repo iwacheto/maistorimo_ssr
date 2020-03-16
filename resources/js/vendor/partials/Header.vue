@@ -90,7 +90,7 @@ export default {
   data() {
     return {
       // user: laravel.user,
-      user:[],
+      user:laravel.user,
       isActive: false
     };
   },
@@ -118,7 +118,7 @@ export default {
   },
    
   mounted() {
-    this.getUser();
+    // this.getUser();
   }
 };
 </script>

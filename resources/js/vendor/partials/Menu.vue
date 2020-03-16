@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     toggleMenuItems(event) {
-      console.log(event);
+     
     },
     async logout() {
       try {
@@ -143,8 +143,6 @@ export default {
     async getAuthenticatedUser() {
       try {
         const res = await axios.get("auth-user");
-        console.log("user");
-        console.log(res.data);
         if (res.data.id === 1 || res.data.id === 4) {
           return (this.showBlog = true);
         }

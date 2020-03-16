@@ -65,7 +65,7 @@
 			async getServices() {
 				try {
 					const res = await axios.get('/vendor/service');
-					console.log(res.data);
+					// console.log(res.data);
 					this.services = res.data;
 				}
 				catch (error) {

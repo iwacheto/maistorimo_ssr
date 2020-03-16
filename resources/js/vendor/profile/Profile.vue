@@ -200,11 +200,8 @@ export default {
             new_password_repeat: '',
             isOpen: false,
             results: '',
-            user: [],
+            user: laravel.user,
         };
-    },
-    created() {
-      this.getUser();
     },
     mounted() {
         this.hasImage = this.user.vendor_details.profile_image != '' ? true : false;
@@ -212,21 +209,12 @@ export default {
         this.$refs.mytoast.defaultStyle = { top: '80px' };
         this.checkCity();
     },
-    computed: {
+    watch: {
         user() {
-            return this.$store.state.user;
-        },
+          //  console.log(this.user.vendor_details.profile_image+'Image');
+      },
     },
     methods: {
-        async getUser() {
-            try {
-                const res = await axios.get('/get_user');
-                this.user = res.data;
-                this.$store.state.user = res.data;
-            } catch (error) {
-                console.log(error);
-            }
-        },
         uploadImage: function(output) {
             this.hasImage = true;
             this.image = output;
