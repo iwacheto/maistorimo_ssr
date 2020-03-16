@@ -649,6 +649,7 @@ export default {
         this.$refs.mytoast.defaultPosition = 'toast-top-center';
         this.$refs.mytoast.defaultStyle = { top: '80px' };
         this.showErrors();
+        console.log(this.user.website_settings.formatted_address)
     },
     watch: {},
     methods: {
