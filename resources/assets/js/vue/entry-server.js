@@ -21,15 +21,10 @@ renderVueComponentToString(app, (err, html) => {
     dispatch(`
             ${meta.text()}
             ${title.text()}
-            ${link.text()}
-            ${style.text()}
-            ${script.text()}
-            ${noscript.text()}
-           
-        </head>
+         </head>
         <body class="transparent-header">
         <div id="wrapper">
-        <html data-vue-meta-server-rendered <%= meta.htmlAttrs.text() %>>
+       
           ${html}
          
   `);

@@ -53052,7 +53052,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic___default()(__WEBPACK_IMPO
         noscript = _context$meta$inject.noscript,
         meta = _context$meta$inject.meta;
 
-    dispatch('\n            ' + meta.text() + '\n            ' + title.text() + '\n            ' + link.text() + '\n            ' + style.text() + '\n            ' + script.text() + '\n            ' + noscript.text() + '\n           \n        </head>\n        <body class="transparent-header">\n        <div id="wrapper">\n        <html data-vue-meta-server-rendered <%= meta.htmlAttrs.text() %>>\n          ' + html + '\n         \n  ');
+    dispatch('\n            ' + meta.text() + '\n            ' + title.text() + '\n         </head>\n        <body class="transparent-header">\n        <div id="wrapper">\n       \n          ' + html + '\n         \n  ');
 });
 
 /***/ }),
