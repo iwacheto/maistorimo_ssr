@@ -38748,12 +38748,7 @@ var render = function() {
                             "router-link",
                             {
                               staticClass: "listing-item-container compact",
-                              attrs: {
-                                to: {
-                                  name: "ProjectDetails",
-                                  params: { title: "ProjectName", id: 42 }
-                                }
-                              }
+                              attrs: { to: "/project/details/" + project.id }
                             },
                             [
                               _c("div", { staticClass: "listing-item" }, [
@@ -40343,10 +40338,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         return {
             title: this.title,
             //  meta:this.$store.state.posts.find((result) => result.id === 3),
-            meta: [{ name: 'title', content: this.metaTags[0].title }, {
+            meta: [{ name: 'title', content: this.title }, {
                 vmid: 'description',
                 name: 'description',
-                content: this.metaTags[0].description
+                content: 'test'
             }, { property: 'og:type', content: 'website' }, { property: 'og:url', content: 'https://maistorimo.bg' }, { property: 'og:title', content: this.name }, { property: 'og:description', content: this.content }, { property: 'og:image', content: this.ogImage }],
             titleTemplate: this.name
         };
@@ -40373,13 +40368,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     },
 
     computed: {
-        metaTags: function metaTags() {
-            var _this = this;
-
-            return this.$store.state.projects.filter(function (elem) {
-                return elem.id == _this.id;
-            });
-        }
+        // metaTags() {
+        //     return this.$store.state.projects.filter(elem => elem.id == this.id);
+        // },
     },
     created: function created() {},
     mounted: function mounted() {
@@ -40399,7 +40390,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         },
         getProjectDetails: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-                var _this2 = this;
+                var _this = this;
 
                 var res, currentDateWithFormat, responce;
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
@@ -40417,11 +40408,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 this.vendorDetails = res.data.vendor;
                                 this.city = res.data.project.city;
                                 this.$nextTick(function () {
-                                    _this2.name = res.data.project.title;
-                                    _this2.ogImage = res.data.project.project_galleries[0].url;
+                                    _this.name = res.data.project.title;
+                                    _this.ogImage = res.data.project.project_galleries[0].url;
                                     var realDesc = res.data.project.description.split(' ').slice(0, 25).join(' ');
-                                    _this2.content = realDesc;
-                                    _this2.ogUrl = 'https://maistorimo.bg/project/details/' + _this2.id;
+                                    _this.content = realDesc;
+                                    _this.ogUrl = 'https://maistorimo.bg/project/details/' + _this.id;
                                 });
 
                                 if (res.data.project.project_services.length > 0) {

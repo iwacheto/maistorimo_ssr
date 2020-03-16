@@ -231,7 +231,7 @@
                             :class="[className ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-12']"
                         >
                             <router-link
-                                :to="{ name: 'ProjectDetails', params: { title:'ProjectName', id:42 } }"
+                                :to="'/project/details/'+project.id"
                                 class="listing-item-container compact"
                             >
                                 <div class="listing-item">

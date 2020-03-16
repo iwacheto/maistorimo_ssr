@@ -1,8 +1,14 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 
 <head>
     <meta charset="utf-8">
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <?php
+    echo $localBusiness->toScript();
+    ?>
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -35,7 +41,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84D4G7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    
+
 
     {!! ssr('js/vue/entry-server.js')
     // Share the packages with the server script through context
@@ -54,7 +60,7 @@
         <div>Cookies</div>
     </div>
     </div>
-
+   
     <!-- Scripts
 ================================================== -->
 

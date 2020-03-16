@@ -346,11 +346,11 @@ export default {
             title: this.title ,
             //  meta:this.$store.state.posts.find((result) => result.id === 3),
             meta: [
-                { name: 'title', content: this.metaTags[0].title },
+                { name: 'title', content: this.title },
                 {
                     vmid: 'description',
                     name: 'description',
-                    content: this.metaTags[0].description,
+                    content: 'test',
                 },
                 { property: 'og:type', content: 'website' },
                 { property: 'og:url', content: 'https://maistorimo.bg' },
@@ -388,9 +388,9 @@ export default {
         };
     },
     computed: {
-        metaTags() {
-            return this.$store.state.projects.filter(elem => elem.id == this.id);
-        },
+        // metaTags() {
+        //     return this.$store.state.projects.filter(elem => elem.id == this.id);
+        // },
     },
     created() {},
     mounted() {
