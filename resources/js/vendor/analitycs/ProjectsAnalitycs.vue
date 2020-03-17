@@ -91,8 +91,9 @@ export default {
   methods: {
     getProjects(event) {
       window.axios.get("/vendor/projects/analytics").then(({ data }) => {
+
         this.projects = data;
-        // console.log(this.projects)
+        console.log(data)
       });
     },
     async filterData() {

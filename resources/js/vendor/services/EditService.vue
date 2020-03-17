@@ -215,7 +215,7 @@ export default {
   },
   methods: {
     goToProject() {
-      window.open("/#/service/details/" + this.service.id, "_blank");
+      window.open("/service/details/" + this.service.id, "_blank");
     },
     getCategories() {
       axios.get("/categories/getcat").then(({ data }) => {

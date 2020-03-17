@@ -282,7 +282,7 @@ export default {
   },
   methods: {
     goToProject() {
-      window.open("/#/project/details/" + this.project.id, "_blank");
+      window.open("/project/details/" + this.project.id, "_blank");
     },
     getServices() {
       axios.get("/vendor/service/getForSelect").then(({ data }) => {
