@@ -9,6 +9,7 @@
         <script defer src="{{ mix('js/react/entry-client.js') }}"></script>
     </head>
     <body class="bg-paper font-sans leading-normal text-grey-darkest border-t-4 border-orange-light">
+   
         {!! ssr('js/react/entry-server.js')
             // Share the packages with the server script through context
             ->context('packages', $packages)

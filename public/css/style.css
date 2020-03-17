@@ -646,7 +646,6 @@ div.company_profile {width: 100%;}
 div.p_info_mobile{display: block !important; margin-top: 15px;}
 div.p_info_deckstop{display: none;}
 div.p_info {margin-bottom: 0 !important;}
-#titlebar span{font-size: 15px !important;}
 }
 .coupon-widget{margin-top:35px;border-radius:4px;background-position:50%;background-repeat:no-repeat;background-size:cover;position:relative;color:#fff;transition:0.3s;display:block;}
 .coupon-widget:hover{transform:translateY(-5px)}
@@ -1007,7 +1006,7 @@ input#date-picker:hover{color:#444;}
 .daterangepicker.rtl .drp-calendar.left .calendar-table{padding-left:12px;}
 .daterangepicker.rtl .ranges, .daterangepicker.rtl .drp-calendar{text-align:right;float:right;}
 }
-.mfp-gallery-container {margin-top: 95px;height: 400px;overflow: hidden;display: flex;flex-wrap: wrap;justify-content: center;}
+.mfp-gallery-container {margin-top: 95px;overflow: hidden;display: flex;flex-wrap: wrap;justify-content: center;}
 @media (min-width:730px){.daterangepicker .ranges{width:auto;}
 .daterangepicker.ltr .ranges{float:left;}
 .daterangepicker.rtl .ranges{float:right;}
@@ -1960,9 +1959,9 @@ span.like-icon{color:#fff;font-size:19px;position:absolute;z-index:101;right:30p
 #titlebar span a, #titlebar span{font-size:20px;color:#888;margin-bottom:3px;margin-top:6px;display:inline-block;}
 #titlebar #breadcrumbs span{font-size:13px}
 #titlebar h1, #titlebar h2{font-size:32px;line-height:40px;margin:1px 0 3px 0;padding-left: 30px;}
-#breadcrumbs{position:absolute;right:45px;display:inline-block;font-size:15px;font-weight:400;color:#888;top:50%;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);}
+#breadcrumbs{display:inline-block;font-size:15px;font-weight:400;color:#888;top:50%;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);}
 @media screen and (max-width:800px){#breadcrumbs{right:0;}
-#breadcrumbs ul{padding:0;}
+#breadcrumbs ul{padding:0 25px;}
 }
 #breadcrumbs ul{margin:0;}
 #breadcrumbs ul li a{-webkit-transition:all 0.2s ease-in-out;-moz-transition:all 0.2s ease-in-out;-o-transition:all 0.2s ease-in-out;-ms-transition:all 0.2s ease-in-out;transition:all 0.2s ease-in-out;color:#888;}
@@ -3096,7 +3095,6 @@ a.dashboard-responsive-nav-trigger.active{border-radius:4px 4px 0 0;}
 .dashboard-list-box .sort-by .sort-by-select{display:none;}
 .header-widget a.button.border{font-size:14px;}
 .dashboard #logo{width:auto;}
-div.image{width: 240px !important; height: 150px !important;}
 }
 @media (max-width:530px){#header.cloned.sticky .container{display:flex;flex-direction:column;align-items:center;}
 }
