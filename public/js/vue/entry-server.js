@@ -18636,10 +18636,12 @@ var project_services_functions = {
             }, 800);
         },
         applyCategory: function applyCategory(val) {
+            this.clearQuery('mainCategory');
             this.filterQueries.category = val;
             this.pushToRouter("category", val);
         },
         applyMainCategory: function applyMainCategory(val, main) {
+            this.clearQuery('category');
             this.clearCategory = true;
             var cats = [];
             val.forEach(function (elem) {
@@ -18650,20 +18652,6 @@ var project_services_functions = {
             localStorage.setItem("storedData", this.selectedMain);
             this.pushToRouter("mainCategory", cats);
         },
-
-        // setFilters() {
-        //     this.page = 1;
-        //     // this.city = this.$route.query.city;
-        //     this.filters.city = this.$route.query.city;
-        //     this.filters.category = this.$route.query.category;
-        //     this.filters.title = this.$route.query.title;
-        //     if (this.$route.query.mainCategory) {
-        //         this.filters.mainCategory = this.$route.query.mainCategory;
-        //         this.selectedMain = localStorage.getItem("storedData");
-        //     } else {
-        //         this.filters.mainCategory = [];
-        //     }
-        // },
         setFilters: function setFilters() {
             this.page = 1;
             this.filterQueries.city = this.$route.query.city;
@@ -40288,13 +40276,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -40358,15 +40339,48 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 this.$nextTick(function () {
                                     _this.name = res.data.project.title;
                                 });
-
                                 if (res.data.project.project_services.length > 0) {
                                     this.services.push(res.data.project.project_services[0].service);
                                 }
                                 this.images = res.data.project.project_galleries.map(function (image) {
                                     return image.url;
                                 });
+
+                                this.$nextTick(function () {
+                                    $('.custom_project_slider').slick({
+                                        infinite: true,
+                                        slidesToShow: 5,
+                                        slidesToScroll: 1,
+                                        dots: true,
+                                        arrows: false,
+                                        autoplay: true,
+                                        autoplaySpeed: 1500,
+                                        responsive: [{
+                                            breakpoint: 1610,
+                                            settings: {
+                                                slidesToShow: 4
+                                            }
+                                        }, {
+                                            breakpoint: 1365,
+                                            settings: {
+                                                slidesToShow: 3
+                                            }
+                                        }, {
+                                            breakpoint: 1024,
+                                            settings: {
+                                                slidesToShow: 2
+                                            }
+                                        }, {
+                                            breakpoint: 767,
+                                            settings: {
+                                                slidesToShow: 1
+                                            }
+                                        }]
+                                    });
+                                });
+
                                 currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
-                                _context.next = 13;
+                                _context.next = 14;
                                 return __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post('/analytics', {
                                     user: this.vendorDetails.id,
                                     project: this.id,
@@ -40374,23 +40388,23 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     date: currentDateWithFormat
                                 });
 
-                            case 13:
+                            case 14:
                                 responce = _context.sent;
-                                _context.next = 19;
+                                _context.next = 20;
                                 break;
 
-                            case 16:
-                                _context.prev = 16;
+                            case 17:
+                                _context.prev = 17;
                                 _context.t0 = _context['catch'](0);
 
                                 console.log(_context.t0);
 
-                            case 19:
+                            case 20:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this, [[0, 16]]);
+                }, _callee, this, [[0, 17]]);
             }));
 
             function getProjectDetails() {
@@ -43147,7 +43161,7 @@ var render = function() {
     _vm.images
       ? _c(
           "div",
-          { staticClass: "mfp-gallery-container" },
+          { staticClass: "mfp-gallery-container custom_project_slider" },
           [
             _vm._l(_vm.images, function(image, imageIndex) {
               return _c("div", {

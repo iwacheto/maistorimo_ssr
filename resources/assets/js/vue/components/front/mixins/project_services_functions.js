@@ -16,10 +16,12 @@ export const project_services_functions = {
             }, 800);
         },
         applyCategory(val) {
+            this.clearQuery('mainCategory');
             this.filterQueries.category = val;
             this.pushToRouter("category", val);
         },
         applyMainCategory(val, main) {
+            this.clearQuery('category');
             this.clearCategory = true;
             let cats = [];
             val.forEach(elem => {
@@ -30,19 +32,6 @@ export const project_services_functions = {
             localStorage.setItem("storedData", this.selectedMain);
             this.pushToRouter("mainCategory", cats);
         },
-        // setFilters() {
-        //     this.page = 1;
-        //     // this.city = this.$route.query.city;
-        //     this.filters.city = this.$route.query.city;
-        //     this.filters.category = this.$route.query.category;
-        //     this.filters.title = this.$route.query.title;
-        //     if (this.$route.query.mainCategory) {
-        //         this.filters.mainCategory = this.$route.query.mainCategory;
-        //         this.selectedMain = localStorage.getItem("storedData");
-        //     } else {
-        //         this.filters.mainCategory = [];
-        //     }
-        // },
         setFilters() {
             this.page = 1;
             this.filterQueries.city = this.$route.query.city;
