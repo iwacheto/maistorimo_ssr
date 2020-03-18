@@ -2,7 +2,7 @@
     <div>
         <!-- Slider
         ==================================================-->
-        <div v-if="images" class="mfp-gallery-container custom_project_slider">
+        <div v-if="images" class="mfp-gallery-container custom_project_slider" :style="imageWidth">
             <div
                 class="image"
                 v-for="(image, imageIndex) in images"
@@ -351,6 +351,25 @@ export default {
         this.getProjectDetails();
     },
     watch: {},
+    computed: {
+        imageWidth: function() {
+            if (this.images.length == 1) {
+                return {
+                    margin: '95px auto',
+                    maxWidth: '600px',
+                };
+            } else if (this.images.length == 2) {
+                return {
+                    margin: '95px auto',
+                    maxWidth: '900px',
+                };
+            } else {
+                return {
+                    maxWidth: 'initial',
+                };
+            }
+        },
+    },
     methods: {
         async getProjectDetails() {
             try {
@@ -365,11 +384,25 @@ export default {
                     this.services.push(res.data.project.project_services[0].service);
                 }
                 this.images = res.data.project.project_galleries.map(image => image.url);
+                const imgLength = this.images.length;
+                let imgCount = null;
+                if (imgLength == 1) {
+                    imgCount = 1;
+                } else if (imgLength == 2) {
+                    imgCount = 2;
+                } else if (imgLength == 3) {
+                    imgCount = 3;
+                } else if (imgLength == 4) {
+                    imgCount = 4;
+                } else {
+                    imgCount = 5;
+                }
 
                 this.$nextTick(function() {
+                    console.log(this.images.length);
                     $('.custom_project_slider').slick({
                         infinite: true,
-                        slidesToShow: 5,
+                        slidesToShow: imgCount,
                         slidesToScroll: 1,
                         dots: true,
                         arrows: false,

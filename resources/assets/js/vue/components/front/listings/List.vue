@@ -289,11 +289,13 @@ import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
 import ClientOnly from 'vue-client-only';
 import { project_services_functions } from '../mixins/project_services_functions';
+import VueLocalStorage from 'vue-localstorage'
 import axios from 'axios';
 import Vue from 'vue';
 import Router from 'vue-router';
 
 Vue.use(Router);
+Vue.use(VueLocalStorage);
 
 var count = 0;
 

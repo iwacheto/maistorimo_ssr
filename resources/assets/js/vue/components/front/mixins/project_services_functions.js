@@ -29,7 +29,9 @@ export const project_services_functions = {
             });
             this.filterQueries.mainCategory = cats;
             this.selectedMain = main;
-            localStorage.setItem("storedData", this.selectedMain);
+            console.log(this.selectedMain)
+            this.$localStorage.set('storedData', this.selectedMain)
+            // localStorage.setItem("storedData", this.selectedMain);
             this.pushToRouter("mainCategory", cats);
         },
         setFilters() {
@@ -38,19 +40,20 @@ export const project_services_functions = {
             this.filterQueries.category = this.$route.query.category;
             this.filterQueries.title = this.$route.query.title;
             if (this.$route.query.tags) {
-                this.showTags=true;
+                this.showTags = true;
                 if (typeof this.$route.query.tags === "string") {
                     this.selectTag.push(this.$route.query.tags);
                 } else {
                     this.selectTag = this.$route.query.tags;
                 }
-               this.filterQueries.tags.push(this.$route.query.tags);
+                this.filterQueries.tags.push(this.$route.query.tags);
             } else {
                 this.filterQueries.tags = [];
             }
             if (this.$route.query.mainCategory) {
                 this.filterQueries.mainCategory.push(this.$route.query.mainCategory);
-                this.selectedMain = localStorage.getItem("storedData");
+                // this.selectedMain = localStorage.getItem("storedData");
+                this.selectedMain = this.$localStorage.get("storedData");
             } else {
                 this.filterQueries.mainCategory = [];
             }
@@ -75,7 +78,8 @@ export const project_services_functions = {
                 this.selectedMain = "";
                 this.clearCategory = false;
                 this.filterQueries.mainCategory = [];
-                localStorage.removeItem('storedData')
+                // localStorage.removeItem('storedData')
+                this.$localStorage.remove('storedData')
             } else if (val == 'tags') {
                 this.filterQueries.tags = [];
             } else {
@@ -127,7 +131,7 @@ export const project_services_functions = {
             this.clearCity = true;
             this.filterQueries.city = result.city;
             this.pushToRouter("city", result.city);
-            this.isOpen =false;
+            this.isOpen = false;
         },
     },
 }
