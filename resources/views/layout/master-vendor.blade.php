@@ -18,6 +18,7 @@
 	<!-- CSS
 ================================================== -->
 	<link rel="stylesheet" href="/css/style.css">
+
 	<link rel="stylesheet" href="/css/vuetify.css">
 	<link rel="stylesheet" href="/css/colors/celadon.css" id="colors">
 	<script src="{{ mix('js/vendor/before.js') }}?v=4"></script>

@@ -181,9 +181,10 @@
               :style="{ backgroundImage: 'url(' + image.url + ')', width: '300px', height: '200px' }"
               v-if="image.deleted != 1"
             >
-              <a @click.stop="deleteImage(imageIndex)" class="button gray">
+              <a @click.stop="deleteImage(imageIndex)" class="button del_btn">
                 <i class="sl sl-icon-close"></i> Delete
               </a>
+              
             </div>
             <vue-dropzone
               ref="myVueDropzone"
@@ -281,7 +282,7 @@ export default {
   },
   methods: {
     goToProject() {
-      window.open("/#/project/details/" + this.project.id, "_blank");
+      window.open("/project/details/" + this.project.id, "_blank");
     },
     getServices() {
       axios.get("/vendor/service/getForSelect").then(({ data }) => {

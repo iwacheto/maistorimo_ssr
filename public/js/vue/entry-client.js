@@ -18636,10 +18636,12 @@ var project_services_functions = {
             }, 800);
         },
         applyCategory: function applyCategory(val) {
+            this.clearQuery('mainCategory');
             this.filterQueries.category = val;
             this.pushToRouter("category", val);
         },
         applyMainCategory: function applyMainCategory(val, main) {
+            this.clearQuery('category');
             this.clearCategory = true;
             var cats = [];
             val.forEach(function (elem) {
@@ -18647,23 +18649,11 @@ var project_services_functions = {
             });
             this.filterQueries.mainCategory = cats;
             this.selectedMain = main;
-            localStorage.setItem("storedData", this.selectedMain);
+            console.log(this.selectedMain);
+            this.$localStorage.set('storedData', this.selectedMain);
+            // localStorage.setItem("storedData", this.selectedMain);
             this.pushToRouter("mainCategory", cats);
         },
-
-        // setFilters() {
-        //     this.page = 1;
-        //     // this.city = this.$route.query.city;
-        //     this.filters.city = this.$route.query.city;
-        //     this.filters.category = this.$route.query.category;
-        //     this.filters.title = this.$route.query.title;
-        //     if (this.$route.query.mainCategory) {
-        //         this.filters.mainCategory = this.$route.query.mainCategory;
-        //         this.selectedMain = localStorage.getItem("storedData");
-        //     } else {
-        //         this.filters.mainCategory = [];
-        //     }
-        // },
         setFilters: function setFilters() {
             this.page = 1;
             this.filterQueries.city = this.$route.query.city;
@@ -18682,7 +18672,8 @@ var project_services_functions = {
             }
             if (this.$route.query.mainCategory) {
                 this.filterQueries.mainCategory.push(this.$route.query.mainCategory);
-                this.selectedMain = localStorage.getItem("storedData");
+                // this.selectedMain = localStorage.getItem("storedData");
+                this.selectedMain = this.$localStorage.get("storedData");
             } else {
                 this.filterQueries.mainCategory = [];
             }
@@ -18708,7 +18699,8 @@ var project_services_functions = {
                 this.selectedMain = "";
                 this.clearCategory = false;
                 this.filterQueries.mainCategory = [];
-                localStorage.removeItem('storedData');
+                // localStorage.removeItem('storedData')
+                this.$localStorage.remove('storedData');
             } else if (val == 'tags') {
                 this.filterQueries.tags = [];
             } else {
@@ -37548,11 +37540,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_client_only__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_client_only___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_client_only__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mixins_project_services_functions__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_router__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_localstorage__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_localstorage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_localstorage__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_router__ = __webpack_require__(20);
 
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -37854,7 +37848,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
-__WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vue_router__["a" /* default */]);
+
+__WEBPACK_IMPORTED_MODULE_7_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_8_vue_router__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_7_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_vue_localstorage___default.a);
 
 var count = 0;
 
@@ -37935,7 +37931,7 @@ var count = 0;
             var _this2 = this;
 
             // this.$refs.infiniteLoading.stop()
-            __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get('/projects', {
+            __WEBPACK_IMPORTED_MODULE_6_axios___default.a.get('/projects', {
                 params: {
                     filters: query,
                     page: this.page
@@ -37965,7 +37961,7 @@ var count = 0;
         getTags: function getTags() {
             var _this4 = this;
 
-            __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get('all_tags').then(function (res) {
+            __WEBPACK_IMPORTED_MODULE_6_axios___default.a.get('all_tags').then(function (res) {
                 if (res.data.length < 10) {
                     _this4.tags = res.data;
                 } else if (res.data.length > 10 && res.data.length < 20) {
@@ -38000,7 +37996,7 @@ var count = 0;
             var _this5 = this;
 
             this.filters = {};
-            __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get('/projects', {
+            __WEBPACK_IMPORTED_MODULE_6_axios___default.a.get('/projects', {
                 params: {
                     filters: {
                         title: this.filterQueries.title,
@@ -38034,7 +38030,7 @@ var count = 0;
                                 this.isOpen = true;
                                 _context.prev = 1;
                                 _context.next = 4;
-                                return __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get('/autocomplete/search', {
+                                return __WEBPACK_IMPORTED_MODULE_6_axios___default.a.get('/autocomplete/search', {
                                     params: { searchQuery: this.city }
                                 });
 
@@ -38095,7 +38091,7 @@ var count = 0;
                 this.selectedMain = '';
                 this.page = 1;
                 this.$router.push({ query: {} });
-                __WEBPACK_IMPORTED_MODULE_6_vue___default.a.nextTick(function () {
+                __WEBPACK_IMPORTED_MODULE_7_vue___default.a.nextTick(function () {
                     _this6.$router.push({ path: '/listings', query: {} });
                     _this6.infiniteHandler();
                 });
@@ -40288,13 +40284,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -40335,12 +40324,31 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     },
 
     watch: {},
+    computed: {
+        imageWidth: function imageWidth() {
+            if (this.images.length == 1) {
+                return {
+                    margin: '95px auto',
+                    maxWidth: '600px'
+                };
+            } else if (this.images.length == 2) {
+                return {
+                    margin: '95px auto',
+                    maxWidth: '900px'
+                };
+            } else {
+                return {
+                    maxWidth: 'initial'
+                };
+            }
+        }
+    },
     methods: {
         getProjectDetails: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
                 var _this = this;
 
-                var res, currentDateWithFormat, responce;
+                var res, imgLength, imgCount, currentDateWithFormat, responce;
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
@@ -40358,15 +40366,63 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 this.$nextTick(function () {
                                     _this.name = res.data.project.title;
                                 });
-
                                 if (res.data.project.project_services.length > 0) {
                                     this.services.push(res.data.project.project_services[0].service);
                                 }
                                 this.images = res.data.project.project_galleries.map(function (image) {
                                     return image.url;
                                 });
+                                imgLength = this.images.length;
+                                imgCount = null;
+
+                                if (imgLength == 1) {
+                                    imgCount = 1;
+                                } else if (imgLength == 2) {
+                                    imgCount = 2;
+                                } else if (imgLength == 3) {
+                                    imgCount = 3;
+                                } else if (imgLength == 4) {
+                                    imgCount = 4;
+                                } else {
+                                    imgCount = 5;
+                                }
+
+                                this.$nextTick(function () {
+                                    console.log(this.images.length);
+                                    $('.custom_project_slider').slick({
+                                        infinite: true,
+                                        slidesToShow: imgCount,
+                                        slidesToScroll: 1,
+                                        dots: true,
+                                        arrows: false,
+                                        autoplay: true,
+                                        autoplaySpeed: 1500,
+                                        responsive: [{
+                                            breakpoint: 1610,
+                                            settings: {
+                                                slidesToShow: 4
+                                            }
+                                        }, {
+                                            breakpoint: 1365,
+                                            settings: {
+                                                slidesToShow: 3
+                                            }
+                                        }, {
+                                            breakpoint: 1024,
+                                            settings: {
+                                                slidesToShow: 2
+                                            }
+                                        }, {
+                                            breakpoint: 767,
+                                            settings: {
+                                                slidesToShow: 1
+                                            }
+                                        }]
+                                    });
+                                });
+
                                 currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
-                                _context.next = 13;
+                                _context.next = 17;
                                 return __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post('/analytics', {
                                     user: this.vendorDetails.id,
                                     project: this.id,
@@ -40374,23 +40430,23 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     date: currentDateWithFormat
                                 });
 
-                            case 13:
+                            case 17:
                                 responce = _context.sent;
-                                _context.next = 19;
+                                _context.next = 23;
                                 break;
 
-                            case 16:
-                                _context.prev = 16;
+                            case 20:
+                                _context.prev = 20;
                                 _context.t0 = _context['catch'](0);
 
                                 console.log(_context.t0);
 
-                            case 19:
+                            case 23:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this, [[0, 16]]);
+                }, _callee, this, [[0, 20]]);
             }));
 
             function getProjectDetails() {
@@ -43147,7 +43203,10 @@ var render = function() {
     _vm.images
       ? _c(
           "div",
-          { staticClass: "mfp-gallery-container" },
+          {
+            staticClass: "mfp-gallery-container custom_project_slider",
+            style: _vm.imageWidth
+          },
           [
             _vm._l(_vm.images, function(image, imageIndex) {
               return _c("div", {
@@ -53034,6 +53093,454 @@ __WEBPACK_IMPORTED_MODULE_0__app__["a" /* default */].$mount('#app');
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * vue-local-storage v0.6.0
+ * (c) 2017 Alexander Avakov
+ * @license MIT
+ */
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.VueLocalStorage = factory());
+}(this, (function () { 'use strict';
+
+var VueLocalStorage = function VueLocalStorage () {
+  this._properties = {};
+  this._namespace = '';
+  this._isSupported = true;
+};
+
+var prototypeAccessors = { namespace: {} };
+
+/**
+ * Namespace getter.
+ *
+ * @returns {string}
+ */
+prototypeAccessors.namespace.get = function () {
+  return this._namespace
+};
+
+/**
+ * Namespace setter.
+ *
+ * @param {string} value
+ */
+prototypeAccessors.namespace.set = function (value) {
+  this._namespace = value ? (value + ".") : '';
+};
+
+/**
+ * Concatenates localStorage key with namespace prefix.
+ *
+ * @param {string} lsKey
+ * @returns {string}
+ * @private
+ */
+VueLocalStorage.prototype._getLsKey = function _getLsKey (lsKey) {
+  return ("" + (this._namespace) + lsKey)
+};
+
+/**
+ * Set a value to localStorage giving respect to the namespace.
+ *
+ * @param {string} lsKey
+ * @param {*} rawValue
+ * @param {*} type
+ * @private
+ */
+VueLocalStorage.prototype._lsSet = function _lsSet (lsKey, rawValue, type) {
+  var key = this._getLsKey(lsKey);
+  var value = type && [Array, Object].includes(type)
+    ? JSON.stringify(rawValue)
+    : rawValue;
+
+  window.localStorage.setItem(key, value);
+};
+
+/**
+ * Get value from localStorage giving respect to the namespace.
+ *
+ * @param {string} lsKey
+ * @returns {any}
+ * @private
+ */
+VueLocalStorage.prototype._lsGet = function _lsGet (lsKey) {
+  var key = this._getLsKey(lsKey);
+
+  return window.localStorage[key]
+};
+
+/**
+ * Get value from localStorage
+ *
+ * @param {String} lsKey
+ * @param {*} defaultValue
+ * @param {*} defaultType
+ * @returns {*}
+ */
+VueLocalStorage.prototype.get = function get (lsKey, defaultValue, defaultType) {
+    var this$1 = this;
+    if ( defaultValue === void 0 ) defaultValue = null;
+    if ( defaultType === void 0 ) defaultType = String;
+
+  if (!this._isSupported) {
+    return null
+  }
+
+  if (this._lsGet(lsKey)) {
+    var type = defaultType;
+
+    for (var key in this$1._properties) {
+      if (key === lsKey) {
+        type = this$1._properties[key].type;
+        break
+      }
+    }
+
+    return this._process(type, this._lsGet(lsKey))
+  }
+
+  return defaultValue !== null ? defaultValue : null
+};
+
+/**
+ * Set localStorage value
+ *
+ * @param {String} lsKey
+ * @param {*} value
+ * @returns {*}
+ */
+VueLocalStorage.prototype.set = function set (lsKey, value) {
+    var this$1 = this;
+
+  if (!this._isSupported) {
+    return null
+  }
+
+  for (var key in this$1._properties) {
+    var type = this$1._properties[key].type;
+
+    if ((key === lsKey)) {
+      this$1._lsSet(lsKey, value, type);
+
+      return value
+    }
+  }
+
+  this._lsSet(lsKey, value);
+
+  return value
+};
+
+/**
+ * Remove value from localStorage
+ *
+ * @param {String} lsKey
+ */
+VueLocalStorage.prototype.remove = function remove (lsKey) {
+  if (!this._isSupported) {
+    return null
+  }
+
+  return window.localStorage.removeItem(lsKey)
+};
+
+/**
+ * Add new property to localStorage
+ *
+ * @param {String} key
+ * @param {function} type
+ * @param {*} defaultValue
+ */
+VueLocalStorage.prototype.addProperty = function addProperty (key, type, defaultValue) {
+    if ( defaultValue === void 0 ) defaultValue = undefined;
+
+  type = type || String;
+
+  this._properties[key] = { type: type };
+
+  if (!this._lsGet(key) && defaultValue !== null) {
+    this._lsSet(key, defaultValue, type);
+  }
+};
+
+/**
+ * Process the value before return it from localStorage
+ *
+ * @param {String} type
+ * @param {*} value
+ * @returns {*}
+ * @private
+ */
+VueLocalStorage.prototype._process = function _process (type, value) {
+  switch (type) {
+    case Boolean:
+      return value === 'true'
+    case Number:
+      return parseFloat(value)
+    case Array:
+      try {
+        var array = JSON.parse(value);
+
+        return Array.isArray(array) ? array : []
+      } catch (e) {
+        return []
+      }
+    case Object:
+      try {
+        return JSON.parse(value)
+      } catch (e) {
+        return {}
+      }
+    default:
+      return value
+  }
+};
+
+Object.defineProperties( VueLocalStorage.prototype, prototypeAccessors );
+
+var vueLocalStorage = new VueLocalStorage();
+
+var index = {
+  /**
+   * Install vue-local-storage plugin
+   *
+   * @param {Vue} Vue
+   * @param {Object} options
+   */
+  install: function (Vue, options) {
+    if ( options === void 0 ) options = {};
+
+    if (typeof process !== 'undefined' &&
+      (
+        process.server ||
+        process.SERVER_BUILD ||
+        (Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}) && Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).VUE_ENV === 'server')
+      )
+    ) {
+      return
+    }
+
+    var isSupported = true;
+
+    try {
+      var test = '__vue-localstorage-test__';
+
+      window.localStorage.setItem(test, test);
+      window.localStorage.removeItem(test);
+    } catch (e) {
+      isSupported = false;
+      vueLocalStorage._isSupported = false;
+
+      console.error('Local storage is not supported');
+    }
+
+    var name = options.name || 'localStorage';
+    var bind = options.bind;
+
+    if (options.namespace) {
+      vueLocalStorage.namespace = options.namespace;
+    }
+
+    Vue.mixin({
+      beforeCreate: function beforeCreate () {
+        var this$1 = this;
+
+        if (!isSupported) {
+          return
+        }
+
+        if (this.$options[name]) {
+          Object.keys(this.$options[name]).forEach(function (key) {
+            var config = this$1.$options[name][key];
+            var ref = [config.type, config.default];
+            var type = ref[0];
+            var defaultValue = ref[1];
+
+            vueLocalStorage.addProperty(key, type, defaultValue);
+
+            var existingProp = Object.getOwnPropertyDescriptor(vueLocalStorage, key);
+
+            if (!existingProp) {
+              var prop = {
+                get: function () { return Vue.localStorage.get(key, defaultValue); },
+                set: function (val) { return Vue.localStorage.set(key, val); },
+                configurable: true
+              };
+
+              Object.defineProperty(vueLocalStorage, key, prop);
+              Vue.util.defineReactive(vueLocalStorage, key, defaultValue);
+            } else if (!Vue.config.silent) {
+              console.log((key + ": is already defined and will be reused"));
+            }
+
+            if ((bind || config.bind) && config.bind !== false) {
+              this$1.$options.computed = this$1.$options.computed || {};
+
+              if (!this$1.$options.computed[key]) {
+                this$1.$options.computed[key] = {
+                  get: function () { return Vue.localStorage[key]; },
+                  set: function (val) { Vue.localStorage[key] = val; }
+                };
+              }
+            }
+          });
+        }
+      }
+    });
+
+    Vue[name] = vueLocalStorage;
+    Vue.prototype[("$" + name)] = vueLocalStorage;
+  }
+};
+
+return index;
+
+})));
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ })
 /******/ ]);

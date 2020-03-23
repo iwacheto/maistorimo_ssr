@@ -25,7 +25,7 @@ class ProjectsController extends Controller {
 
     public function getProjectsAnalitycs(){
         $user = auth()->user();
-        return Project::with(['projectGalleries', 'records'])->where('user', $user->id)->orderBy('created_at', 'DESC')->get();
+       return Project::with(['projectGalleries', 'records'])->where('user', $user->id)->orderBy('created_at', 'DESC')->get();
     }
 
     public function getFilterProjectsAnalitycs(Request $request){

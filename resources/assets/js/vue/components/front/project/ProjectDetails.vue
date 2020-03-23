@@ -1,14 +1,8 @@
 <template>
     <div>
-        <div v-if="images" class="mfp-gallery-container">
-            <!-- <gallery :images="images" :index="index" @close="index = null"></gallery> -->
-            <!-- <img
-                class="image"
-                v-for="(image, i) in images"
-                :src="image"
-                :key="i"
-                @click="index = i"
-            />-->
+        <!-- Slider
+        ==================================================-->
+        <div v-if="images" class="mfp-gallery-container custom_project_slider" :style="imageWidth">
             <div
                 class="image"
                 v-for="(image, imageIndex) in images"
@@ -319,7 +313,6 @@ import ClientOnly from 'vue-client-only';
 import GoogleMap from '../../components/googleMap/GoogleMap';
 import { analyticFunction } from '../mixins/analytic_function';
 import axios from 'axios';
-
 export default {
     mixins: [analyticFunction],
     name: 'ProjectDetails',
@@ -358,6 +351,25 @@ export default {
         this.getProjectDetails();
     },
     watch: {},
+    computed: {
+        imageWidth: function() {
+            if (this.images.length == 1) {
+                return {
+                    margin: '95px auto',
+                    maxWidth: '600px',
+                };
+            } else if (this.images.length == 2) {
+                return {
+                    margin: '95px auto',
+                    maxWidth: '900px',
+                };
+            } else {
+                return {
+                    maxWidth: 'initial',
+                };
+            }
+        },
+    },
     methods: {
         async getProjectDetails() {
             try {
@@ -368,11 +380,63 @@ export default {
                 this.$nextTick(() => {
                     this.name = res.data.project.title;
                 });
-
                 if (res.data.project.project_services.length > 0) {
                     this.services.push(res.data.project.project_services[0].service);
                 }
                 this.images = res.data.project.project_galleries.map(image => image.url);
+                const imgLength = this.images.length;
+                let imgCount = null;
+                if (imgLength == 1) {
+                    imgCount = 1;
+                } else if (imgLength == 2) {
+                    imgCount = 2;
+                } else if (imgLength == 3) {
+                    imgCount = 3;
+                } else if (imgLength == 4) {
+                    imgCount = 4;
+                } else {
+                    imgCount = 5;
+                }
+
+                this.$nextTick(function() {
+                    console.log(this.images.length);
+                    $('.custom_project_slider').slick({
+                        infinite: true,
+                        slidesToShow: imgCount,
+                        slidesToScroll: 1,
+                        dots: true,
+                        arrows: false,
+                        autoplay: true,
+                        autoplaySpeed: 1500,
+                        responsive: [
+                            {
+                                breakpoint: 1610,
+                                settings: {
+                                    slidesToShow: 4,
+                                },
+                            },
+                            {
+                                breakpoint: 1365,
+                                settings: {
+                                    slidesToShow: 3,
+                                },
+                            },
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 2,
+                                },
+                            },
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    slidesToShow: 1,
+                                },
+                            },
+                        ],
+                    });
+                });
+
                 let currentDateWithFormat = new Date()
                     .toJSON()
                     .slice(0, 10)
@@ -399,5 +463,3 @@ export default {
 };
 // console.log(this.projectDetails);
 </script>
-
-
