@@ -23,50 +23,56 @@ class VueController extends Controller
         if ($parameters === 'project') {
             $project = Project::with(['projectGalleries'])->where('id', $id)->first();
             $description = strip_tags(str_limit($project->description, 150));
-            // dd($project);
-            $title=$project->title;
+            // dd($project->projectGalleries[0]->url);
+            $title = $project->title;
             SEOMeta::setTitle($project->title);
             SEOMeta::setDescription($description);
 
             OpenGraph::setTitle($project->title);
             OpenGraph::setUrl($url);
             OpenGraph::setSiteName($currentURL);
-            OpenGraph::addImage($project->projectGalleries[0]->url);
+            // OpenGraph::addImage($project->projectGalleries[0]->url, ['height' => 1024, 'width' => 768]);
+            $imgSize = getimagesize($project->projectGalleries[0]->url);
+            $width = $imgSize[0];
+            $height = $imgSize[1];
+            OpenGraph::addImage($project->projectGalleries[0]->url, ['height' => $width, 'width' => $height]);
             OpenGraph::setDescription($description);
 
             $localBusiness = Schema::localBusiness()
-            ->name($project->title)
-            ->email('g.prusiyski@webrika.bg')
-            ->url($currentURL)
-            ->logo($project->projectGalleries[0]->url)
-            ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
-            ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
+                ->name($project->title)
+                ->email('g.prusiyski@webrika.bg')
+                ->url($currentURL)
+                ->logo($project->projectGalleries[0]->url)
+                ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
+                ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
         } elseif ($parameters === 'service') {
             $servise = Service::where('id', $id)->first();
             $description = strip_tags(str_limit($servise->first_description, 150));
-            // dd($servise);
-            $title=$servise->name;
+            $title = $servise->name;
             SEOMeta::setTitle($servise->name);
             SEOMeta::setDescription($description);
 
             OpenGraph::setTitle($servise->name);
             OpenGraph::setUrl($url);
             OpenGraph::setSiteName($currentURL);
-            OpenGraph::addImage($servise->image_url);
+            $imgSize = getimagesize($servise->image_url);
+            $ser_width = $imgSize[0];
+            $ser_height = $imgSize[1];
+            OpenGraph::addImage($servise->image_url, ['height' => $ser_width, 'width' => $ser_height]);
             OpenGraph::setDescription($description);
 
             $localBusiness = Schema::localBusiness()
-            ->name($servise->name)
-            ->email('g.prusiyski@webrika.bg')
-            ->url($currentURL)
-            ->logo($servise->image_url)
-            ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
-            ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
+                ->name($servise->name)
+                ->email('g.prusiyski@webrika.bg')
+                ->url($currentURL)
+                ->logo($servise->image_url)
+                ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
+                ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
         } else {
-            $title='Maistorimo';
+            $title = 'Maistorimo';
             SEOMeta::setTitle('Maistorimo');
             SEOMeta::setDescription('Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги');
-            
+
             OpenGraph::setTitle('Майсторимо.БГ');
             OpenGraph::setUrl($url);
             OpenGraph::setSiteName($currentURL);
@@ -74,12 +80,12 @@ class VueController extends Controller
             OpenGraph::setDescription('Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги');
 
             $localBusiness = Schema::localBusiness()
-            ->name('Maistorimo')
-            ->email('g.prusiyski@webrika.bg')
-            ->url('https://maistorimo.bg')
-            ->logo('https://res.cloudinary.com/maistorimo/image/upload/v1571682662/5dadf96522354.jpg')
-            ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
-            ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
+                ->name('Maistorimo')
+                ->email('g.prusiyski@webrika.bg')
+                ->url('https://maistorimo.bg')
+                ->logo('https://res.cloudinary.com/maistorimo/image/upload/v1571682662/5dadf96522354.jpg')
+                ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
+                ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
         }
         // dd($currentURL);
         return view('vue', [
