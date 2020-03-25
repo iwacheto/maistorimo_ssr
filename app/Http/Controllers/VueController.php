@@ -8,6 +8,7 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 // use Artesaos\SEOTools\Facades\JsonLd;
 use Spatie\SchemaOrg\Schema;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class VueController extends Controller
 {
@@ -29,9 +30,9 @@ class VueController extends Controller
             SEOMeta::setDescription($description);
 
             OpenGraph::setTitle($project->title);
-            OpenGraph::setUrl($url);
+            // OpenGraph::setUrl($url);
+            SEOTools::opengraph()->setUrl($url);
             OpenGraph::setSiteName($currentURL);
-            // OpenGraph::addImage($project->projectGalleries[0]->url, ['height' => 1024, 'width' => 768]);
             $imgSize = getimagesize($project->projectGalleries[0]->url);
             $width = $imgSize[0];
             $height = $imgSize[1];
