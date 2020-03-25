@@ -252,7 +252,7 @@
                                     <a
                                         class="fb-share"
                                         target="_blank"
-                                        :href="'https://www.facebook.com/sharer/sharer.php?u=https://maistorimo.bg/#/service/details/'+ this.id +'&display=popup'"
+                                        :href="'https://www.facebook.com/sharer/sharer.php?u=https://maistorimo.bg/project/details/'+ this.id +'&display=popup'"
                                         @click="contactAnalytic('facebook')"
                                     >
                                         <i class="fa fa-facebook"></i> Сподели
