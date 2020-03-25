@@ -31,7 +31,6 @@ class VueController extends Controller
 
             OpenGraph::setTitle($project->title);
             // OpenGraph::setUrl($url);
-            SEOTools::opengraph()->setUrl($url);
             OpenGraph::setSiteName($currentURL);
             $imgSize = getimagesize($project->projectGalleries[0]->url);
             $width = $imgSize[0];
