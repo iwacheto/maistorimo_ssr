@@ -31,6 +31,7 @@ class WebsiteController extends Controller
 
     public function index($user)
     {
+       
         $vendor = User::where('name', $user)->first();
         $projects = $vendor->projects()->orderBy('created_at', 'DESC')->get();
         // $projects = Project::where('user', $vendor->id)->orderBy('created_at', 'DESC')->get();
@@ -52,6 +53,7 @@ class WebsiteController extends Controller
 
         $services = Service::where('user_id', $vendor->id)->get();
         return view('website.content.homepage', ['settings' => $settings, 'services' => $services, 'projects' => $projects, 'vendor' => $vendor, 'colors' => $this->colors, 'localBusiness' => $localBusiness]);
+    
     }
 
     public function about($user)
@@ -231,4 +233,6 @@ class WebsiteController extends Controller
 
         return view('website.content.terms', ['projects' => $projects, 'settings' => $settings, 'services' => $services, 'vendor' => $vendor, 'colors' => $this->colors ,'terms'=>$terms, 'localBusiness' => $localBusiness]);
     }
+
+    
 }

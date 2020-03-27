@@ -8,18 +8,34 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 // use Artesaos\SEOTools\Facades\JsonLd;
 use Spatie\SchemaOrg\Schema;
-use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\Auth;
+
 
 class VueController extends Controller
 {
+
+    private $colors = [
+        'blue' => '#2991d6',
+        'brown' => '#825339',
+        'chocolate' => '#ed703a',
+        'gold' => '#d69942',
+        'green' => '#97cc02',
+        'olive' => '#a1a61a',
+        'orange' => '#ff7713',
+        'red' => '#ff0000',
+        'sea' => '#13bfb1',
+        'violet' => '#53348b',
+        'yellow' => '#eea200'
+    ];
+
     public function __invoke()
     {
         $currentURL = \Request::fullUrl();
+        $user = Auth::user();
+        // dd($user->name);
         $parameters = \Request::segment(1);
         $id = \Request::segment(3);
         $url = 'maistorimo.bg';
-
-        // dd($currentURL);
 
         if ($parameters === 'project') {
             $project = Project::with(['projectGalleries'])->where('id', $id)->first();

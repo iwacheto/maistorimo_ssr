@@ -39,6 +39,11 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
+    public function userName()
+    {
+      return $this->name;
+    }
+
     public function projects() {
         return $this->hasMany('App\Models\Project', 'user');
     }

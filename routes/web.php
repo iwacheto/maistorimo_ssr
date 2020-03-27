@@ -1,19 +1,13 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Illuminate\Support\Facades\Auth;
 
-Route::pattern('url', '.*');
 
-Route::group(array('domain' => '{subdomain}.maistorimo.gpb'), function () {
+
+$route = config('app.url');
+// dd($route);
+Route::group(array('domain' => '{subdomain}.' . $route), function () {
+
     Route::get('/', 'Website\WebsiteController@index');
     Route::get('/about', 'Website\WebsiteController@about');
     Route::get('/contact', 'Website\WebsiteController@contact');
@@ -23,6 +17,9 @@ Route::group(array('domain' => '{subdomain}.maistorimo.gpb'), function () {
     Route::get('/terms', 'Website\WebsiteController@terms');
     Route::get('/services/{service}', 'Website\WebsiteController@serviceDetail');
 });
+
+
+
 
 //Front Page Project Routes
 Route::get('all-projects', 'Front\ProjectsController@getProjects');
@@ -49,7 +46,6 @@ Route::get('/projects_meta/{id}', 'Front\ProfileController@getMeta');
 
 Route::prefix('profiles')->group(function () {
     Route::get('{id}', 'Front\ProfileController@getProfile');
-    // Route::get('{id}', 'Front\ServiceController@getProfileServices');
 });
 
 Route::prefix('categories')->group(function () {
@@ -63,15 +59,6 @@ Route::prefix('terms')->group(function () {
 
 Route::any('is-auth', 'Vendor\AuthController@isAuth');
 Route::any('auth-user', 'Vendor\AuthController@isAuth');
-// Route::get('auth-user', function () {
-//     return Auth::user();
-// });
-// Route::post('is-auth', function () {
-//     return Auth::user();
-// });
-// Route::get('auth-user', function () {
-//     return Auth::user();
-// });
 
 Route::get('/get_user', 'VendorController@getUser');
 
@@ -165,14 +152,7 @@ Route::post('/request-invite', 'Front\InviteController@addInviteRequest');
 
 Auth::routes();
 
-// Route::get('/', 'WelcomeController');
-
-// Route::get('admin/{url?}', 'VueController@admin');
-Route::get('/admin/{url?}', 'VendorController');
-// Route::get('/admin/projects', 'VendorController');
 
 Route::get('/{url?}', 'VueController');
 Route::get('/project/details/{url?}', 'VueController');
-
-
-
+Route::get('/service/details/{url?}', 'VueController');
