@@ -122,7 +122,7 @@
                           id="username"
                           value
                           @focus="makeFocus('registerUsername')"
-                          v-validate="'required|alpha|min:5'"
+                          v-validate="{ required: true,min:5 , regex: /\.([a-zA-Z])$/ }"
                         />
                         <small
                           v-if="errors.has('register.registerUsername')"
@@ -353,6 +353,7 @@ export default {
       }
     },
     async register() {
+      console.log(this.registerData.username);
       if (
         this.errors.has(('register.registerUsername') || ('register.registerEmail')  || ('register.registerPassword') ||('register.confirmPassword'))
       ) {
@@ -361,6 +362,7 @@ export default {
         return
       }
       else{
+        
       try {
         const res = await axios.post("/register", {
           name: this.registerData.username,
