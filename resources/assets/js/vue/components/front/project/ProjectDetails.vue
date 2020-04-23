@@ -1,18 +1,26 @@
 <template>
     <div>
-        <!-- Slider
-        ==================================================-->
+        <!-- Slider   =====-->
+
         <div v-if="images" class="mfp-gallery-container custom_project_slider" :style="imageWidth">
-            <div
+            <!-- <div
                 class="image"
                 v-for="(image, imageIndex) in images"
                 :key="imageIndex"
                 @click="handleClick(imageIndex)"
                 :style="{ backgroundImage: 'url(' + image + ')', width: '600px', height: '400px' }"
-            ></div>
-            <client-only placeholder="Loading...">
+            ></div> -->
+            <a
+                :href="image"
+                :style="{ backgroundImage: 'url(' + image + ')', width: '600px', height: '400px' }"
+                v-for="(image, imageIndex) in images"
+                :key="imageIndex"
+                class="item mfp-gallery"
+                title="Title 1"
+            ></a>
+            <!-- <client-only placeholder="Loading...">
                 <VueGallerySlideshow :images="images" :index="index" @close="index = null" />
-            </client-only>
+            </client-only>-->
         </div>
 
         <div>
@@ -400,41 +408,44 @@ export default {
 
                 this.$nextTick(function() {
                     console.log(this.images.length);
-                    $('.custom_project_slider').slick({
-                        infinite: true,
-                        slidesToShow: imgCount,
-                        slidesToScroll: 1,
-                        dots: true,
-                        arrows: false,
-                        autoplay: true,
-                        autoplaySpeed: 1500,
-                        responsive: [
-                            {
-                                breakpoint: 1610,
-                                settings: {
-                                    slidesToShow: 4,
+                    $('.custom_project_slider')
+                        .not('.slick-initialized')
+                        .slick({
+                            infinite: true,
+                            slidesToShow: imgCount,
+                            slidesToScroll: 1,
+                            dots: true,
+                            arrows: false,
+                            autoplay: true,
+                            draggable: true,
+                            autoplaySpeed: 1500,
+                            responsive: [
+                                {
+                                    breakpoint: 1610,
+                                    settings: {
+                                        slidesToShow: 4,
+                                    },
                                 },
-                            },
-                            {
-                                breakpoint: 1365,
-                                settings: {
-                                    slidesToShow: 3,
+                                {
+                                    breakpoint: 1365,
+                                    settings: {
+                                        slidesToShow: 3,
+                                    },
                                 },
-                            },
-                            {
-                                breakpoint: 1024,
-                                settings: {
-                                    slidesToShow: 2,
+                                {
+                                    breakpoint: 1024,
+                                    settings: {
+                                        slidesToShow: 2,
+                                    },
                                 },
-                            },
-                            {
-                                breakpoint: 767,
-                                settings: {
-                                    slidesToShow: 1,
+                                {
+                                    breakpoint: 767,
+                                    settings: {
+                                        slidesToShow: 1,
+                                    },
                                 },
-                            },
-                        ],
-                    });
+                            ],
+                        });
                 });
 
                 let currentDateWithFormat = new Date()
