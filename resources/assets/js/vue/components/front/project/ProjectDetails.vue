@@ -8,7 +8,7 @@
                 v-for="(image, imageIndex) in images"
                 :key="imageIndex"
                 @click="handleClick(imageIndex)"
-                :style="{ backgroundImage: 'url(' + image + ')', width: '400px', height: '400px' }"
+                :style="{ backgroundImage: 'url(' + image + ')', width: '600px', height: '400px' }"
             ></div>
             <client-only placeholder="Loading...">
                 <VueGallerySlideshow :images="images" :index="index" @close="index = null" />

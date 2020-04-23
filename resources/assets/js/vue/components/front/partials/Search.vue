@@ -31,7 +31,8 @@
                 @click="changeClass('services')"
                 :class="[page=='services' ? 'active_search_link': '']"
               >
-                <i class="im im-icon-Hamburger"></i>
+                <i class="im im-icon-Hammer"></i>
+               
                 <h4>Услуги</h4>
               </a>
             </div>
