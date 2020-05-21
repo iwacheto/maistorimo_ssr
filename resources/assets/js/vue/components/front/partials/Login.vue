@@ -122,8 +122,7 @@
                           id="username"
                           value
                           @focus="makeFocus('registerUsername')"
-                          v-validate="{ required: true,min:5 , regex: /\.([a-zA-Z])$/ }"
-                        />
+                          v-validate="{ required: true, min:5, regex:/^([a-z|A-Z]+)$/ }" />
                         <small
                           v-if="errors.has('register.registerUsername')"
                           class="error"
