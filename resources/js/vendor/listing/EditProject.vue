@@ -184,7 +184,7 @@
               <a @click.stop="deleteImage(imageIndex)" class="button del_btn">
                 <i class="sl sl-icon-close"></i> Delete
               </a>
-              
+
             </div>
             <vue-dropzone
               ref="myVueDropzone"
@@ -246,7 +246,7 @@ export default {
       dropzoneOptions: {
         url: "/vendor/galleries/uploadImage",
         thumbnailWidth: 150,
-        maxFilesize: 0.5,
+        maxFilesize: 15,
         headers: { "My-Awesome-Header": "header value" }
       },
       editorConfig: {

@@ -205,14 +205,14 @@
 				dropzoneOptions: {
 					url: "/vendor/galleries/uploadImage",
 					thumbnailWidth: 150,
-					maxFilesize: 0.5,
+					maxFilesize: 15,
 					headers: {"My-Awesome-Header": "header value"}
 				},
 				dropzoneOptionsMain: {
 					url: "/vendor/galleries/uploadImage",
 					maxFiles: 1,
 					thumbnailWidth: 150,
-					maxFilesize: 0.5,
+					maxFilesize: 15,
 					headers: {"My-Awesome-Header": "header value"}
 				},
 
