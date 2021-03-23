@@ -60,11 +60,14 @@ class ProjectsController extends Controller {
             'user'=>$user->id
         ])->firstOrFail();
         $images = $project->projectGalleries()->get();
+        
         foreach ($images as $k => $image) {
             $imagePublicId = explode('/', $image->url);
             $imagePublicId = $imagePublicId[count($imagePublicId) - 2] . '/' . explode('.', $imagePublicId[count($imagePublicId) - 1])[0];
-            $rest = \Cloudder::delete($imagePublicId);
+            echo $imagePublicId;
+            // $rest = \Cloudder::delete($imagePublicId);
         }
+        dd($images);
         $project->delete($id);
     }
 

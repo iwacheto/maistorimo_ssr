@@ -90,9 +90,7 @@
                   :autocomplete-items="filteredTags"
                   @tags-changed="newTags => project.tags = newTags"
                 />
-                <!-- @before-deleting-tag="deleteTag"
-                @before-adding-tag="addTag"-->
-              </div>
+               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
@@ -110,16 +108,7 @@
                   track-by="id"
                   :options="userServices"
                 ></multiselect>
-                <!-- <vue-tags-input
-                                    v-model="service"
-                                    style="max-width: 100% !important;"
-                                    :tags="userServicesTags"
-                                    :autocomplete-items="userServices"
-                                    :add-only-from-autocomplete="true"
-                                    @before-deleting-tag="deleteService"
-                                    @before-adding-tag="addService"
-                />-->
-              </div>
+               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
@@ -247,7 +236,8 @@ export default {
         url: "/vendor/galleries/uploadImage",
         thumbnailWidth: 150,
         maxFilesize: 0.5,
-        headers: { "My-Awesome-Header": "header value" }
+        headers: { "My-Awesome-Header": "header value" },
+         addRemoveLinks: true
       },
       editorConfig: {
         editor: ClassicEditor,
@@ -364,11 +354,12 @@ export default {
       this.project.formatted_address = position.formatted_address;
       this.project.raw_data = position.raw_data;
       this.project.userServicesTags = this.userServicesTags;
-      try {
+       try {
         const res = await axios.post(
           "/vendor/projects/" + this.project.id + "/edit",
           this.project
         );
+         this.$refs.myVueDropzone.removeAllFiles();
         this.$refs.mytoast.s("Проектът бе редактиран успешно!");
         // setTimeout(() => {
         // 	this.$router.push({name: 'ProjectsList'})

@@ -33,15 +33,16 @@
                         <div id="titlebar" class="listing-titlebar">
                             <div class="listing-titlebar-title">
                                 <h2>
-                                    {{ projectDetails.title}}
-                                    <span v-if="services.length>0">
+                                    {{ projectDetails.title }}
+                                    <span v-if="services.length > 0">
                                         <router-link
                                             tag="span"
                                             class="listing-tag"
-                                            :to="'/service/details/'+ service.id"
+                                            :to="'/service/details/' + service.id"
                                             v-for="service in services"
                                             :key="service.id"
-                                        >{{ service.name }}</router-link>
+                                            >{{ service.name }}</router-link
+                                        >
                                     </span>
                                 </h2>
                                 <span>
@@ -57,11 +58,9 @@
                         <div id="listing-nav" class="listing-nav-container">
                             <ul class="listing-nav">
                                 <li>
-                                    <a
-                                        href="#"
-                                        v-scroll-to="'#listing-overview'"
-                                        class="active"
-                                    >Детайли</a>
+                                    <a href="#" v-scroll-to="'#listing-overview'" class="active"
+                                        >Детайли</a
+                                    >
                                 </li>
 
                                 <li>
@@ -86,20 +85,22 @@
                                         <i class="fa fa-phone"></i>
                                         <span v-if="showPhone">+359</span>
                                         <span v-else>
-                                            <a
-                                                :href="'tel:'+vendorDetails.phone_number"
-                                            >{{ vendorDetails.phone_number }}</a>
+                                            <a :href="'tel:' + vendorDetails.phone_number">{{
+                                                vendorDetails.phone_number
+                                            }}</a>
                                         </span>
                                         <span
                                             class="phone_button"
                                             @click="contactAnalytic('phone')"
                                             v-if="showPhone"
-                                        >Покажи</span>
+                                            >Покажи</span
+                                        >
                                         <span
                                             class="phone_button"
                                             @click="hidePhone"
                                             v-if="!showPhone"
-                                        >Скрий</span>
+                                            >Скрий</span
+                                        >
                                     </li>
                                     <li>
                                         <a
@@ -108,7 +109,7 @@
                                             @click="contactAnalytic('email')"
                                         >
                                             <i class="fa fa-envelope-o"></i>
-                                            {{ vendorDetails.email_address}}
+                                            {{ vendorDetails.email_address }}
                                         </a>
                                     </li>
                                     <li>
@@ -146,20 +147,26 @@
                             <!-- More Search Options -->
 
                             <ul class="listing-features checkboxes">
-                                <li
-                                    v-for="(tag, i) in projectDetails.tags"
-                                    :key="i"
-                                >{{ tag.tag.tag }}</li>
+                                <li v-for="(tag, i) in projectDetails.tags" :key="i">
+                                    {{ tag.tag.tag }}
+                                </li>
                             </ul>
                         </div>
 
                         <!-- Location -->
                         <div id="listing-location" class="listing-section">
-                            <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Локация</h3>
+                            <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">
+                                Локация
+                            </h3>
 
                             <div id="singleListingMap-container">
                                 <google-map
-                                    v-if="projectDetails.lat && projectDetails.lng && projectDetails.formatted_address && projectDetails.raw_data"
+                                    v-if="
+                                        projectDetails.lat &&
+                                        projectDetails.lng &&
+                                        projectDetails.formatted_address &&
+                                        projectDetails.raw_data
+                                    "
                                     :lat="projectDetails.lat"
                                     :lng="projectDetails.lng"
                                     :formatted_address="projectDetails.formatted_address"
@@ -180,7 +187,7 @@
                         >
                             <router-link :to="'/profile/' + vendorDetails.user">
                                 <i class="sl sl-icon-check"></i>
-                                {{vendorDetails.company_name}}
+                                {{ vendorDetails.company_name }}
                             </router-link>
                         </div>
 
@@ -189,7 +196,7 @@
                             <div class="hosted-by-title">
                                 <h4 v-if="vendorDetails.company_name">
                                     <span>Създаден от</span>
-                                    {{vendorDetails.company_name}}
+                                    {{ vendorDetails.company_name }}
                                 </h4>
                                 <router-link
                                     :to="'/profile/' + vendorDetails.user"
@@ -205,20 +212,19 @@
                                     <i class="sl sl-icon-phone"></i>
                                     <span v-if="showPhone">+359</span>
                                     <span v-else>
-                                        <a
-                                            :href="'tel:'+vendorDetails.phone_number"
-                                        >{{ vendorDetails.phone_number }}</a>
+                                        <a :href="'tel:' + vendorDetails.phone_number">{{
+                                            vendorDetails.phone_number
+                                        }}</a>
                                     </span>
                                     <span
                                         class="phone_button"
                                         @click="contactAnalytic('phone')"
                                         v-if="showPhone"
-                                    >Покажи</span>
-                                    <span
-                                        class="phone_button"
-                                        @click="hidePhone"
-                                        v-if="!showPhone"
-                                    >Скрий</span>
+                                        >Покажи</span
+                                    >
+                                    <span class="phone_button" @click="hidePhone" v-if="!showPhone"
+                                        >Скрий</span
+                                    >
                                 </li>
                                 <li v-if="vendorDetails.website">
                                     <i class="sl sl-icon-globe"></i>
@@ -226,14 +232,16 @@
                                         :href="'//' + vendorDetails.website"
                                         @click="contactAnalytic('website')"
                                         target="_blank"
-                                    >{{vendorDetails.website}}</a>
+                                        >{{ vendorDetails.website }}</a
+                                    >
                                 </li>
                                 <li v-if="vendorDetails.email_address">
                                     <i class="fa fa-envelope-o"></i>
                                     <a
-                                        :href="'mailto:'+ vendorDetails.email_address"
+                                        :href="'mailto:' + vendorDetails.email_address"
                                         @click="contactAnalytic('email')"
-                                    >{{vendorDetails.email_address}}</a>
+                                        >{{ vendorDetails.email_address }}</a
+                                    >
                                 </li>
                             </ul>
 
@@ -260,7 +268,11 @@
                                     <a
                                         class="fb-share"
                                         target="_blank"
-                                        :href="'https://www.facebook.com/sharer/sharer.php?u=https://maistorimo.bg/project/details/'+ this.id +'&display=popup'"
+                                        :href="
+                                            'https://www.facebook.com/sharer/sharer.php?u=https://maistorimo.bg/project/details/' +
+                                            this.id +
+                                            '&display=popup'
+                                        "
                                         @click="contactAnalytic('facebook')"
                                     >
                                         <i class="fa fa-facebook"></i> Сподели
@@ -271,16 +283,16 @@
                         </div>
 
                         <!-- Widget -->
-                        <div class="widget margin-top-40" v-if="services.length >=1">
+                        <div class="widget margin-top-40" v-if="services.length >= 1">
                             <h3>Услуги</h3>
                             <ul class="widget-tabs">
                                 <!-- Post #1 -->
-                                <li v-for="( service, index) in services" :key="index">
+                                <li v-for="(service, index) in services" :key="index">
                                     <div class="widget-content">
                                         <div class="widget-thumb">
                                             <router-link
                                                 tag="a"
-                                                :to="'/service/details/'+ service.id"
+                                                :to="'/service/details/' + service.id"
                                             >
                                                 <img :src="service.image_url" alt />
                                             </router-link>
@@ -290,8 +302,9 @@
                                             <h5>
                                                 <router-link
                                                     tag="a"
-                                                    :to="'/service/details/'+ service.id"
-                                                >{{ service.name }}</router-link>
+                                                    :to="'/service/details/' + service.id"
+                                                    >{{ service.name }}</router-link
+                                                >
                                             </h5>
                                             <span>{{ service.created_at }}</span>
                                         </div>
@@ -310,7 +323,7 @@
                 </div>
             </div>
         </div>
-        <p>{{title}}</p>
+        <p>{{ title }}</p>
         <!-- <p> {{ articlelist }}</p> -->
     </div>
 </template>
@@ -360,7 +373,7 @@ export default {
     },
     watch: {},
     computed: {
-        imageWidth: function() {
+        imageWidth: function () {
             if (this.images.length == 1) {
                 return {
                     margin: '95px auto',
@@ -391,7 +404,7 @@ export default {
                 if (res.data.project.project_services.length > 0) {
                     this.services.push(res.data.project.project_services[0].service);
                 }
-                this.images = res.data.project.project_galleries.map(image => image.url);
+                this.images = res.data.project.project_galleries.map((image) => image.url);
                 const imgLength = this.images.length;
                 let imgCount = null;
                 if (imgLength == 1) {
@@ -406,7 +419,7 @@ export default {
                     imgCount = 5;
                 }
 
-                this.$nextTick(function() {
+                this.$nextTick(function () {
                     console.log(this.images.length);
                     $('.custom_project_slider')
                         .not('.slick-initialized')
@@ -448,10 +461,7 @@ export default {
                         });
                 });
 
-                let currentDateWithFormat = new Date()
-                    .toJSON()
-                    .slice(0, 10)
-                    .replace(/-/g, '-');
+                let currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
                 const responce = await axios.post('/analytics', {
                     user: this.vendorDetails.id,
                     project: this.id,

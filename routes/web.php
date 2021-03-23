@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 $route = config('app.url');
-// dd($route);
+
+// Route::domain('{subdomain}.'. $route)->group(function () {
 Route::group(array('domain' => '{subdomain}.' . $route), function () {
 
     Route::get('/', 'Website\WebsiteController@index');

@@ -24,10 +24,10 @@
                 <div class="dashboard-list-box margin-top-0">
                     <h4 class="gray">
                         Настройки на сайта
-                        <span
-                            class="missingContent"
-                            v-if="hideWebsite"
-                        >За да бъде създаден успешно Вашият уебсайт, трябва да попълните всички настройки от секциите!</span>
+                        <span class="missingContent" v-if="hideWebsite"
+                            >За да бъде създаден успешно Вашият уебсайт, трябва да попълните всички
+                            настройки от секциите!</span
+                        >
                         <button
                             v-else
                             class="button margin-top-15 margin-left-50"
@@ -44,7 +44,8 @@
                                     @click.prevent="setActive('home')"
                                     :class="{ active: isActive('home') }"
                                     href="#home"
-                                >Стилове</a>
+                                    >Стилове</a
+                                >
                                 <span v-if="error.showStyleError" class="error_data">!</span>
                             </li>
                             <li class="nav-item">
@@ -53,7 +54,8 @@
                                     @click.prevent="setActive('profile')"
                                     :class="{ active: isActive('profile') }"
                                     href="#profile"
-                                >Начална страница</a>
+                                    >Начална страница</a
+                                >
                                 <span v-if="error.showHomeError" class="error_data">!</span>
                             </li>
                             <li class="nav-item">
@@ -62,7 +64,8 @@
                                     @click.prevent="setActive('about')"
                                     :class="{ active: isActive('about') }"
                                     href="#about"
-                                >За нас</a>
+                                    >За нас</a
+                                >
                                 <span v-if="error.showAboutUsError" class="error_data">!</span>
                             </li>
                             <li class="nav-item">
@@ -71,7 +74,8 @@
                                     @click.prevent="setActive('contact')"
                                     :class="{ active: isActive('contact') }"
                                     href="#contact"
-                                >Контакти</a>
+                                    >Контакти</a
+                                >
                                 <span v-if="error.showContactsError" class="error_data">!</span>
                             </li>
                             <li class="nav-item">
@@ -80,7 +84,8 @@
                                     @click.prevent="setActive('seo')"
                                     :class="{ active: isActive('seo') }"
                                     href="#seo"
-                                >SEO</a>
+                                    >SEO</a
+                                >
                                 <span v-if="error.showSEOError" class="error_data">!</span>
                             </li>
                             <li class="nav-item">
@@ -89,7 +94,8 @@
                                     @click.prevent="setActive('terms')"
                                     :class="{ active: isActive('terms') }"
                                     href="#terms"
-                                >Общи условия</a>
+                                    >Общи условия</a
+                                >
                                 <span v-if="error.showGeneralError" class="error_data">!</span>
                             </li>
                         </ul>
@@ -98,10 +104,12 @@
                             <label>Цвят на сайта</label>
                             <select v-model="user.website_settings.color">
                                 <option
-                                    v-for="(color) in colors"
+                                    v-for="color in colors"
                                     :key="color.value"
                                     :value="color.value"
-                                >{{ color.name }}</option>
+                                >
+                                    {{ color.name }}
+                                </option>
                             </select>
                             <!-- Logo -->
                             <label>Лого на сайта</label>
@@ -136,9 +144,7 @@
                                         </svg>
                                     </figure>
                                     <span class="upload-caption">
-                                        {{
-                                        hasLogo ? "Replace" : "Click to upload"
-                                        }}
+                                        {{ hasLogo ? 'Replace' : 'Click to upload' }}
                                     </span>
                                 </label>
                             </image-uploader>
@@ -179,9 +185,7 @@
                                         </svg>
                                     </figure>
                                     <span class="upload-caption">
-                                        {{
-                                        hasMainImage ? "Replace" : "Click to upload"
-                                        }}
+                                        {{ hasMainImage ? 'Replace' : 'Click to upload' }}
                                     </span>
                                 </label>
                             </image-uploader>
@@ -190,10 +194,9 @@
                             <div class="my-profile">
                                 <label>
                                     Заглавие начална страница
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.headingError"
-                                    >Текстът не трябва да е по дълъг от 250 символа</span>
+                                    <span class="website_error" v-if="homepage.headingError"
+                                        >Текстът не трябва да е по дълъг от 250 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -203,19 +206,21 @@
 
                                 <label>
                                     Текст начална страница
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.textError"
-                                    >Текстът не трябва да е по дълъг от 1000 символа</span>
+                                    <span class="website_error" v-if="homepage.textError"
+                                        >Текстът не трябва да е по дълъг от 1000 символа</span
+                                    >
                                 </label>
-                                <input value v-model="user.website_settings.home_text" type="text" />
+                                <input
+                                    value
+                                    v-model="user.website_settings.home_text"
+                                    type="text"
+                                />
 
                                 <label>
                                     Опорна точка 1 заглавие
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.bullet1HeadError"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.bullet1HeadError"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -224,10 +229,9 @@
                                 />
                                 <label>
                                     Опорна точка 1 текст
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.bullet1ContError"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.bullet1ContError"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -237,10 +241,9 @@
 
                                 <label>
                                     Опорна точка 2 заглавие
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.bullet2HeadError"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.bullet2HeadError"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -249,10 +252,9 @@
                                 />
                                 <label>
                                     Опорна точка 2 текст
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.bullet2ContError"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.bullet2ContError"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -262,10 +264,9 @@
 
                                 <label>
                                     Опорна точка 3 заглавие
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.bullet3HeadError"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.bullet3HeadError"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -274,10 +275,9 @@
                                 />
                                 <label>
                                     Опорна точка 3 текст
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.bullet3ContError"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.bullet3ContError"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -305,7 +305,12 @@
 
                         <div class="tab-pan" :class="{ 'active show': isActive('contact') }">
                             <google-map
-                                v-if="user.website_settings.lat && user.website_settings.lng && user.website_settings.formatted_address && user.website_settings.raw_data"
+                                v-if="
+                                    user.website_settings.lat &&
+                                    user.website_settings.lng &&
+                                    user.website_settings.formatted_address &&
+                                    user.website_settings.raw_data
+                                "
                                 :lat="user.website_settings.lat"
                                 :lng="user.website_settings.lng"
                                 :formatted_address="user.website_settings.formatted_address"
@@ -318,18 +323,20 @@
                             <div class="my-profile">
                                 <label>
                                     Заглавие на сайта
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.seoHeading"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.seoHeading"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
-                                <input value v-model="user.website_settings.seo_title" type="text" />
+                                <input
+                                    value
+                                    v-model="user.website_settings.seo_title"
+                                    type="text"
+                                />
                                 <label>
                                     Описание на сайта
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.seoDesc"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.seoDesc"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input
                                     value
@@ -343,74 +350,64 @@
                             <div class="my-profile">
                                 <label>
                                     Официално фирмено наименование в търговския регистър
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsName"
-                                    >Името не трябва да е по дълго от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.termsName"
+                                        >Името не трябва да е по дълго от 255 символа</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.name" type="text" />
                                 <label>
                                     ЕИК
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsEik"
-                                    >ЕИК трябва да е точно 9 цифри символа</span>
+                                    <span class="website_error" v-if="homepage.termsEik"
+                                        >ЕИК трябва да е точно 9 цифри символа</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.eik" type="text" />
                                 <label>
                                     Адрес на управление в търговския регистър
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsAddressReg"
-                                    >Адресът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.termsAddressReg"
+                                        >Адресът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.address_reg" type="text" />
                                 <label>
                                     Управител, управители
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsManager"
-                                    >Текстът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.termsManager"
+                                        >Текстът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.manager" type="text" />
                                 <label>
                                     Телефон
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsPhoneMin"
-                                    >Телефонът трябва да е по дълъг от 8 символа</span>
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsPhoneNumber"
-                                    >Телефонът трябва да е с цифри</span>
+                                    <span class="website_error" v-if="homepage.termsPhoneMin"
+                                        >Телефонът трябва да е по дълъг от 8 символа</span
+                                    >
+                                    <span class="website_error" v-if="homepage.termsPhoneNumber"
+                                        >Телефонът трябва да е с цифри</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.phone" type="text" />
                                 <label>
                                     Имейл
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsEmail"
-                                    >Имейлът не трябва да е по дълъг от 255 символа</span>
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsEmail2"
-                                    >Имейлът трябва да е валиден Имейл адрес</span>
+                                    <span class="website_error" v-if="homepage.termsEmail"
+                                        >Имейлът не трябва да е по дълъг от 255 символа</span
+                                    >
+                                    <span class="website_error" v-if="homepage.termsEmail2"
+                                        >Имейлът трябва да е валиден Имейл адрес</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.email" type="text" />
                                 <label>
                                     Действителен адрес, на който се осъществява дейността
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsAddress"
-                                    >Адресът не трябва да е по дълъг от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.termsAddress"
+                                        >Адресът не трябва да е по дълъг от 255 символа</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.address" type="text" />
                                 <label>
                                     Опишете подробно какъв вид услуги ще извършвате
-                                    <span
-                                        class="website_error"
-                                        v-if="homepage.termsDesc"
-                                    >Описанието не трябва да е по дълго от 255 символа</span>
+                                    <span class="website_error" v-if="homepage.termsDesc"
+                                        >Описанието не трябва да е по дълго от 255 символа</span
+                                    >
                                 </label>
                                 <input value v-model="user.terms.description" type="text" />
                             </div>
@@ -437,7 +434,7 @@ import GoogleMap from '../../components/googleMap/GoogleMap';
 export default {
     data() {
         return {
-            user:laravel.user,
+            user: laravel.user,
             errorTexts: [
                 {
                     text: 'The website settings.home text may not be greater than 1000 characters.',
@@ -649,11 +646,11 @@ export default {
         this.$refs.mytoast.defaultPosition = 'toast-top-center';
         this.$refs.mytoast.defaultStyle = { top: '80px' };
         this.showErrors();
-        console.log(this.user.website_settings.formatted_address)
+        console.log(this.user.website_settings.formatted_address);
     },
     watch: {},
     methods: {
-       showErrors() {
+        showErrors() {
             if (this.hasLogo) {
                 this.error.showStyleError = false;
             } else {
@@ -724,10 +721,11 @@ export default {
             }
         },
         openWebsite() {
-            window.open('//' + this.user.name + '.maistorimo.bg');
+            window.open('//' + this.user.name + '.maistorimo.gpb');
+            // window.open('https://' + this.user.name + '.maistorimo.bg');
             // window.open = '/website/' + this.user.name + '/home';
         },
-        uploadLogo: function(output) {
+        uploadLogo: function (output) {
             this.hasLogo = true;
             this.logo = output;
             let self = this;
@@ -736,7 +734,7 @@ export default {
                 // console.log(data.url)
             });
         },
-        uploadImage: function(output) {
+        uploadImage: function (output) {
             this.hasMainImage = true;
             this.mainImage = output;
             let self = this;
@@ -761,14 +759,14 @@ export default {
                     // this.showErrors();
                     this.$refs.mytoast.s('Успешно променихте настройките на Уебсайта Ви!');
                 })
-                .catch(error => {
+                .catch((error) => {
                     let err = error.response.data.errors;
                     for (const elem in err) {
                         let allErrors;
 
                         allErrors = err[elem][0];
                         console.log(allErrors);
-                        this.errorTexts.forEach(err => {
+                        this.errorTexts.forEach((err) => {
                             if (err.text === allErrors) {
                                 this.homepage[err.err] = true;
                                 this.scrollToError();
@@ -778,7 +776,7 @@ export default {
                 });
         },
         scrollToError() {
-            setTimeout(function() {
+            setTimeout(function () {
                 let elem = document.querySelector('.website_error');
                 // const y = elem.getBoundingClientRect();
                 elem.scrollIntoView({ behavior: 'smooth', block: 'center' });

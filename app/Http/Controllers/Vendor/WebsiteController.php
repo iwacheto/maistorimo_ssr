@@ -23,6 +23,7 @@ class WebsiteController extends Controller
     public function index()
     {
 
+        dd('User');
         $user = auth()->user();
         $user = User::with(['websiteSetting', 'terms'])->find($user->id);
         if (!$user->websiteSetting) {

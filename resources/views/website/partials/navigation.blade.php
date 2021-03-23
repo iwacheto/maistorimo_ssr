@@ -27,7 +27,8 @@
                                 <ul class="menu">
                                     @foreach($services as $service)
                                     <li class="list_services">
-                                        <a href="{{$vendor->name}}/services/{{ $service->name }}"><span>{{ $service->name }}</span></a>
+                                        <a href="/services/{{ $service->name }}"><span>{{ $service->name }}</span></a>
+                                        {{-- <a href="{{$vendor->name}}/services/{{ $service->name }}"><span>{{ $service->name }}</span></a> --}}
                                     </li>
                                     @endforeach
                                 </ul>

@@ -79,7 +79,6 @@ class ProjectsController extends Controller
     public function applyFilter(Request $request)
     {
         $data = $request->all();
-        // return ($data);
         $page = isset($data['page']) ? $data['page'] : 1;
         $perPage = 10;
 
@@ -87,7 +86,6 @@ class ProjectsController extends Controller
             $filters = json_decode($request->all()['filters'], 1);
             $query = Project::with(['projectGalleries']);
             foreach ($filters as $filterName => $value) {
-                // dd($value);
                 if ($value) {
                     $query->{$filterName}($value);
                 }
