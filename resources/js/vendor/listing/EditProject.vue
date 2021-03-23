@@ -173,7 +173,7 @@
               <a @click.stop="deleteImage(imageIndex)" class="button del_btn">
                 <i class="sl sl-icon-close"></i> Delete
               </a>
-              
+
             </div>
             <vue-dropzone
               ref="myVueDropzone"

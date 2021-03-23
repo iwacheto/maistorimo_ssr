@@ -200,7 +200,7 @@ export default {
         maxFiles: 1,
         addRemoveLinks: true,
         thumbnailWidth: 150,
-        maxFilesize: 0.5,
+        maxFilesize: 15,
         headers: { "My-Awesome-Header": "header value" }
       }
     };
