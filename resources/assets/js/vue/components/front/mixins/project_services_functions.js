@@ -6,6 +6,14 @@ export const project_services_functions = {
         }
     },
     methods: {
+        scrollTop() {
+
+            // setTimeout(() => {
+            //     window.scrollTo(0, 0);
+            //     console.log(window);
+            // }, 1250)
+
+        },
         searchTimeOut() {
             if (this.timer) {
                 clearTimeout(this.timer);

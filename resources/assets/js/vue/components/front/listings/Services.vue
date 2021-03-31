@@ -5,7 +5,7 @@
         <div class="container">
             <button
                 class="sidebar_menu"
-                @click="show_sidebar=!show_sidebar"
+                @click="show_sidebar = !show_sidebar"
                 :class="[show_sidebar ? 'active_button' : '']"
             >
                 <span :class="[show_sidebar ? 'active_span' : '']"></span>
@@ -38,7 +38,8 @@
                                         class="clear_data"
                                         v-if="filterQueries.title"
                                         @click="clearQuery('title')"
-                                    >x</span>
+                                        >x</span
+                                    >
                                 </div>
                             </div>
                             <!-- Row / End -->
@@ -51,7 +52,13 @@
                                     <div id="autocomplete-container">
                                         <div
                                             class="pac-container pac-logo"
-                                            style="display: none; width: 310px; position: absolute; left: 727px; top: 351px;"
+                                            style="
+                                                display: none;
+                                                width: 310px;
+                                                position: absolute;
+                                                left: 727px;
+                                                top: 351px;
+                                            "
                                         ></div>
                                         <input
                                             id="autocomplete-input"
@@ -66,14 +73,17 @@
                                             class="clear_data"
                                             v-if="filterQueries.city"
                                             @click="clearQuery('city')"
-                                        >x</span>
+                                            >x</span
+                                        >
                                         <ul v-show="isOpen" class="autocomplete-results">
                                             <li
                                                 v-for="(result, i) in results"
                                                 :key="i"
                                                 @click="setResult(result)"
                                                 class="autocomplete-result"
-                                            >{{ result.city }}</li>
+                                            >
+                                                {{ result.city }}
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -92,14 +102,20 @@
                       @click="clearQuery('category')"
                                         >x</span>-->
                                         <div
-                                            :class="[filterQueries.mainCategory==category.title ? 'active_category' : '']"
+                                            :class="[
+                                                filterQueries.mainCategory == category.title
+                                                    ? 'active_category'
+                                                    : '',
+                                            ]"
                                             v-for="category in categories"
                                             :key="category.id"
                                             class="category_sidebar"
-                                            @click="applyMainCategory(category.children,category.title)"
+                                            @click="
+                                                applyMainCategory(category.children, category.title)
+                                            "
                                         >
                                             <p
-                                                :class="{'active_category' : isActiveCat(category) }"
+                                                :class="{ active_category: isActiveCat(category) }"
                                                 class="main_cats"
                                             >
                                                 {{ category.title }}
@@ -107,11 +123,16 @@
                                                     class="main_category"
                                                     v-if="isActiveCat(category)"
                                                     @click.stop="clearQuery('mainCategory')"
-                                                >x</span>
+                                                    >x</span
+                                                >
                                             </p>
                                             <div
                                                 class="category_body"
-                                                :class="[filterQueries.category==cat.title ? 'active_category' : '']"
+                                                :class="[
+                                                    filterQueries.category == cat.title
+                                                        ? 'active_category'
+                                                        : '',
+                                                ]"
                                                 v-for="cat in category.children"
                                                 :key="cat.id"
                                                 @click.stop="applyCategory(cat.title)"
@@ -119,9 +140,10 @@
                                                 {{ cat.title }}
                                                 <span
                                                     class="cat_button"
-                                                    v-if="filterQueries.category==cat.title"
+                                                    v-if="filterQueries.category == cat.title"
                                                     @click.stop="clearQuery('category')"
-                                                >x</span>
+                                                    >x</span
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -152,10 +174,10 @@
                         <div class="col-md-6 col-xs-6">
                             <!-- Layout Switcher -->
                             <div class="layout-switcher">
-                                <a href="#" class="grid active" @click="className=false">
+                                <a href="#" class="grid active" @click="className = false">
                                     <i class="fa fa-th"></i>
                                 </a>
-                                <a href="#" class="list" @click="className=true">
+                                <a href="#" class="list" @click="className = true">
                                     <i class="fa fa-align-justify"></i>
                                 </a>
                             </div>
@@ -195,7 +217,7 @@
                     <!-- <div class="row" v-else>
             <h4>Съжаляваме,но вашето търсене не намери резултат,моля опитайте с други данни,благодарим ви.</h4>
                     </div>-->
-                    <div v-if="services.length==0" class="no_results">
+                    <div v-if="services.length == 0" class="no_results">
                         <h3>Съжаляваме, но вашето търсене няма резултат</h3>
                         <p>Моля,опитайте с други критерий!</p>
                         <div class="listing-item">
@@ -216,15 +238,16 @@
                 </div>
             </div>
             <client-only placeholder="Loading...">
-                <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
+                <infinite-loading
+                    @infinite="infiniteHandler"
+                    ref="infiniteLoading"
+                ></infinite-loading>
             </client-only>
         </div>
-     
     </div>
 </template>
 
 <script>
-import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
 import ClientOnly from 'vue-client-only';
 import { project_services_functions } from '../mixins/project_services_functions';
@@ -238,15 +261,12 @@ var count = 0;
 export default {
     metaInfo() {
         return {
-            meta: [
-                
-            ],
-            
+            meta: [],
         };
     },
-   mixins: [project_services_functions],
-  data() {
-         return {
+    mixins: [project_services_functions],
+    data() {
+        return {
             city: '',
             title: '',
             filters: {
@@ -278,12 +298,16 @@ export default {
     created() {
         this.setFilters();
     },
+    mounted() {
+        window.scrollTo(0, 0);
+    },
     watch: {
         filters: {
-            handler: function(newValue) {},
+            handler: function (newValue) {},
             deep: true,
         },
         $route(to, from) {
+            window.scrollTo(0, 0);
             let query = this.$route.query;
             if (Object.keys(query).length === 0) {
                 this.page = 1;
@@ -329,11 +353,11 @@ export default {
                         page: this.page,
                     },
                 })
-                .then(res => {
+                .then((res) => {
                     this.services = res.data;
                     this.page++;
                 })
-                .catch(err => {
+                .catch((err) => {
                     this.busy = false;
                 });
         },
@@ -350,7 +374,7 @@ export default {
                         page: this.page,
                     },
                 })
-                .then(res => {
+                .then((res) => {
                     if (res.data.length == 0) {
                         $state.complete();
                     }
@@ -358,7 +382,7 @@ export default {
                     this.services.push(...res.data);
                     $state.loaded();
                 })
-                .catch(err => {
+                .catch((err) => {
                     this.busy = false;
                 });
         },
@@ -373,7 +397,7 @@ export default {
             return this.$store.state.serviceCategories;
         },
     },
-   components: {
+    components: {
         ClientOnly,
         InfiniteLoading,
     },

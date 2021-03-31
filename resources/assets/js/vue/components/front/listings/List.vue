@@ -5,7 +5,7 @@
         <div class="container">
             <button
                 class="sidebar_menu"
-                @click="show_sidebar=!show_sidebar"
+                @click="show_sidebar = !show_sidebar"
                 :class="[show_sidebar ? 'active_button' : '']"
             >
                 <span :class="[show_sidebar ? 'active_span' : '']"></span>
@@ -37,7 +37,8 @@
                                         class="clear_data"
                                         v-if="filterQueries.title"
                                         @click="clearQuery('title')"
-                                    >x</span>
+                                        >x</span
+                                    >
                                 </div>
                             </div>
 
@@ -47,7 +48,13 @@
                                     <div id="autocomplete-container">
                                         <div
                                             class="pac-container pac-logo"
-                                            style="display: none; width: 310px; position: absolute; left: 727px; top: 351px;"
+                                            style="
+                                                display: none;
+                                                width: 310px;
+                                                position: absolute;
+                                                left: 727px;
+                                                top: 351px;
+                                            "
                                         ></div>
                                         <input
                                             id="autocomplete-input"
@@ -62,7 +69,8 @@
                                             class="clear_data"
                                             v-if="filterQueries.city"
                                             @click="clearQuery('city')"
-                                        >x</span>
+                                            >x</span
+                                        >
                                     </div>
                                     <ul v-show="isOpen" class="autocomplete-results">
                                         <li
@@ -70,7 +78,9 @@
                                             :key="i"
                                             @click="setResult(result)"
                                             class="autocomplete-result"
-                                        >{{ result.city }}</li>
+                                        >
+                                            {{ result.city }}
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -82,10 +92,12 @@
                                         v-for="category in categories"
                                         :key="category.id"
                                         class="category_sidebar"
-                                        @click="applyMainCategory(category.children, category.title)"
+                                        @click="
+                                            applyMainCategory(category.children, category.title)
+                                        "
                                     >
                                         <p
-                                            :class="{'active_category' : isActiveCat(category) }"
+                                            :class="{ active_category: isActiveCat(category) }"
                                             class="main_cats"
                                         >
                                             {{ category.title }}
@@ -93,11 +105,16 @@
                                                 class="main_category"
                                                 v-if="isActiveCat(category)"
                                                 @click.stop="clearQuery('mainCategory')"
-                                            >x</span>
+                                                >x</span
+                                            >
                                         </p>
 
                                         <div
-                                            :class="[filterQueries.category==cat.title ? 'active_category' : '']"
+                                            :class="[
+                                                filterQueries.category == cat.title
+                                                    ? 'active_category'
+                                                    : '',
+                                            ]"
                                             v-for="cat in category.children"
                                             :key="cat.id"
                                             @click.stop="applyCategory(cat.title)"
@@ -105,9 +122,10 @@
                                             {{ cat.title }}
                                             <span
                                                 class="cat_button"
-                                                v-if="filterQueries.category==cat.title"
+                                                v-if="filterQueries.category == cat.title"
                                                 @click.stop="clearQuery('category')"
-                                            >x</span>
+                                                >x</span
+                                            >
                                         </div>
                                     </div>
                                 </div>
@@ -117,17 +135,17 @@
                             Тагове
                             <span
                                 class="show_tags"
-                                @click="showTags=!showTags"
+                                @click="showTags = !showTags"
                                 :class="[showTags ? 'active' : '']"
                             >
                                 <span v-if="!showTags" class="close_tags">+</span>
                                 <span v-else>-</span>
                             </span>
                         </h3>
-                        <span v-if="showTags&& selectTag.length>0" class="tag_info">
+                        <span v-if="showTags && selectTag.length > 0" class="tag_info">
                             {{ selectTag.length }} избран
-                            <span v-if="selectTag.length>1">и</span> таг
-                            <span v-if="selectTag.length>1">а</span>
+                            <span v-if="selectTag.length > 1">и</span> таг
+                            <span v-if="selectTag.length > 1">а</span>
                         </span>
                         <!-- More Search Options -->
 
@@ -142,7 +160,7 @@
                                     v-model="selectTag"
                                 />
                                 <label :for="tag.tag">
-                                    {{tag.tag | lowercase}}
+                                    {{ tag.tag | lowercase }}
                                     <!-- <span v-if="checkTag(tag.id)">x</span> -->
                                 </label>
                             </div>
@@ -152,7 +170,7 @@
                             Други тагове
                             <span
                                 class="show_tags"
-                                @click="showTwentyTags=!showTwentyTags"
+                                @click="showTwentyTags = !showTwentyTags"
                                 :class="[showTags ? 'active' : '']"
                             >
                                 <span v-if="!showTags">+</span>
@@ -169,16 +187,18 @@
                                     :value="tag.id"
                                     @change="applyTags(tag.tag)"
                                 />
-                                <label :for="tag.tag">{{tag.tag | lowercase}}</label>
+                                <label :for="tag.tag">{{ tag.tag | lowercase }}</label>
                             </div>
                         </div>
 
                         <!-- Twenty Tags -->
                         <h3
                             v-if="showThirtyHeading"
-                            @click="showThirtyTags=!showThirtyTags"
+                            @click="showThirtyTags = !showThirtyTags"
                             class="tags_heading"
-                        >Още тагове</h3>
+                        >
+                            Още тагове
+                        </h3>
                         <div class="checkboxes one-in-row margin-bottom-15" v-if="showThirtyTags">
                             <div v-for="tag in ThirtyTags" :key="tag.id">
                                 <input
@@ -187,7 +207,7 @@
                                     :name="tag.tag"
                                     :value="tag.tag"
                                 />
-                                <label :for="tag.tag">{{tag.tag | lowercase}}</label>
+                                <label :for="tag.tag">{{ tag.tag | lowercase }}</label>
                             </div>
                         </div>
                         <!-- Checkboxes / End -->
@@ -212,10 +232,10 @@
                         <div class="col-md-6 col-xs-6">
                             <!-- Layout Switcher -->
                             <div class="layout-switcher">
-                                <a href="#" class="grid active" @click="className=false">
+                                <a href="#" class="grid active" @click="className = false">
                                     <i class="fa fa-th"></i>
                                 </a>
-                                <a href="#" class="list" @click="className=true">
+                                <a href="#" class="list" @click="className = true">
                                     <i class="fa fa-align-justify"></i>
                                 </a>
                             </div>
@@ -231,7 +251,7 @@
                             :class="[className ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-12']"
                         >
                             <router-link
-                                :to="'/project/details/'+project.id"
+                                :to="'/project/details/' + project.id"
                                 class="listing-item-container compact"
                             >
                                 <div class="listing-item">
@@ -245,16 +265,15 @@
                                             {{ project.title }}
                                             <i class="verified-icon"></i>
                                         </h3>
-                                        <span
-                                            v-for="tag in project.tags"
-                                            :key="tag.id"
-                                        >#{{ tag.tag }}</span>
+                                        <span v-for="tag in project.tags" :key="tag.id"
+                                            >#{{ tag.tag }}</span
+                                        >
                                     </div>
                                     <span class="like-icon"></span>
                                 </div>
                             </router-link>
                         </div>
-                        <div v-if="projects.length==0" class="no_results">
+                        <div v-if="projects.length == 0" class="no_results">
                             <h3>Съжаляваме, но вашето търсене няма резултат</h3>
                             <p>Моля,опитайте с други критерий!</p>
                             <div class="listing-item">
@@ -277,7 +296,10 @@
                 </div>
             </div>
             <client-only placeholder="Loading...">
-                <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
+                <infinite-loading
+                    @infinite="infiniteHandler"
+                    ref="infiniteLoading"
+                ></infinite-loading>
             </client-only>
         </div>
     </div>
@@ -285,11 +307,10 @@
 
 
 <script>
-import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
 import ClientOnly from 'vue-client-only';
 import { project_services_functions } from '../mixins/project_services_functions';
-import VueLocalStorage from 'vue-localstorage'
+import VueLocalStorage from 'vue-localstorage';
 import axios from 'axios';
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -302,8 +323,7 @@ var count = 0;
 export default {
     metaInfo() {
         return {
-            meta: []
-               
+            meta: [],
         };
     },
     mixins: [project_services_functions],
@@ -348,7 +368,8 @@ export default {
         // console.log(this.$store.state)
     },
     mounted() {
-        this.getTags();
+        window.scrollTo(0, 0);
+       this.getTags();
     },
     methods: {
         searchTimeOut() {
@@ -376,11 +397,11 @@ export default {
                         page: this.page,
                     },
                 })
-                .then(res => {
+                .then((res) => {
                     this.projects = res.data;
                     this.page++;
                 })
-                .catch(err => {
+                .catch((err) => {
                     this.busy = false;
                 });
         },
@@ -401,19 +422,19 @@ export default {
         getTags() {
             axios
                 .get('all_tags')
-                .then(res => {
+                .then((res) => {
                     if (res.data.length < 10) {
                         this.tags = res.data;
                     } else if (res.data.length > 10 && res.data.length < 20) {
                         let newTag = res.data;
-                        const tag = newTag.sort(function(a, b) {
+                        const tag = newTag.sort(function (a, b) {
                             return b.project_tags_count - a.project_tags_count;
                         });
                         this.tags = tag.slice(0, 10);
                         this.TwentyTags = tag.slice(10, 20);
                     } else if (res.data.length > 20 && res.data.length < 30) {
                         let newTag = res.data;
-                        const tag = newTag.sort(function(a, b) {
+                        const tag = newTag.sort(function (a, b) {
                             return b.project_tags_count - a.project_tags_count;
                         });
                         this.tags = tag.slice(0, 10);
@@ -421,7 +442,7 @@ export default {
                         this.ThirtyTags = tag.slice(20, newTag.length);
                     } else {
                         let newTag = res.data;
-                        const tag = newTag.sort(function(a, b) {
+                        const tag = newTag.sort(function (a, b) {
                             return b.project_tags_count - a.project_tags_count;
                         });
                         this.tags = tag.slice(0, 10);
@@ -429,7 +450,7 @@ export default {
                         this.ThirtyTags = tag.slice(20, 30);
                     }
                 })
-                .catch(err => console.log(err));
+                .catch((err) => console.log(err));
         },
         infiniteHandler($state) {
             this.filters = {};
@@ -446,7 +467,7 @@ export default {
                         page: this.page,
                     },
                 })
-                .then(res => {
+                .then((res) => {
                     if (res.data.length == 0) {
                         $state.complete();
                     }
@@ -454,7 +475,7 @@ export default {
                     this.projects.push(...res.data);
                     $state.loaded();
                 })
-                .catch(err => {
+                .catch((err) => {
                     this.busy = false;
                 });
         },
@@ -479,16 +500,17 @@ export default {
         },
     },
     filters: {
-        lowercase: function(value) {
+        lowercase: function (value) {
             return (value = value.toLowerCase());
         },
     },
     watch: {
         filterQueries: {
-            handler: function(newValue) {},
+            handler: function (newValue) {},
             deep: true,
         },
         $route(to, from) {
+            window.scrollTo(0, 0);
             let query = this.$route.query;
             if (Object.keys(query).length === 0) {
                 this.selectedMain = '';

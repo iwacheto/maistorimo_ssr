@@ -98,12 +98,7 @@
                     <div class="close-wrapper">
                         <a href="#" class="close"><i class="icon-cancel-fine"></i></a>
                     </div>
-                    <!-- <div class="extras">
-            <a href="http://bit.ly/1M6lijQ" class="button button_theme button_js action_button " target="_blank"><span class="button_label">Buy now</span></a>
-            <div class="extras-wrapper">
-                <a class="icon search" href="#"><i class="icon-search-fine"></i></a>
-            </div>
-        </div> -->
+                   
                     <div class="search-wrapper">
                         <form id="side-form" method="get" action="#">
                             <input type="text" class="field" name="s" id="s" placeholder="Enter your search">

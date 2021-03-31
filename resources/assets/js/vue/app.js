@@ -49,10 +49,11 @@ Vue.use(VueAnalytics, {
 })
 
 Vue.use(VueLazyload);
-Vue.use(VueScrollTo);
+// Vue.use(VueScrollTo);
 Vue.use(VueMeta);
 
 import { EventBus } from './components/front/event-bus';
+
 
 // Vue.use(axios)
 export default new Vue({
