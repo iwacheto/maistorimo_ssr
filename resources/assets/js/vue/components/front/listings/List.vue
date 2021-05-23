@@ -314,9 +314,6 @@ import VueLocalStorage from 'vue-localstorage';
 import axios from 'axios';
 import Vue from 'vue';
 import Router from 'vue-router';
-import vuescroll from 'vue-scrollto/src/scrollTo'
-
-Vue.use(vuescroll)
 
 Vue.use(Router);
 Vue.use(VueLocalStorage);
