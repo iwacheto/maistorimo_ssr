@@ -2,6 +2,9 @@ import Vue from 'vue';
 import uniq from 'lodash/uniq';
 import Vuex, { Store } from 'vuex';
 import axios from 'axios';
+import vuescroll from 'vue-scrollto/src/scrollTo'
+
+Vue.use(vuescroll)
 
 Vue.use(Vuex);
 
@@ -16,7 +19,7 @@ export default new Store({
         project:{},
         projectCategories: [],
         serviceCategories: [],
-        
+
     },
 
     getters: {

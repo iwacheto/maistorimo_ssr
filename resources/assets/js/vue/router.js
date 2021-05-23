@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Meta from 'vue-meta'
+import vuescroll from 'vue-scrollto/src/scrollTo'
 
 import Index from './components/front/homepage/Index';
 import ListingsList from "./components/front/listings/List.vue";
@@ -18,6 +19,8 @@ import Contacts from './components/front/homepage/Contacts';
 
 Vue.use(VueRouter);
 Vue.use(Meta);
+
+Vue.use(vuescroll)
 
 const routes = [
     { path: '/', name: 'Index', component: Index , props: true},
