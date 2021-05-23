@@ -102,6 +102,7 @@
 
                         <div class="tab-pan" :class="{ 'active show': isActive('home') }">
                             <label>Цвят на сайта</label>
+                            <span>* Изберете сами цвят на вашия сайт, натискайки върху него и след това бутона  ‘’запази’’, за да изберете или коригирате.</span>
                             <select v-model="user.website_settings.color">
                                 <option
                                     v-for="color in colors"
@@ -113,6 +114,7 @@
                             </select>
                             <!-- Logo -->
                             <label>Лого на сайта</label>
+                            <span>* Поставете вашето лого и то ще бъде видяно от всеки посетител. След това натиснете бутонът - ‘’ Запази’’</span>
                             <img
                                 v-if="user.website_settings.logo"
                                 :src="user.website_settings.logo"
@@ -153,6 +155,7 @@
                         <div class="tab-pan" :class="{ 'active show': isActive('profile') }">
                             <!-- Zaglavna snimka -->
                             <label>Заглавна снимка на сайта</label>
+                            <span>* Изберете най-подходяща заглавна снимка за вашия сайт- винаги след промени трябва да натиснете бутона ‘’ запази’’</span>
                             <img
                                 v-if="user.website_settings.main_image != ''"
                                 :src="user.website_settings.main_image"
@@ -195,9 +198,9 @@
                                 <label>
                                     Заглавие начална страница
                                     <span class="website_error" v-if="homepage.headingError"
-                                        >Текстът не трябва да е по дълъг от 250 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 250 символа</span>
                                 </label>
+                                    <span>* Точна, конкретна дейност, с която се занимавате.</span>
                                 <input
                                     value
                                     v-model="user.website_settings.home_heading"
@@ -207,9 +210,9 @@
                                 <label>
                                     Текст начална страница
                                     <span class="website_error" v-if="homepage.textError"
-                                        >Текстът не трябва да е по дълъг от 1000 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 1000 символа</span>
                                 </label>
+                                        <span>* Кратък текст, който описва вашата дейност. </span>
                                 <input
                                     value
                                     v-model="user.website_settings.home_text"
@@ -219,9 +222,9 @@
                                 <label>
                                     Опорна точка 1 заглавие
                                     <span class="website_error" v-if="homepage.bullet1HeadError"
-                                        >Текстът не трябва да е по дълъг от 255 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 255 символа</span>
                                 </label>
+                                    <span>* Извършвани от вас дейности или услуги</span>
                                 <input
                                     value
                                     v-model="user.website_settings.bullet_1_heading"
@@ -230,9 +233,9 @@
                                 <label>
                                     Опорна точка 1 текст
                                     <span class="website_error" v-if="homepage.bullet1ContError"
-                                        >Текстът не трябва да е по дълъг от 255 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 255 символа</span>
                                 </label>
+                                    <span>* Oписание на дейност или услугата посочена от Вас</span>
                                 <input
                                     value
                                     v-model="user.website_settings.bullet_1_content"
@@ -242,9 +245,9 @@
                                 <label>
                                     Опорна точка 2 заглавие
                                     <span class="website_error" v-if="homepage.bullet2HeadError"
-                                        >Текстът не трябва да е по дълъг от 255 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 255 символа</span>
                                 </label>
+                                    <span>* Извършвани от вас дейности или услуги</span>
                                 <input
                                     value
                                     v-model="user.website_settings.bullet_2_heading"
@@ -253,9 +256,9 @@
                                 <label>
                                     Опорна точка 2 текст
                                     <span class="website_error" v-if="homepage.bullet2ContError"
-                                        >Текстът не трябва да е по дълъг от 255 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 255 символа</span>
                                 </label>
+                                    <span>* Описание на дейност или услугата посочена от Вас</span>
                                 <input
                                     value
                                     v-model="user.website_settings.bullet_2_content"
@@ -265,9 +268,9 @@
                                 <label>
                                     Опорна точка 3 заглавие
                                     <span class="website_error" v-if="homepage.bullet3HeadError"
-                                        >Текстът не трябва да е по дълъг от 255 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 255 символа</span>
                                 </label>
+                                    <span>* Извършвани от вас дейности или услуги</span>
                                 <input
                                     value
                                     v-model="user.website_settings.bullet_3_heading"
@@ -276,9 +279,9 @@
                                 <label>
                                     Опорна точка 3 текст
                                     <span class="website_error" v-if="homepage.bullet3ContError"
-                                        >Текстът не трябва да е по дълъг от 255 символа</span
-                                    >
+                                        >Текстът не трябва да е по дълъг от 255 символа</span>
                                 </label>
+                                <span>* Описание на дейност или услугата посочена от Вас след всяка направена промяна, натиснете бутона ‘’ Запази’’</span>
                                 <input
                                     value
                                     v-model="user.website_settings.bullet_3_content"
@@ -290,12 +293,14 @@
                         <div class="tab-pan" :class="{ 'active show': isActive('about') }">
                             <!-- About Us -->
                             <label>Текст за Нас - Компания</label>
+                            <span>* Опишете подробно вашата дейност, услуги, цели и задачи. Създайте представа на клиента за Вас!</span>
                             <ckeditor
                                 :editor="editorConfig.editor"
                                 v-model="user.website_settings.about_us"
                                 :config="editorConfig.editorConfig"
                             ></ckeditor>
                             <label>Текст за Нас - Мисия</label>
+                            <span>* Опишете подробно вашата мисия на дейността си. След всяка направена промяна, натиснете бутона ‘’ Запази’’</span>
                             <ckeditor
                                 :editor="editorConfig2.editor"
                                 v-model="user.website_settings.about_us_2"

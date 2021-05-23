@@ -2,6 +2,7 @@
 	<div>
 		<div v-if="!view">
 			<h2>Адрес</h2>
+            <span>* Посочете точен адрес, за да може картата на google да ви локализира. Натиснете бутона ‘’ Добави’’ след като изберете адреса си.</span>
 			<label>
 				<gmap-autocomplete
 						:value="full_address"
