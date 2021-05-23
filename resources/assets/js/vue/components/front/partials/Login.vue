@@ -100,11 +100,17 @@
                     {{ message }}
                     <span @click="error_message=false" class="error_message_close">x</span>
                   </div>
-                  <form
+                  <!-- <form
                     method="post"
                     class="register"
                     data-vv-scope="register"
                     v-if="invite == '4fi9uFjPgkIyZDskeLzO'"
+                  > -->
+                  <form
+                    method="post"
+                    class="register"
+                    data-vv-scope="register"
+                    v-if="true"
                   >
                     <span v-if="registerData.commonError" class="error">{{registerData.commonError}}</span>
                     <p class="form-row form-row-wide">
