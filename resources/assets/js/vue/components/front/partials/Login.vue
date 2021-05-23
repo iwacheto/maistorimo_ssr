@@ -97,7 +97,7 @@
                 <!-- Register -->
                 <div class="tab-content" id="tab2" v-if="tab == 'register'">
                   <div class="error_message" v-if="error_message">
-                    {{ message }} 
+                    {{ message }}
                     <span @click="error_message=false" class="error_message_close">x</span>
                   </div>
                   <form
@@ -361,7 +361,7 @@ export default {
         return
       }
       else{
-        
+
       try {
         const res = await axios.post("/register", {
           name: this.registerData.username,
