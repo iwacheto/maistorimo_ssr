@@ -40791,7 +40791,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 this.$nextTick(function () {
                                     console.log('213523532465goshooooooooooooooooooooooo123123123213123');
                                     console.log(this.images.length);
-
+                                    if (window.localStorage) {
+                                        if (!localStorage.getItem('firstLoad')) {
+                                            localStorage['firstLoad'] = true;
+                                            window.location.reload();
+                                        } else localStorage.removeItem('firstLoad');
+                                    }
                                     $('.custom_project_slider').not('.slick-initialized').slick({
                                         infinite: true,
                                         slidesToShow: imgCount,
