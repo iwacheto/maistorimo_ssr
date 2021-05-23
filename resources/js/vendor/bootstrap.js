@@ -14,7 +14,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 
 Vue.use(VueGoogleMaps, {
 	load: {
-		key: "AIzaSyCX1iw9Pr-kaeGN7IMHB4LrxzaHSRHJtSM",
+		key: "AIzaSyC0jEZf-2juLNwOK0LYmdKA6d1WC0JlknI",
 		libraries: "places" // necessary for places input
 	}
 });

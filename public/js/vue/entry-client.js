@@ -32004,7 +32004,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('click-outside', {
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__, {
 	load: {
-		key: "AIzaSyCX1iw9Pr-kaeGN7IMHB4LrxzaHSRHJtSM",
+		key: "AIzaSyC0jEZf-2juLNwOK0LYmdKA6d1WC0JlknI",
 		// key: "AIzaSyDV8xHwHpLZ2zsESGtzmBEtXCjjhMzdhcs",
 		libraries: "places" // necessary for places input
 	}

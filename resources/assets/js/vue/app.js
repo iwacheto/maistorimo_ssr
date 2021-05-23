@@ -31,7 +31,7 @@ Vue.directive('click-outside', {
 
 Vue.use(VueGoogleMaps, {
 	load: {
-		key: "AIzaSyCX1iw9Pr-kaeGN7IMHB4LrxzaHSRHJtSM",
+		key: "AIzaSyC0jEZf-2juLNwOK0LYmdKA6d1WC0JlknI",
 		// key: "AIzaSyDV8xHwHpLZ2zsESGtzmBEtXCjjhMzdhcs",
 		libraries: "places" // necessary for places input
 	}
