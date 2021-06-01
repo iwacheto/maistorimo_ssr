@@ -32,12 +32,12 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/vuetify.css">
 	<link rel="stylesheet" href="/css/colors/celadon.css" id="colors">
-	<script defer src="{{ mix('js/react/entry-client.js') }}"></script>
+	<script defer src="{{ mix('js/react/entry-client.js') }}?ver=10"></script>
 
 </head>
 
 <body>
-	
+
 
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RVVFTC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

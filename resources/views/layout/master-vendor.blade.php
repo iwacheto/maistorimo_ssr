@@ -21,7 +21,7 @@
 
 	<link rel="stylesheet" href="/css/vuetify.css">
 	<link rel="stylesheet" href="/css/colors/celadon.css" id="colors">
-	<script src="{{ mix('js/vendor/before.js') }}?v=4"></script>
+	<script src="{{ mix('js/vendor/before.js') }}?v=10"></script>
 
 </head>
 
@@ -37,8 +37,8 @@
 
 		<!-- Header Container
 ================================================== -->
-		
-	
+
+
 		<!-- Header Container / End -->
 
 
