@@ -86,6 +86,7 @@ class VueController extends Controller
                 ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
                 ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
         } else if($parameters === 'profile') {
+            $id = \Request::segment(2);
             $profile = VendorDetail::where('id', $id)->first();
             SEOMeta::setTitle($profile->company_name);
             SEOMeta::setDescription($profile->company_name);
