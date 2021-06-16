@@ -157,3 +157,4 @@ Auth::routes();
 Route::get('/{url?}', 'VueController');
 Route::get('/project/details/{url?}', 'VueController');
 Route::get('/service/details/{url?}', 'VueController');
+Route::get('/profile/{url?}', 'VueController');
