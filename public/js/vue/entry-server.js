@@ -46521,10 +46521,6 @@ __WEBPACK_IMPORTED_MODULE_4_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_vue_
       }
     };
   },
-  created: function created() {
-    this.getProfile();
-    this.info_button = this.info_1;
-  },
   mounted: function mounted() {
     this.getProfile();
     this.info_button = this.info_1;

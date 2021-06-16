@@ -271,10 +271,6 @@ export default {
       }
     };
   },
-  created() {
-    this.getProfile();
-    this.info_button = this.info_1;
-  },
   mounted() {
     this.getProfile();
     this.info_button = this.info_1;
