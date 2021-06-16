@@ -19,14 +19,12 @@ renderVueComponentToString(app, (err, html) => {
         style, script, noscript, meta
     } = context.meta.inject()
     dispatch(`
-            ${meta.text()}
-            ${title.text()}
          </head>
         <body class="transparent-header">
         <div id="wrapper">
-       
+
           ${html}
-         
+
   `);
 
 });
