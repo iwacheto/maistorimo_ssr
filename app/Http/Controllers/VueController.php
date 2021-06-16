@@ -88,6 +88,7 @@ class VueController extends Controller
         } else if($parameters === 'profile') {
             $id = \Request::segment(2);
             $profile = VendorDetail::where('id', $id)->first();
+            $title = $profile->company_name;
             SEOMeta::setTitle($profile->company_name);
             SEOMeta::setDescription($profile->company_name);
 
