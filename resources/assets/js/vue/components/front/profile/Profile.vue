@@ -239,6 +239,7 @@
 
 <script>
 import { analyticFunction } from "../mixins/analytic_function";
+import ClientOnly from 'vue-client-only';
 import axios from "axios";
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -307,7 +308,9 @@ export default {
       this.activeItem = menuItem;
     }
   },
-  components: {}
+  components: {
+        ClientOnly
+    }
 };
 </script>
 
