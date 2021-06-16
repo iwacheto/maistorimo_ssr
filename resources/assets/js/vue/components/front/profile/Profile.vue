@@ -265,6 +265,11 @@ export default {
     this.getProfile();
     this.info_button = this.info_1;
   },
+  mounted() {
+    this.getProfile();
+    alert('da');
+    this.info_button = this.info_1;
+  },
   methods: {
     changeInfoClass() {
       this.active = !this.active;
