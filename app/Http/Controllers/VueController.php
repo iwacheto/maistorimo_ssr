@@ -96,6 +96,10 @@ class VueController extends Controller
             OpenGraph::setUrl($url);
             OpenGraph::setSiteName($currentURL);
             $imgSize = getimagesize($profile->profile_image);
+            $ser_width = $imgSize[0];
+            $ser_height = $imgSize[1];
+            OpenGraph::addImage($profile->profile_image, ['height' => $ser_width, 'width' => $ser_height]);
+            OpenGraph::setDescription($profile->company_name);
             $localBusiness = Schema::localBusiness()
                 ->name($profile->company_name)
                 ->email('g.prusiyski@webrika.bg')
