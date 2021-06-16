@@ -46655,14 +46655,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [
-                              _vm._v(
-                                "Проектите на " +
-                                  _vm._s(
-                                    _vm.profile.vendor_details.company_name
-                                  )
-                              )
-                            ]
+                            [_vm._v("Проекти")]
                           )
                         ]
                       ),
@@ -46687,14 +46680,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [
-                              _vm._v(
-                                "Услугите на " +
-                                  _vm._s(
-                                    _vm.profile.vendor_details.company_name
-                                  )
-                              )
-                            ]
+                            [_vm._v("Услуги")]
                           )
                         ]
                       )

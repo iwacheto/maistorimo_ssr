@@ -32,7 +32,7 @@
                       @click.prevent="setActive('home')"
                       :class="{ active: isActive('home') }"
                       href="#home"
-                    >Проектите на {{ profile.vendor_details.company_name }}</a>
+                    >Проекти</a>
                   </li>
                   <li class="nav-item" :class="{ active: isActive('services') }">
                     <a
@@ -40,7 +40,7 @@
                       @click.prevent="setActive('services')"
                       :class="{ active: isActive('services') }"
                       href="#home"
-                    >Услугите на {{ profile.vendor_details.company_name }}</a>
+                    >Услуги</a>
                   </li>
                 </ul>
               </div>
@@ -131,7 +131,7 @@
                 <button class="button">Изпрати съобщение</button>
               </div>
             </div>-->
-            <!-- 
+            <!--
             <a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim">
               <i class="sl sl-icon-envelope-open"></i> Изпрати съобщение
             </a>-->
@@ -184,7 +184,7 @@
                     </div>
                   </div>
                   <!-- Listing Item / End -->
-                 
+
                 </div>
               </div>
 
