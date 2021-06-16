@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\VendorDetail;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 // use Artesaos\SEOTools\Facades\JsonLd;
@@ -84,7 +85,24 @@ class VueController extends Controller
                 ->logo($servise->image_url)
                 ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
                 ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone(+561 - 526 - 8457)->email('g.prusiyski@webrika.bg'));
-        } else {
+        } else if(1) {
+            $profile = VendorDetail::where('user', $id)->first();
+            SEOMeta::setTitle($profile->company_name);
+            SEOMeta::setDescription($profile->company_name);
+
+            OpenGraph::setTitle($profile->company_name);
+            OpenGraph::setUrl($url);
+            OpenGraph::setSiteName($currentURL);
+            $imgSize = getimagesize($profile->profile_image);
+            $localBusiness = Schema::localBusiness()
+                ->name($profile->company_name)
+                ->email('g.prusiyski@webrika.bg')
+                ->url($currentURL)
+                ->logo($profile->profile_image)
+                ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
+                ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone($profile->phone_number)->email($profile->email_address));
+
+        }else {
             $title = 'Maistorimo';
             SEOMeta::setTitle('Maistorimo');
             SEOMeta::setDescription('Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги');
