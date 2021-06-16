@@ -44,7 +44,7 @@
     {{-- <link rel="preload" href="/css/main-color.css" as="main-color" onload="this.onload=null;this.rel='stylesheet'" id="colors"> --}}
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script defer src="{{ mix('js/vue/entry-client.js') }}?ver=10"></script>
+    <script defer src="{{ mix('js/vue/entry-client.js') }}?ver=13"></script>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84D4G7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

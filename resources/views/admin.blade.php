@@ -32,7 +32,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/vuetify.css">
 	<link rel="stylesheet" href="/css/colors/celadon.css" id="colors">
-	<script defer src="{{ mix('js/react/entry-client.js') }}?ver=10"></script>
+	<script defer src="{{ mix('js/react/entry-client.js') }}?ver=13"></script>
 
 </head>
 
