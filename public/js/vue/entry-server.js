@@ -31986,6 +31986,8 @@ VeeValidate$1.withValidation = withValidation;
 
 
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_9_vue_scrollto___default.a);
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('click-outside', {
 	bind: function bind(el, binding, vnode) {
 		window.event = function (event) {
@@ -33800,7 +33802,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
 
 
 
@@ -33810,7 +33811,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     metaInfo: {
-        // 
+        //
     },
     data: function data() {
         return {
@@ -34001,7 +34002,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
 //
 //
 //
@@ -34249,11 +34249,6 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "listing-item-content" }, [
-                    _c("div", {
-                      staticClass: "numerical-rating",
-                      attrs: { "data-rating": service.count }
-                    }),
-                    _vm._v(" "),
                     _c("h3", [
                       _vm._v(
                         "\n              " +
@@ -37384,11 +37379,6 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "listing-item-content" }, [
-                        _c("div", {
-                          staticClass: "numerical-rating",
-                          attrs: { "data-rating": project.count }
-                        }),
-                        _vm._v(" "),
                         _c("h3", [
                           _vm._v(
                             "\n                                " +
@@ -37864,8 +37854,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
-//
-//
 
 
 
@@ -37930,6 +37918,7 @@ var count = 0;
         // console.log(this.$store.state)
     },
     mounted: function mounted() {
+        console.log('list vue');
         window.scrollTo(0, 0);
         this.getTags();
     },
@@ -38113,6 +38102,7 @@ var count = 0;
             var _this6 = this;
 
             window.scrollTo(0, 0);
+            console.log('services vue2');
             var query = this.$route.query;
             if (Object.keys(query).length === 0) {
                 this.selectedMain = '';
@@ -39109,11 +39099,6 @@ var render = function() {
                                   "div",
                                   { staticClass: "listing-item-content" },
                                   [
-                                    _c("div", {
-                                      staticClass: "numerical-rating",
-                                      attrs: { "data-rating": "3.5" }
-                                    }),
-                                    _vm._v(" "),
                                     _c("h3", [
                                       _vm._v(
                                         "\n                                        " +
@@ -39191,11 +39176,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "listing-item-content" }, [
-        _c("div", {
-          staticClass: "numerical-rating",
-          attrs: { "data-rating": "0.5" }
-        }),
-        _vm._v(" "),
         _c("h3", [
           _vm._v(
             "\n                                    Не е намерено нищо\n                                    "
@@ -39288,8 +39268,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
-//
 //
 //
 //
@@ -40191,11 +40169,6 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("div", { staticClass: "listing-item-content" }, [
-                              _c("div", {
-                                staticClass: "numerical-rating",
-                                attrs: { "data-rating": "3.5" }
-                              }),
-                              _vm._v(" "),
                               _c("h3", [
                                 _vm._v(
                                   "\n                                        " +
@@ -40261,11 +40234,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "listing-item-content" }, [
-        _c("div", {
-          staticClass: "numerical-rating",
-          attrs: { "data-rating": "0.5" }
-        }),
-        _vm._v(" "),
         _c("h3", [
           _vm._v(
             "\n                                Не е намерено нищо\n                                "
@@ -40683,8 +40651,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
 
 
 
@@ -40721,6 +40687,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         };
     },
     mounted: function mounted() {
+        window.scrollTo(0, 0);
         this.getProjectDetails();
     },
 
@@ -43713,8 +43680,8 @@ var render = function() {
                           {
                             name: "scroll-to",
                             rawName: "v-scroll-to",
-                            value: "#listing-overview",
-                            expression: "'#listing-overview'"
+                            value: "#listing-overview-project",
+                            expression: "'#listing-overview-project'"
                           }
                         ],
                         staticClass: "active",
@@ -43749,7 +43716,7 @@ var render = function() {
               "div",
               {
                 staticClass: "listing-section",
-                attrs: { id: "listing-overview" }
+                attrs: { id: "listing-overview-project" }
               },
               [
                 _c("p", {

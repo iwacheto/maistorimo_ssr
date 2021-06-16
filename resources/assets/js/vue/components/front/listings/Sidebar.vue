@@ -56,7 +56,6 @@
               <div class="listing-badge now-open">Верифициран</div>
 
               <div class="listing-item-content">
-                <div class="numerical-rating" data-rating="3.5"></div>
                 <h3>
                   {{ project.title }}
                   <i class="verified-icon"></i>

@@ -260,7 +260,6 @@
                                     <div class="listing-badge now-open">Верифициран</div>
 
                                     <div class="listing-item-content">
-                                        <div class="numerical-rating" data-rating="3.5"></div>
                                         <h3>
                                             {{ project.title }}
                                             <i class="verified-icon"></i>
@@ -282,7 +281,6 @@
                                 <div class="listing-badge now-open">Некатегоризиран</div>
 
                                 <div class="listing-item-content">
-                                    <div class="numerical-rating" data-rating="0.5"></div>
                                     <h3>
                                         Не е намерено нищо
                                         <i class="verified-icon"></i>
@@ -368,8 +366,9 @@ export default {
         // console.log(this.$store.state)
     },
     mounted() {
+        console.log('list vue');
         window.scrollTo(0, 0);
-       this.getTags();
+        this.getTags();
     },
     methods: {
         searchTimeOut() {
@@ -511,6 +510,7 @@ export default {
         },
         $route(to, from) {
             window.scrollTo(0, 0);
+        console.log('services vue2');
             let query = this.$route.query;
             if (Object.keys(query).length === 0) {
                 this.selectedMain = '';

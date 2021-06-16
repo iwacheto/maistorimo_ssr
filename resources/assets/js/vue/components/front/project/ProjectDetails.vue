@@ -58,9 +58,7 @@
                         <div id="listing-nav" class="listing-nav-container">
                             <ul class="listing-nav">
                                 <li>
-                                    <a href="#" v-scroll-to="'#listing-overview'" class="active"
-                                        >Детайли</a
-                                    >
+                                    <a href="#" v-scroll-to="'#listing-overview-project'" class="active">Детайли</a>
                                 </li>
 
                                 <li>
@@ -70,7 +68,7 @@
                         </div>
 
                         <!-- Overview -->
-                        <div id="listing-overview" class="listing-section">
+                        <div id="listing-overview-project" class="listing-section">
                             <!-- Description -->
                             <p v-html="projectDetails.short_description"></p>
                             <!-- <p v-html="projectDetails.short_description">{{projectDetails.short_description}}</p> -->
@@ -369,6 +367,7 @@ export default {
         };
     },
     mounted() {
+        window.scrollTo(0, 0);
         this.getProjectDetails();
     },
     watch: {},

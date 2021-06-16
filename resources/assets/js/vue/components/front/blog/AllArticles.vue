@@ -54,7 +54,7 @@
 
               <ul class="post-meta">
                 <li> {{ article.created_at }} </li>
-                
+
               </ul>
 
               <p v-html="article.less_content"></p>
@@ -265,6 +265,7 @@ export default {
       }
     },
     scrollToTop() {
+        console.log('articles vue');
       window.scrollTo(0, 0);
     }
   },

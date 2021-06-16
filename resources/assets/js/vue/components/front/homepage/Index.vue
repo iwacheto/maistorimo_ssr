@@ -34,7 +34,6 @@
                             <div class="listing-badge now-open">Верифициран</div>
 
                             <div class="listing-item-content">
-                                <div class="numerical-rating" :data-rating="project.count"></div>
                                 <h3>
                                     {{ project.title }}
                                     <i class="verified-icon"></i>
@@ -100,7 +99,7 @@ import axios from 'axios';
 
 export default {
     metaInfo: {
-        // 
+        //
     },
     data() {
         return {

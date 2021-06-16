@@ -10,7 +10,6 @@
             <img :src="service.image_url" alt />
             <div class="listing-badge now-open">Верифицирана</div>
             <div class="listing-item-content">
-              <div class="numerical-rating" :data-rating="service.count"></div>
               <h3>
                 {{ service.name }}
                 <i class="verified-icon"></i>

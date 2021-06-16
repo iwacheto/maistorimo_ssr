@@ -202,7 +202,6 @@
                                     <div class="listing-badge now-open">Верифицирана</div>
 
                                     <div class="listing-item-content">
-                                        <div class="numerical-rating" data-rating="3.5"></div>
                                         <h3>
                                             {{ service.name }}
                                             <i class="verified-icon"></i>
@@ -226,7 +225,6 @@
                             <div class="listing-badge now-open">Некатегоризиран</div>
 
                             <div class="listing-item-content">
-                                <div class="numerical-rating" data-rating="0.5"></div>
                                 <h3>
                                     Не е намерено нищо
                                     <i class="verified-icon"></i>
