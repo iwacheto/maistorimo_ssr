@@ -32025,7 +32025,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_8_vue_
 	router: __WEBPACK_IMPORTED_MODULE_2__router__["a" /* default */]
 });
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_lazyload__["a" /* default */]);
+// Vue.use(VueLazyload);
 // Vue.use(VueScrollTo);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_10_vue_meta__["a" /* default */]);
 
@@ -52750,7 +52750,7 @@ var index = {
   }
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (index);
+/* unused harmony default export */ var _unused_webpack_default_export = (index);
 
 
 /***/ }),

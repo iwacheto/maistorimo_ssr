@@ -50,7 +50,7 @@ Vue.use(VueAnalytics, {
     router
 })
 
-Vue.use(VueLazyload);
+// Vue.use(VueLazyload);
 // Vue.use(VueScrollTo);
 Vue.use(VueMeta);
 
