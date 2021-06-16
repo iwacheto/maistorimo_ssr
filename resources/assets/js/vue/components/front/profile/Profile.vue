@@ -267,7 +267,6 @@ export default {
   },
   mounted() {
     this.getProfile();
-    alert('da');
     this.info_button = this.info_1;
   },
   methods: {

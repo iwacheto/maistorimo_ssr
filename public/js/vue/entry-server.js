@@ -46512,7 +46512,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
   },
   mounted: function mounted() {
     this.getProfile();
-    alert('da');
     this.info_button = this.info_1;
   },
 
