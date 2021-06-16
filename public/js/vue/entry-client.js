@@ -46489,7 +46489,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_analytic_function__["a" /* analyticFunction */]],
   name: "Profile",
-  props: ["id"],
+  props: ["id", 'title'],
+  metaInfo: function metaInfo() {
+    return {
+      meta: []
+    };
+  },
   data: function data() {
     return {
       activeItem: "home",

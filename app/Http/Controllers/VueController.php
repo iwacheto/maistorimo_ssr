@@ -100,6 +100,7 @@ class VueController extends Controller
             $ser_height = $imgSize[1];
             OpenGraph::addImage($profile->profile_image, ['height' => $ser_width, 'width' => $ser_height]);
             OpenGraph::setDescription($profile->company_name);
+
             $localBusiness = Schema::localBusiness()
                 ->name($profile->company_name)
                 ->email('g.prusiyski@webrika.bg')
@@ -107,8 +108,7 @@ class VueController extends Controller
                 ->logo($profile->profile_image)
                 ->address(Schema::PostalAddress()->streetAddress('19 Ruse str')->addressRegion('Pleven')->postalCode(5800)->addressCountry('Bulgaria'))
                 ->contactPoint(Schema::contactPoint()->contactType('customer support')->telephone($profile->phone_number)->email($profile->email_address));
-
-        }else {
+        } else {
             $title = 'Maistorimo';
             SEOMeta::setTitle('Maistorimo');
             SEOMeta::setDescription('Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги');

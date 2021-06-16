@@ -244,7 +244,12 @@ import axios from "axios";
 export default {
   mixins: [analyticFunction],
   name: "Profile",
-  props: ["id"],
+  props: ["id", 'title'],
+    metaInfo() {
+        return {
+            meta: [],
+        };
+    },
   data() {
     return {
       activeItem: "home",
