@@ -240,6 +240,8 @@
 <script>
 import { analyticFunction } from "../mixins/analytic_function";
 import axios from "axios";
+import Vue from 'vue';
+import Router from 'vue-router';
 
 export default {
   mixins: [analyticFunction],
