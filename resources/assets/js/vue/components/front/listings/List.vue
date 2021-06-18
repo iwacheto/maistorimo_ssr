@@ -255,7 +255,7 @@
                                 class="listing-item-container compact"
                             >
                                 <div class="listing-item">
-                                    <img v-lazy="project.project_galleries[0].url" alt />
+                                    <img :src="project.project_galleries[0].url" alt />
 
                                     <div class="listing-badge now-open">Верифициран</div>
 

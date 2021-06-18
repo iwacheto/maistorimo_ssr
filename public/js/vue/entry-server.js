@@ -39077,16 +39077,10 @@ var render = function() {
                             [
                               _c("div", { staticClass: "listing-item" }, [
                                 _c("img", {
-                                  directives: [
-                                    {
-                                      name: "lazy",
-                                      rawName: "v-lazy",
-                                      value: project.project_galleries[0].url,
-                                      expression:
-                                        "project.project_galleries[0].url"
-                                    }
-                                  ],
-                                  attrs: { alt: "" }
+                                  attrs: {
+                                    src: project.project_galleries[0].url,
+                                    alt: ""
+                                  }
                                 }),
                                 _vm._v(" "),
                                 _c(
@@ -40151,15 +40145,7 @@ var render = function() {
                         [
                           _c("div", { staticClass: "listing-item" }, [
                             _c("img", {
-                              directives: [
-                                {
-                                  name: "lazy",
-                                  rawName: "v-lazy",
-                                  value: service.image_url,
-                                  expression: "service.image_url"
-                                }
-                              ],
-                              attrs: { alt: "" }
+                              attrs: { src: service.image_url, alt: "" }
                             }),
                             _vm._v(" "),
                             _c(

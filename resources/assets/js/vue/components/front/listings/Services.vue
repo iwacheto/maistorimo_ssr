@@ -197,7 +197,7 @@
                                 class="listing-item-container compact"
                             >
                                 <div class="listing-item">
-                                    <img v-lazy="service.image_url" alt />
+                                    <img :src="service.image_url" alt />
 
                                     <div class="listing-badge now-open">Верифицирана</div>
 
