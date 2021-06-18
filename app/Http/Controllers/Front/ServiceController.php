@@ -39,12 +39,14 @@ class ServiceController extends Controller
         $services = DB::table('services')->select(DB::raw('services.*, object_analytics.count, object_analytics.date'))
             ->leftJoin('object_analytics', 'services.id', 'object_analytics.object_id')
             ->where('object_analytics.object_type', '=', 'service')
+            ->whereNull('deleted_at')
             ->where('object_analytics.date', '=', $today)->orderBy('object_analytics.count', 'DESC')->limit(10)->get();
         //  return $services;
         if (count($services) < 5) {
             $services = DB::table('services')->select(DB::raw('services.id, services.name, services.image_url,SUM(object_analytics.count) as count'))
                 ->leftJoin('object_analytics', 'services.id', 'object_analytics.object_id')
                 ->where('object_analytics.object_type', '=', 'service')
+                ->whereNull('deleted_at')
                 ->groupBy('services.name')
                 ->groupBy('services.id')
                 ->groupBy('services.image_url')

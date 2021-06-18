@@ -5,6 +5,7 @@ namespace App\Models;
 use App\ObjectAnalytic;
 use App\PhoneNumberAnalytic;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Service extends Model
 {
+    use SoftDeletes;
     /**
      * @var array
      */
@@ -85,7 +87,7 @@ class Service extends Model
             $q->whereIn('title', $value );
         });
     }
-    
+
     public function records(){
         return $this->morphMany(ObjectAnalytic::class, 'object');
     }
