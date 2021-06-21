@@ -65,6 +65,7 @@ class ProjectsController extends Controller
                 ->selectRaw('projects.id, projects.title ,SUM(object_analytics.count) as count,project_gallery.url')
                 ->leftjoin('object_analytics', 'projects.id', 'object_analytics.object_id')
                 ->where('object_analytics.object_type', 'project')
+                ->whereNotNull('project_gallery.url')
                 ->leftjoin('project_gallery', 'projects.id', 'project_gallery.project')
                 ->where('project_gallery.main', 1)
                 ->whereNull('deleted_at')
