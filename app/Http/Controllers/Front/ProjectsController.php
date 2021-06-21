@@ -52,9 +52,10 @@ class ProjectsController extends Controller
     public function getPopularProjects()
     {
         $today = \Carbon\Carbon::now()->format('Y-m-d');
-        $projects = DB::table('projects')->select(DB::raw('projects.*, object_analytics.count, project_gallery.url'))
+        $projects = DB::table('projects')->select(DB::raw('projects.*, object_analytics.count, project_gallery.url as project_image'))
             ->leftJoin('object_analytics', 'projects.id', 'object_analytics.object_id')
             ->where('object_analytics.object_type', 'project')
+            ->whereNotNull('project_gallery.url')
             ->leftjoin('project_gallery', 'project_gallery.id', 'projects.id')
             ->whereNull('deleted_at')
             // ->where('project_gallery.main', 1)
@@ -62,7 +63,7 @@ class ProjectsController extends Controller
         // return $projects;
         if (count($projects) < 5) {
             $projects = DB::table('projects')
-                ->selectRaw('projects.id, projects.title ,SUM(object_analytics.count) as count,project_gallery.url')
+                ->selectRaw('projects.id, projects.title ,SUM(object_analytics.count) as count,project_gallery.url as project_image')
                 ->leftjoin('object_analytics', 'projects.id', 'object_analytics.object_id')
                 ->where('object_analytics.object_type', 'project')
                 ->whereNotNull('project_gallery.url')

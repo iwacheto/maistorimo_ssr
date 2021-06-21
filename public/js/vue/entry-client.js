@@ -37372,7 +37372,9 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "listing-item" }, [
-                      _c("img", { attrs: { src: project.url, alt: "" } }),
+                      _c("img", {
+                        attrs: { src: project.project_image, alt: "" }
+                      }),
                       _vm._v(" "),
                       _c("div", { staticClass: "listing-badge now-open" }, [
                         _vm._v("Верифициран")

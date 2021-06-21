@@ -29,7 +29,7 @@
                     <router-link :to="'project/details/'+project.id" tag="a" class="carousel_link">
                         <div class="listing-item">
                             <!-- <img v-lazy="project.url" alt /> -->
-                            <img :src="project.url" alt />
+                            <img :src="project.project_image" alt />
 
                             <div class="listing-badge now-open">Верифициран</div>
 
