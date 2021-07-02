@@ -58,7 +58,12 @@
                         <div id="listing-nav" class="listing-nav-container">
                             <ul class="listing-nav">
                                 <li>
-                                    <a href="#" v-scroll-to="'#listing-overview-project'" class="active">Детайли</a>
+                                    <a
+                                        href="#"
+                                        v-scroll-to="'#listing-overview-project'"
+                                        class="active"
+                                        >Детайли</a
+                                    >
                                 </li>
 
                                 <li>
@@ -421,18 +426,19 @@ export default {
                 this.$nextTick(function () {
                     console.log('213523532465goshooooooooooooooooooooooo123123123213123');
                     console.log(this.images.length);
-                    if( window.localStorage )
-                    {
-                        if( !localStorage.getItem('firstLoad') )
-                        {
-                        localStorage['firstLoad'] = true;
-                        window.location.reload();
-                        }
-                        else
-                        localStorage.removeItem('firstLoad');
-                    }
+                    console.log('dadadada');
+                    // if( window.localStorage )
+                    // {
+                    //     if( !localStorage.getItem('firstLoad') )
+                    //     {
+                    //     localStorage['firstLoad'] = true;
+                    //     window.location.reload();
+                    //     }
+                    //     else
+                    //     localStorage.removeItem('firstLoad');
+                    // }
                     $('.custom_project_slider')
-                        .not('.slick-initialized')
+                        // .not('.slick-initialized')
                         .slick({
                             infinite: true,
                             slidesToShow: imgCount,
@@ -469,6 +475,29 @@ export default {
                                 },
                             ],
                         });
+
+                    $('.mfp-gallery-container').each(function () {
+                        // the containers for all your galleries
+                        $(this).magnificPopup({
+                            type: 'image',
+                            delegate: 'a.mfp-gallery',
+
+                            fixedContentPos: true,
+                            fixedBgPos: true,
+
+                            overflowY: 'auto',
+
+                            closeBtnInside: false,
+                            preloader: true,
+
+                            removalDelay: 0,
+                            mainClass: 'mfp-fade',
+
+                            gallery: { enabled: true, tCounter: '' },
+                        });
+                    });
+                    this.$forceUpdate();
+                    console.log('úpdated');
                 });
 
                 let currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
