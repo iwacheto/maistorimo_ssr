@@ -14,10 +14,10 @@
                     <h4>Полезни линкове</h4>
                     <ul class="footer-links">
                         <li>
-                            <router-link tag="a" to="general_terms">Общи условия</router-link>
+                            <router-link tag="a" to="/general_terms">Общи условия</router-link>
                         </li>
                         <li>
-                            <router-link tag="a" to="private_protection">Политика за поверителност</router-link>
+                            <router-link tag="a" to="/private_protection">Политика за поверителност</router-link>
                         </li>
                         <li>
                             <a href="#">GDPR</a>

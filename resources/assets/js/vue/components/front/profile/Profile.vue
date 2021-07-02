@@ -178,7 +178,6 @@
                             </div>-->
                           </div>
 
-                          <!-- <span class="like-icon"></span> -->
                         </div>
                       </router-link>
                     </div>
@@ -216,7 +215,6 @@
                             <span v-html="service.second_description"></span>
                           </div>
 
-                          <!-- <span class="like-icon"></span> -->
                         </div>
                       </router-link>
                     </div>

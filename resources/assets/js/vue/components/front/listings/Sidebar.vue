@@ -62,7 +62,6 @@
                 </h3>
                 <span v-for="tag in project.tags" :key="tag.id">#{{ tag.tag }}</span>
               </div>
-              <span class="like-icon"></span>
             </div>
           </router-link>
         </div>

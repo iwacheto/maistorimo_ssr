@@ -15,7 +15,6 @@
                 <i class="verified-icon"></i>
               </h3>
             </div>
-            <span class="like-icon"></span>
           </div>
         </router-link>
         <!-- </a> -->

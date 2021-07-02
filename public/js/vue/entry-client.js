@@ -33754,7 +33754,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
 
 
 
@@ -33955,7 +33954,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
 //
 //
 //
@@ -34210,9 +34208,7 @@ var render = function() {
                       ),
                       _c("i", { staticClass: "verified-icon" })
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "like-icon" })
+                  ])
                 ])
               ]
             )
@@ -37342,9 +37338,7 @@ var render = function() {
                           ),
                           _c("i", { staticClass: "verified-icon" })
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "like-icon" })
+                      ])
                     ])
                   ]
                 )
@@ -37503,8 +37497,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-//
-//
 //
 //
 //
@@ -39064,9 +39056,7 @@ var render = function() {
                                     })
                                   ],
                                   2
-                                ),
-                                _vm._v(" "),
-                                _c("span", { staticClass: "like-icon" })
+                                )
                               ])
                             ]
                           )
@@ -39131,9 +39121,7 @@ var staticRenderFns = [
           ),
           _c("i", { staticClass: "verified-icon" })
         ])
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "like-icon" })
+      ])
     ])
   }
 ]
@@ -39217,8 +39205,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
-//
 //
 //
 //
@@ -40118,9 +40104,7 @@ var render = function() {
                                 ),
                                 _c("i", { staticClass: "verified-icon" })
                               ])
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "like-icon" })
+                            ])
                           ])
                         ]
                       )
@@ -40181,9 +40165,7 @@ var staticRenderFns = [
           ),
           _c("i", { staticClass: "verified-icon" })
         ])
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "like-icon" })
+      ])
     ])
   }
 ]
@@ -41757,7 +41739,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
 
 
 
@@ -42007,9 +41988,7 @@ var render = function() {
                                       )
                                     ],
                                     1
-                                  ),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "like-icon" })
+                                  )
                                 ])
                               ]
                             )
@@ -43493,8 +43472,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
-//
 //
 //
 //
@@ -48259,7 +48236,7 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { attrs: { tag: "a", to: "general_terms" } },
+                  { attrs: { tag: "a", to: "/general_terms" } },
                   [_vm._v("Общи условия")]
                 )
               ],
@@ -48271,7 +48248,7 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { attrs: { tag: "a", to: "private_protection" } },
+                  { attrs: { tag: "a", to: "/private_protection" } },
                   [_vm._v("Политика за поверителност")]
                 )
               ],

@@ -63,7 +63,6 @@
                                                     <span>{{ project.s_project.title }}</span>
                                                 </router-link>
                                             </div>
-                                            <span class="like-icon"></span>
                                         </div>
                                     </router-link>
 

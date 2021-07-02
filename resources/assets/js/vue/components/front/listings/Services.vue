@@ -207,7 +207,6 @@
                                             <i class="verified-icon"></i>
                                         </h3>
                                     </div>
-                                    <span class="like-icon"></span>
                                 </div>
                             </router-link>
                         </div>
@@ -230,7 +229,6 @@
                                     <i class="verified-icon"></i>
                                 </h3>
                             </div>
-                            <span class="like-icon"></span>
                         </div>
                     </div>
                 </div>

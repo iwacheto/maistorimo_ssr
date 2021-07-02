@@ -734,9 +734,6 @@
 
           <!-- Share / Like -->
           <div class="listing-share margin-top-40 margin-bottom-40 no-border">
-            <button class="like-button">
-              <span class="like-icon"></span> Маркирайте тази обява
-            </button>
             <span>159 души са маркирали тази обява</span>
 
             <!-- Share Buttons -->
