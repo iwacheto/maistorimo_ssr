@@ -11,6 +11,7 @@ import ProjectDetails from './components/front/project/ProjectDetails';
 import Service from './components/front/service/Service';
 import GeneralTerms from './components/front/homepage/GeneralTerms';
 import PrivateProtection from './components/front/homepage/PrivateProtection';
+import Gdpr from './components/front/homepage/Gdpr';
 // import AllArticles from './components/front/blog/AllArticles';
 // import Article from './components/front/blog/Article';
 import Profile from './components/front/profile/Profile';
@@ -27,6 +28,7 @@ const routes = [
 	{ path: '/Services/:filters?', component: Services, name: 'Services', props: true },
 	{ path: '/general_terms', component: GeneralTerms, name: 'GeneralTerms' },
 	{ path: '/private_protection', component: PrivateProtection, name: 'PrivateProtection' },
+	{ path: '/gdpr', component: Gdpr, name: 'Gdpr' },
 	{ path: '/profile/:id', component: Profile, name: 'Profile', props: true },
 	{ path: '/contacts', component: Contacts, name: 'Contacts' },
 ];

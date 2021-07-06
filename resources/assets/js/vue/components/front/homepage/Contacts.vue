@@ -171,13 +171,6 @@
                                     class="error"
                                 >Паролата не съвпада с вашата парола</span>
                             </div>
-                            <div class="captcha_content">
-                                <div
-                                    class="g-recaptcha"
-                                    id="recaptcha"
-                                    data-sitekey="6Lc9f8kUAAAAAOTS7GfEFiNj30U5mGbIGQsjKMsT"
-                                ></div>
-                            </div>
 
                             <input
                                 type="submit"
@@ -247,13 +240,11 @@ export default {
         },
         async setData(event) {
             try {
-                let recaptcha_response_value = event.target['g-recaptcha-response'].value;
                 let res = await axios.post('/contacts', {
                     name: this.contactData.name,
                     email: this.contactData.email,
                     subject: this.contactData.subject,
                     msg: this.contactData.msg,
-                    token: recaptcha_response_value,
                 });
                 console.log(res.data);
                 this.contactData.commonError = true;
@@ -264,7 +255,6 @@ export default {
                 this.$validator.reset();
                 this.errors.clear();
                 this.responce = res.data;
-                grecaptcha.reset();
                 // console.log(res.data);
             } catch (error) {
                 this.responce = error.data;
@@ -272,17 +262,6 @@ export default {
         },
         hideErrors() {
             this.contactData.commonError = false;
-        },
-        onCaptchaExpired: function() {
-            this.$refs.recaptcha.reset();
-        },
-        createCaptcha() {
-            setTimeout(function() {
-                grecaptcha.render("recaptcha", {
-                  sitekey: "6Lc9f8kUAAAAAOTS7GfEFiNj30U5mGbIGQsjKMsT",
-                  callback: function() {}
-                });
-            }, 1600);
         },
         // receives a place object via the autocomplete component
         setPlace(place) {
@@ -313,7 +292,7 @@ export default {
         GoogleMap,
     },
     created() {
-        this.createCaptcha();
+
     },
 };
 </script>

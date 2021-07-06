@@ -42,7 +42,7 @@ class BrowseController extends Controller
         $data = $request->all();
         $token = $data['token'];
         $email = 'iwacheto@abv.bg';
-        
+
         if ($token) {
             $response = Zttp::asFormParams()->post('https://www.google.com/recaptcha/api/siteverify', [
                 'secret' => '6Lc9f8kUAAAAAGk56Km6EWWPTfZ7ri7Hjng9OBi2',
@@ -65,28 +65,14 @@ class BrowseController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'subject' => 'required',
-            'msg' => 'required',
-            'token' => 'required',
+            'msg' => 'required'
         ]);
 
         $data = $request->all();
-        $token = $data['token'];
-        $email = 'iwacheto@abv.bg';
-        
-        if ($token) {
-            $response = Zttp::asFormParams()->post('https://www.google.com/recaptcha/api/siteverify', [
-                'secret' => '6Lc9f8kUAAAAAGk56Km6EWWPTfZ7ri7Hjng9OBi2',
-                'response' => $token,
 
-            ]);
-
-            if (!$response->json()['success']) {
-                return 'Изпращането е неуспешно!';
-            } else {
-                SendEmailJob::dispatch($data,$email)->delay(Carbon::now()->addSeconds(1));
-                return "Съобщението беше изпратено успешно!";
-            }
-        }
+        $email = 'g.prusiyski@webrika.bg';
+            SendEmailJob::dispatch($data,$email)->delay(Carbon::now()->addSeconds(1));
+            return "Съобщението беше изпратено успешно!";
     }
 
     public function setSession(Request $request)
@@ -102,7 +88,7 @@ class BrowseController extends Controller
         $row=User::where('name', $name)->get();
         if(count($row)>=1){
             return 'Съжаляваме,но потрбителското име вече е заето!';
-        } 
+        }
     }
 
     public function checkEmail(Request $request){
@@ -112,6 +98,6 @@ class BrowseController extends Controller
         $row=User::where('email', $email)->get();
         if(count($row)>=1){
             return 'Съжаляваме,но имейла вече е зает!';
-        } 
+        }
     }
 }
