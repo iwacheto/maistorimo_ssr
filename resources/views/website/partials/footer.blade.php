@@ -81,6 +81,29 @@
             </div>
         </div>
     </div>
+    <div class="yello-line"></div>
+    <div class="social">
+            <div class="column-one">
+                <p class="copy-right">Copyright &#169; 2009 - 2021 Maistorimo.com</p>
+            </div>
+            
+            <div class="column-two">
+                <ul class="social">
+                    
+                    <li class="facebook">
+                        <a href="#" title="Facebook"><i class="icon-facebook"></i></a>
+                    </li>
+                    <li class="instagram">
+                        <a href="#" title="Instagram"><i class="icon-instagram"></i></a>
+                    </li>
+                    
+                    <li class="twitter">
+                        <a href="#" title="Twitter"><i class="icon-twitter"></i></a>
+                    </li>
+                    
+                </ul>
+            </div>
+    </div>
     {{-- <div class="footer_copy">
                 <div class="container">
                     <div class="column one">

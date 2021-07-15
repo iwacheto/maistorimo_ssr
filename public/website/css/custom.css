@@ -1,0 +1,245 @@
+.half_circle {
+    display: flex;
+    flex-direction: column;
+    background: #fbcd00;
+    color: #000;
+    height: 165px;
+    width: 870px;
+    border-bottom-right-radius: 180px;
+    border-top-right-radius: 0px;
+    margin: 250px 0 0 60px;
+}
+
+.home-heading-text {
+    display: flex;
+    margin: 50px 0px 20px 30px;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.home-text {
+    font-size: 2.5rem;
+    margin-left: 30px;
+    font-weight: 300;
+}
+
+button.header_buttton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #fff;
+    background-color: #4483ce;
+    width: 230px;
+    height: 64px;
+    text-align: center;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    text-transform: uppercase;
+    margin: 60px 0 0 60px;
+}
+
+div.ochra-line {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background-color: #9E8100;
+    z-index: 9;
+}
+
+div.yellow-shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 480px;
+    height: 130px;
+    background: #fbcd00;
+    color: #000;
+    border-radius: 0 0 120px 120px;
+    margin: 0 auto;
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-top: -50px;
+}
+
+div.yellow-shape span{
+    padding-top: 50px;
+}
+
+div.full-width.no-margin-h.no-margin-v {
+    background-color: #4483ce !important;
+    margin-bottom: 0px !important;
+}
+
+/* div.icon i{
+    color: #4483ce;
+} */
+
+div.small-yellow-shape {
+    display: flex;
+    width: 600px;
+    height: 70px;
+    border-bottom-right-radius: 380px;
+    border-top-right-radius: 0px;
+    background: #fbcd00;
+    margin-top: -55px;
+    margin-bottom: 80px;
+}
+
+li.portfolio-item.isotope-item.category-artwork.category-banner.has-thumbnail {
+    width: 220px;
+    height: 220px;
+    margin: 0 85px;
+}
+
+div.image_wrapper {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+div.image_frame.scale-with-grid {
+    width: 220px !important;
+    height: 220px;
+    border-radius: 50%;
+}
+
+div.mask {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+div.photo img.scale-with-grid.wp-post-image {
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.Recent_posts ul div.desc {
+    border-left: 2px solid #fbcd00;
+}
+
+.Recent_posts ul li .desc:after {
+    width: 0px;
+}
+
+#Footer {
+    background-color: #545454 !important;
+}
+
+#Footer .Recent_posts ul li .desc {
+    margin-top: 25px !important;
+}
+
+#Footer .Recent_posts ul li .desc:after {
+    background-color: #506074 !important;
+}
+
+div.photo {
+    position: relative !important;
+}
+
+div.photo:after {
+    background-color: #506074 !important;
+}
+
+div.photo img{
+    margin-left: -72px !important;
+    position: absolute !important;
+    z-index: 99 !important;
+}
+
+button.show_more {
+    background-color: #4483ce;
+}
+
+div.section.mcb-section.full-width.no-margin-h.no-margin-v {
+    position: relative;
+    padding: 0 !important;
+    height: 165px;
+}
+
+div.section.mcb-section.full-width.no-margin-h.no-margin-v svg {
+    position: absolute;
+    left: 12% !important;
+    bottom: 0 !important;
+}
+
+div.column_attr.clearfix.align_center h2 {
+    margin-top: 80px !important;
+}
+
+div.yello-line {
+    background: #fbcd00;
+    width: 100%;
+    height: 5px;
+}
+
+div.image_frame.scale-with-grid {
+    position: relative;
+}
+
+div.image_round_line {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: transparent;
+    position: absolute;
+    z-index: 5;
+    box-shadow: 
+        0 0 0 5px #fff,
+        0 0 0 10px #4483ce,
+        0 0 0 20px #fff
+    ;
+}
+
+div.social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 140px;
+    background-color: #4483ce;
+}
+
+div.social div.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+div.column-one {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: left;
+    margin-left: 60px;
+}
+
+div.column-two {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 60px;
+}
+
+div.column-two ul {
+    display: flex;
+    flex-direction: row;
+}
+
+div.column-two ul li {
+    display: flex;
+    margin: 0 10px;
+    
+}
+
+#Footer a {
+    color: #3b4655 !important;
+}
+
+.icon_box:hover .icon_wrapper:before, 
+.icon_box a:hover .icon_wrapper:before { 
+    background-color: #4483ce !important;
+}

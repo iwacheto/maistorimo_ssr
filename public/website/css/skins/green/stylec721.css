@@ -392,7 +392,7 @@
 /* Icon box */
 	.icon_box .icon_wrapper,
 	.icon_box a .icon_wrapper {
-		color: #97cc02;
+		color: #4483ce;  /* #97cc02 */
 	}
 	.icon_box:hover .icon_wrapper:before, 
 	.icon_box a:hover .icon_wrapper:before { 

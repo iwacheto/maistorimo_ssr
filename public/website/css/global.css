@@ -704,7 +704,7 @@ a.button.button_green, a.tp-button.green {
 	border-color: #88be4c;
 }
 .button-stroke a:hover.button.button_green, .button-stroke a:hover.tp-button.green {
-	background-color: #88be4c !important;
+	background-color: #88be4c;
 	color: #fff;
 }
 /****************************************************/

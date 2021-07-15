@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 230);
+/******/ 	return __webpack_require__(__webpack_require__.s = 233);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -31960,16 +31960,16 @@ VeeValidate$1.withValidation = withValidation;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vee_validate__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_analytics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vue_scrollto__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vue_meta__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_event_bus__ = __webpack_require__(20);
@@ -33470,11 +33470,11 @@ module.exports = noop;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_front_homepage_GeneralTerms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_front_homepage_GeneralTerms__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_front_homepage_PrivateProtection__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_front_homepage_PrivateProtection___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_front_homepage_PrivateProtection__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_front_homepage_Gdpr__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_front_homepage_Gdpr__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_front_homepage_Gdpr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_front_homepage_Gdpr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_profile_Profile__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_profile_Profile__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_profile_Profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_front_profile_Profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_front_homepage_Contacts__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_front_homepage_Contacts__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_front_homepage_Contacts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_front_homepage_Contacts__);
 
 
@@ -46212,6 +46212,466 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources/assets/js/vue/components/front/homepage/Gdpr.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14929488", Component.options)
+  } else {
+    hotAPI.reload("data-v-14929488", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 191 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+
+  methods: {},
+  created: function created() {}
+});
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { attrs: { id: "titlebar" } }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12", attrs: { id: "titlebar" } }, [
+              _c("h2", [_vm._v("Политика за поверителност")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c(
+              "h4",
+              {
+                staticClass:
+                  "headline with-border margin-top-0 margin-bottom-35"
+              },
+              [_vm._v("7. Политика за поверителност и Защита на личните данни")]
+            ),
+            _vm._v(" "),
+            _c("blockquote", [
+              _c("p", [
+                _vm._v(
+                  '\n            "МАЙСТОРИМО" ООД (наричано по-долу за краткост "Администратор" или "Дружеството") осъществява дейността си в съответствие със Закона за защита на личните данни и Регламент (ЕС) 2016/679 на\n            Европейския парламент и на Съвета от 27 април 2016 година относно защитата на физическите лица във връзка с обработването на лични данни и относно свободното движение на такива данни. Настоящата\n            информация има цел да Ви информира за всички аспекти на обработката на личните Ви данни от Дружеството и правата, които имате във връзка с тази обработка.\n          '
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n            Поверителността и сигурността на личните данни на Kлиентитe е от първостепенно значение за \"МАЙСТОРИМО\" ООД . Поради тази причина създадохме настоящата единна ''Политика'' за защита на личните\n            данни на ''Платформата'', която обхваща начина, по който събираме, използваме, съхраняваме, разкриваме и изтриваме, или най-общо „обработваме“, данните Ви.\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  '\n            Вашите данни, предоставени при създаването на акаунт, ще бъдат записани в база данни на "МАЙСТОРИМО" ООД(„Администратор/а/ът“) и в тази връзка предоставянето на съгласие с Общите условия,\n            неразделна част от които е настоящата Политика за защита на личните данни, се счита за съгласие предоставените в акаунта Ви данни да бъдат свободно обменяни между "МАЙСТОРИМО" ООД и Продавачите. ?\n          '
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Идентификационни данни на администратора и координати за връзка"
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v('Име: "МАЙСТОРИМО" ООД')]),
+              _vm._v(" "),
+              _c("p", [_vm._v("БЪЛГАРИЯ")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("област Плевен, община Плевен")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("гр. Плевен 5800")]),
+              _vm._v(" "),
+              _c("p", [_vm._v('БУЛ."РУСЕ" No 19, ет. 3')]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("3. Категории лични данни които ще се обработват")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Услугите, които предоставя сайта MAISTORIMO.BG предполагат предоставяне на Лични данни като име, адрес, телефон , e-mail."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n            MAISTORIMO.BG не събира данни с категория специални данни по смисъла на чл. 9 и 10 от Регламент (ЕС) 2016/679 . С това съгласие вие се задължавате да не съхранявате и изпращате такива данни чрез сайта,\n            като например:\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n            - данни, разкриващи Вашия расов или етнически произход, политически възгледи, религиозни или философски убеждения, членство в синдикални организации, нито Ваши генетични данни, биометрични данни,\n            данни за здравословното Ви състояние, за сексуалния Ви живот или сексуалната Ви ориентация, или данни, свързани с Ваши присъди и нарушения.\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "- документи за самоличност, както и ЕГН, номер на паспорт/лична карта и др. подобни."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v("4. Категории получатели на данните")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Функцията на MAISTORIMO.BG е информационна платформа за малки обяви, която позволява продавачи и купувачи да се свързват чрез тези обяви."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "С публикуването на обява вие предоставяте възможност на други потребители на сайта да разглежда вашата обява, в която вие сами определяте каква информация да съдържа."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Данните за контакт на Администраторите на дилъри ще се ползват само от служители на MAISTORIMO.BG за връзка с тях."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v("5. Информация за правата на субекта на данни")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "- MAISTORIMO.BG ви осигурява непрекъснат 24 часов достъп до вашия акаунт, освен в случаите на техническа неизправност."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "- Чрез достъпа до вашия акаунт, вие имате право на проверка и промяна на предоставената от вас информация."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "- Имате възможност и да се откажете от съгласието за обработване на данните ви чрез закриване на акаунта ви (като подадете искане за закриване на акаунта ви на e-mail: !!!!!!!!!! )."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "- Вие имате право да възразите срещу обработването на личните ви данни, което се основава на задача от обществен интерес, упражняване на официално правомощие или на легитимен интерес."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("6. Задължително ли е предоставянето на лични данни")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Задължителната информация, за да се регистрирате е eлектронната ви поща, а при публикуване на обява и телефон."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Предоставянето на личните ви данни в останалата функционална част на сайта е напълно доброволно по ваше желание."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Физическото лице търсещо или предлагащо чрез онлайн обяви в MAISTORIMO.BG самостоятелно преценява дали и какви данни за себе си да предостави."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "7. Автоматизирано вземане на решения, включително профилиране"
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  '\n            "Бисквитките" (cookies) са малки файлове, които се съхраняват временно на вашия твърд (hard) диск и позволяват на сайта ни да разпознае компютъра ви следващия път, когато посетите интернет страницата\n            MAISTORIMO.BG.\n          '
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  '"MAISTORIMO.BG. Използва "бисквитки" единствено, за да събира информация относно ползването на нашите сайтове, с цел по-бързото Ви иденфициране и предоставяне на услуги.'
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Можем да позволим на трети страни, като доставчици на реклами или анализи, да събират информация, използвайки тези технологии, директно от нашия уебсайт"
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n            Повече информация за управление на бисквитките - www.allaboutcookies.org е полезен ресурс с много подробна информация за бисквитките и как да ги управлявате в случай, че желаете да изтриете или\n            забраните получаването на бисквитки от MOBILE.BG.\n          "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v("8. Срок на съхранение")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "MAISTORIMO.BG съхранява Вашите лични данни за срок не по-дълъг от съществуването на профила ви в уебсайта."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "След изтичането на този срок, MAISTORIMO.BG полага необходимите грижи да изтрие и унищожи всички Ваши данни, без ненужно забавяне (до 60 дни)."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "9. Дали данните ще се предоставят на трета държава извън ЕС"
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "MOBILE.BG e сайт достъпен и от страни извън Европейският съюз. Това предполага, че данните, които сте предоставили в обявата могат да бъдат видяни от тези трети страни."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v("10. Сигурност от страна на MAISTORIMO.BG")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "- Предоставените ни данни се защитават съвестно от загуба, унищожение, изопачаване/фалшификация, манипулация и неправомерен достъп или неправомерно разкриване."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  '\n            - "МАЙСТОРИМО" ООД. ще използва личните ви данни единствено за целите на техническото управление на сайта, в който сте регистрирани, за да ви предостави достъп до специална информация или за обща\n            комуникация с вас.\n          '
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  '\n            "МАЙСТОРИМО" ООД. няма право да продава или търгува с Вашите лични данни. Служителите на "МАЙСТОРИМО" ООД. са длъжни да опазват поверителността на вашите данни и да спазват споразумение за разкриване\n            на поверителна информация.\n          '
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  '\n            "МАЙСТОРИМО" ООД. се води от приетата фирмена политика за защита на личните данни, която е представена в Комисията за защита на лични данни и се ръководи стриктно от нея при съхранение на личните данни,\n            получени от регистрирани потребители в сайтовете, собственост на компанията.\n          '
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("Как защитаваме сигурността на Вашите лични данни?")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Ние се ангажираме да гарантираме сигурността на личните данни като прилагаме подходящи технически и организационни мерки при съблюдаване на промишлените стандарти."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Съхраняваме Вашите данни на сигурни сървъри като използваме най-новите алгоритми за криптиране и гарантираме съхранението на резервни копия."
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n            Въпреки мерките, които прилагаме, за да защитаваме вашите лични данни, ние сме наясно, че по принцип предаването на информация по интернет или други публични мрежи не е напълно безопасно, като\n            съществува риск данните да могат да се преглеждат и използват от неупълномощени трети страни. Ние не можем да поемем отговорност за тези уязвимости на системи, които не са под нашия контрол.\n          "
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14929488", module.exports)
+  }
+}
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(194)
+/* template */
+var __vue_template__ = __webpack_require__(195)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources/assets/js/vue/components/front/profile/Profile.vue"
 
 /* hot reload */
@@ -46234,7 +46694,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 191 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46594,7 +47054,7 @@ __WEBPACK_IMPORTED_MODULE_4_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_vue_
 });
 
 /***/ }),
-/* 192 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47182,15 +47642,15 @@ if (false) {
 }
 
 /***/ }),
-/* 193 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(194)
+var __vue_script__ = __webpack_require__(197)
 /* template */
-var __vue_template__ = __webpack_require__(195)
+var __vue_template__ = __webpack_require__(198)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47229,7 +47689,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 194 */
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47576,7 +48036,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 195 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47953,15 +48413,15 @@ if (false) {
 }
 
 /***/ }),
-/* 196 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(197)
+var __vue_script__ = __webpack_require__(200)
 /* template */
-var __vue_template__ = __webpack_require__(207)
+var __vue_template__ = __webpack_require__(210)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48000,14 +48460,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 197 */
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__front_partials_Header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__);
 //
 //
@@ -48033,15 +48493,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 198 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(199)
+var __vue_script__ = __webpack_require__(202)
 /* template */
-var __vue_template__ = __webpack_require__(203)
+var __vue_template__ = __webpack_require__(206)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48080,14 +48540,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 199 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
@@ -48392,15 +48852,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 200 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(201)
+var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(202)
+var __vue_template__ = __webpack_require__(205)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48439,7 +48899,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 201 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49078,7 +49538,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 202 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50241,7 +50701,7 @@ if (false) {
 }
 
 /***/ }),
-/* 203 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50549,15 +51009,15 @@ if (false) {
 }
 
 /***/ }),
-/* 204 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(205)
+var __vue_script__ = __webpack_require__(208)
 /* template */
-var __vue_template__ = __webpack_require__(206)
+var __vue_template__ = __webpack_require__(209)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50596,7 +51056,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 205 */
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50719,7 +51179,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 206 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50866,7 +51326,7 @@ if (false) {
 }
 
 /***/ }),
-/* 207 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50897,7 +51357,7 @@ if (false) {
 }
 
 /***/ }),
-/* 208 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52709,7 +53169,7 @@ var index = {
 
 
 /***/ }),
-/* 209 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52864,7 +53324,7 @@ var locale = {
 /* harmony default export */ __webpack_exports__["a"] = (locale);
 
 /***/ }),
-/* 210 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -53423,9 +53883,6 @@ var locale = {
 
 
 /***/ }),
-/* 211 */,
-/* 212 */,
-/* 213 */,
 /* 214 */,
 /* 215 */,
 /* 216 */,
@@ -53442,15 +53899,18 @@ var locale = {
 /* 227 */,
 /* 228 */,
 /* 229 */,
-/* 230 */
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(231);
-module.exports = __webpack_require__(232);
+__webpack_require__(234);
+module.exports = __webpack_require__(235);
 
 
 /***/ }),
-/* 231 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53463,606 +53923,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0__app__["a" /* default */].$mount('#app');
 
 /***/ }),
-/* 232 */
+/* 235 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(370)
-/* template */
-var __vue_template__ = __webpack_require__(371)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/vue/components/front/homepage/Gdpr.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-14929488", Component.options)
-  } else {
-    hotAPI.reload("data-v-14929488", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 370 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {};
-  },
-
-  methods: {},
-  created: function created() {}
-});
-
-/***/ }),
-/* 371 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { attrs: { id: "titlebar" } }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12", attrs: { id: "titlebar" } }, [
-              _c("h2", [_vm._v("Политика за поверителност")])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12" }, [
-            _c(
-              "h4",
-              {
-                staticClass:
-                  "headline with-border margin-top-0 margin-bottom-35"
-              },
-              [_vm._v("7. Политика за поверителност и Защита на личните данни")]
-            ),
-            _vm._v(" "),
-            _c("blockquote", [
-              _c("p", [
-                _vm._v(
-                  '\n            "МАЙСТОРИМО" ООД (наричано по-долу за краткост "Администратор" или "Дружеството") осъществява дейността си в съответствие със Закона за защита на личните данни и Регламент (ЕС) 2016/679 на\n            Европейския парламент и на Съвета от 27 април 2016 година относно защитата на физическите лица във връзка с обработването на лични данни и относно свободното движение на такива данни. Настоящата\n            информация има цел да Ви информира за всички аспекти на обработката на личните Ви данни от Дружеството и правата, които имате във връзка с тази обработка.\n          '
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n            Поверителността и сигурността на личните данни на Kлиентитe е от първостепенно значение за \"МАЙСТОРИМО\" ООД . Поради тази причина създадохме настоящата единна ''Политика'' за защита на личните\n            данни на ''Платформата'', която обхваща начина, по който събираме, използваме, съхраняваме, разкриваме и изтриваме, или най-общо „обработваме“, данните Ви.\n          "
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  '\n            Вашите данни, предоставени при създаването на акаунт, ще бъдат записани в база данни на "МАЙСТОРИМО" ООД(„Администратор/а/ът“) и в тази връзка предоставянето на съгласие с Общите условия,\n            неразделна част от които е настоящата Политика за защита на личните данни, се счита за съгласие предоставените в акаунта Ви данни да бъдат свободно обменяни между "МАЙСТОРИМО" ООД и Продавачите. ?\n          '
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Идентификационни данни на администратора и координати за връзка"
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v('Име: "МАЙСТОРИМО" ООД')]),
-              _vm._v(" "),
-              _c("p", [_vm._v("БЪЛГАРИЯ")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("област Плевен, община Плевен")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("гр. Плевен 5800")]),
-              _vm._v(" "),
-              _c("p", [_vm._v('БУЛ."РУСЕ" No 19, ет. 3')]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("3. Категории лични данни които ще се обработват")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Услугите, които предоставя сайта MAISTORIMO.BG предполагат предоставяне на Лични данни като име, адрес, телефон , e-mail."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n            MAISTORIMO.BG не събира данни с категория специални данни по смисъла на чл. 9 и 10 от Регламент (ЕС) 2016/679 . С това съгласие вие се задължавате да не съхранявате и изпращате такива данни чрез сайта,\n            като например:\n          "
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n            - данни, разкриващи Вашия расов или етнически произход, политически възгледи, религиозни или философски убеждения, членство в синдикални организации, нито Ваши генетични данни, биометрични данни,\n            данни за здравословното Ви състояние, за сексуалния Ви живот или сексуалната Ви ориентация, или данни, свързани с Ваши присъди и нарушения.\n          "
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "- документи за самоличност, както и ЕГН, номер на паспорт/лична карта и др. подобни."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("4. Категории получатели на данните")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Функцията на MAISTORIMO.BG е информационна платформа за малки обяви, която позволява продавачи и купувачи да се свързват чрез тези обяви."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "С публикуването на обява вие предоставяте възможност на други потребители на сайта да разглежда вашата обява, в която вие сами определяте каква информация да съдържа."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Данните за контакт на Администраторите на дилъри ще се ползват само от служители на MAISTORIMO.BG за връзка с тях."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("5. Информация за правата на субекта на данни")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "- MAISTORIMO.BG ви осигурява непрекъснат 24 часов достъп до вашия акаунт, освен в случаите на техническа неизправност."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "- Чрез достъпа до вашия акаунт, вие имате право на проверка и промяна на предоставената от вас информация."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "- Имате възможност и да се откажете от съгласието за обработване на данните ви чрез закриване на акаунта ви (като подадете искане за закриване на акаунта ви на e-mail: !!!!!!!!!! )."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "- Вие имате право да възразите срещу обработването на личните ви данни, което се основава на задача от обществен интерес, упражняване на официално правомощие или на легитимен интерес."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("6. Задължително ли е предоставянето на лични данни")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Задължителната информация, за да се регистрирате е eлектронната ви поща, а при публикуване на обява и телефон."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Предоставянето на личните ви данни в останалата функционална част на сайта е напълно доброволно по ваше желание."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Физическото лице търсещо или предлагащо чрез онлайн обяви в MAISTORIMO.BG самостоятелно преценява дали и какви данни за себе си да предостави."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "7. Автоматизирано вземане на решения, включително профилиране"
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  '\n            "Бисквитките" (cookies) са малки файлове, които се съхраняват временно на вашия твърд (hard) диск и позволяват на сайта ни да разпознае компютъра ви следващия път, когато посетите интернет страницата\n            MAISTORIMO.BG.\n          '
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  '"MAISTORIMO.BG. Използва "бисквитки" единствено, за да събира информация относно ползването на нашите сайтове, с цел по-бързото Ви иденфициране и предоставяне на услуги.'
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Можем да позволим на трети страни, като доставчици на реклами или анализи, да събират информация, използвайки тези технологии, директно от нашия уебсайт"
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n            Повече информация за управление на бисквитките - www.allaboutcookies.org е полезен ресурс с много подробна информация за бисквитките и как да ги управлявате в случай, че желаете да изтриете или\n            забраните получаването на бисквитки от MOBILE.BG.\n          "
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("8. Срок на съхранение")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "MAISTORIMO.BG съхранява Вашите лични данни за срок не по-дълъг от съществуването на профила ви в уебсайта."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "След изтичането на този срок, MAISTORIMO.BG полага необходимите грижи да изтрие и унищожи всички Ваши данни, без ненужно забавяне (до 60 дни)."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "9. Дали данните ще се предоставят на трета държава извън ЕС"
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "MOBILE.BG e сайт достъпен и от страни извън Европейският съюз. Това предполага, че данните, които сте предоставили в обявата могат да бъдат видяни от тези трети страни."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("10. Сигурност от страна на MAISTORIMO.BG")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "- Предоставените ни данни се защитават съвестно от загуба, унищожение, изопачаване/фалшификация, манипулация и неправомерен достъп или неправомерно разкриване."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  '\n            - "МАЙСТОРИМО" ООД. ще използва личните ви данни единствено за целите на техническото управление на сайта, в който сте регистрирани, за да ви предостави достъп до специална информация или за обща\n            комуникация с вас.\n          '
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  '\n            "МАЙСТОРИМО" ООД. няма право да продава или търгува с Вашите лични данни. Служителите на "МАЙСТОРИМО" ООД. са длъжни да опазват поверителността на вашите данни и да спазват споразумение за разкриване\n            на поверителна информация.\n          '
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  '\n            "МАЙСТОРИМО" ООД. се води от приетата фирмена политика за защита на личните данни, която е представена в Комисията за защита на лични данни и се ръководи стриктно от нея при съхранение на личните данни,\n            получени от регистрирани потребители в сайтовете, собственост на компанията.\n          '
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("Как защитаваме сигурността на Вашите лични данни?")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Ние се ангажираме да гарантираме сигурността на личните данни като прилагаме подходящи технически и организационни мерки при съблюдаване на промишлените стандарти."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Съхраняваме Вашите данни на сигурни сървъри като използваме най-новите алгоритми за криптиране и гарантираме съхранението на резервни копия."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n            Въпреки мерките, които прилагаме, за да защитаваме вашите лични данни, ние сме наясно, че по принцип предаването на информация по интернет или други публични мрежи не е напълно безопасно, като\n            съществува риск данните да могат да се преглеждат и използват от неупълномощени трети страни. Ние не можем да поемем отговорност за тези уязвимости на системи, които не са под нашия контрол.\n          "
-                )
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-14929488", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
