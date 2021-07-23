@@ -211,8 +211,6 @@
 
                           <div class="listing-item-inner">
                             <h3>{{service.name}}</h3>
-                            <span v-html="service.first_description"></span>
-                            <span v-html="service.second_description"></span>
                           </div>
 
                         </div>

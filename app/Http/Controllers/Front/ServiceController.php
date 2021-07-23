@@ -23,6 +23,8 @@ class ServiceController extends Controller
        $service->projectServices->map(function ($serviceProject) {
             $serviceProject->sProject->main_image = $serviceProject->sProject->ProjectMainImage ? $serviceProject->sProject->ProjectMainImage->url : "";
         });
+        // $service->first_description = $service->first_description;
+        // $service->first_description_stripped = strip_tags($service->first_description);
         $service->first_description = $service->first_description;
         $vendor = VendorDetail::where('user', $service->user_id)->first();
         return [

@@ -71,7 +71,7 @@
                     <div class="wrap mcb-wrap one valign-top clearfix">
                         <div class="mcb-wrap-inner">
                             <div class="column mcb-column one column_column">
-                            
+
                                 <div class="column_attr clearfix align_center">
                                     <h2 style="margin: 0; color: #fff;">Нашите проекти</h2>
                                 </div>
@@ -105,9 +105,11 @@
                                                 <div class="image_frame scale-with-grid">
                                                     <div class="image_round_line"></div>
                                                     <div class="image_wrapper">
-                                                        <a href="/portfolio/{{ $project->title }}">
-                                                            <div class="mask"></div><img width="960" height="720" src="{{ $project->ProjectMainImage ? $project->ProjectMainImage->url : '' }}" class="scale-with-grid wp-post-image" alt="">
-                                                        </a>
+                                                        <div class="mask">
+                                                            <a href="/portfolio/{{ $project->title }}">
+                                                                <img width="960" height="720" src="{{ $project->ProjectMainImage ? $project->ProjectMainImage->url : '' }}" class="scale-with-grid wp-post-image" alt="">
+                                                            </a>
+                                                        </div>
                                                         <!-- <div class="image_links triple">
                                                             <a href="{{ $project->ProjectMainImage ? $project->ProjectMainImage->url : '' }}" class="zoom" rel="prettyphoto"><i class="icon-search"></i></a><a target="_blank" href="#" class="external"><i class="icon-forward"></i></a><a href="/portfolio/{{ $project->title }}" class="link"><i class="icon-link"></i></a>
                                                         </div> -->
