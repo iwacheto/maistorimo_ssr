@@ -37,8 +37,7 @@
                                         class="clear_data"
                                         v-if="filterQueries.title"
                                         @click="clearQuery('title')"
-                                        >x</span
-                                    >
+                                        >x</span>
                                 </div>
                             </div>
 
@@ -69,8 +68,7 @@
                                             class="clear_data"
                                             v-if="filterQueries.city"
                                             @click="clearQuery('city')"
-                                            >x</span
-                                        >
+                                            >x</span>
                                     </div>
                                     <ul v-show="isOpen" class="autocomplete-results">
                                         <li
@@ -105,8 +103,7 @@
                                                 class="main_category"
                                                 v-if="isActiveCat(category)"
                                                 @click.stop="clearQuery('mainCategory')"
-                                                >x</span
-                                            >
+                                                >x</span>
                                         </p>
 
                                         <div
@@ -122,10 +119,9 @@
                                             {{ cat.title }}
                                             <span
                                                 class="cat_button"
-                                                v-if="filterQueries.category == cat.title"
+                                                v-if="filterQueries.category==cat.title"
                                                 @click.stop="clearQuery('category')"
-                                                >x</span
-                                            >
+                                            >x</span>
                                         </div>
                                     </div>
                                 </div>
@@ -135,17 +131,17 @@
                             Тагове
                             <span
                                 class="show_tags"
-                                @click="showTags = !showTags"
+                                @click="showTags=!showTags"
                                 :class="[showTags ? 'active' : '']"
                             >
                                 <span v-if="!showTags" class="close_tags">+</span>
                                 <span v-else>-</span>
                             </span>
                         </h3>
-                        <span v-if="showTags && selectTag.length > 0" class="tag_info">
+                        <span v-if="showTags&& selectTag.length>0" class="tag_info">
                             {{ selectTag.length }} избран
-                            <span v-if="selectTag.length > 1">и</span> таг
-                            <span v-if="selectTag.length > 1">а</span>
+                            <span v-if="selectTag.length>1">и</span> таг
+                            <span v-if="selectTag.length>1">а</span>
                         </span>
                         <!-- More Search Options -->
 
@@ -160,7 +156,7 @@
                                     v-model="selectTag"
                                 />
                                 <label :for="tag.tag">
-                                    {{ tag.tag | lowercase }}
+                                    {{tag.tag | lowercase}}
                                     <!-- <span v-if="checkTag(tag.id)">x</span> -->
                                 </label>
                             </div>
@@ -170,7 +166,7 @@
                             Други тагове
                             <span
                                 class="show_tags"
-                                @click="showTwentyTags = !showTwentyTags"
+                                @click="showTwentyTags=!showTwentyTags"
                                 :class="[showTags ? 'active' : '']"
                             >
                                 <span v-if="!showTags">+</span>
@@ -187,18 +183,16 @@
                                     :value="tag.id"
                                     @change="applyTags(tag.tag)"
                                 />
-                                <label :for="tag.tag">{{ tag.tag | lowercase }}</label>
+                                <label :for="tag.tag">{{tag.tag | lowercase}}</label>
                             </div>
                         </div>
 
                         <!-- Twenty Tags -->
                         <h3
                             v-if="showThirtyHeading"
-                            @click="showThirtyTags = !showThirtyTags"
+                            @click="showThirtyTags=!showThirtyTags"
                             class="tags_heading"
-                        >
-                            Още тагове
-                        </h3>
+                        >Още тагове</h3>
                         <div class="checkboxes one-in-row margin-bottom-15" v-if="showThirtyTags">
                             <div v-for="tag in ThirtyTags" :key="tag.id">
                                 <input
@@ -207,7 +201,7 @@
                                     :name="tag.tag"
                                     :value="tag.tag"
                                 />
-                                <label :for="tag.tag">{{ tag.tag | lowercase }}</label>
+                                <label :for="tag.tag">{{tag.tag | lowercase}}</label>
                             </div>
                         </div>
                         <!-- Checkboxes / End -->
@@ -232,10 +226,10 @@
                         <div class="col-md-6 col-xs-6">
                             <!-- Layout Switcher -->
                             <div class="layout-switcher">
-                                <a href="#" class="grid active" @click="className = false">
+                                <a href="#" class="grid active" @click="className=false">
                                     <i class="fa fa-th"></i>
                                 </a>
-                                <a href="#" class="list" @click="className = true">
+                                <a href="#" class="list" @click="className=true">
                                     <i class="fa fa-align-justify"></i>
                                 </a>
                             </div>
@@ -255,23 +249,26 @@
                                 class="listing-item-container compact"
                             >
                                 <div class="listing-item">
-                                    <img :src="project.project_galleries[0].url" alt />
+                                    <img v-lazy="project.project_galleries[0].url" alt />
 
                                     <div class="listing-badge now-open">Верифициран</div>
 
                                     <div class="listing-item-content">
+                                        <div class="numerical-rating" data-rating="3.5"></div>
                                         <h3>
                                             {{ project.title }}
                                             <i class="verified-icon"></i>
                                         </h3>
-                                        <span v-for="tag in project.tags" :key="tag.id"
-                                            >#{{ tag.tag }}</span
-                                        >
+                                        <span
+                                            v-for="tag in project.tags"
+                                            :key="tag.id"
+                                        >#{{ tag.tag }}</span>
                                     </div>
+                                    <span class="like-icon"></span>
                                 </div>
                             </router-link>
                         </div>
-                        <div v-if="projects.length == 0" class="no_results">
+                        <div v-if="projects.length==0" class="no_results">
                             <h3>Съжаляваме, но вашето търсене няма резултат</h3>
                             <p>Моля,опитайте с други критерий!</p>
                             <div class="listing-item">
@@ -280,33 +277,30 @@
                                 <div class="listing-badge now-open">Некатегоризиран</div>
 
                                 <div class="listing-item-content">
+                                    <div class="numerical-rating" data-rating="0.5"></div>
                                     <h3>
                                         Не е намерено нищо
                                         <i class="verified-icon"></i>
                                     </h3>
                                 </div>
+                                <span class="like-icon"></span>
                             </div>
                         </div>
                         <!-- Listing Item / End -->
                     </div>
                 </div>
             </div>
-            <client-only placeholder="Loading...">
-                <infinite-loading
-                    @infinite="infiniteHandler"
-                    ref="infiniteLoading"
-                ></infinite-loading>
-            </client-only>
+            <infinite-loading @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
         </div>
+        <!-- <script id="test" v-html="jsonldReturn" type="application/ld+json"></script> -->
     </div>
 </template>
 
 
 <script>
+import { EventBus } from '../event-bus';
 import InfiniteLoading from 'vue-infinite-loading';
-import ClientOnly from 'vue-client-only';
 import { project_services_functions } from '../mixins/project_services_functions';
-import VueLocalStorage from 'vue-localstorage';
 import axios from 'axios';
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -317,14 +311,33 @@ Vue.use(VueLocalStorage);
 var count = 0;
 
 export default {
-    metaInfo() {
-        return {
-            meta: [],
-        };
-    },
     mixins: [project_services_functions],
-    // props: ['filters', 'category', 'city', 'title'],
+    props: ['filters', 'category', 'city', 'title'],
     data() {
+        const jsonld = {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Maistorima',
+            legalName: 'Webrika',
+            url: 'http://www.maistorimo.com',
+            logo: 'images/logo2.png',
+            description: 'Project',
+            foundingDate: '2019',
+            address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'Ruse str 19',
+                addressLocality: 'floor 3',
+                addressRegion: 'Pleven',
+                postalCode: '5800',
+                addressCountry: 'Bulgaria',
+            },
+            contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer support',
+                telephone: '[+561-526-8457]',
+                email: 'georgi@webrika.bg',
+            },
+        };
         return {
             tags: [],
             // routhWatcher: true,
@@ -343,6 +356,7 @@ export default {
             page: 1,
             className: false,
             show_sidebar: false,
+            jsonld,
             results: [],
             isOpen: false,
             filterQueries: {
@@ -355,29 +369,20 @@ export default {
         };
     },
     computed: {
+        jsonldReturn() {
+            return JSON.stringify(this.jsonld);
+        },
         categories() {
             return this.$store.state.projectCategories;
         },
     },
     created() {
-        this.setFilters();
-        // console.log(this.$store.state)
-    },
-    mounted() {
-        console.log('list vue');
-        window.scrollTo(0, 0);
+        $('#googleJson').html(this.jsonldReturn);
         this.getTags();
+        document.title = 'Maistorimo';
+        this.setFilters();
     },
     methods: {
-        searchTimeOut() {
-            if (this.timer) {
-                clearTimeout(this.timer);
-                this.timer = null;
-            }
-            this.timer = setTimeout(() => {
-                this.pushToRouter('title', this.filterQueries.title);
-            }, 800);
-        },
         applyTags(val) {
             this.pushToRouter('tags', this.selectTag);
         },
@@ -394,11 +399,11 @@ export default {
                         page: this.page,
                     },
                 })
-                .then((res) => {
+                .then(res => {
                     this.projects = res.data;
                     this.page++;
                 })
-                .catch((err) => {
+                .catch(err => {
                     this.busy = false;
                 });
         },
@@ -415,41 +420,50 @@ export default {
                 this.filters.title = '';
             }, 1200);
         },
-
-        getTags() {
-            axios
-                .get('all_tags')
-                .then((res) => {
-                    if (res.data.length < 10) {
-                        this.tags = res.data;
-                    } else if (res.data.length > 10 && res.data.length < 20) {
-                        let newTag = res.data;
-                        const tag = newTag.sort(function (a, b) {
-                            return b.project_tags_count - a.project_tags_count;
-                        });
-                        this.tags = tag.slice(0, 10);
-                        this.TwentyTags = tag.slice(10, 20);
-                    } else if (res.data.length > 20 && res.data.length < 30) {
-                        let newTag = res.data;
-                        const tag = newTag.sort(function (a, b) {
-                            return b.project_tags_count - a.project_tags_count;
-                        });
-                        this.tags = tag.slice(0, 10);
-                        this.TwentyTags = tag.slice(10, 20);
-                        this.ThirtyTags = tag.slice(20, newTag.length);
-                    } else {
-                        let newTag = res.data;
-                        const tag = newTag.sort(function (a, b) {
-                            return b.project_tags_count - a.project_tags_count;
-                        });
-                        this.tags = tag.slice(0, 10);
-                        this.TwentyTags = tag.slice(10, 20);
-                        this.ThirtyTags = tag.slice(20, 30);
-                    }
-                })
-                .catch((err) => console.log(err));
+        // async getCategories() {
+        //   try {
+        //     const res = await axios.get("/categories/get");
+        //     this.categories = res.data;
+        //     this.$store.state.categories = this.categories;
+        //   } catch (error) {
+        //     console.log(error.response.data);
+        //   }
+        // },
+        async getTags() {
+            try {
+                const res = await axios.get('tags/get');
+                // console.log(res.data.length);
+                if (res.data.length < 10) {
+                    this.tags = res.data;
+                } else if (res.data.length > 10 && res.data.length < 20) {
+                    let newTag = res.data;
+                    const tag = newTag.sort(function(a, b) {
+                        return b.project_tags_count - a.project_tags_count;
+                    });
+                    this.tags = tag.slice(0, 10);
+                    this.TwentyTags = tag.slice(10, 20);
+                } else if (res.data.length > 20 && res.data.length < 30) {
+                    let newTag = res.data;
+                    const tag = newTag.sort(function(a, b) {
+                        return b.project_tags_count - a.project_tags_count;
+                    });
+                    this.tags = tag.slice(0, 10);
+                    this.TwentyTags = tag.slice(10, 20);
+                    this.ThirtyTags = tag.slice(20, newTag.length);
+                } else {
+                    let newTag = res.data;
+                    const tag = newTag.sort(function(a, b) {
+                        return b.project_tags_count - a.project_tags_count;
+                    });
+                    this.tags = tag.slice(0, 10);
+                    this.TwentyTags = tag.slice(10, 20);
+                    this.ThirtyTags = tag.slice(20, 30);
+                }
+            } catch (error) {
+                console.log(error);
+            }
         },
-        infiniteHandler($state) {
+        async infiniteHandler($state) {
             this.filters = {};
             axios
                 .get('/projects', {
@@ -464,7 +478,7 @@ export default {
                         page: this.page,
                     },
                 })
-                .then((res) => {
+                .then(res => {
                     if (res.data.length == 0) {
                         $state.complete();
                     }
@@ -472,7 +486,7 @@ export default {
                     this.projects.push(...res.data);
                     $state.loaded();
                 })
-                .catch((err) => {
+                .catch(err => {
                     this.busy = false;
                 });
         },
@@ -497,18 +511,24 @@ export default {
         },
     },
     filters: {
-        lowercase: function (value) {
+        lowercase: function(value) {
             return (value = value.toLowerCase());
         },
     },
     watch: {
         filterQueries: {
-            handler: function (newValue) {},
+            handler: function(newValue) {},
             deep: true,
         },
+        // filters: {
+        //   handler: function(newValue) {
+        //     if (!newValue.title && newValue.category == "null") {
+        //       EventBus.$emit("filter-reset");
+        //     }
+        //   },
+        //   deep: true
+        // },
         $route(to, from) {
-            window.scrollTo(0, 0);
-        console.log('services vue2');
             let query = this.$route.query;
             if (Object.keys(query).length === 0) {
                 this.selectedMain = '';
@@ -526,8 +546,100 @@ export default {
         },
     },
     components: {
-        ClientOnly,
         InfiniteLoading,
     },
 };
 </script>
+
+<style scoped>
+@media screen and (max-width: 1000px) {
+    div.gallery_listing.gallery_listing_active {
+        left: 220px;
+    }
+    div.fixed.active_sidebar {
+        transform: translateX(0);
+        left: 20px;
+        display: block;
+        opacity: 1;
+        min-width: 220px;
+    }
+
+    .sidebar_menu span.active_span {
+        position: absolute;
+        transform: rotate(50deg);
+    }
+    .sidebar_menu span.active_span:nth-of-type(2) {
+        display: none;
+    }
+    .sidebar_menu span.active_span:nth-of-type(3) {
+        transform: rotate(-50deg);
+    }
+}
+
+@media screen and (max-width: 766px) {
+    div.gallery_listing {
+        left: 0;
+    }
+    div.gallery_listing.gallery_listing_active {
+        transform: translateX(120px) !important;
+    }
+    div.fixed.active_sidebar {
+        transform: translateX(0);
+        display: block;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 72% !important;
+        background: #fff;
+        z-index: 11111;
+        padding: 20px;
+    }
+    div.project_content {
+        margin-top: 45px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .sidebar_menu {
+        top: 155px;
+    }
+
+    div.project_content {
+        margin-top: 60px;
+    }
+    div.fixed {
+        top: 210px;
+    }
+    div.gallery_listing.gallery_listing_active {
+        transform: translateX(60px) !important;
+    }
+    div.margin-top-40 {
+        margin-top: 15px !important;
+    }
+    h3.margin-bottom-30 {
+        margin-bottom: 15px !important;
+    }
+    input,
+    input[type='text'] {
+        padding: 0 10px;
+    }
+    h3.margin-top-20 {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+    }
+    .checkboxes {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        max-height: 180px;
+    }
+    .checkboxes label {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 350px) {
+}
+div.gallery_listing.gallery_listing_active {
+    transform: translateX(30px) !important;
+}
+</style>
