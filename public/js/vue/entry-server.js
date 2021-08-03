@@ -46948,8 +46948,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
 
 
 
@@ -47556,23 +47554,7 @@ var render = function() {
                                                       _vm._v(
                                                         _vm._s(service.name)
                                                       )
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("span", {
-                                                      domProps: {
-                                                        innerHTML: _vm._s(
-                                                          service.first_description
-                                                        )
-                                                      }
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("span", {
-                                                      domProps: {
-                                                        innerHTML: _vm._s(
-                                                          service.second_description
-                                                        )
-                                                      }
-                                                    })
+                                                    ])
                                                   ]
                                                 )
                                               ]
