@@ -1804,6 +1804,7 @@
                         infinite: true,
                         touchThreshold: 10,
                         speed: 300,
+                        draggable:true,
 
                         centerMode: centerMode,
                         centerPadding: '20%',
@@ -1831,7 +1832,7 @@
                         infinite: true,
                         touchThreshold: 10,
                         speed: 300,
-
+                        draggable:true,
                         centerMode: centerMode,
                         centerPadding: '20%',
 
@@ -1940,7 +1941,7 @@
                 infinite: true,
                 touchThreshold: 10,
                 speed: 300,
-
+                draggable:true,
                 prevArrow: '<a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a>',
                 nextArrow: '<a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>',
 
@@ -1970,7 +1971,7 @@
                 infinite: true,
                 touchThreshold: 10,
                 speed: 300,
-
+                draggable:true,
                 prevArrow: '<a class="button button_large button_js slider_prev" href="#"><span class="button_icon"><i class="icon-up-open-big"></i></span></a>',
                 nextArrow: '<a class="button button_large button_js slider_next" href="#"><span class="button_icon"><i class="icon-down-open-big"></i></span></a>',
 
@@ -2277,7 +2278,7 @@
                 infinite: true,
                 touchThreshold: 10,
                 speed: 300,
-
+                draggable:true,
                 prevArrow: '<a class="slider_nav slider_prev themebg" href="#"><i class="icon-left-open-big"></i></a>',
                 nextArrow: '<a class="slider_nav slider_next themebg" href="#"><i class="icon-right-open-big"></i></a>',
 
@@ -2519,7 +2520,7 @@ function demosSliderH() {
                     error: function (jqXHR) {
                         if (wc_checkout_params.debug_mode) {
                             /* jshint devel: true */
-                            console.log(jqXHR.responseText);
+                            // console.log(jqXHR.responseText);
                         }
                     },
                     dataType: 'html'
@@ -4354,7 +4355,7 @@ function demosSliderH() {
                             infinite: true,
                             touchThreshold: 10,
                             speed: 300,
-
+                            draggable:true,
                             centerMode: centerMode,
                             centerPadding: '20%',
 
@@ -4381,7 +4382,7 @@ function demosSliderH() {
                             infinite: true,
                             touchThreshold: 10,
                             speed: 300,
-
+                            draggable:true,
                             centerMode: centerMode,
                             centerPadding: '20%',
 
@@ -4490,7 +4491,7 @@ function demosSliderH() {
                     infinite: true,
                     touchThreshold: 10,
                     speed: 300,
-
+                    draggable:true,
                     prevArrow: '<a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a>',
                     nextArrow: '<a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>',
 
@@ -4520,7 +4521,7 @@ function demosSliderH() {
                     infinite: true,
                     touchThreshold: 10,
                     speed: 300,
-
+                    draggable:true,
                     prevArrow: '<a class="button button_large button_js slider_prev" href="#"><span class="button_icon"><i class="icon-up-open-big"></i></span></a>',
                     nextArrow: '<a class="button button_large button_js slider_next" href="#"><span class="button_icon"><i class="icon-down-open-big"></i></span></a>',
 
@@ -4827,7 +4828,7 @@ function demosSliderH() {
                     infinite: true,
                     touchThreshold: 10,
                     speed: 300,
-
+                    draggable:true,
                     prevArrow: '<a class="slider_nav slider_prev themebg" href="#"><i class="icon-left-open-big"></i></a>',
                     nextArrow: '<a class="slider_nav slider_next themebg" href="#"><i class="icon-right-open-big"></i></a>',
 
@@ -5069,7 +5070,7 @@ function demosSliderH() {
                         error: function (jqXHR) {
                             if (wc_checkout_params.debug_mode) {
                                 /* jshint devel: true */
-                                console.log(jqXHR.responseText);
+                                // console.log(jqXHR.responseText);
                             }
                         },
                         dataType: 'html'

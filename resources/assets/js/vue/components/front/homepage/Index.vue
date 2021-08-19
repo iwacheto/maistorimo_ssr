@@ -26,21 +26,29 @@
                 <!-- Listing Item -->
                 <div class="fw-carousel-item" v-for="project in projects" :key="project.id">
                     <!-- <a href="listings-single-page.html" class="listing-item-container compact"> -->
-                    <router-link :to="'project/details/'+project.id" tag="a" class="carousel_link">
-                        <div class="listing-item">
-                            <!-- <img v-lazy="project.url" alt /> -->
-                            <img :src="project.project_image" alt />
+                    <!-- <router-link
+                        :to="'project/details/' + project.id"
+                        tag="a"
+                        class="carousel_link"
+                    > -->
+                    <div
+                        class="listing-item"
+                        @mousedown="startTimer"
+                        @mouseup="(event) => stopTimer(event, 'project/details/' + project.id)"
+                    >
+                        <!-- <img v-lazy="project.url" alt /> -->
+                        <img :src="project.project_image" alt />
 
-                            <div class="listing-badge now-open">Верифициран</div>
+                        <div class="listing-badge now-open">Верифициран</div>
 
-                            <div class="listing-item-content">
-                                <h3>
-                                    {{ project.title }}
-                                    <i class="verified-icon"></i>
-                                </h3>
-                            </div>
+                        <div class="listing-item-content">
+                            <h3>
+                                {{ project.title }}
+                                <i class="verified-icon"></i>
+                            </h3>
                         </div>
-                    </router-link>
+                    </div>
+                    <!-- </router-link> -->
                     <!-- </a> -->
                 </div>
                 <!-- Listing Item / End -->
@@ -48,13 +56,15 @@
             <!-- Carousel / End -->
         </section>
         <!-- Fullwidth Section -->
-        <section class="fullwidth margin-top-25 padding-bottom-40" data-background-color="#f8f8f8">
+        <section class="fullwidth padding-bottom-40" data-background-color="#f8f8f8">
             <div>
                 <div class="row front_heading">
                     <!-- Last 5 projects -->
                     <div class="col-md-12">
                         <div class="col-md-12 all">
-                            <router-link class="see-all" :to="'/listings'">Виж всички проекти</router-link>
+                            <router-link class="see-all" :to="'/listings'"
+                                >Виж всички проекти</router-link
+                            >
                         </div>
                     </div>
 
@@ -106,6 +116,8 @@ export default {
             description: 'Peshonatora',
             // closeCookie:true,
             projects: [],
+            clickTimer: 0,
+            intervalFn: '',
         };
     },
     created() {
@@ -116,8 +128,8 @@ export default {
         setSession() {
             axios
                 .get('/set_session')
-                .then(res => {})
-                .catch(err => {
+                .then((res) => {})
+                .catch((err) => {
                     console.log(res);
                 });
         },
@@ -145,9 +157,9 @@ export default {
         getProjects() {
             axios
                 .get('/last_projects')
-                .then(responce => {
+                .then((responce) => {
                     this.projects = responce.data;
-                    this.$nextTick(function() {
+                    this.$nextTick(function () {
                         $('.custom_slider_2')
                             .not('.slick-initialized')
                             .slick({
@@ -158,6 +170,7 @@ export default {
                                 arrows: false,
                                 autoplay: true,
                                 autoplaySpeed: 2000,
+                                draggable: true,
                                 responsive: [
                                     {
                                         breakpoint: 1610,
@@ -187,7 +200,24 @@ export default {
                             });
                     });
                 })
-                .catch(err => console.log(error));
+                .catch((err) => console.log(error));
+        },
+        startTimer() {
+            // console.log('start');
+            this.clickTimer = 0;
+            this.intervalFn = setInterval(() => {
+                this.clickTimer = this.clickTimer + 0.1;
+                // console.log(this.clickTimer);
+            }, 100);
+        },
+        stopTimer(event, address) {
+            clearInterval(this.intervalFn);
+            // console.log('stop');
+            if (this.clickTimer > 0.2) {
+                event.preventDefault();
+            } else { 
+                this.$router.push(address);
+            }
         },
     },
     watch: {
