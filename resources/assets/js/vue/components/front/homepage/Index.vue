@@ -26,29 +26,25 @@
                 <!-- Listing Item -->
                 <div class="fw-carousel-item" v-for="project in projects" :key="project.id">
                     <!-- <a href="listings-single-page.html" class="listing-item-container compact"> -->
-                    <!-- <router-link
+                    <router-link
                         :to="'project/details/' + project.id"
                         tag="a"
                         class="carousel_link"
-                    > -->
-                    <div
-                        class="listing-item"
-                        @mousedown="startTimer"
-                        @mouseup="(event) => stopTimer(event, 'project/details/' + project.id)"
                     >
-                        <!-- <img v-lazy="project.url" alt /> -->
-                        <img :src="project.project_image" alt />
+                        <div class="listing-item">
+                            <!-- <img v-lazy="project.url" alt /> -->
+                            <img :src="project.project_image" alt />
 
-                        <div class="listing-badge now-open">Верифициран</div>
+                            <div class="listing-badge now-open">Верифициран</div>
 
-                        <div class="listing-item-content">
-                            <h3>
-                                {{ project.title }}
-                                <i class="verified-icon"></i>
-                            </h3>
+                            <div class="listing-item-content">
+                                <h3>
+                                    {{ project.title }}
+                                    <i class="verified-icon"></i>
+                                </h3>
+                            </div>
                         </div>
-                    </div>
-                    <!-- </router-link> -->
+                    </router-link>
                     <!-- </a> -->
                 </div>
                 <!-- Listing Item / End -->
@@ -116,8 +112,7 @@ export default {
             description: 'Peshonatora',
             // closeCookie:true,
             projects: [],
-            clickTimer: 0,
-            intervalFn: '',
+            pena: '',
         };
     },
     created() {
@@ -171,6 +166,8 @@ export default {
                                 autoplay: true,
                                 autoplaySpeed: 2000,
                                 draggable: true,
+                                swipe: true,
+                                draggable: true,
                                 responsive: [
                                     {
                                         breakpoint: 1610,
@@ -202,23 +199,6 @@ export default {
                 })
                 .catch((err) => console.log(error));
         },
-        startTimer() {
-            // console.log('start');
-            this.clickTimer = 0;
-            this.intervalFn = setInterval(() => {
-                this.clickTimer = this.clickTimer + 0.1;
-                // console.log(this.clickTimer);
-            }, 100);
-        },
-        stopTimer(event, address) {
-            clearInterval(this.intervalFn);
-            // console.log('stop');
-            if (this.clickTimer > 0.2) {
-                event.preventDefault();
-            } else { 
-                this.$router.push(address);
-            }
-        },
     },
     watch: {
         projects() {},
@@ -231,6 +211,12 @@ export default {
     mounted() {
         this.setSession();
         this.getCookies();
+
+        // $('.custom_slider_2').on('swipe', function () {
+        //     $('.listing-item').on('click', function (event) {
+        //         event.preventDefault();
+        //     });
+        // });
     },
 };
 </script>

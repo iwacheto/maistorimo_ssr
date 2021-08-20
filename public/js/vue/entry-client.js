@@ -33711,12 +33711,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_axios__);
 
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
-//
-//
-//
 //
 //
 //
@@ -33831,8 +33829,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             description: 'Peshonatora',
             // closeCookie:true,
             projects: [],
-            clickTimer: 0,
-            intervalFn: ''
+            pena: ''
         };
     },
     created: function created() {
@@ -33904,7 +33901,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get('/last_projects').then(function (responce) {
                 _this.projects = responce.data;
                 _this.$nextTick(function () {
-                    $('.custom_slider_2').not('.slick-initialized').slick({
+                    var _$$not$slick;
+
+                    $('.custom_slider_2').not('.slick-initialized').slick((_$$not$slick = {
                         infinite: true,
                         slidesToShow: 5,
                         slidesToScroll: 1,
@@ -33913,51 +33912,32 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                         autoplay: true,
                         autoplaySpeed: 2000,
                         draggable: true,
-                        responsive: [{
-                            breakpoint: 1610,
-                            settings: {
-                                slidesToShow: 4
-                            }
-                        }, {
-                            breakpoint: 1365,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        }, {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToShow: 2
-                            }
-                        }, {
-                            breakpoint: 767,
-                            settings: {
-                                slidesToShow: 1
-                            }
-                        }]
-                    });
+                        swipe: true
+                    }, _defineProperty(_$$not$slick, 'draggable', true), _defineProperty(_$$not$slick, 'responsive', [{
+                        breakpoint: 1610,
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    }, {
+                        breakpoint: 1365,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    }, {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    }, {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }]), _$$not$slick));
                 });
             }).catch(function (err) {
                 return console.log(error);
             });
-        },
-        startTimer: function startTimer() {
-            var _this2 = this;
-
-            // console.log('start');
-            this.clickTimer = 0;
-            this.intervalFn = setInterval(function () {
-                _this2.clickTimer = _this2.clickTimer + 0.1;
-                // console.log(this.clickTimer);
-            }, 100);
-        },
-        stopTimer: function stopTimer(event, address) {
-            clearInterval(this.intervalFn);
-            // console.log('stop');
-            if (this.clickTimer > 0.2) {
-                event.preventDefault();
-            } else {
-                this.$router.push(address);
-            }
         }
     },
     watch: {
@@ -33971,6 +33951,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     mounted: function mounted() {
         this.setSession();
         this.getCookies();
+
+        // $('.custom_slider_2').on('swipe', function () {
+        //     $('.listing-item').on('click', function (event) {
+        //         event.preventDefault();
+        //     });
+        // });
     }
 });
 
@@ -37397,41 +37383,36 @@ var render = function() {
               { key: project.id, staticClass: "fw-carousel-item" },
               [
                 _c(
-                  "div",
+                  "router-link",
                   {
-                    staticClass: "listing-item",
-                    on: {
-                      mousedown: _vm.startTimer,
-                      mouseup: function(event) {
-                        return _vm.stopTimer(
-                          event,
-                          "project/details/" + project.id
-                        )
-                      }
-                    }
+                    staticClass: "carousel_link",
+                    attrs: { to: "project/details/" + project.id, tag: "a" }
                   },
                   [
-                    _c("img", {
-                      attrs: { src: project.project_image, alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "listing-badge now-open" }, [
-                      _vm._v("Верифициран")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "listing-item-content" }, [
-                      _c("h3", [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(project.title) +
-                            "\n                            "
-                        ),
-                        _c("i", { staticClass: "verified-icon" })
+                    _c("div", { staticClass: "listing-item" }, [
+                      _c("img", {
+                        attrs: { src: project.project_image, alt: "" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "listing-badge now-open" }, [
+                        _vm._v("Верифициран")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "listing-item-content" }, [
+                        _c("h3", [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(project.title) +
+                              "\n                                "
+                          ),
+                          _c("i", { staticClass: "verified-icon" })
+                        ])
                       ])
                     ])
                   ]
                 )
-              ]
+              ],
+              1
             )
           }),
           0
@@ -39110,42 +39091,55 @@ var render = function() {
                               attrs: { to: "/project/details/" + project.id }
                             },
                             [
-                              _c("div", { staticClass: "listing-item" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: project.project_galleries[0].url,
-                                    alt: ""
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "listing-item",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.window.scrollTo(0, 0)
+                                    }
                                   }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "listing-badge now-open" },
-                                  [_vm._v("Верифициран")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "listing-item-content" },
-                                  [
-                                    _c("h3", [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(project.title) +
-                                          "\n                                        "
-                                      ),
-                                      _c("i", { staticClass: "verified-icon" })
-                                    ]),
-                                    _vm._v(" "),
-                                    _vm._l(project.tags, function(tag) {
-                                      return _c("span", { key: tag.id }, [
-                                        _vm._v("#" + _vm._s(tag.tag))
-                                      ])
-                                    })
-                                  ],
-                                  2
-                                )
-                              ])
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: project.project_galleries[0].url,
+                                      alt: ""
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "listing-badge now-open" },
+                                    [_vm._v("Верифициран")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "listing-item-content" },
+                                    [
+                                      _c("h3", [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(project.title) +
+                                            "\n                                        "
+                                        ),
+                                        _c("i", {
+                                          staticClass: "verified-icon"
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm._l(project.tags, function(tag) {
+                                        return _c("span", { key: tag.id }, [
+                                          _vm._v("#" + _vm._s(tag.tag))
+                                        ])
+                                      })
+                                    ],
+                                    2
+                                  )
+                                ]
+                              )
                             ]
                           )
                         ],
@@ -39619,6 +39613,9 @@ var count = 0;
         }
     },
     methods: {
+        scrollTop: function scrollTop() {
+            window.scrollTo(0, 0);
+        },
         onChange: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
                 var res;
@@ -40172,28 +40169,39 @@ var render = function() {
                           attrs: { to: "/service/details/" + service.id }
                         },
                         [
-                          _c("div", { staticClass: "listing-item" }, [
-                            _c("img", {
-                              attrs: { src: service.image_url, alt: "" }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "listing-badge now-open" },
-                              [_vm._v("Верифицирана")]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "listing-item-content" }, [
-                              _c("h3", [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(service.name) +
-                                    "\n                                        "
-                                ),
-                                _c("i", { staticClass: "verified-icon" })
-                              ])
-                            ])
-                          ])
+                          _c(
+                            "div",
+                            {
+                              staticClass: "listing-item",
+                              on: { click: _vm.scrollTop }
+                            },
+                            [
+                              _c("img", {
+                                attrs: { src: service.image_url, alt: "" }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "listing-badge now-open" },
+                                [_vm._v("Верифицирана")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "listing-item-content" },
+                                [
+                                  _c("h3", [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(service.name) +
+                                        "\n                                        "
+                                    ),
+                                    _c("i", { staticClass: "verified-icon" })
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
                         ]
                       )
                     ],
@@ -44788,47 +44796,58 @@ var render = function() {
                                 }
                               },
                               [
-                                _c("div", { staticClass: "listing-item" }, [
-                                  _c("img", {
-                                    attrs: {
-                                      src: project.s_project.main_image,
-                                      alt: ""
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "listing-item",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.window.scrollTo(0, 0)
+                                      }
                                     }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "listing-badge now-open" },
-                                    [_vm._v("Верифициран")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "listing-item-content" },
-                                    [
-                                      _c(
-                                        "router-link",
-                                        {
-                                          staticClass: "carousel_link",
-                                          attrs: {
-                                            to:
-                                              "/project/details/" +
-                                              project.s_project.id,
-                                            tag: "a"
-                                          }
-                                        },
-                                        [
-                                          _c("span", [
-                                            _vm._v(
-                                              _vm._s(project.s_project.title)
-                                            )
-                                          ])
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ])
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: project.s_project.main_image,
+                                        alt: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "listing-badge now-open" },
+                                      [_vm._v("Верифициран")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "listing-item-content" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "carousel_link",
+                                            attrs: {
+                                              to:
+                                                "/project/details/" +
+                                                project.s_project.id,
+                                              tag: "a"
+                                            }
+                                          },
+                                          [
+                                            _c("span", [
+                                              _vm._v(
+                                                _vm._s(project.s_project.title)
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
                               ]
                             )
                           ],
@@ -49247,352 +49266,358 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["popupShow"],
-  data: function data() {
-    return {
-      message: '',
-      error_message: false,
-      isDisabled: true,
-      loginData: {
-        email: "",
-        password: "",
-        emailError: false,
-        passwordError: false,
-        commonError: false
-      },
-      registerData: {
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        usernameError: false,
-        emailError: false,
-        passwordError: false,
-        confirmPasswordError: false,
-        commonError: false
-      },
-      inviteEmail: null,
-      invitePhone: null,
-      inviteReason: null,
-      invite: null,
-      inviteRequested: null,
-      error: {
-        type: String,
-        default: null
-      },
-      showFlag: false,
-      tab: "login"
-    };
-  },
-
-  computed: {},
-
-  methods: {
-    goGeneral: function goGeneral(event) {
-      this.$emit("closePopup");
-      this.$router.push({ path: '/general_terms' });
+    props: ['popupShow'],
+    data: function data() {
+        return {
+            message: '',
+            error_message: false,
+            isDisabled: true,
+            loginData: {
+                email: '',
+                password: '',
+                emailError: false,
+                passwordError: false,
+                commonError: false
+            },
+            registerData: {
+                username: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                usernameError: false,
+                emailError: false,
+                passwordError: false,
+                confirmPasswordError: false,
+                commonError: false
+            },
+            inviteEmail: null,
+            invitePhone: null,
+            inviteReason: null,
+            invite: null,
+            inviteRequested: null,
+            error: {
+                type: String,
+                default: null
+            },
+            showFlag: false,
+            tab: 'login'
+        };
     },
-    requestInvite: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-        var res;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post("/request-invite", {
-                  email: this.inviteEmail,
-                  phone: this.invitePhone,
-                  reason: this.inviteReason
-                });
 
-              case 3:
-                res = _context.sent;
+    computed: {},
 
-                this.inviteRequested = true;
-                _context.next = 10;
-                break;
+    methods: {
+        goGeneral: function goGeneral(event) {
+            this.$emit('closePopup');
+            this.$router.push({ path: '/general_terms' });
+        },
+        requestInvite: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+                var res;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.prev = 0;
+                                _context.next = 3;
+                                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/request-invite', {
+                                    email: this.inviteEmail,
+                                    phone: this.invitePhone,
+                                    reason: this.inviteReason
+                                });
 
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context['catch'](0);
+                            case 3:
+                                res = _context.sent;
 
-                this.inviteRequested = true;
+                                this.inviteRequested = true;
+                                _context.next = 10;
+                                break;
 
-              case 10:
-              case 'end':
-                return _context.stop();
+                            case 7:
+                                _context.prev = 7;
+                                _context.t0 = _context['catch'](0);
+
+                                this.inviteRequested = true;
+
+                            case 10:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this, [[0, 7]]);
+            }));
+
+            function requestInvite() {
+                return _ref.apply(this, arguments);
             }
-          }
-        }, _callee, this, [[0, 7]]);
-      }));
 
-      function requestInvite() {
-        return _ref.apply(this, arguments);
-      }
+            return requestInvite;
+        }(),
+        showTab: function showTab(val) {
+            this.invite = this.$route.query['invite'];
+            this.tab = val;
+        },
+        checkUsername: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var responce;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.prev = 0;
+                                _context2.next = 3;
+                                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/check_username', {
+                                    username: this.registerData.username
+                                });
 
-      return requestInvite;
-    }(),
-    showTab: function showTab(val) {
-      this.invite = this.$route.query["invite"];
-      this.tab = val;
-    },
-    checkUsername: function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
-        var responce;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/check_username', { username: this.registerData.username });
+                            case 3:
+                                responce = _context2.sent;
 
-              case 3:
-                responce = _context2.sent;
+                                if (responce.data) {
+                                    this.error_message = true;
+                                    this.message = 'Съжаляваме,но потребителското име вече е заето!';
+                                }
+                                _context2.next = 10;
+                                break;
 
-                if (responce.data) {
-                  this.error_message = true;
-                  this.message = 'Съжаляваме,но потребителското име вече е заето!';
-                }
-                _context2.next = 10;
-                break;
+                            case 7:
+                                _context2.prev = 7;
+                                _context2.t0 = _context2['catch'](0);
 
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2['catch'](0);
+                                console.log(_context2.t0);
 
-                console.log(_context2.t0);
+                            case 10:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this, [[0, 7]]);
+            }));
 
-              case 10:
-              case 'end':
-                return _context2.stop();
+            function checkUsername() {
+                return _ref2.apply(this, arguments);
             }
-          }
-        }, _callee2, this, [[0, 7]]);
-      }));
 
-      function checkUsername() {
-        return _ref2.apply(this, arguments);
-      }
+            return checkUsername;
+        }(),
+        checkEmail: function () {
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
+                var responce;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                _context3.prev = 0;
+                                _context3.next = 3;
+                                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/check_email', {
+                                    email: this.registerData.email
+                                });
 
-      return checkUsername;
-    }(),
-    checkEmail: function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
-        var responce;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
-                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/check_email', { email: this.registerData.email });
+                            case 3:
+                                responce = _context3.sent;
 
-              case 3:
-                responce = _context3.sent;
+                                if (responce.data) {
+                                    this.error_message = true;
+                                    this.message = 'Съжаляваме,но имейла вече е зает!';
+                                }
+                                _context3.next = 10;
+                                break;
 
-                if (responce.data) {
-                  this.error_message = true;
-                  this.message = 'Съжаляваме,но имейла вече е зает!';
-                }
-                _context3.next = 10;
-                break;
+                            case 7:
+                                _context3.prev = 7;
+                                _context3.t0 = _context3['catch'](0);
 
-              case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3['catch'](0);
+                                console.log(_context3.t0);
 
-                console.log(_context3.t0);
+                            case 10:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, this, [[0, 7]]);
+            }));
 
-              case 10:
-              case 'end':
-                return _context3.stop();
+            function checkEmail() {
+                return _ref3.apply(this, arguments);
             }
-          }
-        }, _callee3, this, [[0, 7]]);
-      }));
 
-      function checkEmail() {
-        return _ref3.apply(this, arguments);
-      }
+            return checkEmail;
+        }(),
+        register: function () {
+            var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4() {
+                var res;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+                    while (1) {
+                        switch (_context4.prev = _context4.next) {
+                            case 0:
+                                console.log(this.registerData.username);
 
-      return checkEmail;
-    }(),
-    register: function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4() {
-        var res;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                console.log(this.registerData.username);
+                                if (!this.errors.has('register.registerUsername' || 'register.registerEmail' || 'register.registerPassword' || 'register.confirmPassword')) {
+                                    _context4.next = 5;
+                                    break;
+                                }
 
-                if (!this.errors.has('register.registerUsername' || 'register.registerEmail' || 'register.registerPassword' || 'register.confirmPassword')) {
-                  _context4.next = 5;
-                  break;
-                }
+                                return _context4.abrupt('return');
 
-                return _context4.abrupt('return');
+                            case 5:
+                                if (!this.isDisabled) {
+                                    _context4.next = 9;
+                                    break;
+                                }
 
-              case 5:
-                if (!this.isDisabled) {
-                  _context4.next = 9;
-                  break;
-                }
+                                return _context4.abrupt('return');
 
-                return _context4.abrupt('return');
+                            case 9:
+                                _context4.prev = 9;
+                                _context4.next = 12;
+                                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/register', {
+                                    name: this.registerData.username,
+                                    email: this.registerData.email,
+                                    password: this.registerData.password,
+                                    password_confirmation: this.registerData.confirmPassword
+                                });
 
-              case 9:
-                _context4.prev = 9;
-                _context4.next = 12;
-                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post("/register", {
-                  name: this.registerData.username,
-                  email: this.registerData.email,
-                  password: this.registerData.password,
-                  password_confirmation: this.registerData.confirmPassword
-                });
+                            case 12:
+                                res = _context4.sent;
 
-              case 12:
-                res = _context4.sent;
+                                window.location.href = '/vendor';
+                                _context4.next = 26;
+                                break;
 
-                window.location.href = "/vendor";
-                _context4.next = 26;
-                break;
+                            case 16:
+                                _context4.prev = 16;
+                                _context4.t0 = _context4['catch'](9);
 
-              case 16:
-                _context4.prev = 16;
-                _context4.t0 = _context4['catch'](9);
+                                if (_context4.t0.response.data.errors.name) {
+                                    this.registerData.usernameError = _context4.t0.response.data.errors.name;
+                                }
+                                if (_context4.t0.response.data.errors.email) {
+                                    console.log(_context4.t0.response.data.errors.email);
+                                    this.registerData.emailError = 'Имейлът трябва да е валиден!';
+                                    //   this.registerData.emailError = error.response.data.errors.email;
+                                }
 
-                if (_context4.t0.response.data.errors.name) {
-                  this.registerData.usernameError = _context4.t0.response.data.errors.name;
-                }
-                if (_context4.t0.response.data.errors.email) {
-                  console.log(_context4.t0.response.data.errors.email);
-                  this.registerData.emailError = "Имейлът трябва да е валиден!";
-                  //   this.registerData.emailError = error.response.data.errors.email;
-                }
+                                if (!_context4.t0.response.data.errors.password) {
+                                    _context4.next = 25;
+                                    break;
+                                }
 
-                if (!_context4.t0.response.data.errors.password) {
-                  _context4.next = 25;
-                  break;
-                }
+                                console.log(_context4.t0.response.data.errors.password);
 
-                console.log(_context4.t0.response.data.errors.password);
+                                if (!(_context4.t0.response.data.errors.password[0] === 'Потвърждаването на поролата е грешно!')) {
+                                    _context4.next = 24;
+                                    break;
+                                }
 
-                if (!(_context4.t0.response.data.errors.password[0] === "Потвърждаването на поролата е грешно!")) {
-                  _context4.next = 24;
-                  break;
-                }
+                                return _context4.abrupt('return', this.registerData.confirmPasswordError = _context4.t0.response.data.errors.password);
 
-                return _context4.abrupt('return', this.registerData.confirmPasswordError = _context4.t0.response.data.errors.password);
+                            case 24:
+                                this.registerData.passwordError = _context4.t0.response.data.errors.password;
 
-              case 24:
-                this.registerData.passwordError = _context4.t0.response.data.errors.password;
+                            case 25:
+                                console.log(_context4.t0.response.data.errors);
 
-              case 25:
-                console.log(_context4.t0.response.data.errors);
+                            case 26:
+                            case 'end':
+                                return _context4.stop();
+                        }
+                    }
+                }, _callee4, this, [[9, 16]]);
+            }));
 
-              case 26:
-              case 'end':
-                return _context4.stop();
+            function register() {
+                return _ref4.apply(this, arguments);
             }
-          }
-        }, _callee4, this, [[9, 16]]);
-      }));
 
-      function register() {
-        return _ref4.apply(this, arguments);
-      }
+            return register;
+        }(),
+        login: function () {
+            var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee5() {
+                var res;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+                    while (1) {
+                        switch (_context5.prev = _context5.next) {
+                            case 0:
+                                console.log(this.loginData.email, ' ', this.loginData.password);
+                                //  return
 
-      return register;
-    }(),
-    login: function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee5() {
-        var res;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                console.log(this.loginData.email, ' ', this.loginData.password);
-                //  return
+                                if (!(!this.loginData.email || !this.loginData.password)) {
+                                    _context5.next = 3;
+                                    break;
+                                }
 
-                if (!(!this.loginData.email || !this.loginData.password)) {
-                  _context5.next = 3;
-                  break;
-                }
+                                return _context5.abrupt('return', this.loginData.commonError = 'Имейлът или паролата са задължителни!');
 
-                return _context5.abrupt('return', this.loginData.commonError = "Имейлът или паролата са задължителни!");
+                            case 3:
+                                _context5.prev = 3;
+                                _context5.next = 6;
+                                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/login', {
+                                    email: this.loginData.email,
+                                    password: this.loginData.password
+                                });
 
-              case 3:
-                _context5.prev = 3;
-                _context5.next = 6;
-                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post("/login", {
-                  email: this.loginData.email,
-                  password: this.loginData.password
-                });
+                            case 6:
+                                res = _context5.sent;
 
-              case 6:
-                res = _context5.sent;
+                                window.location.href = '/vendor';
+                                console.log(res.data);
+                                _context5.next = 16;
+                                break;
 
-                window.location.href = "/vendor";
-                console.log(res.data);
-                _context5.next = 16;
-                break;
+                            case 11:
+                                _context5.prev = 11;
+                                _context5.t0 = _context5['catch'](3);
 
-              case 11:
-                _context5.prev = 11;
-                _context5.t0 = _context5['catch'](3);
+                                if (_context5.t0.response.data.errors.email) {
+                                    this.loginData.emailError = _context5.t0.response.data.errors.email;
+                                }
+                                if (_context5.t0.response.data.errors.password) {
+                                    this.loginData.passwordError = _context5.t0.response.data.errors.password;
+                                }
+                                console.log(_context5.t0.response.data.errors);
 
-                if (_context5.t0.response.data.errors.email) {
-                  this.loginData.emailError = _context5.t0.response.data.errors.email;
-                }
-                if (_context5.t0.response.data.errors.password) {
-                  this.loginData.passwordError = _context5.t0.response.data.errors.password;
-                }
-                console.log(_context5.t0.response.data.errors);
+                            case 16:
+                            case 'end':
+                                return _context5.stop();
+                        }
+                    }
+                }, _callee5, this, [[3, 11]]);
+            }));
 
-              case 16:
-              case 'end':
-                return _context5.stop();
+            function login() {
+                return _ref5.apply(this, arguments);
             }
-          }
-        }, _callee5, this, [[3, 11]]);
-      }));
 
-      function login() {
-        return _ref5.apply(this, arguments);
-      }
-
-      return login;
-    }(),
-    makeFocus: function makeFocus(name) {
-      if (name === "email") {
-        this.loginData.emailError = false;
-      }
-      if (name === "password") {
-        this.loginData.passwordError = false;
-      }
-      if (name === "registerEmail") {
-        this.registerData.emailError = false;
-      }
-      if (name === "registerUsername") {
-        this.registerData.usernameError = false;
-      }
-      if (name === "registerPassword") {
-        this.registerData.passwordError = false;
-      }
-      if (name === "registerConfirmPassword") {
-        this.registerData.confirmPasswordError = false;
-      }
-      this.loginData.commonError = false;
-      this.registerData.commonError = false;
-    },
-    closePopup: function closePopup(event) {
-      this.$emit("closePopup");
+            return login;
+        }(),
+        makeFocus: function makeFocus(name) {
+            if (name === 'email') {
+                this.loginData.emailError = false;
+                // let input = document.getElementById('loginEmail');
+                // document.getElementById('sign-in-dialog').scrollTo(0, window.innerHeight);
+            }
+            if (name === 'password') {
+                this.loginData.passwordError = false;
+            }
+            if (name === 'registerEmail') {
+                this.registerData.emailError = false;
+            }
+            if (name === 'registerUsername') {
+                this.registerData.usernameError = false;
+            }
+            if (name === 'registerPassword') {
+                this.registerData.passwordError = false;
+            }
+            if (name === 'registerConfirmPassword') {
+                this.registerData.confirmPasswordError = false;
+            }
+            this.loginData.commonError = false;
+            this.registerData.commonError = false;
+        },
+        closePopup: function closePopup(event) {
+            this.$emit('closePopup');
+        }
     }
-  }
 });
 
 /***/ }),
@@ -50733,7 +50758,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "small-dialog-header" }, [
-      _c("h3", [_vm._v("Вход/Регистрация")])
+      _c("h3", [
+        _vm._v("Вход/"),
+        _c("br", { staticClass: "mobile" }),
+        _vm._v("Регистрация")
+      ])
     ])
   },
   function() {
@@ -51199,6 +51228,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -51232,7 +51266,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             }
 
             return fetch;
-        }()
+        }(),
+        scrollTop: function scrollTop() {
+            console.log('tsv');
+            window.scrollTo(0, 0);
+        }
     }
 });
 
@@ -51255,6 +51293,7 @@ var render = function() {
           _c("ul", { staticClass: "footer-links" }, [
             _c(
               "li",
+              { on: { click: _vm.scrollTop } },
               [
                 _c(
                   "router-link",
@@ -51267,6 +51306,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "li",
+              { on: { click: _vm.scrollTop } },
               [
                 _c(
                   "router-link",
@@ -51279,6 +51319,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "li",
+              { on: { click: _vm.scrollTop } },
               [
                 _c("router-link", { attrs: { tag: "a", to: "/contacts" } }, [
                   _vm._v("Контакти")
@@ -51315,7 +51356,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги"
+          "\n                        Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и\n                        възможност за пласиране на техните услуги\n                    "
         )
       ])
     ])

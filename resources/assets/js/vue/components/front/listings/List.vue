@@ -254,7 +254,7 @@
                                 :to="'/project/details/' + project.id"
                                 class="listing-item-container compact"
                             >
-                                <div class="listing-item">
+                                <div class="listing-item" @click="window.scrollTo(0, 0)">
                                     <img :src="project.project_galleries[0].url" alt />
 
                                     <div class="listing-badge now-open">Верифициран</div>

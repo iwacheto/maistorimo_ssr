@@ -10,7 +10,7 @@
         <div class="mfp-content">
           <div id="sign-in-dialog" class="zoom-anim-dialog">
             <div class="small-dialog-header">
-              <h3>Вход/Регистрация</h3>
+              <h3>Вход/<br class="mobile">Регистрация</h3>
             </div>
 
             <!--Tabs -->
@@ -275,190 +275,198 @@
 import axios from 'axios';
 
 export default {
-  props: ["popupShow"],
-  data() {
-    return {
-      message:'',
-      error_message:false,
-      isDisabled:true,
-      loginData: {
-        email: "",
-        password: "",
-        emailError: false,
-        passwordError: false,
-        commonError: false
-      },
-      registerData: {
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        usernameError: false,
-        emailError: false,
-        passwordError: false,
-        confirmPasswordError: false,
-        commonError: false
-      },
-      inviteEmail: null,
-      invitePhone: null,
-      inviteReason: null,
-      invite: null,
-      inviteRequested: null,
-      error: {
-        type: String,
-        default: null
-      },
-      showFlag: false,
-      tab: "login"
-    };
-  },
-  computed: {},
+    props: ['popupShow'],
+    data() {
+        return {
+            message: '',
+            error_message: false,
+            isDisabled: true,
+            loginData: {
+                email: '',
+                password: '',
+                emailError: false,
+                passwordError: false,
+                commonError: false,
+            },
+            registerData: {
+                username: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                usernameError: false,
+                emailError: false,
+                passwordError: false,
+                confirmPasswordError: false,
+                commonError: false,
+            },
+            inviteEmail: null,
+            invitePhone: null,
+            inviteReason: null,
+            invite: null,
+            inviteRequested: null,
+            error: {
+                type: String,
+                default: null,
+            },
+            showFlag: false,
+            tab: 'login',
+        };
+    },
+    computed: {},
 
-  methods: {
-    goGeneral(event){
-       this.$emit("closePopup");
-      this.$router.push({path:'/general_terms'})
-    },
-    async requestInvite() {
-      try {
-        const res = await axios.post("/request-invite", {
-          email: this.inviteEmail,
-          phone: this.invitePhone,
-          reason: this.inviteReason
-        });
-        this.inviteRequested = true;
-      } catch (error) {
-        this.inviteRequested = true;
-      }
-    },
-    showTab(val) {
-      this.invite = this.$route.query["invite"];
-      this.tab = val;
-    },
-    async checkUsername(){
-      try{
-        const responce=await axios.post('/check_username',{username:this.registerData.username});
-        if(responce.data){
-           this.error_message=true;
-           this.message='Съжаляваме,но потребителското име вече е заето!';
-        }
-      } catch(error){
-        console.log(error);
-      }
-    },
-     async checkEmail(){
-       try{
-        const responce=await axios.post('/check_email',{email:this.registerData.email});
-        if(responce.data){
-           this.error_message=true;
-           this.message='Съжаляваме,но имейла вече е зает!';
-        }
-      } catch(error){
-        console.log(error);
-      }
-    },
-    async register() {
-      console.log(this.registerData.username);
-      if (
-        this.errors.has(('register.registerUsername') || ('register.registerEmail')  || ('register.registerPassword') ||('register.confirmPassword'))
-      ) {
-        return;
-      } else if(this.isDisabled){
-        return
-      }
-      else{
+    methods: {
+        goGeneral(event) {
+            this.$emit('closePopup');
+            this.$router.push({ path: '/general_terms' });
+        },
+        async requestInvite() {
+            try {
+                const res = await axios.post('/request-invite', {
+                    email: this.inviteEmail,
+                    phone: this.invitePhone,
+                    reason: this.inviteReason,
+                });
+                this.inviteRequested = true;
+            } catch (error) {
+                this.inviteRequested = true;
+            }
+        },
+        showTab(val) {
+            this.invite = this.$route.query['invite'];
+            this.tab = val;
+        },
+        async checkUsername() {
+            try {
+                const responce = await axios.post('/check_username', {
+                    username: this.registerData.username,
+                });
+                if (responce.data) {
+                    this.error_message = true;
+                    this.message = 'Съжаляваме,но потребителското име вече е заето!';
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async checkEmail() {
+            try {
+                const responce = await axios.post('/check_email', {
+                    email: this.registerData.email,
+                });
+                if (responce.data) {
+                    this.error_message = true;
+                    this.message = 'Съжаляваме,но имейла вече е зает!';
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async register() {
+            console.log(this.registerData.username);
+            if (
+                this.errors.has(
+                    'register.registerUsername' ||
+                        'register.registerEmail' ||
+                        'register.registerPassword' ||
+                        'register.confirmPassword'
+                )
+            ) {
+                return;
+            } else if (this.isDisabled) {
+                return;
+            } else {
+                try {
+                    const res = await axios.post('/register', {
+                        name: this.registerData.username,
+                        email: this.registerData.email,
+                        password: this.registerData.password,
+                        password_confirmation: this.registerData.confirmPassword,
+                    });
+                    window.location.href = '/vendor';
+                } catch (error) {
+                    if (error.response.data.errors.name) {
+                        this.registerData.usernameError = error.response.data.errors.name;
+                    }
+                    if (error.response.data.errors.email) {
+                        console.log(error.response.data.errors.email);
+                        this.registerData.emailError = 'Имейлът трябва да е валиден!';
+                        //   this.registerData.emailError = error.response.data.errors.email;
+                    }
+                    if (error.response.data.errors.password) {
+                        console.log(error.response.data.errors.password);
+                        if (
+                            error.response.data.errors.password[0] ===
+                            'Потвърждаването на поролата е грешно!'
+                        ) {
+                            return (this.registerData.confirmPasswordError =
+                                error.response.data.errors.password);
+                        }
+                        this.registerData.passwordError = error.response.data.errors.password;
+                    }
+                    console.log(error.response.data.errors);
+                }
+            }
+            // .then(({ data }) => {
+            //   console.log(data);
+            //   window.location = data;
+            //   if (!data.valid) {
+            //     // this.sendAlert("User email must be confirmed!");
+            //     // this.$refs.updateProfileButton.click();
+            //   }
+            // });
+        },
+        async login() {
+            console.log(this.loginData.email, ' ', this.loginData.password);
+            //  return
+            if (!this.loginData.email || !this.loginData.password) {
+                return (this.loginData.commonError = 'Имейлът или паролата са задължителни!');
+            }
+            try {
+                const res = await axios.post('/login', {
+                    email: this.loginData.email,
+                    password: this.loginData.password,
+                });
+                window.location.href = '/vendor';
+                console.log(res.data);
+            } catch (error) {
+                if (error.response.data.errors.email) {
+                    this.loginData.emailError = error.response.data.errors.email;
+                }
+                if (error.response.data.errors.password) {
+                    this.loginData.passwordError = error.response.data.errors.password;
+                }
+                console.log(error.response.data.errors);
+            }
+        },
+        makeFocus(name) {
+            if (name === 'email') {
+                this.loginData.emailError = false;
+                // let input = document.getElementById('loginEmail');
+                // document.getElementById('sign-in-dialog').scrollTo(0, window.innerHeight);
+            }
+            if (name === 'password') {
+                this.loginData.passwordError = false;
+            }
+            if (name === 'registerEmail') {
+                this.registerData.emailError = false;
+            }
+            if (name === 'registerUsername') {
+                this.registerData.usernameError = false;
+            }
+            if (name === 'registerPassword') {
+                this.registerData.passwordError = false;
+            }
+            if (name === 'registerConfirmPassword') {
+                this.registerData.confirmPasswordError = false;
+            }
+            this.loginData.commonError = false;
+            this.registerData.commonError = false;
+        },
 
-      try {
-        const res = await axios.post("/register", {
-          name: this.registerData.username,
-          email: this.registerData.email,
-          password: this.registerData.password,
-          password_confirmation: this.registerData.confirmPassword
-        });
-        window.location.href = "/vendor";
-      } catch (error) {
-        if (error.response.data.errors.name) {
-          this.registerData.usernameError = error.response.data.errors.name;
-        }
-        if (error.response.data.errors.email) {
-          console.log(error.response.data.errors.email);
-          this.registerData.emailError = "Имейлът трябва да е валиден!";
-          //   this.registerData.emailError = error.response.data.errors.email;
-        }
-        if (error.response.data.errors.password) {
-          console.log(error.response.data.errors.password);
-          if (
-            error.response.data.errors.password[0] ===
-            "Потвърждаването на поролата е грешно!"
-          ) {
-            return (this.registerData.confirmPasswordError =
-              error.response.data.errors.password);
-          }
-          this.registerData.passwordError = error.response.data.errors.password;
-        }
-        console.log(error.response.data.errors);
-      }
-      }
-      // .then(({ data }) => {
-      //   console.log(data);
-      //   window.location = data;
-      //   if (!data.valid) {
-      //     // this.sendAlert("User email must be confirmed!");
-      //     // this.$refs.updateProfileButton.click();
-      //   }
-      // });
+        closePopup(event) {
+            this.$emit('closePopup');
+        },
     },
-    async login() {
-     console.log(this.loginData.email, ' ',this.loginData.password );
-    //  return
-      if (!this.loginData.email || !this.loginData.password) {
-        return (this.loginData.commonError =
-          "Имейлът или паролата са задължителни!");
-      }
-      try {
-        const res = await axios.post("/login", {
-          email: this.loginData.email,
-          password: this.loginData.password
-        });
-        window.location.href = "/vendor";
-        console.log(res.data);
-      } catch (error) {
-        if (error.response.data.errors.email) {
-          this.loginData.emailError = error.response.data.errors.email;
-        }
-        if (error.response.data.errors.password) {
-          this.loginData.passwordError = error.response.data.errors.password;
-        }
-        console.log(error.response.data.errors);
-      }
-    },
-    makeFocus(name) {
-      if (name === "email") {
-        this.loginData.emailError = false;
-      }
-      if (name === "password") {
-        this.loginData.passwordError = false;
-      }
-      if (name === "registerEmail") {
-        this.registerData.emailError = false;
-      }
-      if (name === "registerUsername") {
-        this.registerData.usernameError = false;
-      }
-      if (name === "registerPassword") {
-        this.registerData.passwordError = false;
-      }
-      if (name === "registerConfirmPassword") {
-        this.registerData.confirmPasswordError = false;
-      }
-      this.loginData.commonError = false;
-      this.registerData.commonError = false;
-    },
-
-    closePopup(event) {
-      this.$emit("closePopup");
-    }
-  }
 };
 </script>
 
