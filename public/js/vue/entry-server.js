@@ -19855,7 +19855,7 @@ var content = __webpack_require__(78);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("78dc4eec", content, false, {});
+var update = __webpack_require__(6)("325be528", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -20222,7 +20222,7 @@ var content = __webpack_require__(85);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("9762adce", content, false, {});
+var update = __webpack_require__(6)("09541a99", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33804,6 +33804,16 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -33820,7 +33830,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             categories: [],
             description: 'Peshonatora',
             // closeCookie:true,
-            projects: []
+            projects: [],
+            clickTimer: 0,
+            intervalFn: ''
         };
     },
     created: function created() {
@@ -33900,6 +33912,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                         arrows: false,
                         autoplay: true,
                         autoplaySpeed: 2000,
+                        draggable: true,
                         responsive: [{
                             breakpoint: 1610,
                             settings: {
@@ -33926,6 +33939,25 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             }).catch(function (err) {
                 return console.log(error);
             });
+        },
+        startTimer: function startTimer() {
+            var _this2 = this;
+
+            // console.log('start');
+            this.clickTimer = 0;
+            this.intervalFn = setInterval(function () {
+                _this2.clickTimer = _this2.clickTimer + 0.1;
+                // console.log(this.clickTimer);
+            }, 100);
+        },
+        stopTimer: function stopTimer(event, address) {
+            clearInterval(this.intervalFn);
+            // console.log('stop');
+            if (this.clickTimer > 0.2) {
+                event.preventDefault();
+            } else {
+                this.$router.push(address);
+            }
         }
     },
     watch: {
@@ -34118,6 +34150,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                     dots: true,
                     arrows: false,
                     autoplay: true,
+                    draggable: true,
                     autoplaySpeed: 1500,
                     responsive: [{
                       breakpoint: 1610,
@@ -37364,36 +37397,41 @@ var render = function() {
               { key: project.id, staticClass: "fw-carousel-item" },
               [
                 _c(
-                  "router-link",
+                  "div",
                   {
-                    staticClass: "carousel_link",
-                    attrs: { to: "project/details/" + project.id, tag: "a" }
+                    staticClass: "listing-item",
+                    on: {
+                      mousedown: _vm.startTimer,
+                      mouseup: function(event) {
+                        return _vm.stopTimer(
+                          event,
+                          "project/details/" + project.id
+                        )
+                      }
+                    }
                   },
                   [
-                    _c("div", { staticClass: "listing-item" }, [
-                      _c("img", {
-                        attrs: { src: project.project_image, alt: "" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "listing-badge now-open" }, [
-                        _vm._v("Верифициран")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "listing-item-content" }, [
-                        _c("h3", [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(project.title) +
-                              "\n                                "
-                          ),
-                          _c("i", { staticClass: "verified-icon" })
-                        ])
+                    _c("img", {
+                      attrs: { src: project.project_image, alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "listing-badge now-open" }, [
+                      _vm._v("Верифициран")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "listing-item-content" }, [
+                      _c("h3", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(project.title) +
+                            "\n                            "
+                        ),
+                        _c("i", { staticClass: "verified-icon" })
                       ])
                     ])
                   ]
                 )
-              ],
-              1
+              ]
             )
           }),
           0
@@ -37404,7 +37442,7 @@ var render = function() {
     _c(
       "section",
       {
-        staticClass: "fullwidth margin-top-25 padding-bottom-40",
+        staticClass: "fullwidth padding-bottom-40",
         attrs: { "data-background-color": "#f8f8f8" }
       },
       [
@@ -38349,7 +38387,7 @@ var index = {
       (
         process.server ||
         process.SERVER_BUILD ||
-        (Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}) && Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).VUE_ENV === 'server')
+        (Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}) && Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).VUE_ENV === 'server')
       )
     ) {
       return
@@ -40734,9 +40772,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 }
 
                                 this.$nextTick(function () {
-                                    console.log('213523532465goshooooooooooooooooooooooo123123123213123');
-                                    console.log(this.images.length);
-                                    console.log('dadadada');
+                                    // console.log('213523532465goshooooooooooooooooooooooo123123123213123');
+                                    // console.log(this.images.length);
+                                    // console.log('dadadada');
                                     // if( window.localStorage )
                                     // {
                                     //     if( !localStorage.getItem('firstLoad') )
@@ -40754,6 +40792,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                         slidesToShow: imgCount,
                                         slidesToScroll: 1,
                                         dots: true,
+
                                         arrows: false,
                                         autoplay: true,
                                         draggable: true,
@@ -40802,7 +40841,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                         });
                                     });
                                     this.$forceUpdate();
-                                    console.log('úpdated');
+                                    // console.log('úpdated');
                                 });
 
                                 currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
@@ -44520,6 +44559,24 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -44592,6 +44649,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     infinite: true,
                                     slidesToShow: 3,
                                     slidesToScroll: 3,
+                                    draggable: true,
                                     dots: true,
                                     arrows: true,
                                     autoplay: true,

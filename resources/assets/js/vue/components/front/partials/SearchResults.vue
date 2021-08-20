@@ -70,6 +70,7 @@ export default {
             dots: true,
             arrows: false,
             autoplay: true,
+             draggable:true,
             autoplaySpeed: 1500,
             responsive: [
               {

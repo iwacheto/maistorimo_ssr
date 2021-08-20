@@ -424,9 +424,9 @@ export default {
                 }
 
                 this.$nextTick(function () {
-                    console.log('213523532465goshooooooooooooooooooooooo123123123213123');
-                    console.log(this.images.length);
-                    console.log('dadadada');
+                    // console.log('213523532465goshooooooooooooooooooooooo123123123213123');
+                    // console.log(this.images.length);
+                    // console.log('dadadada');
                     // if( window.localStorage )
                     // {
                     //     if( !localStorage.getItem('firstLoad') )
@@ -444,6 +444,7 @@ export default {
                             slidesToShow: imgCount,
                             slidesToScroll: 1,
                             dots: true,
+                            
                             arrows: false,
                             autoplay: true,
                             draggable: true,
@@ -497,7 +498,7 @@ export default {
                         });
                     });
                     this.$forceUpdate();
-                    console.log('úpdated');
+                    // console.log('úpdated');
                 });
 
                 let currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
