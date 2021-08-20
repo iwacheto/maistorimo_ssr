@@ -26,7 +26,7 @@ class ProjectsController extends Controller
         return Project::with([
             'projectGalleries',
             'tags'
-        ])->offset(($page - 1) * $perPage)->limit($perPage)->orderBy('created_at', 'DESC')->get();
+        ])->offset(($page - 1) * $perPage)->limit($perPage)->orderBy('created_at', 'ASC')->get();
     }
 
     public function getProject($id)
