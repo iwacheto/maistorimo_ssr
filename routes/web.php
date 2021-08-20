@@ -1,8 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 $route = config('app.url');
-// Route::domain('{subdomain}.'. $route)->group(function () {
-Route::prefix('website/{subdomain}')->group(function () {
+Route::domain('{subdomain}.'. $route)->group(function () {
+// Route::prefix('website/{subdomain}')->group(function () {
     Route::get('/', 'Website\WebsiteController@index');
     Route::get('/about', 'Website\WebsiteController@about');
     Route::get('/contact', 'Website\WebsiteController@contact');
@@ -121,7 +121,7 @@ Route::prefix('website')->group(function () {
 });
 Route::post('/request-invite', 'Front\InviteController@addInviteRequest');
 Auth::routes();
-// Route::get('/{url?}', 'VueController');
+Route::get('/{url?}', 'VueController');
 // Route::get('/project/details/{url?}', 'VueController');
 // Route::get('/service/details/{url?}', 'VueController');
 // Route::get('/profile/{url?}', 'VueController');
