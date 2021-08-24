@@ -196,7 +196,7 @@
                                 :to="'/service/details/' + service.id"
                                 class="listing-item-container compact"
                             >
-                                <div class="listing-item">
+                                <div class="listing-item" @click="scrollTop">
                                     <img :src="service.image_url" alt />
 
                                     <div class="listing-badge now-open">Верифицирана</div>
@@ -320,6 +320,9 @@ export default {
         },
     },
     methods: {
+        scrollTop() {
+            window.scrollTo(0, 0);
+        },
         async onChange() {
             this.isOpen = true;
             try {

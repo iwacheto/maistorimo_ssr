@@ -14,13 +14,14 @@
     <meta property=”og:type” content=”website” />
     <meta property="fb:app_id" content="865006550605817"/>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <?php
     echo $localBusiness->toScript();
     ?>
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/styles-tsv.css">
     <!-- Google Tag Manager -->
     <script async defer>
         (function(w, d, s, l, i) {

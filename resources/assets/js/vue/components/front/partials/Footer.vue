@@ -7,22 +7,27 @@
                     <img class="footer-logo" src="/images/logo.png" alt />
                     <br />
                     <br />
-                    <p>Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и възможност за пласиране на техните услуги</p>
+                    <p>
+                        Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и
+                        възможност за пласиране на техните услуги
+                    </p>
                 </div>
 
                 <div class="col-md-4 col-sm-6">
                     <h4>Полезни линкове</h4>
                     <ul class="footer-links">
-                        <li>
+                        <li @click="scrollTop">
                             <router-link tag="a" to="/general_terms">Общи условия</router-link>
                         </li>
-                        <li>
-                            <router-link tag="a" to="/private_protection">Политика за поверителност</router-link>
+                        <li @click="scrollTop">
+                            <router-link tag="a" to="/private_protection"
+                                >Политика за поверителност</router-link
+                            >
                         </li>
                         <!-- <li>
                             <a href="/gdpr">GDPR</a>
                         </li> -->
-                        <li>
+                        <li @click="scrollTop">
                             <router-link tag="a" to="/contacts">Контакти</router-link>
                         </li>
                     </ul>
@@ -74,21 +79,25 @@
 import axios from 'axios';
 
 export default {
-//     asyncData ({ params }) {
-//     return axios.get(`fetch-projects`)
-//       .then((res) => {
-//          this.$store.commit('SET_PROJECTS', items);
-//       })
-//   },
+    //     asyncData ({ params }) {
+    //     return axios.get(`fetch-projects`)
+    //       .then((res) => {
+    //          this.$store.commit('SET_PROJECTS', items);
+    //       })
+    //   },
     mounted() {
-		this.fetch();
-	},
+        this.fetch();
+    },
     methods: {
         async fetch() {
-			// let items = await axios.get(`fetch-projects`).then(res => {
+            // let items = await axios.get(`fetch-projects`).then(res => {
             //     return res.data;
             // });
             // this.$store.commit('SET_PROJECTS', items);
+        },
+        scrollTop() {
+            console.log('tsv');
+            window.scrollTo(0, 0);
         },
     },
 };

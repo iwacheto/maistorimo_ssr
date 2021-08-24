@@ -16,6 +16,7 @@ mix
 	], 'public/js/vendor/before.js')
 
     .postCss('resources/assets/css/app.css', 'public/css/app.css')
+    .styles('resources/assets/css/styles-tsv.scss', 'public/css/styles-tsv.css') 
 
     .webpackConfig(() => {
         const config = {};
