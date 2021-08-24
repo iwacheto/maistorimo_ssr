@@ -112,7 +112,6 @@ export default {
             description: 'Peshonatora',
             // closeCookie:true,
             projects: [],
-            pena: '',
         };
     },
     created() {
@@ -211,12 +210,6 @@ export default {
     mounted() {
         this.setSession();
         this.getCookies();
-
-        // $('.custom_slider_2').on('swipe', function () {
-        //     $('.listing-item').on('click', function (event) {
-        //         event.preventDefault();
-        //     });
-        // });
     },
 };
 </script>

@@ -33828,8 +33828,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             categories: [],
             description: 'Peshonatora',
             // closeCookie:true,
-            projects: [],
-            pena: ''
+            projects: []
         };
     },
     created: function created() {
@@ -33951,12 +33950,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     mounted: function mounted() {
         this.setSession();
         this.getCookies();
-
-        // $('.custom_slider_2').on('swipe', function () {
-        //     $('.listing-item').on('click', function (event) {
-        //         event.preventDefault();
-        //     });
-        // });
     }
 });
 
@@ -49262,6 +49255,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
 
 
 
@@ -49356,6 +49351,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         showTab: function showTab(val) {
             this.invite = this.$route.query['invite'];
             this.tab = val;
+            t;
         },
         checkUsername: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
@@ -49591,32 +49587,49 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             return login;
         }(),
         makeFocus: function makeFocus(name) {
+            var formContainer = document.getElementById('sign-in-dialog');
             if (name === 'email') {
                 this.loginData.emailError = false;
-                // let input = document.getElementById('loginEmail');
-                // document.getElementById('sign-in-dialog').scrollTo(0, window.innerHeight);
+                formContainer.scrollTo({
+                    top: document.getElementById('loginEmail').getBoundingClientRect().top,
+                    left: 0
+                });
             }
             if (name === 'password') {
                 this.loginData.passwordError = false;
+
+                formContainer.style.paddingBottom = document.getElementById('password').getBoundingClientRect().top / 2 + 'px';
+                formContainer.scrollTop = formContainer.scrollTop + document.getElementById('password').getBoundingClientRect().top;
             }
             if (name === 'registerEmail') {
                 this.registerData.emailError = false;
+
+                formContainer.style.paddingBottom = document.getElementById('registerEmail').getBoundingClientRect().top / 2 + 'px';
+                formContainer.scrollTop = formContainer.scrollTop + document.getElementById('registerEmail').getBoundingClientRect().top;
             }
             if (name === 'registerUsername') {
                 this.registerData.usernameError = false;
+                formContainer.style.paddingBottom = document.getElementById('registerUsername').getBoundingClientRect().top / 2 + 'px';
+                formContainer.scrollTop = formContainer.scrollTop + document.getElementById('registerUsername').getBoundingClientRect().top;
             }
             if (name === 'registerPassword') {
                 this.registerData.passwordError = false;
+                formContainer.style.paddingBottom = document.getElementById('registerPassword').getBoundingClientRect().top / 2 + 'px';
+                formContainer.scrollTop = formContainer.scrollTop + document.getElementById('registerPassword').getBoundingClientRect().top;
             }
             if (name === 'registerConfirmPassword') {
                 this.registerData.confirmPasswordError = false;
+
+                formContainer.style.paddingBottom = document.getElementById('confirmPassword').getBoundingClientRect().top / 2 + 'px';
+                formContainer.scrollTop = formContainer.scrollTop + document.getElementById('confirmPassword').getBoundingClientRect().top;
             }
             this.loginData.commonError = false;
             this.registerData.commonError = false;
         },
         closePopup: function closePopup(event) {
             this.$emit('closePopup');
-        }
+        },
+        mounted: function mounted() {}
     }
 });
 
