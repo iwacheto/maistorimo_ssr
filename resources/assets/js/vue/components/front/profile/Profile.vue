@@ -13,6 +13,8 @@
                   <h2>{{ profile.vendor_details.company_name }}</h2>
                   <div class="star-rating" data-rating="5"></div>
                 </div>
+
+                <!-- Profile Info -->
                 <div class="p_info p_info_mobile" v-if="profile.vendor_details.information">
                   <p
                     class="profile_info"
@@ -21,30 +23,84 @@
                   ></p>
                   <span @click="changeInfoClass" class="info_span">{{ info_button }}</span>
                 </div>
+                <!-- End Profile Info -->
+
+                <!-- Verified Badge -->
+                <div
+                  class="verified-badge with-tip"
+                  data-tip-content="Account has been verified and belongs to the person or organization represented."
+                >
+                  <i class="sl sl-icon-user-following"></i> Потвърден акаунт
+                </div>
+
               </div>
 
-              <!-- Tabs -->
-              <div class="user-projects-services">
-                <ul class="nav nav-tabs nav-justified">
-                  <li class="nav-item" :class="{ active: isActive('home') }">
-                    <a
-                      class="nav-link"
-                      @click.prevent="setActive('home')"
-                      :class="{ active: isActive('home') }"
-                      href="#home"
-                    >Проекти</a>
+              <!-- Contact -->
+              <div class="boxed-widget"> <!-- margin-top-30 margin-bottom-50 -->
+                <h3>Контакти</h3>
+                <ul class="listing-details-sidebar">
+                  <li v-if="profile.vendor_details.phone_number">
+                    <i class="sl sl-icon-phone"></i>
+
+                    <span v-if="showPhone">+359</span>
+                    <span v-else>
+                      <a
+                        :href="'tel:'+profile.vendor_details.phone_number"
+                      >{{ profile.vendor_details.phone_number }}</a>
+                    </span>
+                    <span class="phone_button" @click="contactAnalytic('phone')" v-if="showPhone">Покажи</span>
+                    <span class="phone_button" @click="hidePhone" v-if="!showPhone">Скрий</span>
                   </li>
-                  <li class="nav-item" :class="{ active: isActive('services') }">
+                  <li v-if="profile.vendor_details.email_address">
+                    <i class="fa fa-envelope-o"></i>
                     <a
-                      class="nav-link"
-                      @click.prevent="setActive('services')"
-                      :class="{ active: isActive('services') }"
-                      href="#home"
-                    >Услуги</a>
+                      :href="'mailto:'+profile.vendor_details.email_address"
+                      @click="contactAnalytic('email')"
+                    >{{ profile.vendor_details.email_address }}</a>
+                  </li>
+                  <li v-if="profile.vendor_details.website">
+                    <a
+                      :href="'//' + profile.vendor_details.website"
+                      target="_blank"
+                      class="listing-links"
+                      @click="contactAnalytic('website')"
+                    >
+                      <i class="fa fa-link"></i>
+                      {{ profile.vendor_details.website }}
+                    </a>
                   </li>
                 </ul>
+
+                <ul class="listing-details-sidebar social-profiles">
+                  <li v-if="profile.vendor_details.facebook_link">
+                    <a
+                      :href="profile.vendor_details.facebook_link"
+                      target="_blank"
+                      class="facebook-profile"
+                      @click="contactAnalytic('facebook')"
+                    >
+                      <i class="fa fa-facebook-square"></i> Facebook
+                    </a>
+                  </li>
+                </ul>
+
+                <!-- Reply to review popup -->
+                <!-- <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+                  <div class="small-dialog-header">
+                    <h3>Изпрати съобщение</h3>
+                  </div>
+                  <div class="message-reply margin-top-0">
+                    <textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
+                    <button class="button">Изпрати съобщение</button>
+                  </div>
+                </div>-->
+                <!--
+                <a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim">
+                  <i class="sl sl-icon-envelope-open"></i> Изпрати съобщение
+                </a>-->
               </div>
-              <!--End  Tabs -->
+              <!-- Contact / End-->
+              
             </div>
           </div>
         </div>
@@ -55,7 +111,7 @@
       <div class="row sticky-wrapper">
         <!-- Sidebar
         ==================================================-->
-        <div class="col-lg-4 col-md-4 margin-top-0">
+        <div class="col-md-12 margin-top-0">
           <div class="p_info p_info_deckstop" v-if="profile.vendor_details.information">
             <p
               class="profile_info"
@@ -64,97 +120,48 @@
             ></p>
             <span @click="changeInfoClass" class="info_span">{{ info_button }}</span>
           </div>
-          <!-- Verified Badge -->
-          <div
-            class="verified-badge with-tip"
-            data-tip-content="Account has been verified and belongs to the person or organization represented."
-          >
-            <i class="sl sl-icon-user-following"></i> Потвърден акаунт
-          </div>
 
-          <!-- Contact -->
-          <div class="boxed-widget margin-top-30 margin-bottom-50">
-            <h3>Контакти</h3>
-            <ul class="listing-details-sidebar">
-              <li v-if="profile.vendor_details.phone_number">
-                <i class="sl sl-icon-phone"></i>
-
-                <span v-if="showPhone">+359</span>
-                <span v-else>
-                  <a
-                    :href="'tel:'+profile.vendor_details.phone_number"
-                  >{{ profile.vendor_details.phone_number }}</a>
-                </span>
-                <span class="phone_button" @click="contactAnalytic('phone')" v-if="showPhone">Покажи</span>
-                <span class="phone_button" @click="hidePhone" v-if="!showPhone">Скрий</span>
-              </li>
-              <li v-if="profile.vendor_details.email_address">
-                <i class="fa fa-envelope-o"></i>
-                <a
-                  :href="'mailto:'+profile.vendor_details.email_address"
-                  @click="contactAnalytic('email')"
-                >{{ profile.vendor_details.email_address }}</a>
-              </li>
-              <li v-if="profile.vendor_details.website">
-                <a
-                  :href="'//' + profile.vendor_details.website"
-                  target="_blank"
-                  class="listing-links"
-                  @click="contactAnalytic('website')"
-                >
-                  <i class="fa fa-link"></i>
-                  {{ profile.vendor_details.website }}
-                </a>
-              </li>
-            </ul>
-
-            <ul class="listing-details-sidebar social-profiles">
-              <li v-if="profile.vendor_details.facebook_link">
-                <a
-                  :href="profile.vendor_details.facebook_link"
-                  target="_blank"
-                  class="facebook-profile"
-                  @click="contactAnalytic('facebook')"
-                >
-                  <i class="fa fa-facebook-square"></i> Facebook
-                </a>
-              </li>
-            </ul>
-
-            <!-- Reply to review popup -->
-            <!-- <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-              <div class="small-dialog-header">
-                <h3>Изпрати съобщение</h3>
-              </div>
-              <div class="message-reply margin-top-0">
-                <textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
-                <button class="button">Изпрати съобщение</button>
-              </div>
-            </div>-->
-            <!--
-            <a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim">
-              <i class="sl sl-icon-envelope-open"></i> Изпрати съобщение
-            </a>-->
-          </div>
-          <!-- Contact / End-->
         </div>
         <!-- Sidebar / End -->
 
+        <!-- Tabs -->
+        <div class="user-projects-services">
+          <ul class="nav nav-tabs nav-justified">
+            <li class="nav-item" :class="{ active: isActive('home') }">
+              <a
+                class="nav-link"
+                @click.prevent="setActive('home')"
+                :class="{ active: isActive('home') }"
+                href="#home"
+              >Проекти</a>
+            </li>
+            <li class="nav-item" :class="{ active: isActive('services') }">
+              <a
+                class="nav-link"
+                @click.prevent="setActive('services')"
+                :class="{ active: isActive('services') }"
+                href="#home"
+              >Услуги</a>
+            </li>
+          </ul>
+        </div>
+        <!--End  Tabs -->
+
         <!-- Content
         ==================================================-->
-        <div class="col-lg-8 col-md-8 padding-left-30">
+        <div class="col-lg-12 col-md-12 padding-left-30">
           <!-- Tabs -->
           <div class="dashboard-list-box margin-top-0">
-            <div class="dashboard-list-box-static">
+            <div class="dashboard-list-box-static col-md-12">
               <div class="tab-pan" :class="{ 'active show': isActive('home') }">
                 <h3
                   class="margin-top-10 margin-bottom-40"
                 >Проектите на {{ profile.vendor_details.company_name }}</h3>
                 <!-- Listings Container -->
-                <div class="row">
+                <div class="row col-lg-12 col-md-12">
                   <!-- Listing Item -->
                   <div
-                    class="col-lg-12 col-md-12"
+                    class="col-md-4"
                     v-for="(project, index) in profile.projects"
                     :key="index"
                   >
@@ -189,12 +196,13 @@
 
               <div class="tab-pan" :class="{ 'active show': isActive('services') }">
                 <!-- Services -->
+                <h3 class="margin-top-10 margin-bottom-40"
+                  >Услугите на {{ profile.vendor_details.company_name }}
+                </h3>
                 <div class="row" v-if="profile.services.length>=1">
-                  <h3
-                    class="margin-top-10 margin-bottom-40"
-                  >Услугите на {{ profile.vendor_details.company_name }}</h3>
+                  
                   <div
-                    class="col-lg-12 col-md-12"
+                    class="col-md-4"
                     v-for="(service, index) in profile.services"
                     :key="index"
                   >
@@ -308,3 +316,38 @@ export default {
 };
 </script>
 
+<style scoped>
+  /* TsB */
+  .user-profile-titlebar {
+      justify-content: space-between;
+  }
+
+  .verified-badge {
+    margin-top: 80px;
+  }
+
+  div.user-projects-services {
+    position: unset !important;
+}
+
+  div.user-projects-services ul.nav.nav-tabs.nav-justified {
+    justify-content: center; /* TsB */
+  }
+
+  div.p_info_deckstop span.info_span {
+    display: flex !important;
+    justify-content: center;
+  }
+
+  div.tab-pan div.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  div.col-md-4 {
+    display: flex;
+    flex: 33%;
+  }
+  
+</style>
