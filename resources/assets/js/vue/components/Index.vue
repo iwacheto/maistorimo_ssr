@@ -6,7 +6,8 @@
     </div>
 </template>
 
-<script>
+<script> 
+
 import FrontHeader from './front/partials/Header';
 import Footer from './front/partials/Footer';
 

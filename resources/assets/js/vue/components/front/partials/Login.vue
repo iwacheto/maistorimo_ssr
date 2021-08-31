@@ -26,7 +26,9 @@
               <div class="tabs-container alt">
                 <!-- Login -->
                 <div class="tab-content" id="tab1" v-if="tab == 'login'">
+                  
                   <form class="login" data-vv-scope="login">
+                   
                     <span v-if="loginData.commonError" class="error">{{loginData.commonError}}</span>
                     <p class="form-row form-row-wide email_val">
                       <label for="email">
@@ -334,6 +336,7 @@ export default {
         showTab(val) {
             this.invite = this.$route.query['invite'];
             this.tab = val;
+            t;
         },
         async checkUsername() {
             try {
@@ -439,25 +442,59 @@ export default {
             }
         },
         makeFocus(name) {
+            let formContainer = document.getElementById('sign-in-dialog');
             if (name === 'email') {
                 this.loginData.emailError = false;
-                // let input = document.getElementById('loginEmail');
-                // document.getElementById('sign-in-dialog').scrollTo(0, window.innerHeight);
+                formContainer.scrollTo({
+                    top: document.getElementById('loginEmail').getBoundingClientRect().top,
+                    left: 0,
+                });
             }
             if (name === 'password') {
                 this.loginData.passwordError = false;
+
+                formContainer.style.paddingBottom =
+                    document.getElementById('password').getBoundingClientRect().top / 2 + 'px';
+                formContainer.scrollTop =
+                    formContainer.scrollTop +
+                    document.getElementById('password').getBoundingClientRect().top;
             }
             if (name === 'registerEmail') {
                 this.registerData.emailError = false;
+
+                formContainer.style.paddingBottom =
+                    document.getElementById('registerEmail').getBoundingClientRect().top / 2 + 'px';
+                formContainer.scrollTop =
+                    formContainer.scrollTop +
+                    document.getElementById('registerEmail').getBoundingClientRect().top;
             }
             if (name === 'registerUsername') {
                 this.registerData.usernameError = false;
+                formContainer.style.paddingBottom =
+                    document.getElementById('registerUsername').getBoundingClientRect().top / 2 +
+                    'px';
+                formContainer.scrollTop =
+                    formContainer.scrollTop +
+                    document.getElementById('registerUsername').getBoundingClientRect().top;
             }
             if (name === 'registerPassword') {
                 this.registerData.passwordError = false;
+                formContainer.style.paddingBottom =
+                    document.getElementById('registerPassword').getBoundingClientRect().top / 2 +
+                    'px';
+                formContainer.scrollTop =
+                    formContainer.scrollTop +
+                    document.getElementById('registerPassword').getBoundingClientRect().top;
             }
             if (name === 'registerConfirmPassword') {
                 this.registerData.confirmPasswordError = false;
+
+                formContainer.style.paddingBottom =
+                    document.getElementById('confirmPassword').getBoundingClientRect().top / 2 +
+                    'px';
+                formContainer.scrollTop =
+                    formContainer.scrollTop +
+                    document.getElementById('confirmPassword').getBoundingClientRect().top;
             }
             this.loginData.commonError = false;
             this.registerData.commonError = false;
@@ -466,6 +503,7 @@ export default {
         closePopup(event) {
             this.$emit('closePopup');
         },
+        mounted() {},
     },
 };
 </script>

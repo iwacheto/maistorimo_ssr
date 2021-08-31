@@ -40,7 +40,7 @@
                         <span>Плевен, Булевард Русе 19</span>
                         <br />Телефон:
                         <span>+359878735795</span>
-                        <br />Поша:
+                        <br />Поща:
                         <span>
                             <a href="#">g.prusiyski@webrika.bg</a>
                         </span>
