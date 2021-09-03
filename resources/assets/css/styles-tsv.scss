@@ -5,6 +5,10 @@
     }
 }
 
+.small-dialog-header {
+    margin-bottom: 0px;
+}
+
 .small-dialog-header h3 {
     padding-right: 0;
 }
@@ -22,11 +26,16 @@
 }
 
 @media only screen and (max-width: 768px) {
+
     select,
     input,
     textarea {
         font-size: 16px !important;
     }
+
+    .small-dialog-header {
+        display: none;
+     }
 }
 
 .mfp-bg {
@@ -43,10 +52,22 @@
 @media only screen and (max-width: 768px) {
     #sign-in-dialog,
     #small-dialog {
-        max-width: 100vw;
+        max-width: 80vw;
     }
 }
 
 .sign-in-form label input{
     height: 53px !important;
+}
+
+// TsB
+@media screen and (max-width: 414px) {
+    .small-dialog-header {
+        padding: 10px;
+        display: none;
+    }
+
+    ul.tabs-nav li {
+        padding: 10px 15px 0px 15px !important;
+    }
 }

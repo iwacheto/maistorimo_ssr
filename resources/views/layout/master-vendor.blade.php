@@ -5,7 +5,7 @@
 	<!-- Basic Page Needs
 ================================================== -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <!-- Google Tag Manager -->
     <script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
