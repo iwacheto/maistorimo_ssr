@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 239);
+/******/ 	return __webpack_require__(__webpack_require__.s = 241);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -491,6 +491,88 @@ module.exports = {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -674,92 +756,10 @@ function mappedPropsToVueProps(mappedProps) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(40);
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
 
 /***/ }),
 /* 6 */
@@ -13598,7 +13598,7 @@ module.exports = getNative;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return analyticFunction; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
 
@@ -18915,7 +18915,7 @@ var _mapElementMixin = __webpack_require__(27);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 var _mapElementFactory2 = _interopRequireDefault(_mapElementFactory);
 
@@ -19168,7 +19168,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 var _mapElementFactory2 = _interopRequireDefault(_mapElementFactory);
 
@@ -19314,7 +19314,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 var _mapElementFactory2 = _interopRequireDefault(_mapElementFactory);
 
@@ -19408,7 +19408,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 var _mapElementFactory2 = _interopRequireDefault(_mapElementFactory);
 
@@ -19549,7 +19549,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 var _mapElementFactory2 = _interopRequireDefault(_mapElementFactory);
 
@@ -19601,7 +19601,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 var _mapElementFactory2 = _interopRequireDefault(_mapElementFactory);
 
@@ -19717,7 +19717,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 var _mapElementFactory2 = _interopRequireDefault(_mapElementFactory);
 
@@ -19907,7 +19907,7 @@ if(false) {
 /* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -19969,7 +19969,7 @@ var _WatchPrimitiveProperties = __webpack_require__(14);
 
 var _WatchPrimitiveProperties2 = _interopRequireDefault(_WatchPrimitiveProperties);
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20241,7 +20241,7 @@ if(false) {
 /* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -20300,7 +20300,7 @@ var _WatchPrimitiveProperties = __webpack_require__(14);
 
 var _WatchPrimitiveProperties2 = _interopRequireDefault(_WatchPrimitiveProperties);
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20740,7 +20740,7 @@ var _simulateArrowDown = __webpack_require__(29);
 
 var _simulateArrowDown2 = _interopRequireDefault(_simulateArrowDown);
 
-var _mapElementFactory = __webpack_require__(3);
+var _mapElementFactory = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31962,14 +31962,14 @@ VeeValidate$1.withValidation = withValidation;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vee_validate__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_analytics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vue_scrollto__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vue_meta__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_event_bus__ = __webpack_require__(20);
@@ -32051,7 +32051,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_10_vue
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_uniq__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_uniq___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_uniq__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
 
 
@@ -33707,7 +33707,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__event_bus__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_cookie_law__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_cookie_law___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_cookie_law__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_axios__);
 
 
@@ -34009,7 +34009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_bus__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
@@ -34361,7 +34361,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_bus__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
@@ -37548,7 +37548,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_project_services_functions__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_localstorage__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_localstorage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_localstorage__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue__);
@@ -39269,7 +39269,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_client_only__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_client_only___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_client_only__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_project_services_functions__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue__);
@@ -40329,7 +40329,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_googleMap_GoogleMap__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_googleMap_GoogleMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_googleMap_GoogleMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mixins_analytic_function__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_axios__);
 
 
@@ -44337,7 +44337,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_analytic_function__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
@@ -46797,7 +46797,7 @@ if(false) {
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -46818,7 +46818,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_analytic_function__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_client_only__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_client_only___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_client_only__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue__);
@@ -47827,7 +47827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_googleMap_GoogleMap__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_googleMap_GoogleMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_googleMap_GoogleMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
@@ -48550,7 +48550,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(202)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(214)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48596,7 +48596,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__front_partials_Header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__);
 //
 //
@@ -48630,7 +48630,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(208)
+var __vue_template__ = __webpack_require__(210)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48678,7 +48678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Login_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
@@ -48987,13 +48987,13 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(374)
+  __webpack_require__(206)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(206)
+var __vue_script__ = __webpack_require__(208)
 /* template */
-var __vue_template__ = __webpack_require__(376)
+var __vue_template__ = __webpack_require__(209)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49033,13 +49033,53 @@ module.exports = Component.exports
 
 /***/ }),
 /* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(207);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("693d7f1f", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8c10e580\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8c10e580\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tab-content[data-v-8c10e580] {\n  padding-top: 10px !important;\n}\n.mfp-close[data-v-8c10e580] {\n  top: 10px !important;\n  right: 10px !important;\n}\n.sign-in-form .tabs-nav li[data-v-8c10e580] {\n  margin: 0px;\n}\n.sign-in-form .tabs-nav li a[data-v-8c10e580] {\n    padding: 10px 15px;\n}\n.email_val[data-v-8c10e580] {\n  margin-bottom: 0px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 
 
@@ -49741,8 +49781,1179 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 207 */,
-/* 208 */
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.popupShow
+    ? _c("div", [
+        _c("div", { staticClass: "mfp-bg my-mfp-zoom-in mfp-ready" }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "mfp-wrap mfp-close-btn-in mfp-auto-cursor my-mfp-zoom-in mfp-ready",
+            staticStyle: { top: "0px", position: "absolute", height: "946px" },
+            attrs: { tabindex: "-1" }
+          },
+          [
+            _c("div", { staticClass: "mfp-container mfp-inline-holder" }, [
+              _c("div", { staticClass: "mfp-content" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "zoom-anim-dialog",
+                    attrs: { id: "sign-in-dialog" }
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sign-in-form style-1" }, [
+                      _c("ul", { staticClass: "tabs-nav" }, [
+                        _c("li", {}, [
+                          _c(
+                            "a",
+                            {
+                              on: {
+                                click: function($event) {
+                                  return _vm.showTab("login")
+                                }
+                              }
+                            },
+                            [_vm._v("Вход")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c(
+                            "a",
+                            {
+                              on: {
+                                click: function($event) {
+                                  return _vm.showTab("register")
+                                }
+                              }
+                            },
+                            [_vm._v("Регистрация")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tabs-container alt" }, [
+                        _vm.tab == "login"
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "tab-content",
+                                attrs: { id: "tab1" }
+                              },
+                              [
+                                _c(
+                                  "form",
+                                  {
+                                    staticClass: "login",
+                                    attrs: { "data-vv-scope": "login" }
+                                  },
+                                  [
+                                    _vm.loginData.commonError
+                                      ? _c("span", { staticClass: "error" }, [
+                                          _vm._v(
+                                            _vm._s(_vm.loginData.commonError)
+                                          )
+                                        ])
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      {
+                                        staticClass:
+                                          "form-row form-row-wide email_val"
+                                      },
+                                      [
+                                        _c(
+                                          "label",
+                                          { attrs: { for: "email" } },
+                                          [
+                                            _vm._v(
+                                              "\n                      Поща:\n                      "
+                                            ),
+                                            _c("i", {
+                                              staticClass: "im im-icon-Male"
+                                            }),
+                                            _vm._v(" "),
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.loginData.email,
+                                                  expression: "loginData.email"
+                                                },
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required|email",
+                                                  expression: "'required|email'"
+                                                }
+                                              ],
+                                              staticClass: "input-text",
+                                              attrs: {
+                                                type: "email",
+                                                name: "loginEmail",
+                                                id: "loginEmail",
+                                                value: ""
+                                              },
+                                              domProps: {
+                                                value: _vm.loginData.email
+                                              },
+                                              on: {
+                                                focus: function($event) {
+                                                  return _vm.makeFocus("email")
+                                                },
+                                                keyup: function($event) {
+                                                  if (
+                                                    !$event.type.indexOf(
+                                                      "key"
+                                                    ) &&
+                                                    _vm._k(
+                                                      $event.keyCode,
+                                                      "enter",
+                                                      13,
+                                                      $event.key,
+                                                      "Enter"
+                                                    )
+                                                  ) {
+                                                    return null
+                                                  }
+                                                  return _vm.login($event)
+                                                },
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.loginData,
+                                                    "email",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "small",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value: _vm.errors.has(
+                                                      "login.loginEmail"
+                                                    ),
+                                                    expression:
+                                                      "errors.has('login.loginEmail')"
+                                                  }
+                                                ],
+                                                staticClass: "error"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.errors.first(
+                                                      "login.loginEmail"
+                                                    )
+                                                  )
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm.loginData.emailError
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "error" },
+                                                  [
+                                                    _vm._v(
+                                                      "Паролата не съвпада с вашата парола"
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      { staticClass: "form-row form-row-wide" },
+                                      [
+                                        _c(
+                                          "label",
+                                          { attrs: { for: "password" } },
+                                          [
+                                            _vm._v(
+                                              "\n                      Парола:\n                      "
+                                            ),
+                                            _c("i", {
+                                              staticClass: "im im-icon-Lock-2"
+                                            }),
+                                            _vm._v(" "),
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.loginData.password,
+                                                  expression:
+                                                    "loginData.password"
+                                                },
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                }
+                                              ],
+                                              staticClass: "input-text",
+                                              attrs: {
+                                                type: "password",
+                                                name: "loginPassword",
+                                                id: "loginPassword"
+                                              },
+                                              domProps: {
+                                                value: _vm.loginData.password
+                                              },
+                                              on: {
+                                                keyup: function($event) {
+                                                  if (
+                                                    !$event.type.indexOf(
+                                                      "key"
+                                                    ) &&
+                                                    _vm._k(
+                                                      $event.keyCode,
+                                                      "enter",
+                                                      13,
+                                                      $event.key,
+                                                      "Enter"
+                                                    )
+                                                  ) {
+                                                    return null
+                                                  }
+                                                  return _vm.login($event)
+                                                },
+                                                focus: function($event) {
+                                                  return _vm.makeFocus(
+                                                    "password"
+                                                  )
+                                                },
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.loginData,
+                                                    "password",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _vm.errors.has(
+                                              "login.loginPassword"
+                                            )
+                                              ? _c(
+                                                  "small",
+                                                  { staticClass: "error" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.errors.first(
+                                                          "login.loginPassword"
+                                                        )
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            _vm.loginData.passwordError
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "error" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.loginData
+                                                          .passwordError[0]
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "form-row" }, [
+                                      _c("input", {
+                                        staticClass:
+                                          "button border margin-top-5",
+                                        attrs: {
+                                          type: "submit",
+                                          name: "login",
+                                          value: "Влез"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.login($event)
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm._m(1)
+                                    ])
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.tab == "register"
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "tab-content",
+                                attrs: { id: "tab2" }
+                              },
+                              [
+                                _vm.error_message
+                                  ? _c(
+                                      "div",
+                                      { staticClass: "error_message" },
+                                      [
+                                        _vm._v(
+                                          "\n                  " +
+                                            _vm._s(_vm.message) +
+                                            "\n                  "
+                                        ),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "error_message_close",
+                                            on: {
+                                              click: function($event) {
+                                                _vm.error_message = false
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("x")]
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                true
+                                  ? _c(
+                                      "form",
+                                      {
+                                        staticClass: "register",
+                                        attrs: {
+                                          method: "post",
+                                          "data-vv-scope": "register"
+                                        }
+                                      },
+                                      [
+                                        _vm.registerData.commonError
+                                          ? _c(
+                                              "span",
+                                              { staticClass: "error" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.registerData.commonError
+                                                  )
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c(
+                                          "p",
+                                          {
+                                            staticClass:
+                                              "form-row form-row-wide"
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "username" } },
+                                              [
+                                                _vm._v(
+                                                  "\n                      Потребителско име:\n                      "
+                                                ),
+                                                _c("i", {
+                                                  staticClass: "im im-icon-Male"
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.registerData
+                                                          .username,
+                                                      expression:
+                                                        "registerData.username"
+                                                    },
+                                                    {
+                                                      name: "validate",
+                                                      rawName: "v-validate",
+                                                      value: {
+                                                        required: true,
+                                                        min: 5,
+                                                        regex: /^([a-z|A-Z]+)$/
+                                                      },
+                                                      expression:
+                                                        "{ required: true, min:5, regex:/^([a-z|A-Z]+)$/ }"
+                                                    }
+                                                  ],
+                                                  key: "registerUsername",
+                                                  staticClass: "input-text",
+                                                  attrs: {
+                                                    type: "text",
+                                                    name: "registerUsername",
+                                                    id: "username",
+                                                    value: ""
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.registerData.username
+                                                  },
+                                                  on: {
+                                                    keyup: function($event) {
+                                                      if (
+                                                        !$event.type.indexOf(
+                                                          "key"
+                                                        ) &&
+                                                        _vm._k(
+                                                          $event.keyCode,
+                                                          "enter",
+                                                          13,
+                                                          $event.key,
+                                                          "Enter"
+                                                        )
+                                                      ) {
+                                                        return null
+                                                      }
+                                                      return _vm.register(
+                                                        $event
+                                                      )
+                                                    },
+                                                    blur: _vm.checkUsername,
+                                                    focus: function($event) {
+                                                      return _vm.makeFocus(
+                                                        "registerUsername"
+                                                      )
+                                                    },
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.registerData,
+                                                        "username",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _vm.errors.has(
+                                                  "register.registerUsername"
+                                                )
+                                                  ? _c(
+                                                      "small",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.errors.first(
+                                                              "register.registerUsername"
+                                                            )
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _vm.registerData.usernameError
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.registerData
+                                                              .usernameError[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "p",
+                                          {
+                                            staticClass:
+                                              "form-row form-row-wide"
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "email" } },
+                                              [
+                                                _vm._v(
+                                                  "\n                      Поща:\n                      "
+                                                ),
+                                                _c("i", {
+                                                  staticClass: "im im-icon-Mail"
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.registerData.email,
+                                                      expression:
+                                                        "registerData.email"
+                                                    },
+                                                    {
+                                                      name: "validate",
+                                                      rawName: "v-validate",
+                                                      value: "required|email",
+                                                      expression:
+                                                        "'required|email'"
+                                                    }
+                                                  ],
+                                                  key: "registerEmail",
+                                                  staticClass: "input-text",
+                                                  attrs: {
+                                                    type: "email",
+                                                    name: "registerEmail",
+                                                    id: "email",
+                                                    value: ""
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.registerData.email
+                                                  },
+                                                  on: {
+                                                    keyup: function($event) {
+                                                      if (
+                                                        !$event.type.indexOf(
+                                                          "key"
+                                                        ) &&
+                                                        _vm._k(
+                                                          $event.keyCode,
+                                                          "enter",
+                                                          13,
+                                                          $event.key,
+                                                          "Enter"
+                                                        )
+                                                      ) {
+                                                        return null
+                                                      }
+                                                      return _vm.register(
+                                                        $event
+                                                      )
+                                                    },
+                                                    blur: _vm.checkEmail,
+                                                    focus: function($event) {
+                                                      return _vm.makeFocus(
+                                                        "registerEmail"
+                                                      )
+                                                    },
+                                                    click: function($event) {
+                                                      return _vm.makeFocus(
+                                                        "registerEmail"
+                                                      )
+                                                    },
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.registerData,
+                                                        "email",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "small",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "show",
+                                                        rawName: "v-show",
+                                                        value: _vm.errors.has(
+                                                          "register.registerEmail"
+                                                        ),
+                                                        expression:
+                                                          "errors.has('register.registerEmail')"
+                                                      }
+                                                    ],
+                                                    staticClass: "error"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.errors.first(
+                                                          "register.registerEmail"
+                                                        )
+                                                      )
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm.registerData.emailError
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.registerData
+                                                              .emailError[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "p",
+                                          {
+                                            staticClass:
+                                              "form-row form-row-wide"
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "password" } },
+                                              [
+                                                _vm._v(
+                                                  "\n                      Парола:\n                      "
+                                                ),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "im im-icon-Lock-2"
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.registerData
+                                                          .password,
+                                                      expression:
+                                                        "registerData.password"
+                                                    },
+                                                    {
+                                                      name: "validate",
+                                                      rawName: "v-validate",
+                                                      value: "required",
+                                                      expression: "'required'"
+                                                    }
+                                                  ],
+                                                  key: "registerPassword",
+                                                  staticClass: "input-text",
+                                                  attrs: {
+                                                    type: "password",
+                                                    name: "registerPassword",
+                                                    id: "password"
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.registerData.password
+                                                  },
+                                                  on: {
+                                                    keyup: function($event) {
+                                                      if (
+                                                        !$event.type.indexOf(
+                                                          "key"
+                                                        ) &&
+                                                        _vm._k(
+                                                          $event.keyCode,
+                                                          "enter",
+                                                          13,
+                                                          $event.key,
+                                                          "Enter"
+                                                        )
+                                                      ) {
+                                                        return null
+                                                      }
+                                                      return _vm.register(
+                                                        $event
+                                                      )
+                                                    },
+                                                    focus: function($event) {
+                                                      return _vm.makeFocus(
+                                                        "registerPassword"
+                                                      )
+                                                    },
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.registerData,
+                                                        "password",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _vm.errors.has(
+                                                  "register.registerPassword"
+                                                )
+                                                  ? _c(
+                                                      "small",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.errors.first(
+                                                              "register.registerPassword"
+                                                            )
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _vm.registerData.passwordError
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.registerData
+                                                              .passwordError[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "p",
+                                          {
+                                            staticClass:
+                                              "form-row form-row-wide"
+                                          },
+                                          [
+                                            _c(
+                                              "label",
+                                              {
+                                                attrs: {
+                                                  for: "confirmPassword"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                      Повтори Парола:\n                      "
+                                                ),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "im im-icon-Lock-2"
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.registerData
+                                                          .confirmPassword,
+                                                      expression:
+                                                        "registerData.confirmPassword"
+                                                    },
+                                                    {
+                                                      name: "validate",
+                                                      rawName: "v-validate",
+                                                      value: "required",
+                                                      expression: "'required'"
+                                                    }
+                                                  ],
+                                                  key: "confirmPassword",
+                                                  staticClass: "input-text",
+                                                  attrs: {
+                                                    type: "password",
+                                                    name: "confirmPassword",
+                                                    id: "confirmPassword"
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.registerData
+                                                        .confirmPassword
+                                                  },
+                                                  on: {
+                                                    keyup: function($event) {
+                                                      if (
+                                                        !$event.type.indexOf(
+                                                          "key"
+                                                        ) &&
+                                                        _vm._k(
+                                                          $event.keyCode,
+                                                          "enter",
+                                                          13,
+                                                          $event.key,
+                                                          "Enter"
+                                                        )
+                                                      ) {
+                                                        return null
+                                                      }
+                                                      return _vm.register(
+                                                        $event
+                                                      )
+                                                    },
+                                                    focus: function($event) {
+                                                      return _vm.makeFocus(
+                                                        "registerConfirmPassword"
+                                                      )
+                                                    },
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.registerData,
+                                                        "confirmPassword",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _vm.errors.has(
+                                                  "register.confirmPassword"
+                                                )
+                                                  ? _c(
+                                                      "small",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.errors.first(
+                                                              "register.confirmPassword"
+                                                            )
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _vm.registerData
+                                                  .confirmPasswordError
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.registerData
+                                                              .confirmPasswordError[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "checkboxes margin-top-10"
+                                          },
+                                          [
+                                            _c("input", {
+                                              attrs: {
+                                                id: "remember-me",
+                                                type: "checkbox",
+                                                name: "check"
+                                              },
+                                              on: {
+                                                change: function($event) {
+                                                  _vm.isDisabled = !_vm.isDisabled
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "label",
+                                              { attrs: { for: "remember-me" } },
+                                              [
+                                                _vm._v("Съгласявам се с "),
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "confirm_terms",
+                                                    attrs: { tag: "a", to: "" },
+                                                    on: { click: _vm.goGeneral }
+                                                  },
+                                                  [_vm._v("общите условия")]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("p"),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          staticClass:
+                                            "button border fw margin-top-10",
+                                          class: [
+                                            _vm.isDisabled
+                                              ? "disabled_button"
+                                              : ""
+                                          ],
+                                          attrs: {
+                                            type: "button",
+                                            disabled: _vm.isDisabled,
+                                            name: "register",
+                                            value: "Регистрирай се"
+                                          },
+                                          on: { click: _vm.register }
+                                        })
+                                      ]
+                                    )
+                                  : _c("div", [
+                                      !_vm.inviteRequested
+                                        ? _c(
+                                            "div",
+                                            { staticClass: "invite_check" },
+                                            [
+                                              _c("form", [
+                                                _c("h1", [
+                                                  _vm._v("Само с покана")
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("p", [
+                                                  _vm._v(
+                                                    "\n                        Вмомента системата е в затворена бета версия и регистрацията се случва посредством покана.\n                        Моля попълнете долните полета и ще разгледаме Вашата заявка и ще се свържем с Вас\n                      "
+                                                  )
+                                                ]),
+                                                _vm._v(
+                                                  "Поща:\n                      "
+                                                ),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.inviteEmail,
+                                                      expression: "inviteEmail"
+                                                    }
+                                                  ],
+                                                  attrs: { type: "text" },
+                                                  domProps: {
+                                                    value: _vm.inviteEmail
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.inviteEmail =
+                                                        $event.target.value
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(
+                                                  "\n                      Телефон:\n                      "
+                                                ),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.invitePhone,
+                                                      expression: "invitePhone"
+                                                    }
+                                                  ],
+                                                  attrs: { type: "text" },
+                                                  domProps: {
+                                                    value: _vm.invitePhone
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.invitePhone =
+                                                        $event.target.value
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(
+                                                  "\n                      Причина:\n                      "
+                                                ),
+                                                _c("textarea", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.inviteReason,
+                                                      expression: "inviteReason"
+                                                    }
+                                                  ],
+                                                  domProps: {
+                                                    value: _vm.inviteReason
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.inviteReason =
+                                                        $event.target.value
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  staticClass:
+                                                    "button border fw margin-top-10",
+                                                  attrs: {
+                                                    type: "button",
+                                                    name: "register",
+                                                    value: "Изпрати"
+                                                  },
+                                                  on: {
+                                                    click: _vm.requestInvite
+                                                  }
+                                                })
+                                              ])
+                                            ]
+                                          )
+                                        : _c(
+                                            "div",
+                                            { staticClass: "invite_check" },
+                                            [
+                                              _c("p", [
+                                                _vm._v(
+                                                  "Заявката Ви е приета. Ще се свържем с Вас на посочените от Вас контакти. Благодарим за проявения интерес."
+                                                )
+                                              ])
+                                            ]
+                                          )
+                                    ])
+                              ]
+                            )
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("button", {
+                      staticClass: "mfp-close",
+                      attrs: { title: "Close (Esc)", type: "button" },
+                      on: { click: _vm.closePopup }
+                    })
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "small-dialog-header" }, [
+      _c("h3", [
+        _vm._v("Вход/"),
+        _c("br", { staticClass: "mobile" }),
+        _vm._v("Регистрация")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "checkboxes margin-top-10" }, [
+      _c("input", {
+        attrs: { id: "remember-me", type: "checkbox", name: "check" }
+      }),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "remember-me" } }, [_vm._v("Запомни ме")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8c10e580", module.exports)
+  }
+}
+
+/***/ }),
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50050,21 +51261,25 @@ if (false) {
 }
 
 /***/ }),
-/* 209 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(376)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(210)
+var __vue_script__ = __webpack_require__(212)
 /* template */
-var __vue_template__ = __webpack_require__(211)
+var __vue_template__ = __webpack_require__(378)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-447152d4"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -50097,14 +51312,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 210 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 
 
@@ -50229,157 +51444,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 211 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "sticky-footer", attrs: { id: "footer" } }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 col-sm-6" }, [
-          _c("h4", [_vm._v("Полезни линкове")]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "footer-links" }, [
-            _c(
-              "li",
-              { on: { click: _vm.scrollTop } },
-              [
-                _c(
-                  "router-link",
-                  { attrs: { tag: "a", to: "/general_terms" } },
-                  [_vm._v("Общи условия")]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              { on: { click: _vm.scrollTop } },
-              [
-                _c(
-                  "router-link",
-                  { attrs: { tag: "a", to: "/private_protection" } },
-                  [_vm._v("Политика за поверителност")]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              { on: { click: _vm.scrollTop } },
-              [
-                _c("router-link", { attrs: { tag: "a", to: "/contacts" } }, [
-                  _vm._v("Контакти")
-                ])
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "clearfix" })
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ]),
-      _vm._v(" "),
-      _vm._m(2)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-5 col-sm-6 footer_img" }, [
-      _c("img", {
-        staticClass: "footer-logo",
-        attrs: { src: "/images/logo.png", alt: "" }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n                        Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и\n                        възможност за пласиране на техните услуги\n                    "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3 col-sm-12" }, [
-      _c("h4", [_vm._v("Свържете се с нас")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-widget" }, [
-        _c("span", [_vm._v("Плевен, Булевард Русе 19")]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v("Телефон:\n                        "),
-        _c("span", [_vm._v("+359878735795")]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v("Поща:\n                        "),
-        _c("span", [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("g.prusiyski@webrika.bg")])
-        ]),
-        _vm._v(" "),
-        _c("br")
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "social-icons margin-top-20" }, [
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "facebook",
-              attrs: {
-                target: "_blank",
-                href:
-                  "https://www.facebook.com/%D0%9C%D0%B0%D0%B9%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%BC%D0%BE-262442748017349"
-              }
-            },
-            [_c("i", { staticClass: "icon-facebook" })]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "copyrights" }, [
-          _vm._v("© 2019 Maistorimo. All Rights Reserved.")
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-447152d4", module.exports)
-  }
-}
-
-/***/ }),
-/* 212 */
+/* 213 */,
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50410,7 +51476,7 @@ if (false) {
 }
 
 /***/ }),
-/* 213 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52222,7 +53288,7 @@ var index = {
 
 
 /***/ }),
-/* 214 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52377,7 +53443,7 @@ var locale = {
 /* harmony default export */ __webpack_exports__["a"] = (locale);
 
 /***/ }),
-/* 215 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -52936,8 +54002,6 @@ var locale = {
 
 
 /***/ }),
-/* 216 */,
-/* 217 */,
 /* 218 */,
 /* 219 */,
 /* 220 */,
@@ -52959,20 +54023,22 @@ var locale = {
 /* 236 */,
 /* 237 */,
 /* 238 */,
-/* 239 */
+/* 239 */,
+/* 240 */,
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(240);
+module.exports = __webpack_require__(242);
 
 
 /***/ }),
-/* 240 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic__);
 /* global context, dispatch */
 
@@ -53002,7 +54068,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic___default()(__WEBPACK_IMPO
 });
 
 /***/ }),
-/* 241 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate, process) {(function (global, factory) {
@@ -61968,8 +63034,6 @@ __WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic___default()(__WEBPACK_IMPO
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(30).setImmediate, __webpack_require__(10)))
 
 /***/ }),
-/* 242 */,
-/* 243 */,
 /* 244 */,
 /* 245 */,
 /* 246 */,
@@ -62100,23 +63164,25 @@ __WEBPACK_IMPORTED_MODULE_1_vue_server_renderer_basic___default()(__WEBPACK_IMPO
 /* 371 */,
 /* 372 */,
 /* 373 */,
-/* 374 */
+/* 374 */,
+/* 375 */,
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(375);
+var content = __webpack_require__(377);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("693d7f1f", content, false, {});
+var update = __webpack_require__(6)("41a0fe82", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8c10e580\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8c10e580\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-447152d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Footer.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-447152d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Footer.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -62126,1166 +63192,103 @@ if(false) {
 }
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.tab-content[data-v-8c10e580] {\n  padding-top: 10px !important;\n}\n.mfp-close[data-v-8c10e580] {\n  top: 10px !important;\n  right: 10px !important;\n}\n.sign-in-form .tabs-nav li[data-v-8c10e580] {\n  margin: 0px;\n}\n.sign-in-form .tabs-nav li a[data-v-8c10e580] {\n    padding: 10px 15px;\n}\n.email_val[data-v-8c10e580] {\n  margin-bottom: 0px;\n}\n", ""]);
+exports.push([module.i, "\n@media only screen and (max-width: 380px) {\ndiv.col-md-4.col-sm-6[data-v-447152d4], div.col-md-3.col-sm-12[data-v-447152d4] {\n        margin-left: 15px;\n}\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.popupShow
-    ? _c("div", [
-        _c("div", { staticClass: "mfp-bg my-mfp-zoom-in mfp-ready" }),
+  return _c("div", { staticClass: "sticky-footer", attrs: { id: "footer" } }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _vm._m(0),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "mfp-wrap mfp-close-btn-in mfp-auto-cursor my-mfp-zoom-in mfp-ready",
-            staticStyle: { top: "0px", position: "absolute", height: "946px" },
-            attrs: { tabindex: "-1" }
-          },
-          [
-            _c("div", { staticClass: "mfp-container mfp-inline-holder" }, [
-              _c("div", { staticClass: "mfp-content" }, [
+        _c("div", { staticClass: "col-md-4 col-sm-6" }, [
+          _c("h4", [_vm._v("Полезни линкове")]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "footer-links" }, [
+            _c(
+              "li",
+              { on: { click: _vm.scrollTop } },
+              [
                 _c(
-                  "div",
-                  {
-                    staticClass: "zoom-anim-dialog",
-                    attrs: { id: "sign-in-dialog" }
-                  },
-                  [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "sign-in-form style-1" }, [
-                      _c("ul", { staticClass: "tabs-nav" }, [
-                        _c("li", {}, [
-                          _c(
-                            "a",
-                            {
-                              on: {
-                                click: function($event) {
-                                  return _vm.showTab("login")
-                                }
-                              }
-                            },
-                            [_vm._v("Вход")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c(
-                            "a",
-                            {
-                              on: {
-                                click: function($event) {
-                                  return _vm.showTab("register")
-                                }
-                              }
-                            },
-                            [_vm._v("Регистрация")]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "tabs-container alt" }, [
-                        _vm.tab == "login"
-                          ? _c(
-                              "div",
-                              {
-                                staticClass: "tab-content",
-                                attrs: { id: "tab1" }
-                              },
-                              [
-                                _c(
-                                  "form",
-                                  {
-                                    staticClass: "login",
-                                    attrs: { "data-vv-scope": "login" }
-                                  },
-                                  [
-                                    _vm.loginData.commonError
-                                      ? _c("span", { staticClass: "error" }, [
-                                          _vm._v(
-                                            _vm._s(_vm.loginData.commonError)
-                                          )
-                                        ])
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass:
-                                          "form-row form-row-wide email_val"
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "email" } },
-                                          [
-                                            _vm._v(
-                                              "\n                      Поща:\n                      "
-                                            ),
-                                            _c("i", {
-                                              staticClass: "im im-icon-Male"
-                                            }),
-                                            _vm._v(" "),
-                                            _c("input", {
-                                              directives: [
-                                                {
-                                                  name: "model",
-                                                  rawName: "v-model",
-                                                  value: _vm.loginData.email,
-                                                  expression: "loginData.email"
-                                                },
-                                                {
-                                                  name: "validate",
-                                                  rawName: "v-validate",
-                                                  value: "required|email",
-                                                  expression: "'required|email'"
-                                                }
-                                              ],
-                                              staticClass: "input-text",
-                                              attrs: {
-                                                type: "email",
-                                                name: "loginEmail",
-                                                id: "loginEmail",
-                                                value: ""
-                                              },
-                                              domProps: {
-                                                value: _vm.loginData.email
-                                              },
-                                              on: {
-                                                focus: function($event) {
-                                                  return _vm.makeFocus("email")
-                                                },
-                                                keyup: function($event) {
-                                                  if (
-                                                    !$event.type.indexOf(
-                                                      "key"
-                                                    ) &&
-                                                    _vm._k(
-                                                      $event.keyCode,
-                                                      "enter",
-                                                      13,
-                                                      $event.key,
-                                                      "Enter"
-                                                    )
-                                                  ) {
-                                                    return null
-                                                  }
-                                                  return _vm.login($event)
-                                                },
-                                                input: function($event) {
-                                                  if ($event.target.composing) {
-                                                    return
-                                                  }
-                                                  _vm.$set(
-                                                    _vm.loginData,
-                                                    "email",
-                                                    $event.target.value
-                                                  )
-                                                }
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "small",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value: _vm.errors.has(
-                                                      "login.loginEmail"
-                                                    ),
-                                                    expression:
-                                                      "errors.has('login.loginEmail')"
-                                                  }
-                                                ],
-                                                staticClass: "error"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    _vm.errors.first(
-                                                      "login.loginEmail"
-                                                    )
-                                                  )
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _vm.loginData.emailError
-                                              ? _c(
-                                                  "span",
-                                                  { staticClass: "error" },
-                                                  [
-                                                    _vm._v(
-                                                      "Паролата не съвпада с вашата парола"
-                                                    )
-                                                  ]
-                                                )
-                                              : _vm._e()
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      { staticClass: "form-row form-row-wide" },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "password" } },
-                                          [
-                                            _vm._v(
-                                              "\n                      Парола:\n                      "
-                                            ),
-                                            _c("i", {
-                                              staticClass: "im im-icon-Lock-2"
-                                            }),
-                                            _vm._v(" "),
-                                            _c("input", {
-                                              directives: [
-                                                {
-                                                  name: "model",
-                                                  rawName: "v-model",
-                                                  value: _vm.loginData.password,
-                                                  expression:
-                                                    "loginData.password"
-                                                },
-                                                {
-                                                  name: "validate",
-                                                  rawName: "v-validate",
-                                                  value: "required",
-                                                  expression: "'required'"
-                                                }
-                                              ],
-                                              staticClass: "input-text",
-                                              attrs: {
-                                                type: "password",
-                                                name: "loginPassword",
-                                                id: "loginPassword"
-                                              },
-                                              domProps: {
-                                                value: _vm.loginData.password
-                                              },
-                                              on: {
-                                                keyup: function($event) {
-                                                  if (
-                                                    !$event.type.indexOf(
-                                                      "key"
-                                                    ) &&
-                                                    _vm._k(
-                                                      $event.keyCode,
-                                                      "enter",
-                                                      13,
-                                                      $event.key,
-                                                      "Enter"
-                                                    )
-                                                  ) {
-                                                    return null
-                                                  }
-                                                  return _vm.login($event)
-                                                },
-                                                focus: function($event) {
-                                                  return _vm.makeFocus(
-                                                    "password"
-                                                  )
-                                                },
-                                                input: function($event) {
-                                                  if ($event.target.composing) {
-                                                    return
-                                                  }
-                                                  _vm.$set(
-                                                    _vm.loginData,
-                                                    "password",
-                                                    $event.target.value
-                                                  )
-                                                }
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _vm.errors.has(
-                                              "login.loginPassword"
-                                            )
-                                              ? _c(
-                                                  "small",
-                                                  { staticClass: "error" },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm.errors.first(
-                                                          "login.loginPassword"
-                                                        )
-                                                      )
-                                                    )
-                                                  ]
-                                                )
-                                              : _vm._e(),
-                                            _vm._v(" "),
-                                            _vm.loginData.passwordError
-                                              ? _c(
-                                                  "span",
-                                                  { staticClass: "error" },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm.loginData
-                                                          .passwordError[0]
-                                                      )
-                                                    )
-                                                  ]
-                                                )
-                                              : _vm._e()
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "form-row" }, [
-                                      _c("input", {
-                                        staticClass:
-                                          "button border margin-top-5",
-                                        attrs: {
-                                          type: "submit",
-                                          name: "login",
-                                          value: "Влез"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            return _vm.login($event)
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _vm._m(1)
-                                    ])
-                                  ]
-                                )
-                              ]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.tab == "register"
-                          ? _c(
-                              "div",
-                              {
-                                staticClass: "tab-content",
-                                attrs: { id: "tab2" }
-                              },
-                              [
-                                _vm.error_message
-                                  ? _c(
-                                      "div",
-                                      { staticClass: "error_message" },
-                                      [
-                                        _vm._v(
-                                          "\n                  " +
-                                            _vm._s(_vm.message) +
-                                            "\n                  "
-                                        ),
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass: "error_message_close",
-                                            on: {
-                                              click: function($event) {
-                                                _vm.error_message = false
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("x")]
-                                        )
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                true
-                                  ? _c(
-                                      "form",
-                                      {
-                                        staticClass: "register",
-                                        attrs: {
-                                          method: "post",
-                                          "data-vv-scope": "register"
-                                        }
-                                      },
-                                      [
-                                        _vm.registerData.commonError
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "error" },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    _vm.registerData.commonError
-                                                  )
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        _c(
-                                          "p",
-                                          {
-                                            staticClass:
-                                              "form-row form-row-wide"
-                                          },
-                                          [
-                                            _c(
-                                              "label",
-                                              { attrs: { for: "username" } },
-                                              [
-                                                _vm._v(
-                                                  "\n                      Потребителско име:\n                      "
-                                                ),
-                                                _c("i", {
-                                                  staticClass: "im im-icon-Male"
-                                                }),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.registerData
-                                                          .username,
-                                                      expression:
-                                                        "registerData.username"
-                                                    },
-                                                    {
-                                                      name: "validate",
-                                                      rawName: "v-validate",
-                                                      value: {
-                                                        required: true,
-                                                        min: 5,
-                                                        regex: /^([a-z|A-Z]+)$/
-                                                      },
-                                                      expression:
-                                                        "{ required: true, min:5, regex:/^([a-z|A-Z]+)$/ }"
-                                                    }
-                                                  ],
-                                                  key: "registerUsername",
-                                                  staticClass: "input-text",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "registerUsername",
-                                                    id: "username",
-                                                    value: ""
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.registerData.username
-                                                  },
-                                                  on: {
-                                                    keyup: function($event) {
-                                                      if (
-                                                        !$event.type.indexOf(
-                                                          "key"
-                                                        ) &&
-                                                        _vm._k(
-                                                          $event.keyCode,
-                                                          "enter",
-                                                          13,
-                                                          $event.key,
-                                                          "Enter"
-                                                        )
-                                                      ) {
-                                                        return null
-                                                      }
-                                                      return _vm.register(
-                                                        $event
-                                                      )
-                                                    },
-                                                    blur: _vm.checkUsername,
-                                                    focus: function($event) {
-                                                      return _vm.makeFocus(
-                                                        "registerUsername"
-                                                      )
-                                                    },
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.registerData,
-                                                        "username",
-                                                        $event.target.value
-                                                      )
-                                                    }
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _vm.errors.has(
-                                                  "register.registerUsername"
-                                                )
-                                                  ? _c(
-                                                      "small",
-                                                      { staticClass: "error" },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            _vm.errors.first(
-                                                              "register.registerUsername"
-                                                            )
-                                                          )
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
-                                                _vm._v(" "),
-                                                _vm.registerData.usernameError
-                                                  ? _c(
-                                                      "span",
-                                                      { staticClass: "error" },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            _vm.registerData
-                                                              .usernameError[0]
-                                                          )
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "p",
-                                          {
-                                            staticClass:
-                                              "form-row form-row-wide"
-                                          },
-                                          [
-                                            _c(
-                                              "label",
-                                              { attrs: { for: "email" } },
-                                              [
-                                                _vm._v(
-                                                  "\n                      Поща:\n                      "
-                                                ),
-                                                _c("i", {
-                                                  staticClass: "im im-icon-Mail"
-                                                }),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.registerData.email,
-                                                      expression:
-                                                        "registerData.email"
-                                                    },
-                                                    {
-                                                      name: "validate",
-                                                      rawName: "v-validate",
-                                                      value: "required|email",
-                                                      expression:
-                                                        "'required|email'"
-                                                    }
-                                                  ],
-                                                  key: "registerEmail",
-                                                  staticClass: "input-text",
-                                                  attrs: {
-                                                    type: "email",
-                                                    name: "registerEmail",
-                                                    id: "email",
-                                                    value: ""
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.registerData.email
-                                                  },
-                                                  on: {
-                                                    keyup: function($event) {
-                                                      if (
-                                                        !$event.type.indexOf(
-                                                          "key"
-                                                        ) &&
-                                                        _vm._k(
-                                                          $event.keyCode,
-                                                          "enter",
-                                                          13,
-                                                          $event.key,
-                                                          "Enter"
-                                                        )
-                                                      ) {
-                                                        return null
-                                                      }
-                                                      return _vm.register(
-                                                        $event
-                                                      )
-                                                    },
-                                                    blur: _vm.checkEmail,
-                                                    focus: function($event) {
-                                                      return _vm.makeFocus(
-                                                        "registerEmail"
-                                                      )
-                                                    },
-                                                    click: function($event) {
-                                                      return _vm.makeFocus(
-                                                        "registerEmail"
-                                                      )
-                                                    },
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.registerData,
-                                                        "email",
-                                                        $event.target.value
-                                                      )
-                                                    }
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "small",
-                                                  {
-                                                    directives: [
-                                                      {
-                                                        name: "show",
-                                                        rawName: "v-show",
-                                                        value: _vm.errors.has(
-                                                          "register.registerEmail"
-                                                        ),
-                                                        expression:
-                                                          "errors.has('register.registerEmail')"
-                                                      }
-                                                    ],
-                                                    staticClass: "error"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm.errors.first(
-                                                          "register.registerEmail"
-                                                        )
-                                                      )
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _vm.registerData.emailError
-                                                  ? _c(
-                                                      "span",
-                                                      { staticClass: "error" },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            _vm.registerData
-                                                              .emailError[0]
-                                                          )
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "p",
-                                          {
-                                            staticClass:
-                                              "form-row form-row-wide"
-                                          },
-                                          [
-                                            _c(
-                                              "label",
-                                              { attrs: { for: "password" } },
-                                              [
-                                                _vm._v(
-                                                  "\n                      Парола:\n                      "
-                                                ),
-                                                _c("i", {
-                                                  staticClass:
-                                                    "im im-icon-Lock-2"
-                                                }),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.registerData
-                                                          .password,
-                                                      expression:
-                                                        "registerData.password"
-                                                    },
-                                                    {
-                                                      name: "validate",
-                                                      rawName: "v-validate",
-                                                      value: "required",
-                                                      expression: "'required'"
-                                                    }
-                                                  ],
-                                                  key: "registerPassword",
-                                                  staticClass: "input-text",
-                                                  attrs: {
-                                                    type: "password",
-                                                    name: "registerPassword",
-                                                    id: "password"
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.registerData.password
-                                                  },
-                                                  on: {
-                                                    keyup: function($event) {
-                                                      if (
-                                                        !$event.type.indexOf(
-                                                          "key"
-                                                        ) &&
-                                                        _vm._k(
-                                                          $event.keyCode,
-                                                          "enter",
-                                                          13,
-                                                          $event.key,
-                                                          "Enter"
-                                                        )
-                                                      ) {
-                                                        return null
-                                                      }
-                                                      return _vm.register(
-                                                        $event
-                                                      )
-                                                    },
-                                                    focus: function($event) {
-                                                      return _vm.makeFocus(
-                                                        "registerPassword"
-                                                      )
-                                                    },
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.registerData,
-                                                        "password",
-                                                        $event.target.value
-                                                      )
-                                                    }
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _vm.errors.has(
-                                                  "register.registerPassword"
-                                                )
-                                                  ? _c(
-                                                      "small",
-                                                      { staticClass: "error" },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            _vm.errors.first(
-                                                              "register.registerPassword"
-                                                            )
-                                                          )
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
-                                                _vm._v(" "),
-                                                _vm.registerData.passwordError
-                                                  ? _c(
-                                                      "span",
-                                                      { staticClass: "error" },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            _vm.registerData
-                                                              .passwordError[0]
-                                                          )
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "p",
-                                          {
-                                            staticClass:
-                                              "form-row form-row-wide"
-                                          },
-                                          [
-                                            _c(
-                                              "label",
-                                              {
-                                                attrs: {
-                                                  for: "confirmPassword"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                      Повтори Парола:\n                      "
-                                                ),
-                                                _c("i", {
-                                                  staticClass:
-                                                    "im im-icon-Lock-2"
-                                                }),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.registerData
-                                                          .confirmPassword,
-                                                      expression:
-                                                        "registerData.confirmPassword"
-                                                    },
-                                                    {
-                                                      name: "validate",
-                                                      rawName: "v-validate",
-                                                      value: "required",
-                                                      expression: "'required'"
-                                                    }
-                                                  ],
-                                                  key: "confirmPassword",
-                                                  staticClass: "input-text",
-                                                  attrs: {
-                                                    type: "password",
-                                                    name: "confirmPassword",
-                                                    id: "confirmPassword"
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.registerData
-                                                        .confirmPassword
-                                                  },
-                                                  on: {
-                                                    keyup: function($event) {
-                                                      if (
-                                                        !$event.type.indexOf(
-                                                          "key"
-                                                        ) &&
-                                                        _vm._k(
-                                                          $event.keyCode,
-                                                          "enter",
-                                                          13,
-                                                          $event.key,
-                                                          "Enter"
-                                                        )
-                                                      ) {
-                                                        return null
-                                                      }
-                                                      return _vm.register(
-                                                        $event
-                                                      )
-                                                    },
-                                                    focus: function($event) {
-                                                      return _vm.makeFocus(
-                                                        "registerConfirmPassword"
-                                                      )
-                                                    },
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.registerData,
-                                                        "confirmPassword",
-                                                        $event.target.value
-                                                      )
-                                                    }
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _vm.errors.has(
-                                                  "register.confirmPassword"
-                                                )
-                                                  ? _c(
-                                                      "small",
-                                                      { staticClass: "error" },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            _vm.errors.first(
-                                                              "register.confirmPassword"
-                                                            )
-                                                          )
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
-                                                _vm._v(" "),
-                                                _vm.registerData
-                                                  .confirmPasswordError
-                                                  ? _c(
-                                                      "span",
-                                                      { staticClass: "error" },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            _vm.registerData
-                                                              .confirmPasswordError[0]
-                                                          )
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "checkboxes margin-top-10"
-                                          },
-                                          [
-                                            _c("input", {
-                                              attrs: {
-                                                id: "remember-me",
-                                                type: "checkbox",
-                                                name: "check"
-                                              },
-                                              on: {
-                                                change: function($event) {
-                                                  _vm.isDisabled = !_vm.isDisabled
-                                                }
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "label",
-                                              { attrs: { for: "remember-me" } },
-                                              [
-                                                _vm._v("Съгласявам се с "),
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass:
-                                                      "confirm_terms",
-                                                    attrs: { tag: "a", to: "" },
-                                                    on: { click: _vm.goGeneral }
-                                                  },
-                                                  [_vm._v("общите условия")]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("p"),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          staticClass:
-                                            "button border fw margin-top-10",
-                                          class: [
-                                            _vm.isDisabled
-                                              ? "disabled_button"
-                                              : ""
-                                          ],
-                                          attrs: {
-                                            type: "button",
-                                            disabled: _vm.isDisabled,
-                                            name: "register",
-                                            value: "Регистрирай се"
-                                          },
-                                          on: { click: _vm.register }
-                                        })
-                                      ]
-                                    )
-                                  : _c("div", [
-                                      !_vm.inviteRequested
-                                        ? _c(
-                                            "div",
-                                            { staticClass: "invite_check" },
-                                            [
-                                              _c("form", [
-                                                _c("h1", [
-                                                  _vm._v("Само с покана")
-                                                ]),
-                                                _vm._v(" "),
-                                                _c("p", [
-                                                  _vm._v(
-                                                    "\n                        Вмомента системата е в затворена бета версия и регистрацията се случва посредством покана.\n                        Моля попълнете долните полета и ще разгледаме Вашата заявка и ще се свържем с Вас\n                      "
-                                                  )
-                                                ]),
-                                                _vm._v(
-                                                  "Поща:\n                      "
-                                                ),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.inviteEmail,
-                                                      expression: "inviteEmail"
-                                                    }
-                                                  ],
-                                                  attrs: { type: "text" },
-                                                  domProps: {
-                                                    value: _vm.inviteEmail
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.inviteEmail =
-                                                        $event.target.value
-                                                    }
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                      Телефон:\n                      "
-                                                ),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.invitePhone,
-                                                      expression: "invitePhone"
-                                                    }
-                                                  ],
-                                                  attrs: { type: "text" },
-                                                  domProps: {
-                                                    value: _vm.invitePhone
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.invitePhone =
-                                                        $event.target.value
-                                                    }
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                      Причина:\n                      "
-                                                ),
-                                                _c("textarea", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.inviteReason,
-                                                      expression: "inviteReason"
-                                                    }
-                                                  ],
-                                                  domProps: {
-                                                    value: _vm.inviteReason
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.inviteReason =
-                                                        $event.target.value
-                                                    }
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  staticClass:
-                                                    "button border fw margin-top-10",
-                                                  attrs: {
-                                                    type: "button",
-                                                    name: "register",
-                                                    value: "Изпрати"
-                                                  },
-                                                  on: {
-                                                    click: _vm.requestInvite
-                                                  }
-                                                })
-                                              ])
-                                            ]
-                                          )
-                                        : _c(
-                                            "div",
-                                            { staticClass: "invite_check" },
-                                            [
-                                              _c("p", [
-                                                _vm._v(
-                                                  "Заявката Ви е приета. Ще се свържем с Вас на посочените от Вас контакти. Благодарим за проявения интерес."
-                                                )
-                                              ])
-                                            ]
-                                          )
-                                    ])
-                              ]
-                            )
-                          : _vm._e()
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("button", {
-                      staticClass: "mfp-close",
-                      attrs: { title: "Close (Esc)", type: "button" },
-                      on: { click: _vm.closePopup }
-                    })
-                  ]
+                  "router-link",
+                  { attrs: { tag: "a", to: "/general_terms" } },
+                  [_vm._v("Общи условия")]
                 )
-              ])
-            ])
-          ]
-        )
-      ])
-    : _vm._e()
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { on: { click: _vm.scrollTop } },
+              [
+                _c(
+                  "router-link",
+                  { attrs: { tag: "a", to: "/private_protection" } },
+                  [_vm._v("Политика за поверителност")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { on: { click: _vm.scrollTop } },
+              [
+                _c("router-link", { attrs: { tag: "a", to: "/contacts" } }, [
+                  _vm._v("Контакти")
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "clearfix" })
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ]),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "small-dialog-header" }, [
-      _c("h3", [
-        _vm._v("Вход/"),
-        _c("br", { staticClass: "mobile" }),
-        _vm._v("Регистрация")
+    return _c("div", { staticClass: "col-md-5 col-sm-6 footer_img" }, [
+      _c("img", {
+        staticClass: "footer-logo",
+        attrs: { src: "/images/logo.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n                        Майсторимо.БГ е платформа предоставяща на своите потребители съдържание и\n                        възможност за пласиране на техните услуги\n                    "
+        )
       ])
     ])
   },
@@ -63293,12 +63296,53 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "checkboxes margin-top-10" }, [
-      _c("input", {
-        attrs: { id: "remember-me", type: "checkbox", name: "check" }
-      }),
+    return _c("div", { staticClass: "col-md-3 col-sm-12" }, [
+      _c("h4", [_vm._v("Свържете се с нас")]),
       _vm._v(" "),
-      _c("label", { attrs: { for: "remember-me" } }, [_vm._v("Запомни ме")])
+      _c("div", { staticClass: "text-widget" }, [
+        _c("span", [_vm._v("Плевен, Булевард Русе 19")]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v("Телефон:\n                        "),
+        _c("span", [_vm._v("+359878735795")]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v("Поща:\n                        "),
+        _c("span", [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("g.prusiyski@webrika.bg")])
+        ]),
+        _vm._v(" "),
+        _c("br")
+      ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "social-icons margin-top-20" }, [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "facebook",
+              attrs: {
+                target: "_blank",
+                href:
+                  "https://www.facebook.com/%D0%9C%D0%B0%D0%B9%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%BC%D0%BE-262442748017349"
+              }
+            },
+            [_c("i", { staticClass: "icon-facebook" })]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "copyrights" }, [
+          _vm._v("© 2019 Maistorimo. All Rights Reserved.")
+        ])
+      ])
     ])
   }
 ]
@@ -63307,7 +63351,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8c10e580", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-447152d4", module.exports)
   }
 }
 
