@@ -214,3 +214,11 @@ export default {
 };
 </script>
 
+<style scoped>
+    @media only screen and (max-width: 380px) {
+        div.container div.row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+}
+</style>

@@ -597,8 +597,8 @@ html.mm-opened.mm-blocking.mm-background.mm-opening #app {
 
 @media screen and (max-width: 400px) {
     .container {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 0px;
+        padding-right: 15px;
     }
 }
 
