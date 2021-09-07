@@ -13,8 +13,7 @@
     <meta property=”og:url” content=”http://maistorimo.bg” />
     <meta property=”og:type” content=”website” />
     <meta property="fb:app_id" content="865006550605817"/>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <?php
     echo $localBusiness->toScript();
     ?>

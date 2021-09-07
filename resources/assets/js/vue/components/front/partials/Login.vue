@@ -158,6 +158,7 @@
                           key="registerEmail"
                           @focus="makeFocus('registerEmail')"
                           v-validate="'required|email'"
+                          @click="makeFocus('registerEmail')"
                         />
                         <small
                           v-show="errors.has('register.registerEmail')"
@@ -220,11 +221,14 @@
                           class="error"
                         >{{registerData.confirmPasswordError[0]}}</span>
                       </label>
+                      
                       <div class="checkboxes margin-top-10">
                         <input id="remember-me" type="checkbox" name="check" @change="isDisabled=!isDisabled"/>
                         <label for="remember-me">Съгласявам се с <span class="confirm_terms" tag="a" to="" @click="goGeneral">общите условия</span></label>
                       </div>
+
                     </p>
+
                     <input
                       type="button"
                       @click="register"
@@ -317,6 +321,19 @@ export default {
     computed: {},
 
     methods: {
+
+        scrollFix() {
+          var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
+          scrollTopPadding = 8;
+
+          $('textarea').focus(function() {
+              // get textarea's offset top position
+              var textareaTop = $(this).offset().top;
+              // scroll to the textarea
+              $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
+          });
+        },
+
         goGeneral(event) {
             this.$emit('closePopup');
             this.$router.push({ path: '/general_terms' });
@@ -444,20 +461,32 @@ export default {
         makeFocus(name) {
             let formContainer = document.getElementById('sign-in-dialog');
             if (name === 'email') {
-                this.loginData.emailError = false;
-                formContainer.scrollTo({
-                    top: document.getElementById('loginEmail').getBoundingClientRect().top,
-                    left: 0,
-                });
+              this.loginData.emailError = false;
+              formContainer.scrollTo({
+                  top: document.getElementById('loginEmail').getBoundingClientRect().top,
+                  left: 0,
+              });
+
+              let elmnt = document.getElementById("email");
+              elmnt.scrollLeft = 1;
+              elmnt.scrollTop = 300;
+
+              let x = elmnt.scrollLeft;
+              let y = elmnt.scrollTop;
+              console.log(x, y);
             }
             if (name === 'password') {
-                this.loginData.passwordError = false;
+              this.loginData.passwordError = false;
 
-                formContainer.style.paddingBottom =
-                    document.getElementById('password').getBoundingClientRect().top / 2 + 'px';
-                formContainer.scrollTop =
-                    formContainer.scrollTop +
-                    document.getElementById('password').getBoundingClientRect().top;
+              formContainer.style.paddingBottom =
+                  document.getElementById('password').getBoundingClientRect().top / 2 + 'px';
+              formContainer.scrollTop =
+                  formContainer.scrollTop +
+                  document.getElementById('password').getBoundingClientRect().top;
+
+              let elmnt = document.getElementById("password");
+              elmnt.scrollLeft = 1;
+              elmnt.scrollTop = 100;
             }
             if (name === 'registerEmail') {
                 this.registerData.emailError = false;
@@ -505,6 +534,45 @@ export default {
         },
         mounted() {},
     },
+
+    mounted() {
+      // var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
+      // scrollTopPadding = 8;
+
+      // $('textarea').focus(function() {
+      //     // get textarea's offset top position
+      //     var textareaTop = $(this).offset().top;
+      //     // scroll to the textarea
+      //     $htmlOrBody.scrollTop(textareaTop - scrollTopPadding);
+      // });
+      input.onfocus = function () {
+          window.scrollTo(0, 100);
+          document.body.scrollTop = 10;
+      }
+    }
 };
 </script>
 
+<style scoped>
+
+  .tab-content {
+    padding-top: 10px !important;
+  }
+
+  .mfp-close {
+    top: 10px !important;
+    right: 10px !important;
+  }
+
+  .sign-in-form .tabs-nav li {
+    margin: 0px;
+  }
+
+  .sign-in-form .tabs-nav li a {
+      padding: 10px 15px;
+  }
+
+  .email_val {
+    margin-bottom: 0px;
+  }
+</style>

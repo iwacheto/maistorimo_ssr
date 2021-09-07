@@ -107,7 +107,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="projects-container">
       <div class="row sticky-wrapper">
         <!-- Sidebar
         ==================================================-->
@@ -318,6 +318,33 @@ export default {
 
 <style scoped>
   /* TsB */
+  .projects-container {
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sticky-wrapper {
+    width: 100%;
+  }
+
+  .listing-item-image {
+    flex: 5 !important;
+  }
+
+  .listing-item-container.list-layout .listing-item-inner {
+    padding-right: 15% !important;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+  }
+
+  .listing-item-inner>span {
+    padding-left: 10%;
+  }
+
   .user-profile-titlebar {
       justify-content: space-between;
   }
