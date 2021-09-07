@@ -27,6 +27,10 @@
 
 @media only screen and (max-width: 768px) {
 
+    .container {
+        padding-left: 0px !important;
+    }
+
     select,
     input,
     textarea {
