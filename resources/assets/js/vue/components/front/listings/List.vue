@@ -531,3 +531,13 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+  .listing-badge.now-open {
+        background-color: #276955;
+  }
+
+  .verified-icon {
+      color: #276955;
+  }
+</style>

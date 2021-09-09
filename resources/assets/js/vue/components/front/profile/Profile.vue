@@ -1,10 +1,14 @@
 <template>
   <div v-if="profile.vendor_details">
     <div id="titlebar" class="gradient">
+      <div class="background-img"></div>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="user-profile-titlebar">
+              <div class="mask">
+                <div class="blur-background"></div>
+              </div>
               <div class="company_profile">
                 <div class="user-profile-avatar">
                   <img :src="profile.vendor_details.profile_image" alt />
@@ -32,10 +36,12 @@
                 >
                   <i class="sl sl-icon-user-following"></i> Потвърден акаунт
                 </div>
-
               </div>
 
               <!-- Contact -->
+              <div class="contact-mask">
+                <div class="contact-blur-background"></div>
+              </div>
               <div class="boxed-widget"> <!-- margin-top-30 margin-bottom-50 -->
                 <h3>Контакти</h3>
                 <ul class="listing-details-sidebar">
@@ -318,6 +324,125 @@ export default {
 
 <style scoped>
   /* TsB */
+  #titlebar {
+    padding-top: 44px !important;
+  }
+
+  #titlebar div.container {
+    position: absolute;
+    top: 19%;
+  }
+
+  .mask {
+    position: absolute;
+    top: 4%;
+    left: 20%;
+    width: 40%;
+    height: 240px;
+    border: 2px solid #66B7A3;
+    border-radius: 20px;
+    z-index: 10;
+    overflow: hidden;
+    /* filter: blur(3px); */
+  }
+
+  .blur-background {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-image: url('/images/main-picture.jpg'); 
+    z-index: 1;
+    padding-left: 20%;
+    padding-top: 20%;
+    background-position-x: -253px;
+    background-position-y: -47px;
+    filter: blur(15px);
+  }
+
+  .company_profile {
+    position: absolute;
+    top: 45px;
+    left: 23%;
+    z-index: 40;
+  }
+
+  .verified-badge {
+    background-color: #276955;
+  }
+
+  .contact-mask {
+    left: 94%;
+    width: 40%;
+    height: 240px;
+    border: 2px solid #66B7A3;
+    border-radius: 20px;
+    position: absolute;
+  }
+
+  .contact-blur-background {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-image: url('/images/main-picture.jpg'); 
+    z-index: 1;
+    padding-left: 20%;
+    padding-top: 20%;
+    background-position-x: -1128px;
+    background-position-y: -38px;
+    filter: blur(20px);
+  }
+
+  .boxed-widget {
+    left: 100%;
+    padding-top: 18px;
+    background-color: unset;
+    padding: 0px;
+    margin-top: 24px;
+  }
+
+  .boxed-widget h3 {
+    border-bottom: unset;
+    padding: 0px;
+    margin-bottom: 20px;
+    height: 53px;
+    width: 337px;
+    background-color: #276955;
+    padding: 16px 0px;
+    color: #fff;
+    border-radius: 4px;
+  }
+
+  .listing-details-sidebar {
+    padding-left: 90px;
+  }
+
+  #titlebar span a, #titlebar span {
+    color: #fff;
+  }
+
+  .listing-details-sidebar li i, .listing-details-sidebar li a, .listing-details-sidebar li a i {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .background-img {
+    background-image: url('/images/main-picture.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    width: 100%;
+    height: 348px;
+  }
+
+  h2 {
+    color: #fff;
+  }
+
   .projects-container {
     width: 80% !important;
     margin-left: auto;
@@ -375,6 +500,314 @@ export default {
   div.col-md-4 {
     display: flex;
     flex: 33%;
+  }
+
+  li.nav-item.active{
+    background: #276955;
+  }
+
+  li.nav-item a {
+    color: #276955;
+  }
+
+  .listing-badge.now-open {
+    background-color: #276955;
+  }
+
+  @media screen and (max-width: 1679px) { 
+    .mask {
+      top: 4%;
+      left: 20%;
+      width: 40%;
+      height: 240px;
+    }
+
+    .blur-background {
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      padding-left: 20%;
+      padding-top: 20%;
+      background-position-x: -324px;
+      background-position-y: -47px;
+    }
+
+    .company_profile {
+      top: 45px;
+      left: 23%;
+    }
+
+    .contact-mask {
+      left: 84%;
+      width: 40%;
+      height: 240px;
+    }
+
+    .contact-blur-background {
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      
+      padding-left: 20%;
+      padding-top: 20%;
+      background-position-x: -1150px;
+      background-position-y: -38px;
+      
+    }
+
+    .boxed-widget {
+      left: 90%;
+      padding-top: 18px;
+      background-color: unset;
+      padding: 0px;
+      margin-top: 24px;
+    }
+  }
+
+  @media screen and (max-width: 1500px) { 
+    .mask {
+      top: 4%;
+      left: 10%;
+      /* width: 40%;
+      height: 240px; */
+    }
+
+    .blur-background {
+      background-size: 300%;
+      /* top: 0%; */
+      left: 31%;
+      /* width: 100%;
+      height: 100%;
+      padding-left: 20%;
+      padding-top: 20%; */
+      background-position-x: -253px;
+      /* background-position-y: -47px; */
+    }
+
+    .company_profile {
+      top: 45px;
+      left: 13%;
+    }
+
+    .contact-mask {
+      top: 7%;
+      left: 72%;
+      /* width: 40%;
+      height: 240px; */
+    }
+
+    .contact-blur-background {
+      /* top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      
+      padding-left: 20%;
+      padding-top: 20%; */
+      background-position-x: -1150px;
+      /* background-position-y: -38px; */
+      
+    }
+
+    .boxed-widget {
+      left: 78%;
+      /* padding-top: 18px;
+      background-color: unset;
+      padding: 0px; */
+      margin-top: 33px;
+    }
+  }
+
+  @media screen and (max-width: 1440px) { 
+    /* .mask {
+      top: 4%;
+      left: 10%;
+      width: 40%;
+      height: 240px;
+    } */
+
+    .blur-background {
+      background-size: 290%;
+      /* top: 0%;
+      left: 37%;
+      width: 100%;
+      height: 100%;
+      padding-left: 20%;
+      padding-top: 20%; */
+      background-position-x: -262px;
+      /* background-position-y: -47px; */
+    }
+
+    /* .company_profile {
+      top: 45px;
+      left: 13%;
+    } */
+
+    .contact-mask {
+      /* top: 7%; */
+      left: 67%;
+      /* width: 40%;
+      height: 240px; */
+    }
+
+    .contact-blur-background {
+      /* top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      
+      padding-left: 20%;
+      padding-top: 20%; */
+      background-position-x: -1105px;
+      /* background-position-y: -38px; */
+      
+    }
+
+    .boxed-widget {
+      left: 72%;
+      /* padding-top: 18px;
+      background-color: unset;
+      padding: 0px;
+      margin-top: 33px; */
+    }
+  }
+
+  @media screen and (max-width: 1365px) { 
+    .mask {
+      /* top: 4%; */
+      left: 8%;
+      /* width: 40%;
+      height: 240px; */
+    }
+
+    .blur-background {
+      background-size: 270%;
+      /* top: 0%; */
+      left: 0%; 
+      width: 100%;
+      height: 100%;
+      /* padding-left: 20%;
+      padding-top: 20%; */
+      background-position-x: -31px;
+      background-position-y: 3px;
+    }
+
+    /* .company_profile {
+      top: 45px;
+      left: 13%;
+    } */
+
+    .user-profile-avatar {
+      left: -26px;
+    }
+
+    .user-profile-name {
+      left: 67px;
+    }
+
+    .contact-mask {
+      /* top: 7%; */
+      left: 72%;
+      /* width: 40%;
+      height: 240px; */
+    }
+
+    .contact-blur-background {
+      /* top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      
+      padding-left: 20%;
+      padding-top: 20%; */
+      background-position-x: -1031px;
+      /* background-position-y: -38px; */
+      
+    }
+
+    .boxed-widget {
+      left: 76%;
+      /* padding-top: 18px;
+      background-color: unset;
+      padding: 0px;
+      margin-top: 33px; */
+    }
+  }
+
+  @media screen and (max-width: 1240px) { 
+    #titlebar .user-profile-name h2 {
+      font-size: 24px;
+    }
+
+    .contact-mask {
+      /* top: 7%; */
+      left: 77%;
+      /* width: 40%;
+      height: 240px; */
+    }
+
+    .boxed-widget {
+      left: 79%;
+      /* padding-top: 18px;
+      background-color: unset;
+      padding: 0px;
+      margin-top: 33px; */
+    }
+  }
+
+  @media screen and (max-width: 1140px) { 
+    .mask {
+      /* top: 4%; */
+      left: 3%;
+      /* width: 40%;
+      height: 240px; */
+    }
+
+    .blur-background {
+      background-size: 260%;
+      /* top: 0%; */
+      left: 0%; 
+      width: 100%;
+      height: 100%;
+      /* padding-left: 20%;
+      padding-top: 20%; */
+      background-position-x: 20px;
+      /* background-position-y: 3px; */
+    }
+
+    .company_profile {
+      left: 8%;
+    }
+
+    .contact-mask {
+      left: 71%;
+    }
+
+    .contact-blur-background {
+      background-position-x: -1069px;
+    }
+
+    .boxed-widget {
+      left: 73%;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    .contact-mask {
+      left: 65%;
+    }
+
+    .boxed-widget {
+      left: 67%;
+    }
+  }
+
+  @media screen and (max-width: 1024px) { 
+    #titlebar {
+      padding-top: 0px !important;
+    }
   }
   
 </style>
