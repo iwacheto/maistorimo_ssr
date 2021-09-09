@@ -215,6 +215,14 @@ export default {
 </script>
 
 <style scoped>
+    .listing-badge.now-open {
+        background-color: #276955;
+    }
+
+    .verified-icon {
+        color: #276955;
+    }
+
     @media only screen and (max-width: 380px) {
         div.container div.row {
             margin-left: 0px;

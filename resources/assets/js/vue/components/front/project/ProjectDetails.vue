@@ -524,3 +524,8 @@ export default {
 };
 // console.log(this.projectDetails);
 </script>
+<style scoped>
+    .verified-badge.with-tip {
+    background-color: #276955;
+    }
+</style>

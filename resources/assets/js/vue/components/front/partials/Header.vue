@@ -7,7 +7,7 @@
         >
             <!-- Header -->
             <div id="header" class="cloned sticky">
-                <div class="container container_nav">
+                <div class="container_nav">
                     <!-- Left Side Content -->
                     <div class="left-side">
                         <!-- Logo -->
@@ -234,3 +234,108 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+
+    #header.cloned {
+        background-color:#324E5B;
+        padding: 0px;
+    }
+
+    .left-side {
+        margin-left: 9%;
+    }
+
+    .right-side {
+        margin-left: 0px;
+        margin-top: 29px;
+    }
+
+    #header.cloned #logo img {
+        max-width: unset;
+        max-height: unset;
+        width: 100%;
+        margin: 0px;
+    }
+
+    #logo {
+        margin: 11px 197px 21px 0px;
+    }
+
+    #navigation.style-1 {
+        margin-top: 0px;
+    }
+
+    #navigation.style-1 ul li {
+        margin: 40px 15px 15px 0px;
+        border: 1px solid #C4C4C4;
+        border-radius: 17.5px;
+    }
+
+    #navigation ul li a {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .header-widget {
+        top: 0px;
+    }
+
+    .button.border.with-icon {
+        width: 270px;
+        height: 58px;
+        margin-right: 101px;
+        font-size: 17px;
+        color: #EFCA4E;
+        padding-top: 13px;
+    }
+
+    @media screen and (max-width: 1365px) { 
+        #logo {
+            margin: 11px 160px 21px 0px;
+        }
+    }
+
+    @media screen and (max-width: 1300px) { 
+        #logo {
+            margin: 11px 120px 21px 0px;
+        }
+    }
+
+    @media screen and (max-width: 1240px) { 
+        #logo {
+            margin: 11px 90px 21px 0px;
+        }
+    }
+
+    @media screen and (max-width: 1170px) {
+        #logo {
+            margin: 11px 70px 21px 0px;
+        }
+
+        #navigation ul li a {
+            font-size: 18px;
+        }
+
+        .button.border.with-icon {
+            width: 230px;
+        }
+    }
+
+    @media screen and (max-width: 1100px) { 
+        .button.border.with-icon {
+            margin-right: 51px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) { 
+        .right-side {
+            margin-top: 0px;
+        }
+
+        .header-widget {
+            border-top: 0px;
+            padding: 10px 0px;
+        }
+    }
+</style>

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 241);
+/******/ 	return __webpack_require__(__webpack_require__.s = 243);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -31962,14 +31962,14 @@ VeeValidate$1.withValidation = withValidation;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vee_validate__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_analytics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vue_scrollto__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vue_meta__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_event_bus__ = __webpack_require__(20);
@@ -33731,7 +33731,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n@media only screen and (max-width: 380px) {\ndiv.container div.row[data-v-6b6cf005] {\n            margin-left: 0px;\n            margin-right: 0px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.listing-badge.now-open[data-v-6b6cf005] {\n        background-color: #276955;\n}\n.verified-icon[data-v-6b6cf005] {\n        color: #276955;\n}\n@media only screen and (max-width: 380px) {\ndiv.container div.row[data-v-6b6cf005] {\n            margin-left: 0px;\n            margin-right: 0px;\n}\n}\n", ""]);
 
 // exports
 
@@ -34002,17 +34002,21 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(382)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(158)
 /* template */
-var __vue_template__ = __webpack_require__(159)
+var __vue_template__ = __webpack_require__(384)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-665774f6"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -34275,81 +34279,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 159 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c(
-      "div",
-      { staticClass: "custom_slider_1 dots-nav" },
-      _vm._l(_vm.services, function(service) {
-        return _c(
-          "div",
-          { key: service.id, staticClass: "fw-carousel-item" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "carousel_link",
-                attrs: { to: "service/details/" + service.id, tag: "a" }
-              },
-              [
-                _c("div", { staticClass: "listing-item" }, [
-                  _c("img", { attrs: { src: service.image_url, alt: "" } }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "listing-badge now-open" }, [
-                    _vm._v("Верифицирана")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "listing-item-content" }, [
-                    _c("h3", [
-                      _vm._v(
-                        "\n              " +
-                          _vm._s(service.name) +
-                          "\n              "
-                      ),
-                      _c("i", { staticClass: "verified-icon" })
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ],
-          1
-        )
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col-md-12 all" },
-      [
-        _c(
-          "router-link",
-          { staticClass: "see-all", attrs: { to: "/services" } },
-          [_vm._v("Виж всички услуги")]
-        )
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-665774f6", module.exports)
-  }
-}
-
-/***/ }),
+/* 159 */,
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37535,17 +37465,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(385)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(166)
 /* template */
-var __vue_template__ = __webpack_require__(168)
+var __vue_template__ = __webpack_require__(387)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-d4ab1c4c"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -38491,769 +38425,7 @@ return index;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
-/* 168 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "header-container container margin-top-25" },
-    [
-      _c(
-        "div",
-        { staticClass: "container" },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "sidebar_menu",
-              class: [_vm.show_sidebar ? "active_button" : ""],
-              on: {
-                click: function($event) {
-                  _vm.show_sidebar = !_vm.show_sidebar
-                }
-              }
-            },
-            [
-              _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] }),
-              _vm._v(" "),
-              _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] }),
-              _vm._v(" "),
-              _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] })
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "row project_content" }, [
-            _c(
-              "div",
-              {
-                staticClass: "col-lg-3 col-md-3 col-sm-3 fixed",
-                class: [_vm.show_sidebar ? "active_sidebar" : ""]
-              },
-              [
-                _c("div", { staticClass: "sidebar" }, [
-                  _c("div", { staticClass: "widget" }, [
-                    _c("h3", { staticClass: "margin-top-0 margin-bottom-10" }, [
-                      _vm._v("Търсене")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row with-forms" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-md-12 main-search-input-item" },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.filterQueries.title,
-                                expression: "filterQueries.title"
-                              }
-                            ],
-                            attrs: {
-                              type: "text",
-                              placeholder: "Какво търсите?"
-                            },
-                            domProps: { value: _vm.filterQueries.title },
-                            on: {
-                              keyup: _vm.searchTimeOut,
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.filterQueries,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.filterQueries.title
-                            ? _c(
-                                "span",
-                                {
-                                  staticClass: "clear_data",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.clearQuery("title")
-                                    }
-                                  }
-                                },
-                                [_vm._v("x")]
-                              )
-                            : _vm._e()
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row with-forms" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "main-search-input-item location col-md-12"
-                        },
-                        [
-                          _c(
-                            "div",
-                            { attrs: { id: "autocomplete-container" } },
-                            [
-                              _c("div", {
-                                staticClass: "pac-container pac-logo",
-                                staticStyle: {
-                                  display: "none",
-                                  width: "310px",
-                                  position: "absolute",
-                                  left: "727px",
-                                  top: "351px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.filterQueries.city,
-                                    expression: "filterQueries.city"
-                                  }
-                                ],
-                                attrs: {
-                                  id: "autocomplete-input",
-                                  type: "text",
-                                  placeholder: "Град",
-                                  autocomplete: "off"
-                                },
-                                domProps: { value: _vm.filterQueries.city },
-                                on: {
-                                  input: [
-                                    function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.filterQueries,
-                                        "city",
-                                        $event.target.value
-                                      )
-                                    },
-                                    _vm.onChange
-                                  ]
-                                }
-                              }),
-                              _vm._v(" "),
-                              _vm.filterQueries.city
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticClass: "clear_data",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.clearQuery("city")
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("x")]
-                                  )
-                                : _vm._e()
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "ul",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.isOpen,
-                                  expression: "isOpen"
-                                }
-                              ],
-                              staticClass: "autocomplete-results"
-                            },
-                            _vm._l(_vm.results, function(result, i) {
-                              return _c(
-                                "li",
-                                {
-                                  key: i,
-                                  staticClass: "autocomplete-result",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.setResult(result)
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(result.city) +
-                                      "\n                                    "
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "widget" }, [
-                      _c("h3", { staticClass: "margin-bottom-10" }, [
-                        _vm._v("Категории")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "category_body" },
-                        _vm._l(_vm.categories, function(category) {
-                          return _c(
-                            "div",
-                            {
-                              key: category.id,
-                              staticClass: "category_sidebar",
-                              on: {
-                                click: function($event) {
-                                  return _vm.applyMainCategory(
-                                    category.children,
-                                    category.title
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "p",
-                                {
-                                  staticClass: "main_cats",
-                                  class: {
-                                    active_category: _vm.isActiveCat(category)
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(category.title) +
-                                      "\n                                        "
-                                  ),
-                                  _vm.isActiveCat(category)
-                                    ? _c(
-                                        "span",
-                                        {
-                                          staticClass: "main_category",
-                                          on: {
-                                            click: function($event) {
-                                              $event.stopPropagation()
-                                              return _vm.clearQuery(
-                                                "mainCategory"
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("x")]
-                                      )
-                                    : _vm._e()
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(category.children, function(cat) {
-                                return _c(
-                                  "div",
-                                  {
-                                    key: cat.id,
-                                    class: [
-                                      _vm.filterQueries.category == cat.title
-                                        ? "active_category"
-                                        : ""
-                                    ],
-                                    on: {
-                                      click: function($event) {
-                                        $event.stopPropagation()
-                                        return _vm.applyCategory(cat.title)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                        " +
-                                        _vm._s(cat.title) +
-                                        "\n                                        "
-                                    ),
-                                    _vm.filterQueries.category == cat.title
-                                      ? _c(
-                                          "span",
-                                          {
-                                            staticClass: "cat_button",
-                                            on: {
-                                              click: function($event) {
-                                                $event.stopPropagation()
-                                                return _vm.clearQuery(
-                                                  "category"
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("x")]
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        }),
-                        0
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "margin-top-20 tags_heading" }, [
-                    _vm._v(
-                      "\n                        Тагове\n                        "
-                    ),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "show_tags",
-                        class: [_vm.showTags ? "active" : ""],
-                        on: {
-                          click: function($event) {
-                            _vm.showTags = !_vm.showTags
-                          }
-                        }
-                      },
-                      [
-                        !_vm.showTags
-                          ? _c("span", { staticClass: "close_tags" }, [
-                              _vm._v("+")
-                            ])
-                          : _c("span", [_vm._v("-")])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm.showTags && _vm.selectTag.length > 0
-                    ? _c("span", { staticClass: "tag_info" }, [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.selectTag.length) +
-                            " избран\n                        "
-                        ),
-                        _vm.selectTag.length > 1
-                          ? _c("span", [_vm._v("и")])
-                          : _vm._e(),
-                        _vm._v(" таг\n                        "),
-                        _vm.selectTag.length > 1
-                          ? _c("span", [_vm._v("а")])
-                          : _vm._e()
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.showTags
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "checkboxes one-in-row margin-bottom-15"
-                        },
-                        _vm._l(_vm.tags, function(tag) {
-                          return _c("div", { key: tag.id }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.selectTag,
-                                  expression: "selectTag"
-                                }
-                              ],
-                              attrs: {
-                                id: tag.tag,
-                                type: "checkbox",
-                                name: tag.tag
-                              },
-                              domProps: {
-                                value: tag.tag,
-                                checked: Array.isArray(_vm.selectTag)
-                                  ? _vm._i(_vm.selectTag, tag.tag) > -1
-                                  : _vm.selectTag
-                              },
-                              on: {
-                                change: [
-                                  function($event) {
-                                    var $$a = _vm.selectTag,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = tag.tag,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.selectTag = $$a.concat([$$v]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.selectTag = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.selectTag = $$c
-                                    }
-                                  },
-                                  function($event) {
-                                    return _vm.applyTags(tag.tag)
-                                  }
-                                ]
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("label", { attrs: { for: tag.tag } }, [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(_vm._f("lowercase")(tag.tag)) +
-                                  "\n                                "
-                              )
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "tags_heading" }, [
-                    _vm._v(
-                      "\n                        Други тагове\n                        "
-                    ),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "show_tags",
-                        class: [_vm.showTags ? "active" : ""],
-                        on: {
-                          click: function($event) {
-                            _vm.showTwentyTags = !_vm.showTwentyTags
-                          }
-                        }
-                      },
-                      [
-                        !_vm.showTags
-                          ? _c("span", [_vm._v("+")])
-                          : _c("span", [_vm._v("-")])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm.showTwentyTags
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "checkboxes one-in-row margin-bottom-15"
-                        },
-                        _vm._l(_vm.TwentyTags, function(tag) {
-                          return _c("div", { key: tag.id }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.selectTag,
-                                  expression: "selectTag"
-                                }
-                              ],
-                              attrs: {
-                                id: tag.tag,
-                                type: "checkbox",
-                                name: tag.tag
-                              },
-                              domProps: {
-                                value: tag.id,
-                                checked: Array.isArray(_vm.selectTag)
-                                  ? _vm._i(_vm.selectTag, tag.id) > -1
-                                  : _vm.selectTag
-                              },
-                              on: {
-                                change: [
-                                  function($event) {
-                                    var $$a = _vm.selectTag,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = tag.id,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.selectTag = $$a.concat([$$v]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.selectTag = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.selectTag = $$c
-                                    }
-                                  },
-                                  function($event) {
-                                    return _vm.applyTags(tag.tag)
-                                  }
-                                ]
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("label", { attrs: { for: tag.tag } }, [
-                              _vm._v(_vm._s(_vm._f("lowercase")(tag.tag)))
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.showThirtyHeading
-                    ? _c(
-                        "h3",
-                        {
-                          staticClass: "tags_heading",
-                          on: {
-                            click: function($event) {
-                              _vm.showThirtyTags = !_vm.showThirtyTags
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Още тагове\n                    "
-                          )
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.showThirtyTags
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "checkboxes one-in-row margin-bottom-15"
-                        },
-                        _vm._l(_vm.ThirtyTags, function(tag) {
-                          return _c("div", { key: tag.id }, [
-                            _c("input", {
-                              attrs: {
-                                id: tag.tag,
-                                type: "checkbox",
-                                name: tag.tag
-                              },
-                              domProps: { value: tag.tag }
-                            }),
-                            _vm._v(" "),
-                            _c("label", { attrs: { for: tag.tag } }, [
-                              _vm._v(_vm._s(_vm._f("lowercase")(tag.tag)))
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e()
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "col-lg-9 col-md-9 col-sm-9 gallery_listing",
-                class: [_vm.show_sidebar ? "gallery_listing_active" : ""]
-              },
-              [
-                _c("div", { staticClass: "row margin-bottom-25" }, [
-                  _c("div", { staticClass: "col-md-6 col-xs-6" }, [
-                    _c("div", { staticClass: "layout-switcher" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "grid active",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.className = false
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-th" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "list",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              _vm.className = true
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-align-justify" })]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  [
-                    _vm._l(_vm.projects, function(project) {
-                      return _c(
-                        "div",
-                        {
-                          key: project.id,
-                          class: [
-                            _vm.className
-                              ? "col-lg-12 col-md-12"
-                              : "col-lg-6 col-md-12"
-                          ]
-                        },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "listing-item-container compact",
-                              attrs: { to: "/project/details/" + project.id }
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "listing-item",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.window.scrollTo(0, 0)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("img", {
-                                    attrs: {
-                                      src: project.project_galleries[0].url,
-                                      alt: ""
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "listing-badge now-open" },
-                                    [_vm._v("Верифициран")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "listing-item-content" },
-                                    [
-                                      _c("h3", [
-                                        _vm._v(
-                                          "\n                                        " +
-                                            _vm._s(project.title) +
-                                            "\n                                        "
-                                        ),
-                                        _c("i", {
-                                          staticClass: "verified-icon"
-                                        })
-                                      ]),
-                                      _vm._v(" "),
-                                      _vm._l(project.tags, function(tag) {
-                                        return _c("span", { key: tag.id }, [
-                                          _vm._v("#" + _vm._s(tag.tag))
-                                        ])
-                                      })
-                                    ],
-                                    2
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    }),
-                    _vm._v(" "),
-                    _vm.projects.length == 0
-                      ? _c("div", { staticClass: "no_results" }, [
-                          _c("h3", [
-                            _vm._v(
-                              "Съжаляваме, но вашето търсене няма резултат"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [_vm._v("Моля,опитайте с други критерий!")]),
-                          _vm._v(" "),
-                          _vm._m(0)
-                        ])
-                      : _vm._e()
-                  ],
-                  2
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "client-only",
-            { attrs: { placeholder: "Loading..." } },
-            [
-              _c("infinite-loading", {
-                ref: "infiniteLoading",
-                on: { infinite: _vm.infiniteHandler }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "listing-item" }, [
-      _c("img", { attrs: { src: "/images/listing-item-03.jpg", alt: "" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "listing-badge now-open" }, [
-        _vm._v("Некатегоризиран")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "listing-item-content" }, [
-        _c("h3", [
-          _vm._v(
-            "\n                                    Не е намерено нищо\n                                    "
-          ),
-          _c("i", { staticClass: "verified-icon" })
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d4ab1c4c", module.exports)
-  }
-}
-
-/***/ }),
+/* 168 */,
 /* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40316,17 +39488,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(388)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(173)
 /* template */
-var __vue_template__ = __webpack_require__(182)
+var __vue_template__ = __webpack_require__(390)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-1aafcf1a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -43667,665 +42843,7 @@ if (false) {
 }
 
 /***/ }),
-/* 182 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.images
-      ? _c(
-          "div",
-          {
-            staticClass: "mfp-gallery-container custom_project_slider",
-            style: _vm.imageWidth
-          },
-          _vm._l(_vm.images, function(image, imageIndex) {
-            return _c("a", {
-              key: imageIndex,
-              staticClass: "item mfp-gallery",
-              style: {
-                backgroundImage: "url(" + image + ")",
-                width: "600px",
-                height: "400px"
-              },
-              attrs: { href: image, title: "Title 1" }
-            })
-          }),
-          0
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row sticky-wrapper" }, [
-          _c("div", { staticClass: "col-lg-8 col-md-8 padding-right-30" }, [
-            _c(
-              "div",
-              { staticClass: "listing-titlebar", attrs: { id: "titlebar" } },
-              [
-                _c("div", { staticClass: "listing-titlebar-title" }, [
-                  _c("h2", [
-                    _vm._v(
-                      "\n                                " +
-                        _vm._s(_vm.projectDetails.title) +
-                        "\n                                "
-                    ),
-                    _vm.services.length > 0
-                      ? _c(
-                          "span",
-                          _vm._l(_vm.services, function(service) {
-                            return _c(
-                              "router-link",
-                              {
-                                key: service.id,
-                                staticClass: "listing-tag",
-                                attrs: {
-                                  tag: "span",
-                                  to: "/service/details/" + service.id
-                                }
-                              },
-                              [_vm._v(_vm._s(service.name))]
-                            )
-                          }),
-                          1
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "listing-address",
-                        attrs: { href: "#listing-location" }
-                      },
-                      [
-                        _c("i", { staticClass: "fa fa-map-marker" }),
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(_vm.city.city) +
-                            "\n                                "
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "listing-nav-container",
-                attrs: { id: "listing-nav" }
-              },
-              [
-                _c("ul", { staticClass: "listing-nav" }, [
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        directives: [
-                          {
-                            name: "scroll-to",
-                            rawName: "v-scroll-to",
-                            value: "#listing-overview-project",
-                            expression: "'#listing-overview-project'"
-                          }
-                        ],
-                        staticClass: "active",
-                        attrs: { href: "#" }
-                      },
-                      [_vm._v("Детайли")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        directives: [
-                          {
-                            name: "scroll-to",
-                            rawName: "v-scroll-to",
-                            value: "#listing-location",
-                            expression: "'#listing-location'"
-                          }
-                        ],
-                        attrs: { href: "#" }
-                      },
-                      [_vm._v("Локация")]
-                    )
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "listing-section",
-                attrs: { id: "listing-overview-project" }
-              },
-              [
-                _c("p", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.projectDetails.short_description)
-                  }
-                }),
-                _vm._v(" "),
-                _c("p", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.projectDetails.description)
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "listing-links-container" }, [
-                  _c("ul", { staticClass: "listing-links contact-links" }, [
-                    _c("li", { staticClass: "listing_phone_links" }, [
-                      _c("i", { staticClass: "fa fa-phone" }),
-                      _vm._v(" "),
-                      _vm.showPhone
-                        ? _c("span", [_vm._v("+359")])
-                        : _c("span", [
-                            _c(
-                              "a",
-                              {
-                                attrs: {
-                                  href: "tel:" + _vm.vendorDetails.phone_number
-                                }
-                              },
-                              [_vm._v(_vm._s(_vm.vendorDetails.phone_number))]
-                            )
-                          ]),
-                      _vm._v(" "),
-                      _vm.showPhone
-                        ? _c(
-                            "span",
-                            {
-                              staticClass: "phone_button",
-                              on: {
-                                click: function($event) {
-                                  return _vm.contactAnalytic("phone")
-                                }
-                              }
-                            },
-                            [_vm._v("Покажи")]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      !_vm.showPhone
-                        ? _c(
-                            "span",
-                            {
-                              staticClass: "phone_button",
-                              on: { click: _vm.hidePhone }
-                            },
-                            [_vm._v("Скрий")]
-                          )
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "listing-links",
-                          attrs: { href: "mailto:mail@example.com" },
-                          on: {
-                            click: function($event) {
-                              return _vm.contactAnalytic("email")
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-envelope-o" }),
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(_vm.vendorDetails.email_address) +
-                              "\n                                    "
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "listing-links",
-                          attrs: {
-                            href: "//" + _vm.vendorDetails.website,
-                            target: "_blank"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.contactAnalytic("website")
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-link" }),
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(_vm.vendorDetails.website) +
-                              "\n                                    "
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "clearfix" }),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "listing-links" }, [
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "listing-links-fb",
-                          attrs: {
-                            href: _vm.vendorDetails.facebook_link,
-                            target: "_blank"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.contactAnalytic("facebook")
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-facebook-square" }),
-                          _vm._v(
-                            " Facebook\n                                    "
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "clearfix" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "clearfix" }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "listing-desc-headline" }, [
-                  _vm._v("Тагове")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  { staticClass: "listing-features checkboxes" },
-                  _vm._l(_vm.projectDetails.tags, function(tag, i) {
-                    return _c("li", { key: i }, [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(tag.tag.tag) +
-                          "\n                            "
-                      )
-                    ])
-                  }),
-                  0
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "listing-section",
-                attrs: { id: "listing-location" }
-              },
-              [
-                _c(
-                  "h3",
-                  {
-                    staticClass:
-                      "listing-desc-headline margin-top-60 margin-bottom-30"
-                  },
-                  [
-                    _vm._v(
-                      "\n                            Локация\n                        "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { attrs: { id: "singleListingMap-container" } },
-                  [
-                    _vm.projectDetails.lat &&
-                    _vm.projectDetails.lng &&
-                    _vm.projectDetails.formatted_address &&
-                    _vm.projectDetails.raw_data
-                      ? _c("google-map", {
-                          attrs: {
-                            lat: _vm.projectDetails.lat,
-                            lng: _vm.projectDetails.lng,
-                            formatted_address:
-                              _vm.projectDetails.formatted_address,
-                            placeObj: _vm.projectDetails.raw_data,
-                            view: true
-                          }
-                        })
-                      : _vm._e()
-                  ],
-                  1
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-md-4 margin-top-75 sticky" }, [
-            _c(
-              "div",
-              {
-                staticClass: "verified-badge with-tip",
-                attrs: {
-                  "data-tip-content":
-                    "Listing has been verified and belongs the business owner or manager."
-                }
-              },
-              [
-                _c(
-                  "router-link",
-                  { attrs: { to: "/profile/" + _vm.vendorDetails.user } },
-                  [
-                    _c("i", { staticClass: "sl sl-icon-check" }),
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(_vm.vendorDetails.company_name) +
-                        "\n                        "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "boxed-widget margin-top-35" }, [
-              _c(
-                "div",
-                { staticClass: "hosted-by-title" },
-                [
-                  _vm.vendorDetails.company_name
-                    ? _c("h4", [
-                        _c("span", [_vm._v("Създаден от")]),
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(_vm.vendorDetails.company_name) +
-                            "\n                            "
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "hosted-by-avatar",
-                      attrs: { to: "/profile/" + _vm.vendorDetails.user }
-                    },
-                    [
-                      _c("img", {
-                        attrs: { src: "images/dashboard-avatar.jpg", alt: "" }
-                      })
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("ul", { staticClass: "listing-details-sidebar" }, [
-                _vm.vendorDetails.phone_number
-                  ? _c("li", [
-                      _c("i", { staticClass: "sl sl-icon-phone" }),
-                      _vm._v(" "),
-                      _vm.showPhone
-                        ? _c("span", [_vm._v("+359")])
-                        : _c("span", [
-                            _c(
-                              "a",
-                              {
-                                attrs: {
-                                  href: "tel:" + _vm.vendorDetails.phone_number
-                                }
-                              },
-                              [_vm._v(_vm._s(_vm.vendorDetails.phone_number))]
-                            )
-                          ]),
-                      _vm._v(" "),
-                      _vm.showPhone
-                        ? _c(
-                            "span",
-                            {
-                              staticClass: "phone_button",
-                              on: {
-                                click: function($event) {
-                                  return _vm.contactAnalytic("phone")
-                                }
-                              }
-                            },
-                            [_vm._v("Покажи")]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      !_vm.showPhone
-                        ? _c(
-                            "span",
-                            {
-                              staticClass: "phone_button",
-                              on: { click: _vm.hidePhone }
-                            },
-                            [_vm._v("Скрий")]
-                          )
-                        : _vm._e()
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.vendorDetails.website
-                  ? _c("li", [
-                      _c("i", { staticClass: "sl sl-icon-globe" }),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href: "//" + _vm.vendorDetails.website,
-                            target: "_blank"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.contactAnalytic("website")
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.vendorDetails.website))]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.vendorDetails.email_address
-                  ? _c("li", [
-                      _c("i", { staticClass: "fa fa-envelope-o" }),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href: "mailto:" + _vm.vendorDetails.email_address
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.contactAnalytic("email")
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.vendorDetails.email_address))]
-                      )
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "listing-details-sidebar social-profiles" },
-                [
-                  _vm.vendorDetails.facebook_link
-                    ? _c("li", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "facebook-profile",
-                            attrs: {
-                              href: _vm.vendorDetails.facebook_link,
-                              target: "_blank"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.contactAnalytic("facebook")
-                              }
-                            }
-                          },
-                          [
-                            _c("i", { staticClass: "fa fa-facebook-square" }),
-                            _vm._v(
-                              " Facebook\n                                "
-                            )
-                          ]
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "listing-share margin-top-40 margin-bottom-40 no-border"
-              },
-              [
-                _c(
-                  "ul",
-                  {
-                    staticClass: "share-buttons margin-top-40 margin-bottom-0"
-                  },
-                  [
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "fb-share",
-                          attrs: {
-                            target: "_blank",
-                            href:
-                              "https://www.facebook.com/sharer/sharer.php?u=https://maistorimo.bg/project/details/" +
-                              this.id +
-                              "&display=popup"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.contactAnalytic("facebook")
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-facebook" }),
-                          _vm._v(" Сподели\n                                ")
-                        ]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "clearfix" })
-              ]
-            ),
-            _vm._v(" "),
-            _vm.services.length >= 1
-              ? _c("div", { staticClass: "widget margin-top-40" }, [
-                  _c("h3", [_vm._v("Услуги")]),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "widget-tabs" },
-                    _vm._l(_vm.services, function(service, index) {
-                      return _c("li", { key: index }, [
-                        _c("div", { staticClass: "widget-content" }, [
-                          _c(
-                            "div",
-                            { staticClass: "widget-thumb" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  attrs: {
-                                    tag: "a",
-                                    to: "/service/details/" + service.id
-                                  }
-                                },
-                                [
-                                  _c("img", {
-                                    attrs: { src: service.image_url, alt: "" }
-                                  })
-                                ]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "widget-text" }, [
-                            _c(
-                              "h5",
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    attrs: {
-                                      tag: "a",
-                                      to: "/service/details/" + service.id
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(service.name))]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(_vm._s(service.created_at))])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "clearfix" })
-                        ])
-                      ])
-                    }),
-                    0
-                  )
-                ])
-              : _vm._e()
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.title))])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1aafcf1a", module.exports)
-  }
-}
-
-/***/ }),
+/* 182 */,
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46846,7 +45364,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  /* TsB */\n.projects-container[data-v-7a72411f] {\n    width: 80% !important;\n    margin-left: auto;\n    margin-right: auto;\n}\n.sticky-wrapper[data-v-7a72411f] {\n    width: 100%;\n}\n.listing-item-image[data-v-7a72411f] {\n    -webkit-box-flex: 5 !important;\n        -ms-flex: 5 !important;\n            flex: 5 !important;\n}\n.listing-item-container.list-layout .listing-item-inner[data-v-7a72411f] {\n    padding-right: 15% !important;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    /* justify-content: center; */\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\n.listing-item-inner>span[data-v-7a72411f] {\n    padding-left: 10%;\n}\n.user-profile-titlebar[data-v-7a72411f] {\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n}\n.verified-badge[data-v-7a72411f] {\n    margin-top: 80px;\n}\ndiv.user-projects-services[data-v-7a72411f] {\n    position: unset !important;\n}\ndiv.user-projects-services ul.nav.nav-tabs.nav-justified[data-v-7a72411f] {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; /* TsB */\n}\ndiv.p_info_deckstop span.info_span[data-v-7a72411f] {\n    display: -webkit-box !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\ndiv.tab-pan div.row[data-v-7a72411f]{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv.col-md-4[data-v-7a72411f] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-flex: 33%;\n        -ms-flex: 33%;\n            flex: 33%;\n}\n  \n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  /* TsB */\n#titlebar[data-v-7a72411f] {\n    padding-top: 44px !important;\n}\n#titlebar div.container[data-v-7a72411f] {\n    position: absolute;\n    top: 19%;\n}\n.mask[data-v-7a72411f] {\n    position: absolute;\n    top: 4%;\n    left: 20%;\n    width: 40%;\n    height: 240px;\n    border: 2px solid #66B7A3;\n    border-radius: 20px;\n    z-index: 10;\n    overflow: hidden;\n    /* filter: blur(3px); */\n}\n.blur-background[data-v-7a72411f] {\n    position: absolute;\n    top: 0%;\n    left: 0%;\n    width: 100%;\n    height: 100%;\n    display: block;\n    background-image: url('/images/main-picture.jpg'); \n    z-index: 1;\n    padding-left: 20%;\n    padding-top: 20%;\n    background-position-x: -253px;\n    background-position-y: -47px;\n    -webkit-filter: blur(15px);\n            filter: blur(15px);\n}\n.company_profile[data-v-7a72411f] {\n    position: absolute;\n    top: 45px;\n    left: 23%;\n    z-index: 40;\n}\n.verified-badge[data-v-7a72411f] {\n    background-color: #276955;\n}\n.contact-mask[data-v-7a72411f] {\n    left: 94%;\n    width: 40%;\n    height: 240px;\n    border: 2px solid #66B7A3;\n    border-radius: 20px;\n    position: absolute;\n}\n.contact-blur-background[data-v-7a72411f] {\n    position: absolute;\n    top: 0%;\n    left: 0%;\n    width: 100%;\n    height: 100%;\n    display: block;\n    background-image: url('/images/main-picture.jpg'); \n    z-index: 1;\n    padding-left: 20%;\n    padding-top: 20%;\n    background-position-x: -1128px;\n    background-position-y: -38px;\n    -webkit-filter: blur(20px);\n            filter: blur(20px);\n}\n.boxed-widget[data-v-7a72411f] {\n    left: 100%;\n    padding-top: 18px;\n    background-color: unset;\n    padding: 0px;\n    margin-top: 24px;\n}\n.boxed-widget h3[data-v-7a72411f] {\n    border-bottom: unset;\n    padding: 0px;\n    margin-bottom: 20px;\n    height: 53px;\n    width: 337px;\n    background-color: #276955;\n    padding: 16px 0px;\n    color: #fff;\n    border-radius: 4px;\n}\n.listing-details-sidebar[data-v-7a72411f] {\n    padding-left: 90px;\n}\n#titlebar span a[data-v-7a72411f], #titlebar span[data-v-7a72411f] {\n    color: #fff;\n}\n.listing-details-sidebar li i[data-v-7a72411f], .listing-details-sidebar li a[data-v-7a72411f], .listing-details-sidebar li a i[data-v-7a72411f] {\n    color: #fff;\n    font-size: 16px;\n}\n.background-img[data-v-7a72411f] {\n    background-image: url('/images/main-picture.jpg') !important;\n    background-repeat: no-repeat !important;\n    background-size: 100% !important;\n    width: 100%;\n    height: 348px;\n}\nh2[data-v-7a72411f] {\n    color: #fff;\n}\n.projects-container[data-v-7a72411f] {\n    width: 80% !important;\n    margin-left: auto;\n    margin-right: auto;\n}\n.sticky-wrapper[data-v-7a72411f] {\n    width: 100%;\n}\n.listing-item-image[data-v-7a72411f] {\n    -webkit-box-flex: 5 !important;\n        -ms-flex: 5 !important;\n            flex: 5 !important;\n}\n.listing-item-container.list-layout .listing-item-inner[data-v-7a72411f] {\n    padding-right: 15% !important;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    /* justify-content: center; */\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\n.listing-item-inner>span[data-v-7a72411f] {\n    padding-left: 10%;\n}\n.user-profile-titlebar[data-v-7a72411f] {\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n}\n.verified-badge[data-v-7a72411f] {\n    margin-top: 80px;\n}\ndiv.user-projects-services[data-v-7a72411f] {\n    position: unset !important;\n}\ndiv.user-projects-services ul.nav.nav-tabs.nav-justified[data-v-7a72411f] {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; /* TsB */\n}\ndiv.p_info_deckstop span.info_span[data-v-7a72411f] {\n    display: -webkit-box !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\ndiv.tab-pan div.row[data-v-7a72411f]{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv.col-md-4[data-v-7a72411f] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-flex: 33%;\n        -ms-flex: 33%;\n            flex: 33%;\n}\nli.nav-item.active[data-v-7a72411f]{\n    background: #276955;\n}\nli.nav-item a[data-v-7a72411f] {\n    color: #276955;\n}\n.listing-badge.now-open[data-v-7a72411f] {\n    background-color: #276955;\n}\n@media screen and (max-width: 1679px) {\n.mask[data-v-7a72411f] {\n      top: 4%;\n      left: 20%;\n      width: 40%;\n      height: 240px;\n}\n.blur-background[data-v-7a72411f] {\n      top: 0%;\n      left: 0%;\n      width: 100%;\n      height: 100%;\n      padding-left: 20%;\n      padding-top: 20%;\n      background-position-x: -324px;\n      background-position-y: -47px;\n}\n.company_profile[data-v-7a72411f] {\n      top: 45px;\n      left: 23%;\n}\n.contact-mask[data-v-7a72411f] {\n      left: 84%;\n      width: 40%;\n      height: 240px;\n}\n.contact-blur-background[data-v-7a72411f] {\n      top: 0%;\n      left: 0%;\n      width: 100%;\n      height: 100%;\n      \n      padding-left: 20%;\n      padding-top: 20%;\n      background-position-x: -1150px;\n      background-position-y: -38px;\n}\n.boxed-widget[data-v-7a72411f] {\n      left: 90%;\n      padding-top: 18px;\n      background-color: unset;\n      padding: 0px;\n      margin-top: 24px;\n}\n}\n@media screen and (max-width: 1500px) {\n.mask[data-v-7a72411f] {\n      top: 4%;\n      left: 10%;\n      /* width: 40%;\n      height: 240px; */\n}\n.blur-background[data-v-7a72411f] {\n      background-size: 300%;\n      /* top: 0%; */\n      left: 31%;\n      /* width: 100%;\n      height: 100%;\n      padding-left: 20%;\n      padding-top: 20%; */\n      background-position-x: -253px;\n      /* background-position-y: -47px; */\n}\n.company_profile[data-v-7a72411f] {\n      top: 45px;\n      left: 13%;\n}\n.contact-mask[data-v-7a72411f] {\n      top: 7%;\n      left: 72%;\n      /* width: 40%;\n      height: 240px; */\n}\n.contact-blur-background[data-v-7a72411f] {\n      /* top: 0%;\n      left: 0%;\n      width: 100%;\n      height: 100%;\n      \n      padding-left: 20%;\n      padding-top: 20%; */\n      background-position-x: -1150px;\n      /* background-position-y: -38px; */\n}\n.boxed-widget[data-v-7a72411f] {\n      left: 78%;\n      /* padding-top: 18px;\n      background-color: unset;\n      padding: 0px; */\n      margin-top: 33px;\n}\n}\n@media screen and (max-width: 1440px) { \n    /* .mask {\n      top: 4%;\n      left: 10%;\n      width: 40%;\n      height: 240px;\n    } */\n.blur-background[data-v-7a72411f] {\n      background-size: 290%;\n      /* top: 0%;\n      left: 37%;\n      width: 100%;\n      height: 100%;\n      padding-left: 20%;\n      padding-top: 20%; */\n      background-position-x: -262px;\n      /* background-position-y: -47px; */\n}\n\n    /* .company_profile {\n      top: 45px;\n      left: 13%;\n    } */\n.contact-mask[data-v-7a72411f] {\n      /* top: 7%; */\n      left: 67%;\n      /* width: 40%;\n      height: 240px; */\n}\n.contact-blur-background[data-v-7a72411f] {\n      /* top: 0%;\n      left: 0%;\n      width: 100%;\n      height: 100%;\n      \n      padding-left: 20%;\n      padding-top: 20%; */\n      background-position-x: -1105px;\n      /* background-position-y: -38px; */\n}\n.boxed-widget[data-v-7a72411f] {\n      left: 72%;\n      /* padding-top: 18px;\n      background-color: unset;\n      padding: 0px;\n      margin-top: 33px; */\n}\n}\n@media screen and (max-width: 1365px) {\n.mask[data-v-7a72411f] {\n      /* top: 4%; */\n      left: 8%;\n      /* width: 40%;\n      height: 240px; */\n}\n.blur-background[data-v-7a72411f] {\n      background-size: 270%;\n      /* top: 0%; */\n      left: 0%; \n      width: 100%;\n      height: 100%;\n      /* padding-left: 20%;\n      padding-top: 20%; */\n      background-position-x: -31px;\n      background-position-y: 3px;\n}\n\n    /* .company_profile {\n      top: 45px;\n      left: 13%;\n    } */\n.user-profile-avatar[data-v-7a72411f] {\n      left: -26px;\n}\n.user-profile-name[data-v-7a72411f] {\n      left: 67px;\n}\n.contact-mask[data-v-7a72411f] {\n      /* top: 7%; */\n      left: 72%;\n      /* width: 40%;\n      height: 240px; */\n}\n.contact-blur-background[data-v-7a72411f] {\n      /* top: 0%;\n      left: 0%;\n      width: 100%;\n      height: 100%;\n      \n      padding-left: 20%;\n      padding-top: 20%; */\n      background-position-x: -1031px;\n      /* background-position-y: -38px; */\n}\n.boxed-widget[data-v-7a72411f] {\n      left: 76%;\n      /* padding-top: 18px;\n      background-color: unset;\n      padding: 0px;\n      margin-top: 33px; */\n}\n}\n@media screen and (max-width: 1240px) {\n#titlebar .user-profile-name h2[data-v-7a72411f] {\n      font-size: 24px;\n}\n.contact-mask[data-v-7a72411f] {\n      /* top: 7%; */\n      left: 77%;\n      /* width: 40%;\n      height: 240px; */\n}\n.boxed-widget[data-v-7a72411f] {\n      left: 79%;\n      /* padding-top: 18px;\n      background-color: unset;\n      padding: 0px;\n      margin-top: 33px; */\n}\n}\n@media screen and (max-width: 1140px) {\n.mask[data-v-7a72411f] {\n      /* top: 4%; */\n      left: 3%;\n      /* width: 40%;\n      height: 240px; */\n}\n.blur-background[data-v-7a72411f] {\n      background-size: 260%;\n      /* top: 0%; */\n      left: 0%; \n      width: 100%;\n      height: 100%;\n      /* padding-left: 20%;\n      padding-top: 20%; */\n      background-position-x: 20px;\n      /* background-position-y: 3px; */\n}\n.company_profile[data-v-7a72411f] {\n      left: 8%;\n}\n.contact-mask[data-v-7a72411f] {\n      left: 71%;\n}\n.contact-blur-background[data-v-7a72411f] {\n      background-position-x: -1069px;\n}\n.boxed-widget[data-v-7a72411f] {\n      left: 73%;\n}\n}\n@media screen and (max-width: 1080px) {\n.contact-mask[data-v-7a72411f] {\n      left: 65%;\n}\n.boxed-widget[data-v-7a72411f] {\n      left: 67%;\n}\n}\n@media screen and (max-width: 1024px) {\n#titlebar[data-v-7a72411f] {\n      padding-top: 0px !important;\n}\n}\n  \n", ""]);
 
 // exports
 
@@ -46871,6 +45389,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -47230,10 +45754,14 @@ var render = function() {
   return _vm.profile.vendor_details
     ? _c("div", [
         _c("div", { staticClass: "gradient", attrs: { id: "titlebar" } }, [
+          _c("div", { staticClass: "background-img" }),
+          _vm._v(" "),
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
                 _c("div", { staticClass: "user-profile-titlebar" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
                   _c("div", { staticClass: "company_profile" }, [
                     _c("div", { staticClass: "user-profile-avatar" }, [
                       _c("img", {
@@ -47278,8 +45806,10 @@ var render = function() {
                         ])
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm._m(0)
+                    _vm._m(1)
                   ]),
+                  _vm._v(" "),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("div", { staticClass: "boxed-widget" }, [
                     _c("h3", [_vm._v("Контакти")]),
@@ -47773,6 +46303,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mask" }, [
+      _c("div", { staticClass: "blur-background" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
@@ -47787,6 +46325,14 @@ var staticRenderFns = [
         _vm._v(" Потвърден акаунт\n              ")
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-mask" }, [
+      _c("div", { staticClass: "contact-blur-background" })
+    ])
   }
 ]
 render._withStripped = true
@@ -48578,7 +47124,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(218)
+var __vue_template__ = __webpack_require__(220)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48624,7 +47170,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__front_partials_Header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__);
 //
 //
@@ -48654,17 +47200,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(206)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(206)
+var __vue_script__ = __webpack_require__(208)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(214)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-65a3b6c6"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -48698,13 +47248,53 @@ module.exports = Component.exports
 
 /***/ }),
 /* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(207);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("ca26019e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-65a3b6c6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Header.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-65a3b6c6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Header.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#header.cloned[data-v-65a3b6c6] {\n    background-color:#324E5B;\n    padding: 0px;\n}\n.left-side[data-v-65a3b6c6] {\n    margin-left: 9%;\n}\n.right-side[data-v-65a3b6c6] {\n    margin-left: 0px;\n    margin-top: 29px;\n}\n#header.cloned #logo img[data-v-65a3b6c6] {\n    max-width: unset;\n    max-height: unset;\n    width: 100%;\n    margin: 0px;\n}\n#logo[data-v-65a3b6c6] {\n    margin: 11px 197px 21px 0px;\n}\n#navigation.style-1[data-v-65a3b6c6] {\n    margin-top: 0px;\n}\n#navigation.style-1 ul li[data-v-65a3b6c6] {\n    margin: 40px 15px 15px 0px;\n    border: 1px solid #C4C4C4;\n    border-radius: 17.5px;\n}\n#navigation ul li a[data-v-65a3b6c6] {\n    color: #fff;\n    font-size: 20px;\n}\n.header-widget[data-v-65a3b6c6] {\n    top: 0px;\n}\n.button.border.with-icon[data-v-65a3b6c6] {\n    width: 270px;\n    height: 58px;\n    margin-right: 101px;\n    font-size: 17px;\n    color: #EFCA4E;\n    padding-top: 13px;\n}\n@media screen and (max-width: 1365px) {\n#logo[data-v-65a3b6c6] {\n        margin: 11px 160px 21px 0px;\n}\n}\n@media screen and (max-width: 1300px) {\n#logo[data-v-65a3b6c6] {\n        margin: 11px 120px 21px 0px;\n}\n}\n@media screen and (max-width: 1240px) {\n#logo[data-v-65a3b6c6] {\n        margin: 11px 90px 21px 0px;\n}\n}\n@media screen and (max-width: 1170px) {\n#logo[data-v-65a3b6c6] {\n        margin: 11px 70px 21px 0px;\n}\n#navigation ul li a[data-v-65a3b6c6] {\n        font-size: 18px;\n}\n.button.border.with-icon[data-v-65a3b6c6] {\n        width: 230px;\n}\n}\n@media screen and (max-width: 1100px) {\n.button.border.with-icon[data-v-65a3b6c6] {\n        margin-right: 51px;\n}\n}\n@media screen and (max-width: 1024px) {\n.right-side[data-v-65a3b6c6] {\n        margin-top: 0px;\n}\n.header-widget[data-v-65a3b6c6] {\n        border-top: 0px;\n        padding: 10px 0px;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
@@ -49009,19 +47599,19 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 207 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(208)
+  __webpack_require__(210)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(210)
+var __vue_script__ = __webpack_require__(212)
 /* template */
-var __vue_template__ = __webpack_require__(211)
+var __vue_template__ = __webpack_require__(213)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49060,13 +47650,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 208 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(209);
+var content = __webpack_require__(211);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49086,7 +47676,7 @@ if(false) {
 }
 
 /***/ }),
-/* 209 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -49100,7 +47690,7 @@ exports.push([module.i, "\n.tab-content[data-v-8c10e580] {\n  padding-top: 10px 
 
 
 /***/ }),
-/* 210 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49809,7 +48399,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 211 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50981,7 +49571,7 @@ if (false) {
 }
 
 /***/ }),
-/* 212 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51000,7 +49590,7 @@ var render = function() {
         _c("div", { staticClass: "cloned sticky", attrs: { id: "header" } }, [
           _c(
             "div",
-            { staticClass: "container container_nav" },
+            { staticClass: "container_nav" },
             [
               _c("div", { staticClass: "left-side" }, [
                 _c(
@@ -51289,19 +49879,19 @@ if (false) {
 }
 
 /***/ }),
-/* 213 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(214)
+  __webpack_require__(216)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(218)
 /* template */
-var __vue_template__ = __webpack_require__(217)
+var __vue_template__ = __webpack_require__(219)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51340,13 +49930,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 214 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(215);
+var content = __webpack_require__(217);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -51366,7 +49956,7 @@ if(false) {
 }
 
 /***/ }),
-/* 215 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -51380,7 +49970,7 @@ exports.push([module.i, "\n@media only screen and (max-width: 380px) {\ndiv.col-
 
 
 /***/ }),
-/* 216 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51512,7 +50102,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 217 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51646,7 +50236,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "copyrights" }, [
-          _vm._v("© 2019 Maistorimo. All Rights Reserved.")
+          _vm._v("© 2021 Maistorimo. All Rights Reserved.")
         ])
       ])
     ])
@@ -51662,7 +50252,7 @@ if (false) {
 }
 
 /***/ }),
-/* 218 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51693,7 +50283,7 @@ if (false) {
 }
 
 /***/ }),
-/* 219 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53505,7 +52095,7 @@ var index = {
 
 
 /***/ }),
-/* 220 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53660,7 +52250,7 @@ var locale = {
 /* harmony default export */ __webpack_exports__["a"] = (locale);
 
 /***/ }),
-/* 221 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -54219,8 +52809,6 @@ var locale = {
 
 
 /***/ }),
-/* 222 */,
-/* 223 */,
 /* 224 */,
 /* 225 */,
 /* 226 */,
@@ -54238,15 +52826,17 @@ var locale = {
 /* 238 */,
 /* 239 */,
 /* 240 */,
-/* 241 */
+/* 241 */,
+/* 242 */,
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(242);
-module.exports = __webpack_require__(243);
+__webpack_require__(244);
+module.exports = __webpack_require__(245);
 
 
 /***/ }),
-/* 242 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54259,10 +52849,1763 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0__app__["a" /* default */].$mount('#app');
 
 /***/ }),
-/* 243 */
+/* 245 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(383);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("a151e4a8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-665774f6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SearchResults.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-665774f6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SearchResults.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 383 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.listing-badge.now-open[data-v-665774f6] {\n      background-color: #276955;\n}\n.verified-icon[data-v-665774f6] {\n    color: #276955;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 384 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "custom_slider_1 dots-nav" },
+      _vm._l(_vm.services, function(service) {
+        return _c(
+          "div",
+          { key: service.id, staticClass: "fw-carousel-item" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "carousel_link",
+                attrs: { to: "service/details/" + service.id, tag: "a" }
+              },
+              [
+                _c("div", { staticClass: "listing-item" }, [
+                  _c("img", { attrs: { src: service.image_url, alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "listing-badge now-open" }, [
+                    _vm._v("Верифицирана")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "listing-item-content" }, [
+                    _c("h3", [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(service.name) +
+                          "\n              "
+                      ),
+                      _c("i", { staticClass: "verified-icon" })
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ],
+          1
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "col-md-12 all" },
+      [
+        _c(
+          "router-link",
+          { staticClass: "see-all", attrs: { to: "/services" } },
+          [_vm._v("Виж всички услуги")]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-665774f6", module.exports)
+  }
+}
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(386);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("55a13d1a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d4ab1c4c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./List.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d4ab1c4c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./List.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.listing-badge.now-open[data-v-d4ab1c4c] {\n      background-color: #276955;\n}\n.verified-icon[data-v-d4ab1c4c] {\n    color: #276955;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "header-container container margin-top-25" },
+    [
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "sidebar_menu",
+              class: [_vm.show_sidebar ? "active_button" : ""],
+              on: {
+                click: function($event) {
+                  _vm.show_sidebar = !_vm.show_sidebar
+                }
+              }
+            },
+            [
+              _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] }),
+              _vm._v(" "),
+              _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] }),
+              _vm._v(" "),
+              _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "row project_content" }, [
+            _c(
+              "div",
+              {
+                staticClass: "col-lg-3 col-md-3 col-sm-3 fixed",
+                class: [_vm.show_sidebar ? "active_sidebar" : ""]
+              },
+              [
+                _c("div", { staticClass: "sidebar" }, [
+                  _c("div", { staticClass: "widget" }, [
+                    _c("h3", { staticClass: "margin-top-0 margin-bottom-10" }, [
+                      _vm._v("Търсене")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row with-forms" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-md-12 main-search-input-item" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.filterQueries.title,
+                                expression: "filterQueries.title"
+                              }
+                            ],
+                            attrs: {
+                              type: "text",
+                              placeholder: "Какво търсите?"
+                            },
+                            domProps: { value: _vm.filterQueries.title },
+                            on: {
+                              keyup: _vm.searchTimeOut,
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.filterQueries,
+                                  "title",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.filterQueries.title
+                            ? _c(
+                                "span",
+                                {
+                                  staticClass: "clear_data",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.clearQuery("title")
+                                    }
+                                  }
+                                },
+                                [_vm._v("x")]
+                              )
+                            : _vm._e()
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row with-forms" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "main-search-input-item location col-md-12"
+                        },
+                        [
+                          _c(
+                            "div",
+                            { attrs: { id: "autocomplete-container" } },
+                            [
+                              _c("div", {
+                                staticClass: "pac-container pac-logo",
+                                staticStyle: {
+                                  display: "none",
+                                  width: "310px",
+                                  position: "absolute",
+                                  left: "727px",
+                                  top: "351px"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.filterQueries.city,
+                                    expression: "filterQueries.city"
+                                  }
+                                ],
+                                attrs: {
+                                  id: "autocomplete-input",
+                                  type: "text",
+                                  placeholder: "Град",
+                                  autocomplete: "off"
+                                },
+                                domProps: { value: _vm.filterQueries.city },
+                                on: {
+                                  input: [
+                                    function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.filterQueries,
+                                        "city",
+                                        $event.target.value
+                                      )
+                                    },
+                                    _vm.onChange
+                                  ]
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.filterQueries.city
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticClass: "clear_data",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.clearQuery("city")
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("x")]
+                                  )
+                                : _vm._e()
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.isOpen,
+                                  expression: "isOpen"
+                                }
+                              ],
+                              staticClass: "autocomplete-results"
+                            },
+                            _vm._l(_vm.results, function(result, i) {
+                              return _c(
+                                "li",
+                                {
+                                  key: i,
+                                  staticClass: "autocomplete-result",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.setResult(result)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(result.city) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "widget" }, [
+                      _c("h3", { staticClass: "margin-bottom-10" }, [
+                        _vm._v("Категории")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "category_body" },
+                        _vm._l(_vm.categories, function(category) {
+                          return _c(
+                            "div",
+                            {
+                              key: category.id,
+                              staticClass: "category_sidebar",
+                              on: {
+                                click: function($event) {
+                                  return _vm.applyMainCategory(
+                                    category.children,
+                                    category.title
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "p",
+                                {
+                                  staticClass: "main_cats",
+                                  class: {
+                                    active_category: _vm.isActiveCat(category)
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(category.title) +
+                                      "\n                                        "
+                                  ),
+                                  _vm.isActiveCat(category)
+                                    ? _c(
+                                        "span",
+                                        {
+                                          staticClass: "main_category",
+                                          on: {
+                                            click: function($event) {
+                                              $event.stopPropagation()
+                                              return _vm.clearQuery(
+                                                "mainCategory"
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("x")]
+                                      )
+                                    : _vm._e()
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(category.children, function(cat) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: cat.id,
+                                    class: [
+                                      _vm.filterQueries.category == cat.title
+                                        ? "active_category"
+                                        : ""
+                                    ],
+                                    on: {
+                                      click: function($event) {
+                                        $event.stopPropagation()
+                                        return _vm.applyCategory(cat.title)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(cat.title) +
+                                        "\n                                        "
+                                    ),
+                                    _vm.filterQueries.category == cat.title
+                                      ? _c(
+                                          "span",
+                                          {
+                                            staticClass: "cat_button",
+                                            on: {
+                                              click: function($event) {
+                                                $event.stopPropagation()
+                                                return _vm.clearQuery(
+                                                  "category"
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("x")]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        }),
+                        0
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("h3", { staticClass: "margin-top-20 tags_heading" }, [
+                    _vm._v(
+                      "\n                        Тагове\n                        "
+                    ),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "show_tags",
+                        class: [_vm.showTags ? "active" : ""],
+                        on: {
+                          click: function($event) {
+                            _vm.showTags = !_vm.showTags
+                          }
+                        }
+                      },
+                      [
+                        !_vm.showTags
+                          ? _c("span", { staticClass: "close_tags" }, [
+                              _vm._v("+")
+                            ])
+                          : _c("span", [_vm._v("-")])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.showTags && _vm.selectTag.length > 0
+                    ? _c("span", { staticClass: "tag_info" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.selectTag.length) +
+                            " избран\n                        "
+                        ),
+                        _vm.selectTag.length > 1
+                          ? _c("span", [_vm._v("и")])
+                          : _vm._e(),
+                        _vm._v(" таг\n                        "),
+                        _vm.selectTag.length > 1
+                          ? _c("span", [_vm._v("а")])
+                          : _vm._e()
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.showTags
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "checkboxes one-in-row margin-bottom-15"
+                        },
+                        _vm._l(_vm.tags, function(tag) {
+                          return _c("div", { key: tag.id }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.selectTag,
+                                  expression: "selectTag"
+                                }
+                              ],
+                              attrs: {
+                                id: tag.tag,
+                                type: "checkbox",
+                                name: tag.tag
+                              },
+                              domProps: {
+                                value: tag.tag,
+                                checked: Array.isArray(_vm.selectTag)
+                                  ? _vm._i(_vm.selectTag, tag.tag) > -1
+                                  : _vm.selectTag
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$a = _vm.selectTag,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = tag.tag,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.selectTag = $$a.concat([$$v]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.selectTag = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.selectTag = $$c
+                                    }
+                                  },
+                                  function($event) {
+                                    return _vm.applyTags(tag.tag)
+                                  }
+                                ]
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: tag.tag } }, [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(_vm._f("lowercase")(tag.tag)) +
+                                  "\n                                "
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("h3", { staticClass: "tags_heading" }, [
+                    _vm._v(
+                      "\n                        Други тагове\n                        "
+                    ),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "show_tags",
+                        class: [_vm.showTags ? "active" : ""],
+                        on: {
+                          click: function($event) {
+                            _vm.showTwentyTags = !_vm.showTwentyTags
+                          }
+                        }
+                      },
+                      [
+                        !_vm.showTags
+                          ? _c("span", [_vm._v("+")])
+                          : _c("span", [_vm._v("-")])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.showTwentyTags
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "checkboxes one-in-row margin-bottom-15"
+                        },
+                        _vm._l(_vm.TwentyTags, function(tag) {
+                          return _c("div", { key: tag.id }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.selectTag,
+                                  expression: "selectTag"
+                                }
+                              ],
+                              attrs: {
+                                id: tag.tag,
+                                type: "checkbox",
+                                name: tag.tag
+                              },
+                              domProps: {
+                                value: tag.id,
+                                checked: Array.isArray(_vm.selectTag)
+                                  ? _vm._i(_vm.selectTag, tag.id) > -1
+                                  : _vm.selectTag
+                              },
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$a = _vm.selectTag,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = tag.id,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.selectTag = $$a.concat([$$v]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.selectTag = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.selectTag = $$c
+                                    }
+                                  },
+                                  function($event) {
+                                    return _vm.applyTags(tag.tag)
+                                  }
+                                ]
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: tag.tag } }, [
+                              _vm._v(_vm._s(_vm._f("lowercase")(tag.tag)))
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.showThirtyHeading
+                    ? _c(
+                        "h3",
+                        {
+                          staticClass: "tags_heading",
+                          on: {
+                            click: function($event) {
+                              _vm.showThirtyTags = !_vm.showThirtyTags
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Още тагове\n                    "
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.showThirtyTags
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "checkboxes one-in-row margin-bottom-15"
+                        },
+                        _vm._l(_vm.ThirtyTags, function(tag) {
+                          return _c("div", { key: tag.id }, [
+                            _c("input", {
+                              attrs: {
+                                id: tag.tag,
+                                type: "checkbox",
+                                name: tag.tag
+                              },
+                              domProps: { value: tag.tag }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: tag.tag } }, [
+                              _vm._v(_vm._s(_vm._f("lowercase")(tag.tag)))
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    : _vm._e()
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "col-lg-9 col-md-9 col-sm-9 gallery_listing",
+                class: [_vm.show_sidebar ? "gallery_listing_active" : ""]
+              },
+              [
+                _c("div", { staticClass: "row margin-bottom-25" }, [
+                  _c("div", { staticClass: "col-md-6 col-xs-6" }, [
+                    _c("div", { staticClass: "layout-switcher" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "grid active",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.className = false
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-th" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "list",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.className = true
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-align-justify" })]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  [
+                    _vm._l(_vm.projects, function(project) {
+                      return _c(
+                        "div",
+                        {
+                          key: project.id,
+                          class: [
+                            _vm.className
+                              ? "col-lg-12 col-md-12"
+                              : "col-lg-6 col-md-12"
+                          ]
+                        },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "listing-item-container compact",
+                              attrs: { to: "/project/details/" + project.id }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "listing-item",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.window.scrollTo(0, 0)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: project.project_galleries[0].url,
+                                      alt: ""
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "listing-badge now-open" },
+                                    [_vm._v("Верифициран")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "listing-item-content" },
+                                    [
+                                      _c("h3", [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(project.title) +
+                                            "\n                                        "
+                                        ),
+                                        _c("i", {
+                                          staticClass: "verified-icon"
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm._l(project.tags, function(tag) {
+                                        return _c("span", { key: tag.id }, [
+                                          _vm._v("#" + _vm._s(tag.tag))
+                                        ])
+                                      })
+                                    ],
+                                    2
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    }),
+                    _vm._v(" "),
+                    _vm.projects.length == 0
+                      ? _c("div", { staticClass: "no_results" }, [
+                          _c("h3", [
+                            _vm._v(
+                              "Съжаляваме, но вашето търсене няма резултат"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v("Моля,опитайте с други критерий!")]),
+                          _vm._v(" "),
+                          _vm._m(0)
+                        ])
+                      : _vm._e()
+                  ],
+                  2
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "client-only",
+            { attrs: { placeholder: "Loading..." } },
+            [
+              _c("infinite-loading", {
+                ref: "infiniteLoading",
+                on: { infinite: _vm.infiniteHandler }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "listing-item" }, [
+      _c("img", { attrs: { src: "/images/listing-item-03.jpg", alt: "" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "listing-badge now-open" }, [
+        _vm._v("Некатегоризиран")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "listing-item-content" }, [
+        _c("h3", [
+          _vm._v(
+            "\n                                    Не е намерено нищо\n                                    "
+          ),
+          _c("i", { staticClass: "verified-icon" })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d4ab1c4c", module.exports)
+  }
+}
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(389);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("4d1ddb34", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1aafcf1a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProjectDetails.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1aafcf1a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProjectDetails.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.verified-badge.with-tip[data-v-1aafcf1a] {\nbackground-color: #276955;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 390 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.images
+      ? _c(
+          "div",
+          {
+            staticClass: "mfp-gallery-container custom_project_slider",
+            style: _vm.imageWidth
+          },
+          _vm._l(_vm.images, function(image, imageIndex) {
+            return _c("a", {
+              key: imageIndex,
+              staticClass: "item mfp-gallery",
+              style: {
+                backgroundImage: "url(" + image + ")",
+                width: "600px",
+                height: "400px"
+              },
+              attrs: { href: image, title: "Title 1" }
+            })
+          }),
+          0
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row sticky-wrapper" }, [
+          _c("div", { staticClass: "col-lg-8 col-md-8 padding-right-30" }, [
+            _c(
+              "div",
+              { staticClass: "listing-titlebar", attrs: { id: "titlebar" } },
+              [
+                _c("div", { staticClass: "listing-titlebar-title" }, [
+                  _c("h2", [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.projectDetails.title) +
+                        "\n                                "
+                    ),
+                    _vm.services.length > 0
+                      ? _c(
+                          "span",
+                          _vm._l(_vm.services, function(service) {
+                            return _c(
+                              "router-link",
+                              {
+                                key: service.id,
+                                staticClass: "listing-tag",
+                                attrs: {
+                                  tag: "span",
+                                  to: "/service/details/" + service.id
+                                }
+                              },
+                              [_vm._v(_vm._s(service.name))]
+                            )
+                          }),
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "listing-address",
+                        attrs: { href: "#listing-location" }
+                      },
+                      [
+                        _c("i", { staticClass: "fa fa-map-marker" }),
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(_vm.city.city) +
+                            "\n                                "
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "listing-nav-container",
+                attrs: { id: "listing-nav" }
+              },
+              [
+                _c("ul", { staticClass: "listing-nav" }, [
+                  _c("li", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          {
+                            name: "scroll-to",
+                            rawName: "v-scroll-to",
+                            value: "#listing-overview-project",
+                            expression: "'#listing-overview-project'"
+                          }
+                        ],
+                        staticClass: "active",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Детайли")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          {
+                            name: "scroll-to",
+                            rawName: "v-scroll-to",
+                            value: "#listing-location",
+                            expression: "'#listing-location'"
+                          }
+                        ],
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Локация")]
+                    )
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "listing-section",
+                attrs: { id: "listing-overview-project" }
+              },
+              [
+                _c("p", {
+                  domProps: {
+                    innerHTML: _vm._s(_vm.projectDetails.short_description)
+                  }
+                }),
+                _vm._v(" "),
+                _c("p", {
+                  domProps: {
+                    innerHTML: _vm._s(_vm.projectDetails.description)
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "listing-links-container" }, [
+                  _c("ul", { staticClass: "listing-links contact-links" }, [
+                    _c("li", { staticClass: "listing_phone_links" }, [
+                      _c("i", { staticClass: "fa fa-phone" }),
+                      _vm._v(" "),
+                      _vm.showPhone
+                        ? _c("span", [_vm._v("+359")])
+                        : _c("span", [
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href: "tel:" + _vm.vendorDetails.phone_number
+                                }
+                              },
+                              [_vm._v(_vm._s(_vm.vendorDetails.phone_number))]
+                            )
+                          ]),
+                      _vm._v(" "),
+                      _vm.showPhone
+                        ? _c(
+                            "span",
+                            {
+                              staticClass: "phone_button",
+                              on: {
+                                click: function($event) {
+                                  return _vm.contactAnalytic("phone")
+                                }
+                              }
+                            },
+                            [_vm._v("Покажи")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.showPhone
+                        ? _c(
+                            "span",
+                            {
+                              staticClass: "phone_button",
+                              on: { click: _vm.hidePhone }
+                            },
+                            [_vm._v("Скрий")]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "listing-links",
+                          attrs: { href: "mailto:mail@example.com" },
+                          on: {
+                            click: function($event) {
+                              return _vm.contactAnalytic("email")
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-envelope-o" }),
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(_vm.vendorDetails.email_address) +
+                              "\n                                    "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "listing-links",
+                          attrs: {
+                            href: "//" + _vm.vendorDetails.website,
+                            target: "_blank"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.contactAnalytic("website")
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-link" }),
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(_vm.vendorDetails.website) +
+                              "\n                                    "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "clearfix" }),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "listing-links" }, [
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "listing-links-fb",
+                          attrs: {
+                            href: _vm.vendorDetails.facebook_link,
+                            target: "_blank"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.contactAnalytic("facebook")
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-facebook-square" }),
+                          _vm._v(
+                            " Facebook\n                                    "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "clearfix" })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "clearfix" }),
+                _vm._v(" "),
+                _c("h3", { staticClass: "listing-desc-headline" }, [
+                  _vm._v("Тагове")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "listing-features checkboxes" },
+                  _vm._l(_vm.projectDetails.tags, function(tag, i) {
+                    return _c("li", { key: i }, [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(tag.tag.tag) +
+                          "\n                            "
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "listing-section",
+                attrs: { id: "listing-location" }
+              },
+              [
+                _c(
+                  "h3",
+                  {
+                    staticClass:
+                      "listing-desc-headline margin-top-60 margin-bottom-30"
+                  },
+                  [
+                    _vm._v(
+                      "\n                            Локация\n                        "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { attrs: { id: "singleListingMap-container" } },
+                  [
+                    _vm.projectDetails.lat &&
+                    _vm.projectDetails.lng &&
+                    _vm.projectDetails.formatted_address &&
+                    _vm.projectDetails.raw_data
+                      ? _c("google-map", {
+                          attrs: {
+                            lat: _vm.projectDetails.lat,
+                            lng: _vm.projectDetails.lng,
+                            formatted_address:
+                              _vm.projectDetails.formatted_address,
+                            placeObj: _vm.projectDetails.raw_data,
+                            view: true
+                          }
+                        })
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-md-4 margin-top-75 sticky" }, [
+            _c(
+              "div",
+              {
+                staticClass: "verified-badge with-tip",
+                attrs: {
+                  "data-tip-content":
+                    "Listing has been verified and belongs the business owner or manager."
+                }
+              },
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/profile/" + _vm.vendorDetails.user } },
+                  [
+                    _c("i", { staticClass: "sl sl-icon-check" }),
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.vendorDetails.company_name) +
+                        "\n                        "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "boxed-widget margin-top-35" }, [
+              _c(
+                "div",
+                { staticClass: "hosted-by-title" },
+                [
+                  _vm.vendorDetails.company_name
+                    ? _c("h4", [
+                        _c("span", [_vm._v("Създаден от")]),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.vendorDetails.company_name) +
+                            "\n                            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "hosted-by-avatar",
+                      attrs: { to: "/profile/" + _vm.vendorDetails.user }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "images/dashboard-avatar.jpg", alt: "" }
+                      })
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("ul", { staticClass: "listing-details-sidebar" }, [
+                _vm.vendorDetails.phone_number
+                  ? _c("li", [
+                      _c("i", { staticClass: "sl sl-icon-phone" }),
+                      _vm._v(" "),
+                      _vm.showPhone
+                        ? _c("span", [_vm._v("+359")])
+                        : _c("span", [
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href: "tel:" + _vm.vendorDetails.phone_number
+                                }
+                              },
+                              [_vm._v(_vm._s(_vm.vendorDetails.phone_number))]
+                            )
+                          ]),
+                      _vm._v(" "),
+                      _vm.showPhone
+                        ? _c(
+                            "span",
+                            {
+                              staticClass: "phone_button",
+                              on: {
+                                click: function($event) {
+                                  return _vm.contactAnalytic("phone")
+                                }
+                              }
+                            },
+                            [_vm._v("Покажи")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.showPhone
+                        ? _c(
+                            "span",
+                            {
+                              staticClass: "phone_button",
+                              on: { click: _vm.hidePhone }
+                            },
+                            [_vm._v("Скрий")]
+                          )
+                        : _vm._e()
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.vendorDetails.website
+                  ? _c("li", [
+                      _c("i", { staticClass: "sl sl-icon-globe" }),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "//" + _vm.vendorDetails.website,
+                            target: "_blank"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.contactAnalytic("website")
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.vendorDetails.website))]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.vendorDetails.email_address
+                  ? _c("li", [
+                      _c("i", { staticClass: "fa fa-envelope-o" }),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "mailto:" + _vm.vendorDetails.email_address
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.contactAnalytic("email")
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.vendorDetails.email_address))]
+                      )
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c(
+                "ul",
+                { staticClass: "listing-details-sidebar social-profiles" },
+                [
+                  _vm.vendorDetails.facebook_link
+                    ? _c("li", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "facebook-profile",
+                            attrs: {
+                              href: _vm.vendorDetails.facebook_link,
+                              target: "_blank"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.contactAnalytic("facebook")
+                              }
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-facebook-square" }),
+                            _vm._v(
+                              " Facebook\n                                "
+                            )
+                          ]
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "listing-share margin-top-40 margin-bottom-40 no-border"
+              },
+              [
+                _c(
+                  "ul",
+                  {
+                    staticClass: "share-buttons margin-top-40 margin-bottom-0"
+                  },
+                  [
+                    _c("li", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "fb-share",
+                          attrs: {
+                            target: "_blank",
+                            href:
+                              "https://www.facebook.com/sharer/sharer.php?u=https://maistorimo.bg/project/details/" +
+                              this.id +
+                              "&display=popup"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.contactAnalytic("facebook")
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-facebook" }),
+                          _vm._v(" Сподели\n                                ")
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "clearfix" })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.services.length >= 1
+              ? _c("div", { staticClass: "widget margin-top-40" }, [
+                  _c("h3", [_vm._v("Услуги")]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "widget-tabs" },
+                    _vm._l(_vm.services, function(service, index) {
+                      return _c("li", { key: index }, [
+                        _c("div", { staticClass: "widget-content" }, [
+                          _c(
+                            "div",
+                            { staticClass: "widget-thumb" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    tag: "a",
+                                    to: "/service/details/" + service.id
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: { src: service.image_url, alt: "" }
+                                  })
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "widget-text" }, [
+                            _c(
+                              "h5",
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    attrs: {
+                                      tag: "a",
+                                      to: "/service/details/" + service.id
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(service.name))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("span", [_vm._v(_vm._s(service.created_at))])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "clearfix" })
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.title))])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1aafcf1a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
