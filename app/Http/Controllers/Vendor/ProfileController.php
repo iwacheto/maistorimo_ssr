@@ -52,7 +52,6 @@ class ProfileController extends Controller {
 
     public function saveProfile(Request $request) {
         $data = $request->all();
-        // return $data;
         $user=auth()->user();
         $vendorDetails = VendorDetail::where([
             'id'=>$data['vendor_details']['id'],
