@@ -241,7 +241,7 @@ ul li {
     display: none;
 }
 .carousel_link:hover {
-    color: #74aea1 !important;
+    color: #276955 !important;
 }
 p.profile_info {
     max-height: 60px;
@@ -327,7 +327,7 @@ div.user-projects-services li.active a {
 }
 
 .service_link a:hover {
-    color: #74aea1;
+    color: #276955;
     -webkit-transform: translate(5px, 0);
             transform: translate(5px, 0);
 }

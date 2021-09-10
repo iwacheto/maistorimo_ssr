@@ -317,3 +317,13 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+    .verified-badge {
+        background-color: #276955 !important;
+    }
+
+    .listing-badge {
+        background-color: #276955 !important;
+    }
+</style>
