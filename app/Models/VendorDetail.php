@@ -19,7 +19,7 @@ class VendorDetail extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user', 'company_name', 'phone_number', 'email_address', 'contact_person', 'website','information', 'city_id','facebook_link', 'profile_image' , 'created_at', 'updated_at'];
+    protected $fillable = ['user', 'company_name', 'phone_number', 'email_address', 'contact_person', 'website', 'information', 'city_id', 'facebook_link', 'profile_image', 'main_image', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -28,9 +28,9 @@ class VendorDetail extends Model
     {
         return $this->belongsTo('App\User', 'user');
     }
-    
-    public function city(){
+
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
-    
 }
