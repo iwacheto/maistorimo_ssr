@@ -938,4 +938,23 @@ export default {
       left: 37%;
     }
   }
+
+  @media screen and (max-width: 768px) { 
+    .mask {
+      top: -12%;
+      left: 36%;
+    }
+    .company_profile {
+      left: 37%;
+    }
+
+    .company_profile .user-profile-avatar {
+      max-width: 90px;
+    }
+
+    .boxed-widget {
+      left: 29%;
+      top: 160px;
+    }
+  }
 </style>
