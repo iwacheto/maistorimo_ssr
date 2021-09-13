@@ -6,6 +6,8 @@ use App\ContactAnalytic;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use App\Models\City;
+use App\Models\CityService;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -41,9 +43,9 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getCities()
     {
-        //
+        return City::all();
     }
 
     /**
@@ -54,26 +56,25 @@ class ServiceController extends Controller
      */
     public function store(CreateServiceRequest $request)
     {
-        // return $request->all();
-        $service = $request->validate([
-            'title' => 'required|min:3|max:255|string',
-            'firstDescription' => 'required|min:10|string',
-            'category' => 'required',
-            'mainImage' => 'required',
-        ]);
+        $data = $request->validated();
 
-        if (!$service) {
+        if (!$data) {
             return 'Възникна грешка!';
         } else {
             $service = Service::create([
                 'user_id'            => auth()->id(),
-                'name'               => $request->all()['title'],
-                'first_description'  => $request->all()['firstDescription'],
-                'second_description' => $request->all()['secondDescription'],
-                'category_id'         => $request->all()['category'],
-                'image_url'          => $request->all()['mainImage']['url'],
-                'image_name'         => $request->all()['mainImage']['name']
+                'name'               => $data['title'],
+                'first_description'  => $data['firstDescription'],
+                'second_description' => $data['secondDescription'],
+                'category_id'        => $data['category'],
+                'all_country'        => $data['allCountry'] ? 1 : 0,
+                'image_url'          => $data['mainImage']['url'],
+                'image_name'         => $data['mainImage']['name']
             ]);
+
+            $cities = City::find($data['location']);
+
+            $service->cities()->attach($cities);
             return $service;
         }
     }
@@ -98,7 +99,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $user = auth()->user();
-       $service = Service::with([
+        $service = Service::with([
             'category'
         ])->where([
             'id' => $id,
@@ -123,7 +124,7 @@ class ServiceController extends Controller
             'id' => $id,
             'user_id' => $user->id
         ])->firstOrFail();
- 
+
         $service->update([
             'name'               => $request->all()['name'],
             'first_description'  => $request->all()['first_description'],

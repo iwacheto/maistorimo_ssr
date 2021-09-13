@@ -21,9 +21,13 @@ class CreateServiceRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'mainImage'        => 'required',
-            'title'            => 'required',
-            'firstDescription' => 'required'
+            'title' => 'required|min:3|max:255|string',
+            'firstDescription' => 'required|min:10|string',
+            'secondDescription' => 'required|min:10|string',
+            'category' => 'required',
+            'mainImage' => 'required',
+            'location' => 'array|min:0',
+            'allCountry' => 'required',
         ];
     }
 }
