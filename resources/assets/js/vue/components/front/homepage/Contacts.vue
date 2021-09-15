@@ -246,7 +246,6 @@ export default {
                     subject: this.contactData.subject,
                     msg: this.contactData.msg,
                 });
-                console.log(res.data);
                 this.contactData.commonError = true;
                 this.contactData.name = '';
                 this.contactData.email = '';
@@ -255,7 +254,6 @@ export default {
                 this.$validator.reset();
                 this.errors.clear();
                 this.responce = res.data;
-                // console.log(res.data);
             } catch (error) {
                 this.responce = error.data;
             }

@@ -66,11 +66,9 @@ export default {
             // ]
           });
           // for (var i = 0; i < t.length; i++) {
-          //   console.log(this.browseItems);
           //   jQuery(t[i]).nanogallery2(jQuery(t[i]).data("nanogallery2"));
           // }
           if ($(window).width() < 550) {
-            console.log('Width');
             jQuery("#nanogallery2").nanogallery2({
             thumbnailWidth: "320",
             thumbnailHeight: auto,

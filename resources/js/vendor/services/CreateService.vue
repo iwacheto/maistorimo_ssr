@@ -146,12 +146,12 @@
                                                 id="check-a"
                                                 type="checkbox"
                                                 name="check"
-                                                v-model="service.allCountry"
+                                                v-model="service.all_country"
                                             />
                                             <label for="check-a">В цялата страна</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" v-if="!service.all_country">
                                         <vue-tags-input
                                             v-model="location"
                                             :tags="cities"
@@ -233,7 +233,7 @@ export default {
                 category: '',
                 mainImage: {},
                 location: [],
-                allCountry: false,
+                all_country: false,
             },
             error: {
                 commonError: false,
@@ -256,7 +256,6 @@ export default {
     mounted() {
         this.$refs.mytoast.defaultPosition = 'toast-top-center';
         this.$refs.mytoast.defaultStyle = { top: '80px' };
-        // this.getServicesCategory();
         this.getCategories();
         this.getCities();
     },
@@ -315,6 +314,8 @@ export default {
                     if (this.isCreated) {
                         this.isCreated = false;
 
+                        if(this.service.all_country) this.service.location = [];
+
                         if (this.service.location.length > 0) {
                             const citiesArrayId = [];
                             this.service.location.forEach((elem) => {
@@ -371,5 +372,8 @@ export default {
 <style scoped>
 span.error {
     font-size: 14px;
+}
+.vue-tags-input{
+  max-width: 100%;
 }
 </style>

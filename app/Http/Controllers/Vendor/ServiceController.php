@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\CityService;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ServiceController extends Controller
 {
@@ -67,7 +68,7 @@ class ServiceController extends Controller
                 'first_description'  => $data['firstDescription'],
                 'second_description' => $data['secondDescription'],
                 'category_id'        => $data['category'],
-                'all_country'        => $data['allCountry'] ? 1 : 0,
+                'all_country'        => $data['all_country'] ? 1 : 0,
                 'image_url'          => $data['mainImage']['url'],
                 'image_name'         => $data['mainImage']['name']
             ]);
@@ -100,7 +101,7 @@ class ServiceController extends Controller
     {
         $user = auth()->user();
         $service = Service::with([
-            'category'
+            'category', 'cities'
         ])->where([
             'id' => $id,
             'user_id' => $user->id
@@ -115,24 +116,36 @@ class ServiceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $user = auth()->user();
+
         $service = Service::with([
-            'category'
+            'category', 'cities'
         ])->where([
             'id' => $id,
             'user_id' => $user->id
         ])->firstOrFail();
 
+        $locationsArray = [];
+        if (count($request['cities']) > 0) {
+            foreach ($request['cities'] as $city) {
+                array_push($locationsArray, $city['id']);
+            }
+        }
+
         $service->update([
-            'name'               => $request->all()['name'],
-            'first_description'  => $request->all()['first_description'],
-            'second_description' => $request->all()['second_description'],
-            'category_id'         => $request->all()['service_id'],
-            'image_url'          => $request->all()['mainImage'][0]['url'],
-            'image_name'         => $request->all()['mainImage'][0]['name'],
+            'name'               => $request['name'],
+            'first_description'  => $request['first_description'],
+            'second_description' => $request['second_description'],
+            'category_id'        => $request['service_id'],
+            'all_country'        => $request['all_country'],
+            'image_url'          => $request['mainImage'][0]['url'],
+            'image_name'         => $request['mainImage'][0]['name'],
         ]);
+
+        $cities = City::find($locationsArray);
+        $service->cities()->sync($cities);
         return $service;
     }
 

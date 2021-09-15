@@ -27,7 +27,7 @@ class CreateServiceRequest extends FormRequest {
             'category' => 'required',
             'mainImage' => 'required',
             'location' => 'array|min:0',
-            'allCountry' => 'required',
+            'all_country' => 'required',
         ];
     }
 }

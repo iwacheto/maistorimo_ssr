@@ -250,7 +250,6 @@ export default {
         );
 
         this.articles = res.data.data.data;
-        console.log(this.articles);
         this.pagination = res.data.pagination;
       } catch (error) {
         console.log(error);
@@ -265,7 +264,6 @@ export default {
       }
     },
     scrollToTop() {
-        console.log('articles vue');
       window.scrollTo(0, 0);
     }
   },
