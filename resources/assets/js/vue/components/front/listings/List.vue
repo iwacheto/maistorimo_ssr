@@ -1,5 +1,5 @@
 <template>
-    <div class="header-container container margin-top-25">
+    <div class="header-container container margin-top-60">
         <!-- Content
         ==================================================-->
         <div class="container">
@@ -22,7 +22,7 @@
                     <div class="sidebar">
                         <!-- Widget -->
                         <div class="widget">
-                            <h3 class="margin-top-0 margin-bottom-10">Търсене</h3>
+                            <img src="/images/search.png" alt="search"><h3 class="margin-top-0 margin-bottom-10">Търсене</h3>
 
                             <div class="row with-forms">
                                 <!-- Cities -->
@@ -86,7 +86,7 @@
                             </div>
                             <!-- Row / End -->
                             <div class="widget">
-                                <h3 class="margin-bottom-10">Категории</h3>
+                                <h3 class="margin-bottom-10"><img src="/images/squares.png" alt="squares">Категории</h3>
                                 <div class="category_body">
                                     <div
                                         v-for="category in categories"
@@ -131,7 +131,9 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <h3 class="margin-top-20 tags_heading">
+                            <i class="fa fa-tags"></i>
                             Тагове
                             <span
                                 class="show_tags"
@@ -233,10 +235,14 @@
                             <!-- Layout Switcher -->
                             <div class="layout-switcher">
                                 <a href="#" class="grid active" @click="className = false">
-                                    <i class="fa fa-th"></i>
+                                    <!-- <i class="fa fa-th"></i> -->
+                                    <i class="fa fa-th-list" aria-hidden="true"></i>
                                 </a>
                                 <a href="#" class="list" @click="className = true">
-                                    <i class="fa fa-align-justify"></i>
+                                    <!-- <i class="fa fa-align-justify"></i> -->
+                                    <i class="fa fa-th"></i>
+                                    
+                                    <!-- <svg class="gb_Ve" focusable="false" viewBox="0 0 24 24"><path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path></svg> -->
                                 </a>
                             </div>
                         </div>
@@ -262,11 +268,10 @@
                                     <div class="listing-item-content">
                                         <h3>
                                             {{ project.title }}
-                                            <i class="verified-icon"></i>
+                                            <!-- <i class="verified-icon"></i> #EFCA4E -->
                                         </h3>
                                         <span v-for="tag in project.tags" :key="tag.id"
-                                            >#{{ tag.tag }}</span
-                                        >
+                                            >#{{ tag.tag }}</span>
                                     </div>
                                 </div>
                             </router-link>
@@ -533,11 +538,396 @@ export default {
 </script>
 
 <style scoped>
-  .listing-badge.now-open {
-        background-color: #276955;
-  }
 
-  .verified-icon {
-      color: #276955;
-  }
+    .container {
+        width: 100%;
+    }
+
+    div.fixed {
+        width: 32%;
+        background: linear-gradient(87.84deg, rgba(196, 196, 196, 0) -0.93%, rgba(233, 233, 233, 0.234457) 96.54%, #E4E3E3 134.75%);
+    }
+
+    .col-lg-9 {
+        width: 68%;
+    }
+
+    .sidebar {
+        margin-left: 15.5%;
+        margin-bottom: 142px;
+    }
+
+    .widget {
+        position: relative;
+        margin-top: 28px;
+    }
+
+    .category_body {
+        margin-left: 0px;
+    }
+
+    .category_sidebar div{
+        margin-left: 0px;
+        padding-left: 13px;
+    }
+
+    .category_sidebar .main_cats.active_category {
+        background: #66B7A3;
+        color: #fff;
+        border: 1px solid #66B7A3;
+        box-sizing: border-box;
+        border-radius: 36px;
+        min-height: 37px;
+        max-width: 289px;
+    }
+
+    p.main_cats {
+        padding-left: 13px;
+        border: 1px solid #47B39C;
+        box-sizing: border-box;
+        border-radius: 36px;
+        min-height: 37px;
+        max-width: 289px;
+    }
+
+    .main_cats span {
+        margin-right: 11px;
+        margin-top: 2px;
+        color: #DE5B4A;
+    }
+
+    .category_sidebar div {
+        font-size: 14px;
+        max-width: 289px;
+        padding-left: 26px;
+    }
+
+    .category_sidebar div.active_category {
+        color: #74AEA1;
+    }
+
+    .category_sidebar div.active_category span {
+        margin-right: 11px;
+        margin-top: 2px;
+        color: #DE5B4A;
+    }
+
+    .widget img {
+        position: absolute;
+        left: 15px;
+        top: 18px;
+    }
+
+    .widget h3 {
+        font-size: 22px;
+        background-color: #276955;
+        color: #fff;
+        padding: 17px 0px;
+        border-radius: 35px;
+        text-transform: uppercase;
+        font-weight: bold;
+        max-width: 289px;
+    }
+
+    .widget .widget {
+        margin-top: 25px;
+    }
+
+    .row.with-forms input {
+        margin-bottom: 10px;
+        max-width: 289px;
+    }
+
+    .main-search-input-item {
+        border-right: unset;
+    }
+
+    .main-search-input-item input{
+        border: 1px solid #74AEA1;
+        box-sizing: border-box;
+        border-radius: 34.5px;
+        font-size: 16px;
+        padding: 0px 22px;
+    }
+
+    .tags_heading {
+        justify-content: flex-start;
+        background: #276955;
+        color: #fff;
+        border: 1px solid #276955;
+        box-sizing: border-box;
+        border-radius: 36px;
+        min-height: 57px;
+        max-width: 289px;
+        padding: 18px 18px;
+    }
+
+    .tags_heading i {
+        margin-right: 12px;
+        transform: rotate(90deg);
+    }
+
+    .tags_heading span.show_tags {
+        border: none;
+        color: #C4C4C4;
+        margin-left: 73px;
+    }
+
+    .margin-top-20.tags_heading span.show_tags {
+        margin-left: 112px;
+    }
+
+    .checkboxes.one-in-row.margin-bottom-15 {
+        margin-left: 25px;
+    }
+
+    .col-md-6.col-xs-6 {
+        float: right;
+        
+    }
+
+    .layout-switcher {
+        display: flex;
+        flex-direction: row-reverse;
+        min-height: fit-content;
+    }
+
+    .layout-switcher a.grid {
+        border: unset;
+        color: #A7A7A7;
+    }
+
+    .layout-switcher a.grid:hover {
+        border: unset;
+        color: #276955;
+        background-color: unset;
+    }
+
+    .layout-switcher a.list {
+        border: unset;
+        color: #A7A7A7;
+        background-color: unset;
+    }
+
+    .layout-switcher a.list:hover {
+        color: #276955;
+    }
+
+    .listing-badge.now-open {
+            background-color: #276955;
+    }
+
+    .verified-icon {
+        color: #276955;
+    }
+
+    .listing-item-container.compact {
+        border-radius: 55px;
+    }
+
+    .listing-item-container.compact .listing-item {
+        border-radius: 55px;
+        position: relative;
+    }
+
+    .listing-item-content {
+        min-height: 80px;
+        /* min-width: 293px; */
+        /* width: 325px; */
+        width: 80%;
+        background-color: #EFCA4E;
+        color: #000;
+        position: absolute;
+        bottom: 0px;
+        border-top-left-radius: 55px;
+        border-top: 5px solid #fff;
+        border-left: 5px solid #fff;
+        left: 126px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 0px;
+    }
+
+    @media screen and (max-width: 1680px) { 
+        .listing-item-content {
+            width: 77%;
+        }
+
+        .listing-item-content h3 {
+            width: 77%;
+        }
+    }
+
+    @media screen and (max-width: 1259px) {
+        .row.margin-bottom-25 {
+            display: none;
+        } 
+
+        .listing-item-content {
+            width: 85%;
+        }
+
+        .listing-item-content h3 {
+            width: 77%;
+        }
+    }
+
+    @media screen and (max-width: 1190px) { 
+        .sidebar h3 {
+            font-size: 21px;
+        }
+    }
+
+    @media screen and (max-width: 1118px) { 
+        .sidebar h3 {
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) { 
+        .header-container.container.margin-top-60 {
+            margin-top: 30px !important;
+        }
+
+        .sidebar h3 .show_tags {
+            margin-left: 40px;
+        }
+
+        .margin-top-20.tags_heading span.show_tags {
+            margin-left: 90px;
+        }
+    }
+
+    @media screen and (max-width: 1000px) { 
+        .col-lg-9  {
+            width: 90%;
+        }
+
+        div.fixed {
+            top: 90px;
+            position: absolute;
+        }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            left: 300px;
+            width: 65%;
+        }
+
+        .sidebar_menu.active_button {
+            transform: translateX(-25px);
+            z-index: 99;
+        }
+    }
+
+    @media screen and (max-width: 940px) {
+        .sidebar_menu.active_button {
+            transform: translateX(-25px);
+        }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            width: 60%;
+        }
+    }
+
+    @media screen and (max-width: 819px) {
+        .sidebar_menu.active_button {
+            transform: translateX(-25px);
+        }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            width: 55%;
+        }
+    }
+
+    @media screen and (max-width: 767px) { 
+        .sidebar_menu.active_button {
+            transform: translateX(3px);
+        }
+
+        .col-lg-9  {
+            width: 90%;
+            left: 80px;
+        }
+
+        .margin-top-20.tags_heading span.show_tags {
+            margin-left: 28px;
+        }
+
+        .widget {
+            margin-top: 0px;
+        }
+
+        .widget .widget {
+            margin-top: 0px;
+        }
+
+        .sidebar h3 {
+            font-size: 18px;
+        }
+
+        .sidebar h3 img {
+            width: 9%;
+        }
+
+        body p {
+            font-size: 16px;
+        }
+
+        .margin-top-20.tags_heading {
+            margin-top: 10px !important;
+        }
+    }
+
+    @media screen and (max-width: 766px) {
+        div.fixed.active_sidebar {
+            width: 34% !important;
+            top: 87px;
+            z-index: 11;
+        }
+
+        div.project_content {
+            margin-top: 0px;
+        }
+
+        .sidebar_menu.active_button {
+            top: 88px;
+        }
+
+        div.fixed.active_sidebar .sidebar .widget .widget {
+            margin-top: 0px;
+        }
+
+        div.fixed.active_sidebar .sidebar .widget {
+            margin-top: 58px;
+        }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            left: 180px;
+            margin-top: 0px;
+            padding-right: 0px;
+        }
+
+        div.fixed.active_sidebar .sidebar .widget {
+            margin-top: 0px;
+        }
+    }
+
+    @media screen and (max-width: 680px) {
+        .sidebar_menu {
+            top: 110px;
+        }
+
+        .listing-item-container {
+            width: 93%;
+        }
+    }
+
+    @media screen and (max-width: 530px) {
+        .sidebar_menu {
+            top: 110px;
+        }
+    }
+    
+
 </style>

@@ -324,6 +324,12 @@ export default {
 
 <style scoped>
   /* TsB */
+
+  .row.sticky-wrapper {
+      flex-direction: column;
+      display: flex;
+  }
+
   #titlebar {
     padding-top: 44px !important;
   }
@@ -881,14 +887,15 @@ export default {
     }
 
     .company_profile {
-      /* left: 34%; */
+      left: 38%;
+      width: 32%;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     .company_profile .user-profile-avatar {
-      left: 13%;
+      left: 30%;
       top: -13%;
     }
 
@@ -909,15 +916,17 @@ export default {
     }
 
     .company_profile {
-      left: 45%;
+      left: 49%;
+      width: 37%;
     }
 
     .company_profile .user-profile-avatar {
-      left: 16%;
+      left: 35%;
     }
 
     .boxed-widget {
       left: 39%;
+      width: fit-content;
     }
 
     .company_profile .user-profile-name h2{
@@ -927,25 +936,37 @@ export default {
 
   @media screen and (max-width: 876px) {
     .mask {
-      left: 45%;
+      left: 40%;
+    }
+
+    .company_profile {
+      left: 40%;
     }
 
     .company_profile .user-profile-avatar {
-      left: 13%;
+      left: 37%;
     }
 
     .boxed-widget {
-      left: 37%;
+      left: 31%;
     }
   }
 
   @media screen and (max-width: 768px) { 
+    #titlebar .container {
+      width: 100%;
+    }
+
+    .background-img {
+      height: 510px;
+    }
+
     .mask {
       top: -12%;
-      left: 36%;
+      left: 33%;
     }
     .company_profile {
-      left: 37%;
+      left: 34%;
     }
 
     .company_profile .user-profile-avatar {
@@ -953,8 +974,282 @@ export default {
     }
 
     .boxed-widget {
-      left: 29%;
+      left: 25%;
       top: 160px;
     }
   }
+
+  @media screen and (max-width: 687px) {
+
+    .background-img {
+      height: 458px;
+    }
+
+    .mask {
+      top: -36%;
+      left: 31%;
+    }
+
+    .company_profile {
+      left: 30%;
+      top: 10%;
+    }
+
+    .company_profile .user-profile-avatar {
+      left: 38%;
+    }
+
+    .company_profile .user-profile-name h2 {
+      font-size: 21px;
+    }
+
+    .boxed-widget {
+      left: 21%;
+      top: 110px;
+    }
+
+    .listing-details-sidebar li i, .listing-details-sidebar li a, .listing-details-sidebar li a i {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+
+    .background-img {
+      height: 414px;
+    }
+
+    .mask {
+      top: -44%;
+      left: 28%;
+      height: 330px;
+      width: 45%;
+    }
+
+    .company_profile {
+      left: 30%;
+      top: -25%;
+      width: 42%;
+    }
+
+    .company_profile .user-profile-avatar {
+      left: 32%;
+    }
+
+    #titlebar .user-profile-name h2 {
+      font-size: 21px;
+    }
+
+    .boxed-widget {
+      left: 17%;
+      top: 65px;
+    }
+  }
+
+  @media screen and (max-width: 560px) {
+
+    #titlebar.gradient {
+      margin: 0px !important;
+      padding: 0px !important;
+    }
+
+    .background-img {
+      height: 406px;
+    }
+
+    .mask {
+      top: -43%;
+      left: 28%;
+      /* height: 330px;
+      width: 45%; */
+    }
+
+    .company_profile {
+      left: 25%;
+      top: -19%;
+    }
+
+    .company_profile .user-profile-avatar {
+      left: 42%;
+    }
+
+    .boxed-widget {
+      left: 14%;
+      top: 78px;
+    }
+  }
+
+  @media screen and (max-width: 530px) {
+
+    .background-img {
+      height: 390px;
+    }
+
+    .mask {
+      top: -51%;
+      left: 25%;
+      height: 285px;
+      width: 50%;
+    }
+
+    .company_profile {
+      left: 25%;
+      top: -40%;
+      width: 50%;
+    }
+
+    .company_profile .user-profile-avatar {
+      left: 38%;
+      top: -3%;
+      max-width: 70px !important;
+    }
+
+    .boxed-widget {
+      left: 11%;
+      top: 78px;
+      margin-top: 0px;
+    }
+
+    .boxed-widget .listing-details-sidebar.social-profiles{
+      margin: 0px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+
+    .background-img {
+      height: 390px;
+    }
+
+    .mask {
+      top: -43%;
+      left: 24%;
+      height: 285px;
+      width: 55%;
+    }
+
+    .company_profile {
+      left: 23%;
+      top: -30%;
+    }
+
+    .company_profile .user-profile-avatar {
+      left: 42%;
+    }
+
+    .boxed-widget {
+      left: 8%;
+      top: 90px;
+      margin-top: 0px;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+
+    /* .background-img {
+      height: 390px;
+      width: 120%;
+    } */
+
+    .mask {
+      top: -87%;
+      left: 24%;
+    }
+
+    .company_profile {
+      left: 23%;
+      top: -75%;
+    }
+
+    #titlebar .user-profile-name h2 {
+      font-size: 19px;
+    }
+
+    .boxed-widget {
+      top: 36px;
+      left: 6%;
+    }
+  }
+
+  @media screen and (max-width: 414px) {
+
+    /* .background-img {
+      height: 390px;
+      width: 120%;
+    } */
+
+    .mask {
+      top: -88%;
+      left: 24%;
+      width: 60%;
+      height: 260px;
+    }
+
+    .company_profile {
+      left: 25%;
+      top: -80%;
+    }
+
+    .company_profile .user-profile-avatar {
+      left: 40%;
+    }
+
+    .company_profile .user-profile-name h2 {
+      font-size: 20px;
+    }
+
+    .boxed-widget {
+      top: 14px;
+      left: 6%;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+
+    .background-img {
+      height: 300px;
+      width: 100%;
+      /*overflow: hidden;
+       object-fit: cover;
+      object-position: center; */
+      
+    }
+
+    .mask {
+      top: -76%;
+      left: 24%;
+      width: 60%;
+      height: 240px;
+    }
+
+    .company_profile {
+      left: 24%;
+      top: -66%;
+      width: 80%;
+    }
+
+    .company_profile .user-profile-avatar {
+      left: 26%;
+    }
+
+    .company_profile .user-profile-avatar img {
+      width: 85%;
+    }
+
+    .company_profile .user-profile-name {
+      font-size: 18px;
+      margin-top: -30px;
+    }
+
+    .company_profile .user-profile-name h2 {
+      font-size: 18px;
+      margin-top: -32px;
+    }
+
+    .boxed-widget {
+      top: 10px;
+      left: 2%;
+    }
+  }
+
 </style>
