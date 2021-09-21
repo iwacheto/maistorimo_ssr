@@ -315,6 +315,11 @@ export default {
             margin: 11px 70px 21px 0px;
         }
 
+        .mega-menu.mobile-styles.three-columns div.mega-menu-section li {
+            margin: 0px !important;
+            border: unset !important;
+        }
+
         #navigation ul li a {
             font-size: 18px;
         }
@@ -401,6 +406,11 @@ export default {
             width: 150px;
             font-size: 10px;
             height: 50px;
+        }
+
+        .sidebar .widged .tags_heading span.show_tags {
+            right: 5px;
+            top: 14px;
         }
     }
 

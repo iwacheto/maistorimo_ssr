@@ -263,7 +263,9 @@
                                 <div class="listing-item" @click="window.scrollTo(0, 0)">
                                     <img :src="project.project_galleries[0].url" alt />
 
-                                    <div class="listing-badge now-open">Верифициран</div>
+                                    <div class="listing-badge now-open">
+                                        <img class="verificated-img" src="/images/very.png" alt="verificated" >
+                                    </div>
 
                                     <div class="listing-item-content">
                                         <h3>
@@ -660,6 +662,11 @@ export default {
         min-height: 57px;
         max-width: 289px;
         padding: 18px 18px;
+        position: relative;
+    }
+
+    .tags_heading h3 {
+        position: relative;
     }
 
     .tags_heading i {
@@ -671,11 +678,13 @@ export default {
         border: none;
         color: #C4C4C4;
         margin-left: 73px;
+        position: absolute;
+        right: 20px;
     }
 
-    .margin-top-20.tags_heading span.show_tags {
-        margin-left: 112px;
-    }
+    /* .margin-top-20.tags_heading span.show_tags {
+        
+    } */
 
     .checkboxes.one-in-row.margin-bottom-15 {
         margin-left: 25px;
@@ -712,9 +721,13 @@ export default {
     .layout-switcher a.list:hover {
         color: #276955;
     }
-
-    .listing-badge.now-open {
-            background-color: #276955;
+    a.listing-item-container.compact div.listing-item div.listing-badge.now-open {
+            background-color: unset;
+            width: unset;
+            height: unset;
+            transform: rotate(0deg);
+            right: 0px;
+            top: -2px;
     }
 
     .verified-icon {
@@ -726,7 +739,7 @@ export default {
     }
 
     .listing-item-container.compact .listing-item {
-        border-radius: 55px;
+        border-radius: 35px;
         position: relative;
     }
 
@@ -760,6 +773,9 @@ export default {
     }
 
     @media screen and (max-width: 1259px) {
+        .col-lg-9 {
+            margin-top: 25px;
+        }
         .row.margin-bottom-25 {
             display: none;
         } 
@@ -782,6 +798,12 @@ export default {
     @media screen and (max-width: 1118px) { 
         .sidebar h3 {
             font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 1100px) { 
+        .sidebar h3.tags_heading {
+            font-size: 19px;
         }
     }
 
@@ -827,7 +849,16 @@ export default {
 
         .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
             width: 60%;
+            left: 290px;
         }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active .row .listing-item-content {
+           width: 70%;
+        }
+
+        /* .listing-item-content {
+            width: 80%;
+        } */
     }
 
     @media screen and (max-width: 819px) {
@@ -835,12 +866,16 @@ export default {
             transform: translateX(-25px);
         }
 
+        div.fixed {
+            width: 38%;
+        }
+
         .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
-            width: 55%;
+            width: 58%;
         }
     }
 
-    @media screen and (max-width: 767px) { 
+    @media screen and (max-width: 768px) { 
         .sidebar_menu.active_button {
             transform: translateX(3px);
         }
@@ -913,21 +948,103 @@ export default {
         }
     }
 
-    @media screen and (max-width: 680px) {
-        .sidebar_menu {
-            top: 110px;
+    @media screen and (max-width: 720px) { 
+        .sidebar {
+            margin-left: 9%;
         }
 
-        .listing-item-container {
-            width: 93%;
+        .sidebar h3 {
+            font-size: 16px;
+        }
+
+         p.main_cats {
+            font-size: 15px;
+        }
+
+        .sidebar h3.tags_heading {
+            font-size: 17px;
+        }
+
+        div.fixed.active_sidebar {
+            position: static;
+            width: 100% !important;
+        }
+
+        div.fixed.active_sidebar .sidebar {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .listing-item-content {
+            justify-content: unset;
+        }
+
+        div.fixed.active_sidebar .sidebar .widget {
+            width: 289px;
+        }
+
+        div.fixed.active_sidebar .sidebar .tags_heading {
+            width: 289px;
+        }
+
+        .col-lg-9 {
+            width: 88%;
+        }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            left: -10px;
+            width: 75%;
+        }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active .row .listing-item-content {
+            width: 77%;
+        }
+    }
+
+    @media screen and (max-width: 540px) {
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            left: -65px;
+            width: 80%;
+        }
+
+        .col-lg-9 {
+            left: 60px;
         }
     }
 
     @media screen and (max-width: 530px) {
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            left: 0px;
+        }
+
+        .sidebar_menu {
+            top: 85px;
+        }
+    }
+/*
+    @media screen and (max-width: 530px) {
         .sidebar_menu {
             top: 110px;
         }
+
+        .listing-item .listing-item-content {
+            left: 67px;
+        }
     }
+
+    @media screen and (max-width: 375px) {
+
+    }
+
+    @media screen and (max-width: 375px) {
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing {
+            left: 70px;
+        }
+    } */
     
 
 </style>
