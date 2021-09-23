@@ -921,6 +921,10 @@ export default {
             z-index: 11;
         }
 
+        .col-lg-9.col-md-9.col-sm-9 {
+            left: 60px !important;
+        }
+
         div.project_content {
             margin-top: 0px;
         }
@@ -1056,8 +1060,11 @@ export default {
 
     @media screen and (max-width: 360px) {
         .col-lg-9 {
-            left: 50px;
             width: 90%;
+        }
+
+        .col-lg-9.col-md-9.col-sm-9 {
+            left: 50px !important;
         }
 
         div.fixed.active_sidebar .sidebar .widget {
@@ -1076,5 +1083,4 @@ export default {
             width: 95%;
         }
     }
-
 </style>
