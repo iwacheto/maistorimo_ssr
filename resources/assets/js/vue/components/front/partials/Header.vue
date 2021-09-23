@@ -344,6 +344,20 @@ export default {
             border-top: 0px;
             padding: 10px 0px;
         }
+
+        .mmenu-trigger {
+            border-radius: 35px;
+            border: 1px solid #74aea1;
+            background-color: #324E5B;
+        }
+
+        .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+            background-color: #E3C24F;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        
     }
 
     @media screen and (max-width: 560px) { 

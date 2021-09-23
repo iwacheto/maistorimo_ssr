@@ -339,7 +339,17 @@ div.profile_information {
 }
 .mm-menu.mm-offcanvas.mm-opened {
     z-index: 9999;
+    width: 100%; /* TsB */
+    max-width: 100%; /* TsB */
+    top: 78px; /* TsB */
+    height: 193px; /* TsB */
+    background-color: #324E5B; /* TsB */
 }
+
+.mm-panel.mm-hasnavbar .mm-navbar {
+    background-color: #324E5B; /* TsB */
+}
+
 .slick-dotted.slick-slider {
     margin-bottom: 50px;
 }
@@ -347,8 +357,15 @@ html.mm-opened.mm-blocking.mm-background.mm-opening #app {
     -webkit-transform: translate(80%, 0);
     transform: translate(80%, 0);
     -webkit-transform: translate3d(80%, 0, 0);
-    transform: translate3d(80%, 0, 0);
+    transform: translate3d(0%, 0, 0);
 }
+
+.mm-listview>li>a, .mm-listview>li>span {
+    text-align: center;
+}
+
+
+
 /* MEDIA QUERY */
 
 @media screen and (max-width: 1400px) {
@@ -526,6 +543,12 @@ html.mm-opened.mm-blocking.mm-background.mm-opening #app {
     }
 }
 
+@media screen and (max-width: 560px) {
+    .mm-menu.mm-offcanvas.mm-opened {
+        top: 73px; /* TsB */
+    }
+}
+
 @media screen and (max-width: 550px) {
     ul.nav-tabs {
         -webkit-box-orient: vertical;
@@ -583,6 +606,12 @@ html.mm-opened.mm-blocking.mm-background.mm-opening #app {
 @media screen and (max-width: 760px) {
     .main_video {
         display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mm-menu.mm-offcanvas.mm-opened {
+        top: 70px; /* TsB */
     }
 }
 
