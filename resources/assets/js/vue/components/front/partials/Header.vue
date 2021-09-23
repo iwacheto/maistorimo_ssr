@@ -292,6 +292,11 @@ export default {
         padding-top: 13px;
     }
 
+    .mega-menu.mobile-styles.three-columns div.mega-menu-section li {
+        margin: 0px !important;
+        border: unset !important;
+    }
+
     @media screen and (max-width: 1365px) { 
         #logo {
             margin: 11px 160px 21px 0px;
@@ -357,7 +362,7 @@ export default {
     }
 
     @media screen and (max-width: 768px) {
-        
+
     }
 
     @media screen and (max-width: 560px) { 
