@@ -213,7 +213,7 @@ ul li {
     display: none;
 }
 .carousel_link:hover {
-    color: #74aea1 !important;
+    color: #276955 !important;
 }
 p.profile_info {
     max-height: 60px;
@@ -291,7 +291,7 @@ div.user-projects-services li.active a {
 }
 
 .service_link a:hover {
-    color: #74aea1;
+    color: #276955;
     transform: translate(5px, 0);
 }
 
@@ -302,7 +302,17 @@ div.profile_information {
 }
 .mm-menu.mm-offcanvas.mm-opened {
     z-index: 9999;
+    width: 100%; /* TsB */
+    max-width: 100%; /* TsB */
+    top: 78px; /* TsB */
+    height: 193px; /* TsB */
+    background-color: #324E5B; /* TsB */
 }
+
+.mm-panel.mm-hasnavbar .mm-navbar {
+    background-color: #324E5B; /* TsB */
+}
+
 .slick-dotted.slick-slider {
     margin-bottom: 50px;
 }
@@ -311,8 +321,15 @@ html.mm-opened.mm-blocking.mm-background.mm-opening #app {
     -ms-transform: translate(80%, 0);
     transform: translate(80%, 0);
     -webkit-transform: translate3d(80%, 0, 0);
-    transform: translate3d(80%, 0, 0);
+    transform: translate3d(0%, 0, 0);
 }
+
+.mm-listview>li>a, .mm-listview>li>span {
+    text-align: center;
+}
+
+
+
 /* MEDIA QUERY */
 
 @media screen and (max-width: 1400px) {
@@ -465,6 +482,12 @@ html.mm-opened.mm-blocking.mm-background.mm-opening #app {
     }
 }
 
+@media screen and (max-width: 560px) {
+    .mm-menu.mm-offcanvas.mm-opened {
+        top: 73px; /* TsB */
+    }
+}
+
 @media screen and (max-width: 550px) {
     ul.nav-tabs {
         flex-direction: column;
@@ -518,6 +541,12 @@ html.mm-opened.mm-blocking.mm-background.mm-opening #app {
 @media screen and (max-width: 760px) {
     .main_video {
         display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mm-menu.mm-offcanvas.mm-opened {
+        top: 70px; /* TsB */
     }
 }
 

@@ -75,6 +75,7 @@ Route::prefix('vendor')->middleware('auth')->group(function () {
     });
     Route::prefix('profile')->group(function () {
         Route::post('/uploadImage', 'Vendor\UploadController@uploadProfilePhoto');
+        Route::post('/uploadMainImage', 'Vendor\UploadController@uploadProfileMainPhoto');
         Route::post('/save', 'Vendor\ProfileController@saveProfile');
         Route::get('/get', 'Vendor\ProfileController@getProfile');
         Route::post('/changePassword', 'Vendor\ProfileController@changePassword');

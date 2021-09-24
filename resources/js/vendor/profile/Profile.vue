@@ -10,7 +10,7 @@
 
                         <a
                             target="_blank"
-                            :href="'/profile/'+user.id"
+                            :href="'/profile/' + user.id"
                             class="button preview project_link"
                         >
                             Виж своя Профил
@@ -37,6 +37,49 @@
                     <div class="dashboard-list-box margin-top-0">
                         <h4 class="gray">Детайли за профила</h4>
                         <div class="dashboard-list-box-static">
+                            <div>
+                                <label>Основна снимка</label>
+                                <img
+                                    v-if="user.vendor_details.main_image != ''"
+                                    :src="user.vendor_details.main_image"
+                                />
+                                <image-uploader
+                                    :preview="true"
+                                    :className="['fileinput', { 'fileinput--loaded': hasMainImage }]"
+                                    capture="environment"
+                                    :debug="2"
+                                    :id="'fileInput2'"
+                                    refs="mainImage"
+                                    doNotResize="gif"
+                                    :autoRotate="true"
+                                    outputFormat="verbose"
+                                    @input="uploadMainImage"
+                                >
+                                    <label for="fileInput2" slot="upload-label">
+                                        <figure>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="32"
+                                                height="32"
+                                                viewBox="0 0 32 32"
+                                            >
+                                                <path
+                                                    class="path1"
+                                                    d="M9.5 19c0 3.59 2.91 6.5 6.5 6.5s6.5-2.91 6.5-6.5-2.91-6.5-6.5-6.5-6.5 2.91-6.5 6.5zM30 8h-7c-0.5-2-1-4-3-4h-8c-2 0-2.5 2-3 4h-7c-1.1 0-2 0.9-2 2v18c0 1.1 0.9 2 2 2h28c1.1 0 2-0.9 2-2v-18c0-1.1-0.9-2-2-2zM16 27.875c-4.902 0-8.875-3.973-8.875-8.875s3.973-8.875 8.875-8.875c4.902 0 8.875 3.973 8.875 8.875s-3.973 8.875-8.875 8.875zM30 14h-4v-2h4v2z"
+                                                />
+                                            </svg>
+                                        </figure>
+                                        <span class="upload-caption">
+                                            {{
+                                                user.vendor_details.main_image
+                                                    ? 'Replace'
+                                                    : 'Click to upload'
+                                            }}
+                                        </span>
+                                    </label>
+                                </image-uploader>
+                            </div>
+                            <label>Профилна снимкa</label>
                             <img
                                 v-if="user.vendor_details.profile_image != ''"
                                 :src="user.vendor_details.profile_image"
@@ -45,7 +88,9 @@
                                 :preview="true"
                                 :className="['fileinput', { 'fileinput--loaded': hasImage }]"
                                 capture="environment"
-                                :debug="1"
+                                :debug="2"
+                                :id="'fileInput'"
+                                refs="profile"
                                 doNotResize="gif"
                                 :autoRotate="true"
                                 outputFormat="verbose"
@@ -66,9 +111,7 @@
                                         </svg>
                                     </figure>
                                     <span class="upload-caption">
-                                        {{
-                                        hasImage ? "Replace" : "Click to upload"
-                                        }}
+                                        {{ hasImage ? 'Replace' : 'Click to upload' }}
                                     </span>
                                 </label>
                             </image-uploader>
@@ -76,10 +119,18 @@
                             <!-- Details -->
                             <div class="my-profile">
                                 <label>Компания</label>
-                                <input value v-model="user.vendor_details.company_name" type="text" />
+                                <input
+                                    value
+                                    v-model="user.vendor_details.company_name"
+                                    type="text"
+                                />
 
                                 <label>Телефон</label>
-                                <input value v-model="user.vendor_details.phone_number" type="text" />
+                                <input
+                                    value
+                                    v-model="user.vendor_details.phone_number"
+                                    type="text"
+                                />
 
                                 <label>Поща</label>
                                 <input
@@ -104,7 +155,9 @@
                                         :key="i"
                                         @click="setResult(result)"
                                         class="autocomplete-result profile_auto"
-                                    >{{ result.city }}</li>
+                                    >
+                                        {{ result.city }}
+                                    </li>
                                 </ul>
                                 <label>Лице за контакти</label>
                                 <input
@@ -112,9 +165,7 @@
                                     v-model="user.vendor_details.contact_person"
                                     type="text"
                                 />
-                                <label>
-                                    <i class="fa fa-facebook-square"></i> Facebook
-                                </label>
+                                <label> <i class="fa fa-facebook-square"></i> Facebook </label>
                                 <input
                                     placeholder="https://www.facebook.com/"
                                     v-model="user.vendor_details.facebook_link"
@@ -122,10 +173,9 @@
                                 />
                             </div>
 
-                            <button
-                                class="button margin-top-15"
-                                @click="saveProfile"
-                            >Запази промените</button>
+                            <button class="button margin-top-15" @click="saveProfile">
+                                Запази промените
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -158,7 +208,8 @@
                                 <span
                                     v-show="errors.has('password_confirmation')"
                                     class="help is-danger"
-                                >{{ errors.first('password_confirmation') }}</span>
+                                    >{{ errors.first('password_confirmation') }}</span
+                                >
 
                                 <button class="button margin-top-15">Промени паролата</button>
                             </div>
@@ -195,6 +246,8 @@ export default {
             items: [],
             city: '',
             hasImage: false,
+            hasMainImage: false,
+            mainImage: null,
             image: null,
             new_password: '',
             new_password_repeat: '',
@@ -211,14 +264,24 @@ export default {
     },
     watch: {
         user() {
-          //  console.log(this.user.vendor_details.profile_image+'Image');
-      },
+            //  console.log(this.user.vendor_details.profile_image+'Image');
+        },
     },
     methods: {
-        uploadImage: function(output) {
+        uploadMainImage: function (output) {
+            console.log(output);
+            this.hasMainImage = true;
+            this.mainImage = output;
+            let self = this;
+            window.axios.post('/vendor/profile/uploadMainImage', output).then(({ data }) => {
+                self.user.vendor_details.main_image = data.url;
+            });
+        },
+        uploadImage: function (output) {
             this.hasImage = true;
             this.image = output;
             let self = this;
+            console.log('uploadProfilePhoto');
             window.axios.post('/vendor/profile/uploadImage', output).then(({ data }) => {
                 self.user.vendor_details.profile_image = data.url;
             });
@@ -253,7 +316,7 @@ export default {
         },
         filterResults() {
             this.results = this.items.filter(
-                item => item.city.toLowerCase().indexOf(this.city.toLowerCase()) > -1
+                (item) => item.city.toLowerCase().indexOf(this.city.toLowerCase()) > -1
             );
         },
         setResult(result) {
@@ -311,6 +374,7 @@ input#autocomplete-input {
     vertical-align: middle;
 }
 
+#fileInput2,
 #fileInput {
     display: none;
 }

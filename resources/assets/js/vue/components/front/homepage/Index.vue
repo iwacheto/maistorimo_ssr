@@ -215,6 +215,11 @@ export default {
 </script>
 
 <style scoped>
+
+    #backtotop a {
+        background-color: #276955 !important;
+    }
+
     .listing-badge.now-open {
         background-color: #276955;
     }
