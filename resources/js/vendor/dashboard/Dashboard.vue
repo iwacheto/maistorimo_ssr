@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header />
+        <!-- <Header /> --> <!-- TsB -->
         <div class="clearfix"></div>
         <!-- Titlebar -->
         <div id="titlebar">
