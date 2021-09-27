@@ -921,10 +921,6 @@ export default {
             z-index: 11;
         }
 
-        .col-lg-9.col-md-9.col-sm-9 {
-            left: 60px !important;
-        }
-
         div.project_content {
             margin-top: 0px;
         }

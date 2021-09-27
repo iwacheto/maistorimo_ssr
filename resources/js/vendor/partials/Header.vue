@@ -195,6 +195,10 @@ export default {
   }
 
   @media screen and (max-width: 990px) { 
+    #header {
+      box-shadow: unset;
+    }
+
     .header-desktop {
       display: none;
     }
@@ -205,13 +209,53 @@ export default {
     }
 
     #header .container {
-      justify-content: unset;
+      justify-content: space-between;
+      padding: 0px;
+      background-color: #F6F6F6;
+      z-index: 1000;
     }
 
     .left-side {
-      left: 25px;
-      top: -13px;
-      position: absolute;
+      padding-bottom: 15px;
+    }
+
+    .right-side {
+      margin-left: 0px;
+      align-items: left;
+    }
+
+    .dashboard #logo {
+      position: unset;
+      background-color: #F6F6F6;
+    }
+
+    .adding-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a.button.border {
+      margin-top: 20px;
+      font-size: 17px;
+    }
+
+    a.button.border a {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a.button.border a i {
+      margin-left: 20px;
+      zoom: 1.5;
+      padding: 0px;
+    }
+
+    a.button.border:nth-child(2) {
+      margin-bottom: 20px;
     }
   }
   /* @media screen and (max-width: 990px) { 

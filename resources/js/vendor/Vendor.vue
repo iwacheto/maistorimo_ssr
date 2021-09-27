@@ -25,4 +25,7 @@ export default {
 </script>
 
 <style scoped>
+    .dashboard-content {
+        padding: 0px;
+    }
 </style>

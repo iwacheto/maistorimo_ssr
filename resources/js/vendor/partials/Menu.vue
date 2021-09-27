@@ -154,3 +154,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  @media screen and (max-width: 990px) { 
+    .dashboard-responsive-nav-trigger.test_trigger {
+      display: none;
+    }
+  }
+</style>
