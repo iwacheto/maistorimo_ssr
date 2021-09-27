@@ -194,7 +194,6 @@ export default {
             padding: 38px 0px 30px 0px;
             border-top: 1px solid #CACACA;
         }
-
         
     }
 </style>
