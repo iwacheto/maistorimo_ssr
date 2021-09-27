@@ -250,7 +250,13 @@ export default {
 
     .right-side {
         margin-left: 0px;
-        margin-top: 29px;
+        margin-top: 11px;
+    }
+
+    .right-side .header-widget a.button.border.with-icon {
+        width: 220px;
+        height: 50px;
+        padding-top: 11px;
     }
 
     #header.cloned #logo img {
@@ -261,7 +267,7 @@ export default {
     }
 
     #logo {
-        margin: 11px 197px 21px 0px;
+        margin: 0px 197px 0px 0px;
     }
 
     #navigation.style-1 {
@@ -269,14 +275,25 @@ export default {
     }
 
     #navigation.style-1 ul li {
-        margin: 40px 15px 15px 0px;
+        margin: 23px 15px 15px 0px;
         border: 1px solid #C4C4C4;
         border-radius: 17.5px;
     }
 
     #navigation ul li a {
         color: #fff;
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    #navigation ul li.mega-menu-headline a {
+        color: #fff;
+        font-size: 17px;
+    }
+
+    .mega-menu.mobile-styles.three-columns div.mega-menu-section li:nth-child(2) a,
+    .mega-menu.mobile-styles.three-columns div.mega-menu-section li:nth-child(3) a,
+    .mega-menu.mobile-styles.three-columns div.mega-menu-section li:nth-child(4) a {
+        font-size: 14px !important;
     }
 
     .header-widget {
@@ -299,25 +316,25 @@ export default {
 
     @media screen and (max-width: 1365px) { 
         #logo {
-            margin: 11px 160px 21px 0px;
+            margin: 0px 160px 0px 0px;
         }
     }
 
     @media screen and (max-width: 1300px) { 
         #logo {
-            margin: 11px 120px 21px 0px;
+            margin: 0px 120px 0px 0px;
         }
     }
 
     @media screen and (max-width: 1240px) { 
         #logo {
-            margin: 11px 90px 21px 0px;
+            margin: 0px 90px 0px 0px;
         }
     }
 
     @media screen and (max-width: 1170px) {
         #logo {
-            margin: 11px 70px 21px 0px;
+            margin: 0px 70px 0px 0px;
         }
 
         .mega-menu.mobile-styles.three-columns div.mega-menu-section li {
