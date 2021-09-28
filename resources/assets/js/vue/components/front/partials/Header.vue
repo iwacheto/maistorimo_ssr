@@ -257,6 +257,7 @@ export default {
         width: 220px;
         height: 50px;
         padding-top: 11px;
+        font-size: 16px;
     }
 
     #header.cloned #logo img {

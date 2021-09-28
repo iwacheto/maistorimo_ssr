@@ -254,7 +254,7 @@
                         <div
                             v-for="project in projects"
                             :key="project.id"
-                            :class="[className ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-12']"
+                            :class="[className ? 'col-lg-3 col-md-6' : 'col-lg-6 col-md-12']"
                         >
                             <router-link
                                 :to="'/project/details/' + project.id"
@@ -616,7 +616,15 @@ export default {
     }
 
     .col-lg-6 {
+        width: 50%;
+    }
+
+    .col-lg-3 {
         width: 33%;
+    }
+
+    .col-lg-6.col-md-12 a.listing-item-container.compact div.listing-item div.listing-item-content {
+        left: 120px;
     }
 
     .widget img {
@@ -775,7 +783,7 @@ export default {
 
     @media screen and (max-width: 1680px) { 
         .listing-item-content {
-            width: 85%;
+            width: 82%;
             padding: 0px 20px;
         }
 
@@ -789,6 +797,7 @@ export default {
         .col-lg-9 {
             margin-top: 25px;
         }
+
         .row.margin-bottom-25 {
             display: none;
         } 
@@ -870,6 +879,14 @@ export default {
     @media screen and (max-width: 990px) { 
         .col-lg-6 {
             width: 100%;
+        }
+
+        .col-lg-3 {
+            width: 95%;
+        }
+
+        .col-lg-6.col-md-12 a.listing-item-container.compact div.listing-item div.listing-item-content {
+            left: 170px;
         }
 
         .listing-item-content {
@@ -1059,6 +1076,10 @@ export default {
 
         .col-lg-9 {
             left: 60px;
+        }
+
+        .col-lg-6.col-md-12 a.listing-item-container.compact div.listing-item div.listing-item-content {
+            left: 110px;
         }
     }
 
