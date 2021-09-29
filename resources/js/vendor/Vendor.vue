@@ -27,5 +27,6 @@ export default {
 <style scoped>
     .dashboard-content {
         padding: 0px;
+        margin-top: 0px; /* TsB */
     }
 </style>

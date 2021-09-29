@@ -1,10 +1,24 @@
 <template>
     <div>
-        
+        <div class="adding-buttons">
+          <a class="button border with-icon">
+            <router-link to="/add-listing">
+              Добави проект
+              <i class="sl sl-icon-plus"></i>
+            </router-link>
+          </a>
+
+          <a class="button border with-icon">
+            <router-link to="/service/add-service">
+              Добави услуга
+              <i class="sl sl-icon-plus"></i>
+            </router-link>
+          </a>
+        </div>
         <!-- <Header /> --> <!-- TsB -->
         <!-- <div class="clearfix"></div> --> <!-- TsB -->
         <!-- Titlebar -->
-        <div id="titlebar">
+        <div id="titlebar" :class="{active: isActive}">
             <div class="row">
                 <div class="col-md-12">
                     <h2>Здравей, {{ user ? user.name : '' }}</h2>
@@ -54,26 +68,45 @@
             </div>
 
             <div class="mobile-green-menu">
-                <div class="mobile-menu-item">
-                    <img src="/images/projects.svg" alt="projects">
-                    <p>Проекти</p>
-                </div>
+                <router-link :to="'/projects'">
+                    <div class="mobile-menu-item">
+                        <img src="/images/projects.svg" alt="projects">
+                        <p>Проекти</p>
+                    </div>
+                </router-link>
 
-                <div class="mobile-menu-item">
+                <div class="mobile-menu-item" @click="toggleAnalitycsMenu">
                     <img src="/images/analysis.svg" alt="analysis">
                     <p>Анализи</p>
                 </div>
-                    
-                <div class="mobile-menu-item">
-                    <img src="/images/services.svg" alt="services">
-                    <p>Услуги</p>
-                </div>
+                
+                <router-link :to="'/service'">
+                    <div class="mobile-menu-item">
+                        <img src="/images/services.svg" alt="services">
+                        <p>Услуги</p>
+                    </div>
+                </router-link>
+            </div>
+
+            <div class="analitycs-menu" :class="{active: isActive}">
+                <ul>
+                    <li>
+                        <router-link :to="'/projects_analitycs'">Анализи на проекти</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="'/services_analitycs'">Анализи на услуги</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="'/contacts_analitycs'">Анализи на контакти</router-link>
+                    </li>
+                </ul>
             </div>
         </div>
 
         <div class="mobile-admin-footer">
+            <div class="admin-footer-line"></div>
             <div class="admin-footer">
-                <p>© 2019 Maistorimo All Rights Reserved.</p>
+                <p>© 2021 Maistorimo All Rights Reserved.</p>
             </div>
         </div>
     </div>
@@ -93,6 +126,7 @@ export default {
             user: null,
             projectsCount: null,
             servicesCount: null,
+            isActive: false,
         };
     },
     mounted() {
@@ -122,6 +156,9 @@ export default {
             this.message = message;
             this.snackbar = true;
         },
+        toggleAnalitycsMenu() {
+            this.isActive = !this.isActive;
+        },
     },
     components: {
         Header,
@@ -130,15 +167,49 @@ export default {
 </script>
 
 <style scoped>
-
+    
     .mobile-green-menu {
         display: none;
     }
 
+    .mobile-admin-footer {
+        display: none;
+    }
+
+    .analitycs-menu {
+        display: none;
+    }
+
     @media screen and (max-width: 990px) {
-        .row {
-            margin-left: 0px;
-            margin-right: 0px;
+        
+        .adding-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a.button.border {
+            margin-top: 20px;
+            font-size: 17px;
+            border: 1px solid #276955;
+        }
+
+        a.button.border a {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a.button.border a i {
+            margin-left: 20px;
+            zoom: 1.5;
+            padding: 0px;
+        }
+
+        a.button.border:nth-child(2) {
+            margin-bottom: 20px;
         }
 
         #titlebar {
@@ -148,12 +219,21 @@ export default {
             margin-bottom: 0px;
         }
 
-        .col-md-12 {
-            text-align: center;
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
         }
 
         .row:nth-child(2) {
             display: none;
+        }
+
+        .col-md-12 {
+            text-align: center;
+        }
+
+        .col-md-12 h2 {
+            color: #276955;
         }
 
         .mobile-green-menu {
@@ -189,11 +269,59 @@ export default {
             align-items: center;
         }
 
+        .admin-footer-line {
+            display: flex;
+            border-top: 1px solid #CACACA;
+            height: 2px;
+            width: 88%;
+        }
+
         .admin-footer {
             margin: 0px 33px;
             padding: 38px 0px 30px 0px;
-            border-top: 1px solid #CACACA;
+        }
+
+        .analitycs-menu {
+            display: none;
+        }
+
+        .analitycs-menu.active {
+            display: flex;
+            
+        }
+
+        .analitycs-menu {
+            padding: 0px auto;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .analitycs-menu ul {
+            background-color: #fff;
+            list-style: none;
+            width: 255px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 18px 0px;
+            box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 12%);
+        }
+
+        .analitycs-menu ul li:nth-child(2) {
+            margin: 23px 0px 23px -15px;
+        }
+
+        #titlebar.active {
+            padding-bottom: 77px;
         }
         
+    }
+
+    @media screen and (max-width: 414px) {
+        #titlebar .col-md-12 h2 {
+            font-size: 20px;
+        }
     }
 </style>

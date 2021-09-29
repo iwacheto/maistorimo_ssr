@@ -1,6 +1,8 @@
 <template>
   <div>
     <header id="header-container" class="fixed fullwidth dashboard">
+      
+      
       <!-- Header Desktop -->
       <div id="header" class="not-sticky header-desktop">
         <div class="container">
@@ -71,6 +73,11 @@
           <!-- Right Side Content / End -->
         </div>
       </div>
+      <!-- End Header Desktop -->
+
+
+
+
 
 
       <!-- Header Mobile -->
@@ -92,22 +99,22 @@
                 <ul>
                   <li>
                     <router-link :to="'/profile'">
-                      <i class="sl sl-icon-settings"></i> Профил
+                      <img src="images/profile.svg" alt="profile"> Профил
                     </router-link>
                   </li>
                   <li>
                     <router-link :to="'/website'">
-                      <i class="sl sl-icon-settings"></i> Уебсайт
+                      <img src="images/settings.svg" alt="settings"> Настройки на сайта
                     </router-link>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a target="_blank" :href="'//' + user.name + '.maistorimo.bg'">
                       <i class="sl sl-icon-globe"></i> Линк
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a @click="logout">
-                      <i class="sl sl-icon-power"></i> Излизане
+                      <img src="images/log-out.svg" alt="log out"> Излизане
                     </a>
                   </li>
                 </ul>
@@ -128,25 +135,11 @@
           <!-- Right Side Content / End -->
 
         </div>
-
-        <div class="adding-buttons">
-          <a class="button border with-icon">
-            <router-link to="/add-listing">
-              Добави проект
-              <i class="sl sl-icon-plus"></i>
-            </router-link>
-          </a>
-
-          <a class="button border with-icon">
-            <router-link to="/service/add-service">
-              Добави услуга
-              <i class="sl sl-icon-plus"></i>
-            </router-link>
-          </a>
-        </div>
       </div>
+      <!-- End Header Mobile -->
+
       
-      <!-- Header / End -->
+      <!-- Headers / End -->
     </header>
   </div>
 </template>
@@ -213,6 +206,7 @@ export default {
       padding: 0px;
       background-color: #F6F6F6;
       z-index: 1000;
+      flex-direction: row;
     }
 
     .left-side {
@@ -229,33 +223,12 @@ export default {
       background-color: #F6F6F6;
     }
 
-    .adding-buttons {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .user-menu ul {
+        width: 376px;
     }
 
-    a.button.border {
-      margin-top: 20px;
-      font-size: 17px;
-    }
-
-    a.button.border a {
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      align-items: center;
-    }
-
-    a.button.border a i {
-      margin-left: 20px;
-      zoom: 1.5;
-      padding: 0px;
-    }
-
-    a.button.border:nth-child(2) {
-      margin-bottom: 20px;
+    .user-menu ul img {
+        margin-right: 25px;
     }
   }
   /* @media screen and (max-width: 990px) { 
@@ -282,19 +255,46 @@ export default {
       display: flex;
       flex-direction: column;
     }
-  }
-  @media screen and (max-width: 414px) {
-    #logo-mobile {
-      position: absolute;
-      right: 0px;
-    }
-    .header-widget {
-      left: 4px;
-      padding-top: 11px;
-      padding-bottom: 28px;
-    }
-    .logo-mobile img {
-      max-width: 78.5%;
-    }
   } */
+
+  @media screen and (max-width: 570px) {
+    .user-menu ul {
+        width: 270px;
+    }
+  }
+
+  @media screen and (max-width: 414px) {
+    #header .container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .user-menu.active {
+      width: 323%;
+    }
+    .user-menu ul {
+        left: -65px;
+        width: 90%;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .user-menu ul {
+        width: 87%;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .left-side {
+      width: 59%;
+    }
+
+    .user-menu.active {
+      width: 323%;
+    }
+    .user-menu ul {
+        left: -28px;
+        width: 48.5%;
+    }
+  }
 </style>
