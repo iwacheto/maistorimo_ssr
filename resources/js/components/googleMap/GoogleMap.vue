@@ -2,7 +2,7 @@
 	<div>
 		<div v-if="!view">
 			<h2>Адрес</h2>
-            <span>* Посочете точен адрес, за да може картата на google да ви локализира. Натиснете бутона ‘’ Добави’’ след като изберете адреса си.</span>
+            <p>* Посочете точен адрес, за да може картата на google да ви локализира. Натиснете бутона ‘’ Добави’’ след като изберете адреса си.</p>
 			<label>
 				<gmap-autocomplete
 						:value="full_address"
@@ -11,14 +11,12 @@
 
 				<button @click="addMarker">Добави</button>
 			</label>
-			<br/>
 
 		</div>
-		<br>
 		<gmap-map
 				:center="center"
 				:zoom="12"
-				style="width:100%;  height: 400px;"
+				style="width:90%; height: 400px; margin: 37px auto 0px auto;"
 		>
 			<gmap-marker
 					:position="marker.position"
@@ -105,3 +103,57 @@
 		}
 	};
 </script>
+
+<style scoped>
+
+	div {
+		margin-top: 20px;
+		border: unset;
+        box-sizing: unset;
+        box-shadow: unset;
+        border-radius: unset;
+	}
+
+	h2 {
+		font-weight: bold;
+		font-size: 17px;
+		line-height: 20px;
+		color: #276955;
+		margin-left: 38px;
+		margin-bottom: 24px;
+	}
+
+	p {
+		color: #565656;
+        margin-left: 42px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        width: 79%;
+	}
+
+	input {
+		background: #FFFFFF;
+		border: 0.75px solid #6BBF3F;
+		box-sizing: border-box;
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 10px;
+		width: 85%;
+		margin: 0px auto 28px auto;
+	}
+
+	button {
+		background: #FFFFFF;
+		border: 0.75px solid #939393;
+		box-sizing: border-box;
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 30.5px;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 17px;
+		line-height: 20px;
+		color: #000000;
+		padding: 9px 36px;
+		margin-left: 23px;
+	}
+</style>

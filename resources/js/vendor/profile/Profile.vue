@@ -31,6 +31,8 @@
                 </div>
             </div>
 
+            <MobileGreenMenuSmall/>
+    
             <div class="row">
                 <!-- Profile -->
                 <div class="col-lg-6 col-md-12">
@@ -230,6 +232,7 @@
 
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 
 export default {
     data() {
@@ -255,6 +258,9 @@ export default {
             results: '',
             user: laravel.user,
         };
+    },
+    components: {
+        MobileGreenMenuSmall,
     },
     mounted() {
         this.hasImage = this.user.vendor_details.profile_image != '' ? true : false;
@@ -336,6 +342,29 @@ export default {
 
 <style >
 
+@media screen and (max-width: 990px) {
+    #titlebar {
+        display: none;
+    }
+
+    .row {
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        background-color: #F7F7F7;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .dashboard-list-box {
+        box-shadow: none;
+    }
+
+    h4.gray {
+        text-align: center;
+        color: #276955;
+        font-size: 20px;
+    }
+}
 .autocomplete {
     position: relative;
     width: 130px;
@@ -397,6 +426,12 @@ a {
 .my-8 {
     margin-top: 4rem;
     margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 990px) {
+    #titlebar {
+        display: none;
+    }
 }
 </style>
 
