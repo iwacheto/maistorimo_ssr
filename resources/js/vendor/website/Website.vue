@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- Titlebar -->
+        <!-- Titlebar section is only for descktop -->
         <div id="titlebar">
             <div class="row">
                 <div class="col-md-12">
@@ -1094,7 +1094,8 @@ div.tab-pan.active {
         font-size: 14px;
         color: #fff;
         line-height: 16px;
-        margin: 22px 116px 0px 116px;
+        margin: 22px auto 0px auto;
+        width: 155px;
     }
 
     div.tab-pan ckeditor {

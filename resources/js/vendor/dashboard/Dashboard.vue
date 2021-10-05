@@ -255,6 +255,7 @@ export default {
             border-radius: 15px;
             margin: 6.5px;
             color: #fff;
+            cursor: pointer;
         }
 
         .mobile-menu-item:nth-child(3) img { 
