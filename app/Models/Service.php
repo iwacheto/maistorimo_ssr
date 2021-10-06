@@ -5,6 +5,7 @@ namespace App\Models;
 use App\ObjectAnalytic;
 use App\PhoneNumberAnalytic;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -62,6 +63,11 @@ class Service extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function cities(): BelongsToMany
+    {
+        return $this->belongsToMany(City::class);
     }
 
     public function scopeCity($query, $value) {

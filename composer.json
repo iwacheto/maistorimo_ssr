@@ -7,15 +7,16 @@
     "require": {
         "php": ">=7.0.0",
         "artesaos/seotools": "^0.16.0",
+        "cloudinary/cloudinary_php": "^2.3",
+        "jrm2k6/cloudder": "^0.6.0",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",
-        "jrm2k6/cloudder": "^0.6.0",
         "kitetail/zttp": "^0.6.0",
+        "laracasts/utilities": "^3.2",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "~1.0",
         "spatie/laravel-cookie-consent": "^2.10",
         "spatie/laravel-server-side-rendering": "^0.2",
-        "laracasts/utilities": "^3.0",
         "spatie/schema-org": "^2.8"
     },
     "require-dev": {

@@ -292,6 +292,7 @@ export default {
       this.service = "";
     },
     deleteTag(tag) {
+      console.log(tag);
       this.project.tags[tag.index + this.deletedTagsCount]["deleted"] = 1;
       this.tags.splice(tag.index, 1);
       this.deletedTagsCount++;
@@ -337,6 +338,7 @@ export default {
             id: this.project.tags[i].tag.id
           });
         }
+       
         this.project.tags = tags;
         this.tags = createTags(tags, [{ type: "length", rule: /[0-9]/ }]);
       } catch (error) {

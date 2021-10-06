@@ -1,7 +1,7 @@
 <template>
   <div v-if="profile.vendor_details">
     <div id="titlebar" class="gradient">
-      <div class="background-img"></div>
+      <div class="background-img" v-bind:style="[profile.vendor_details.main_image ? { backgroundImage: 'url(' + profile.vendor_details.main_image + ') !important' } : {}]"></div>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -106,7 +106,7 @@
                 </a>-->
               </div>
               <!-- Contact / End-->
-              
+
             </div>
           </div>
         </div>
@@ -206,7 +206,7 @@
                   >Услугите на {{ profile.vendor_details.company_name }}
                 </h3>
                 <div class="row" v-if="profile.services.length>=1">
-                  
+
                   <div
                     class="col-md-4"
                     v-for="(service, index) in profile.services"
@@ -360,7 +360,7 @@ export default {
     width: 100%;
     height: 100%;
     display: block;
-    background-image: url('/images/main-picture.jpg'); 
+    background-image: url('/images/main-picture.jpg');
     z-index: 1;
     padding-left: 20%;
     padding-top: 20%;
@@ -396,7 +396,7 @@ export default {
     width: 100%;
     height: 100%;
     display: block;
-    background-image: url('/images/main-picture.jpg'); 
+    background-image: url('/images/main-picture.jpg');
     z-index: 1;
     padding-left: 20%;
     padding-top: 20%;
@@ -524,7 +524,7 @@ export default {
     background-color: #276955;
   }
 
-  @media screen and (max-width: 1679px) { 
+  @media screen and (max-width: 1679px) {
     .mask {
       top: 4%;
       left: 20%;
@@ -559,12 +559,12 @@ export default {
       left: 0%;
       width: 100%;
       height: 100%;
-      
+
       padding-left: 20%;
       padding-top: 20%;
       background-position-x: -1150px;
       background-position-y: -38px;
-      
+
     }
 
     .boxed-widget {
@@ -576,7 +576,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1500px) { 
+  @media screen and (max-width: 1500px) {
     .mask {
       top: 4%;
       left: 10%;
@@ -613,12 +613,12 @@ export default {
       left: 0%;
       width: 100%;
       height: 100%;
-      
+
       padding-left: 20%;
       padding-top: 20%; */
       background-position-x: -1150px;
       /* background-position-y: -38px; */
-      
+
     }
 
     .boxed-widget {
@@ -630,7 +630,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1440px) { 
+  @media screen and (max-width: 1440px) {
     /* .mask {
       top: 4%;
       left: 10%;
@@ -667,12 +667,12 @@ export default {
       left: 0%;
       width: 100%;
       height: 100%;
-      
+
       padding-left: 20%;
       padding-top: 20%; */
       background-position-x: -1105px;
       /* background-position-y: -38px; */
-      
+
     }
 
     .boxed-widget {
@@ -684,7 +684,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1365px) { 
+  @media screen and (max-width: 1365px) {
     .mask {
       /* top: 4%; */
       left: 8%;
@@ -695,7 +695,7 @@ export default {
     .blur-background {
       background-size: 270%;
       /* top: 0%; */
-      left: 0%; 
+      left: 0%;
       width: 100%;
       height: 100%;
       /* padding-left: 20%;
@@ -729,12 +729,12 @@ export default {
       left: 0%;
       width: 100%;
       height: 100%;
-      
+
       padding-left: 20%;
       padding-top: 20%; */
       background-position-x: -1031px;
       /* background-position-y: -38px; */
-      
+
     }
 
     .boxed-widget {
@@ -746,7 +746,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1240px) { 
+  @media screen and (max-width: 1240px) {
     #titlebar .user-profile-name h2 {
       font-size: 24px;
     }
@@ -767,7 +767,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1140px) { 
+  @media screen and (max-width: 1140px) {
     .mask {
       /* top: 4%; */
       left: 3%;
@@ -778,7 +778,7 @@ export default {
     .blur-background {
       background-size: 260%;
       /* top: 0%; */
-      left: 0%; 
+      left: 0%;
       width: 100%;
       height: 100%;
       /* padding-left: 20%;
@@ -814,7 +814,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1024px) { 
+  @media screen and (max-width: 1024px) {
     #titlebar {
       padding-top: 0px !important;
     }
@@ -952,7 +952,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 768px) { 
+  @media screen and (max-width: 768px) {
     #titlebar .container {
       width: 100%;
     }
@@ -1212,7 +1212,7 @@ export default {
       /*overflow: hidden;
        object-fit: cover;
       object-position: center; */
-      
+
     }
 
     .mask {

@@ -49,6 +49,7 @@ Route::get('/get_user', 'VendorController@getUser');
 // Vendor routes
 Route::prefix('vendor')->middleware('auth')->group(function () {
     Route::get('/', 'Vendor\ProfileController@index');
+   
     Route::prefix('dashboard')->group(function () {
         Route::get('/get', 'Vendor\DashboardController@get');
     });
@@ -58,7 +59,7 @@ Route::prefix('vendor')->middleware('auth')->group(function () {
     Route::get('/uploadImage', 'Vendor\UploadController@uploadImage');
     Route::get('/service_category', 'Vendor\ProjectsController@getServiceCategories');
     Route::prefix('projects')->group(function () {
-        Route::get('/get', 'Vendor\ProjectsController@getProjects');
+      Route::get('/get', 'Vendor\ProjectsController@getProjects');
         Route::get('/analytics', 'Vendor\ProjectsController@getProjectsAnalitycs');
         Route::post('/filter_analitycs', 'Vendor\ProjectsController@getFilterProjectsAnalitycs');
         Route::post('/add', 'Vendor\ProjectsController@addProject');
@@ -91,6 +92,7 @@ Route::prefix('vendor')->middleware('auth')->group(function () {
     Route::prefix('service')->group(function () {
         Route::post('/', 'Vendor\ServiceController@store');
         Route::get('/', 'Vendor\ServiceController@index');
+        Route::get('/get-cities', 'Vendor\ServiceController@getCities');
         Route::get('/analytics', 'Vendor\ServiceController@getServiceAnalytics');
         Route::get('/contact_analytics', 'Vendor\ServiceController@getContactsAnalytics');
         Route::post('/contact_filter', 'Vendor\ServiceController@filterContactsAnalytics');
