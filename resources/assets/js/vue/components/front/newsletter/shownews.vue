@@ -1,3 +1,3 @@
 <template>
-    <div>lora</div>
+    <div>Svilen</div>
 </template>

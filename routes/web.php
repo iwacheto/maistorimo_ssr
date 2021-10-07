@@ -123,6 +123,6 @@ Route::prefix('website')->group(function () {
 Route::post('/request-invite', 'Front\InviteController@addInviteRequest');
 Auth::routes();
 Route::get('/{url?}', 'VueController');
-// Route::get('/project/details/{url?}', 'VueController');
-// Route::get('/service/details/{url?}', 'VueController');
+Route::get('/newsletter/{url?}', 'VueController');
+Route::get('/newsletter/{id}/{url?}', 'VueController');
 // Route::get('/profile/{url?}', 'VueController');
