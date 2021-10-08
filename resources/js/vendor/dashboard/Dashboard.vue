@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="adding-buttons">
+        <!-- <div class="adding-buttons">
           <a class="button border with-icon">
             <router-link to="/add-listing">
               Добави проект
@@ -14,7 +14,10 @@
               <i class="sl sl-icon-plus"></i>
             </router-link>
           </a>
-        </div>
+        </div> -->
+
+        <AddProjectOrService/>
+
         <!-- <Header /> --> <!-- TsB -->
         <!-- <div class="clearfix"></div> --> <!-- TsB -->
         <!-- Titlebar -->
@@ -114,6 +117,7 @@
 
 <script>
 import Header from '../partials/Header';
+import AddProjectOrService from '../partials/AddProjectOrService.vue';
 
 export default {
     mounted() {
@@ -162,12 +166,17 @@ export default {
     },
     components: {
         Header,
+        AddProjectOrService
     },
 };
 </script>
 
 <style scoped>
-    
+    .row {
+            margin-left: 0px;
+            margin-right: 0px;
+    }
+
     .mobile-green-menu {
         display: none;
     }
@@ -181,32 +190,6 @@ export default {
     }
 
     @media screen and (max-width: 990px) {
-        
-        .adding-buttons {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        a.button.border {
-            margin-top: 20px;
-            font-size: 17px;
-            border: 1px solid #276955;
-        }
-
-        a.button.border a {
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-        }
-
-        a.button.border a i {
-            margin-left: 20px;
-            zoom: 1.5;
-            padding: 0px;
-        }
 
         a.button.border:nth-child(2) {
             margin-bottom: 20px;
@@ -217,11 +200,7 @@ export default {
             border-top-right-radius: 25px;
             padding: 30px 0px 250px 0px;
             margin-bottom: 0px;
-        }
-
-        .row {
-            margin-left: 0px;
-            margin-right: 0px;
+            margin-top: 20px;
         }
 
         .row:nth-child(2) {

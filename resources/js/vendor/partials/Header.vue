@@ -1,7 +1,6 @@
 <template>
   <div>
-    <header id="header-container" class="fixed fullwidth dashboard">
-      
+    <header id="header-container" class="fullwidth dashboard"> <!-- fixed -->
       
       <!-- Header Desktop -->
       <div id="header" class="not-sticky header-desktop">
@@ -19,7 +18,7 @@
             </div>
 
             <!-- Main Navigation -->
-            <nav id="navigation" class="style-1"></nav>
+            <nav id="navigation" class="style-1">Начало</nav>
             <div class="clearfix"></div>
             <!-- Main Navigation / End -->
           </div>
@@ -61,12 +60,12 @@
                 </ul>
               </div>
 
-              <a class="button border with-icon">
+              <!-- <a class="button border with-icon">
                 <router-link to="/add-listing">
                   Добави проект
                   <i class="sl sl-icon-plus"></i>
                 </router-link>
-              </a>
+              </a> -->
             </div>
             <!-- Header Widget / End -->
           </div>
@@ -183,15 +182,64 @@ export default {
 </script>
 
 <style scoped>
-  .header-mobile {
-    display: none;
+
+  #header {
+    box-shadow: unset;
+  }
+
+  @media screen and (min-width: 991px) { 
+    .not-sticky.header-desktop {
+      background-color: #f8f8f8;
+    }
+
+    .header-mobile {
+      display: none;
+    }
+
+    .user-menu .user-name {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    .user-name span {
+      left: 106px;
+    }
+
+    div.user-name::after {
+      margin-right: 6px;
+    }
+
+    .user-menu ul {
+      right: -67px;
+    }
+
+    .right-side {
+      margin-left: 0px;
+      display: block;
+      margin-right: 20px;
+    }
+
+    .style-1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 35px;
+      color: #276955;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    #header .container {
+      display: block;
+    }
+
+    .user-name span {
+      left: 100%;
+    }
   }
 
   @media screen and (max-width: 990px) { 
-    #header {
-      box-shadow: unset;
-    }
-
+    
     .header-desktop {
       display: none;
     }
@@ -202,6 +250,7 @@ export default {
     }
 
     #header .container {
+      display: flex;
       justify-content: space-between;
       padding: 0px;
       background-color: #F6F6F6;
@@ -229,6 +278,10 @@ export default {
 
     .user-menu ul img {
         margin-right: 25px;
+    }
+
+    .user-name span {
+      left: -21px;
     }
   }
   /* @media screen and (max-width: 990px) { 

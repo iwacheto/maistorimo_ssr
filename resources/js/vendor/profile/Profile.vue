@@ -120,62 +120,83 @@
 
                             <!-- Details -->
                             <div class="my-profile">
-                                <label>Компания</label>
-                                <input
-                                    value
-                                    v-model="user.vendor_details.company_name"
-                                    type="text"
-                                />
+                                <div class="item">
+                                    <label>Компания</label>
+                                    <input
+                                        value
+                                        v-model="user.vendor_details.company_name"
+                                        type="text"
+                                    />
+                                </div>
 
-                                <label>Телефон</label>
-                                <input
-                                    value
-                                    v-model="user.vendor_details.phone_number"
-                                    type="text"
-                                />
+                                <div class="item">
+                                    <label>Телефон</label>
+                                    <input
+                                        value
+                                        v-model="user.vendor_details.phone_number"
+                                        type="text"
+                                    />
+                                </div>
 
-                                <label>Поща</label>
-                                <input
-                                    value
-                                    v-model="user.vendor_details.email_address"
-                                    type="text"
-                                />
-                                <label>Информация</label>
-                                <!-- <textarea name id cols="30" rows="6" value v-model="user.vendor_details.information"></textarea> -->
-                                <ckeditor
-                                    :editor="editorConfig.editor"
-                                    v-model="user.vendor_details.information"
-                                    :config="editorConfig.editorConfig"
-                                ></ckeditor>
-                                <label>Уебсайт</label>
-                                <input value v-model="user.vendor_details.website" type="text" />
-                                <label>Град</label>
-                                <input value v-model="city" @input="onChange" type="text" />
-                                <ul v-show="isOpen" class="autocomplete-results">
-                                    <li
-                                        v-for="(result, i) in results"
-                                        :key="i"
-                                        @click="setResult(result)"
-                                        class="autocomplete-result profile_auto"
-                                    >
-                                        {{ result.city }}
-                                    </li>
-                                </ul>
-                                <label>Лице за контакти</label>
-                                <input
-                                    value
-                                    v-model="user.vendor_details.contact_person"
-                                    type="text"
-                                />
-                                <label> <i class="fa fa-facebook-square"></i> Facebook </label>
-                                <input
-                                    placeholder="https://www.facebook.com/"
-                                    v-model="user.vendor_details.facebook_link"
-                                    type="text"
-                                />
+                                <div class="item">
+                                    <label>Поща</label>
+                                    <input
+                                        value
+                                        v-model="user.vendor_details.email_address"
+                                        type="text"
+                                    />
+                                </div>
+
+                                <div class="item">
+                                    <label>Информация</label>
+                                    <!-- <textarea name id cols="30" rows="6" value v-model="user.vendor_details.information"></textarea> -->
+                                    <ckeditor
+                                        :editor="editorConfig.editor"
+                                        v-model="user.vendor_details.information"
+                                        :config="editorConfig.editorConfig"
+                                    ></ckeditor>
+                                </div>
+
+                                <div class="item">
+                                    <label>Уебсайт</label>
+                                    <input value v-model="user.vendor_details.website" type="text" />
+                                </div>
+
+                                <div class="item">
+                                    <label>Град</label>
+                                    <input value v-model="city" @input="onChange" type="text" />
+                                    <ul v-show="isOpen" class="autocomplete-results">
+                                        <li
+                                            v-for="(result, i) in results"
+                                            :key="i"
+                                            @click="setResult(result)"
+                                            class="autocomplete-result profile_auto"
+                                        >
+                                            {{ result.city }}
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="item">
+                                    <label>Лице за контакти</label>
+                                    <input
+                                        value
+                                        v-model="user.vendor_details.contact_person"
+                                        type="text"
+                                    />
+                                </div>
+
+                                <div class="item">
+                                    <label> <i class="fa fa-facebook-square"></i> Facebook </label>
+                                    <input
+                                        placeholder="https://www.facebook.com/"
+                                        v-model="user.vendor_details.facebook_link"
+                                        type="text"
+                                    />
+                                </div>
                             </div>
 
-                            <button class="button margin-top-15" @click="saveProfile">
+                            <button class="button" @click="saveProfile">
                                 Запази промените
                             </button>
                         </div>
@@ -189,31 +210,38 @@
                         <div class="dashboard-list-box-static">
                             <!-- Change Password -->
                             <div class="my-profile">
-                                <label class="margin-top-0">Настояща парола</label>
-                                <input type="password" />
 
-                                <label>Нова парола</label>
-                                <input
-                                    type="password"
-                                    v-model="new_password"
-                                    name="password"
-                                    v-validate="'required'"
-                                />
+                                <div class="item">
+                                    <label class="margin-top-0">Настояща парола</label>
+                                    <input type="password" />
+                                </div>
 
-                                <label>Потвърди новата парола</label>
-                                <input
-                                    type="password"
-                                    v-validate="'required|confirmed:password'"
-                                    name="password_confirmation"
-                                    v-model="new_password_repeat"
-                                />
-                                <span
-                                    v-show="errors.has('password_confirmation')"
-                                    class="help is-danger"
-                                    >{{ errors.first('password_confirmation') }}</span
-                                >
+                                <div class="item">
+                                    <label>Нова парола</label>
+                                    <input
+                                        type="password"
+                                        v-model="new_password"
+                                        name="password"
+                                        v-validate="'required'"
+                                    />
+                                </div>
 
-                                <button class="button margin-top-15">Промени паролата</button>
+                                <div class="item">
+                                    <label>Потвърди новата парола</label>
+                                    <input
+                                        type="password"
+                                        v-validate="'required|confirmed:password'"
+                                        name="password_confirmation"
+                                        v-model="new_password_repeat"
+                                    />
+                                    <span
+                                        v-show="errors.has('password_confirmation')"
+                                        class="help is-danger"
+                                        >{{ errors.first('password_confirmation') }}</span
+                                    >
+                                </div>
+
+                                <button class="button">Промени паролата</button>
                             </div>
                         </div>
                     </div>
@@ -359,12 +387,83 @@ export default {
         box-shadow: none;
     }
 
+    .dashboard-list-box h4.gray {
+        background-color: #F7F7F7;
+    }
+
     h4.gray {
         text-align: center;
         color: #276955;
         font-size: 20px;
+        border-bottom: unset;
     }
+
+    .my-profile label {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 20px;
+        color: #276955;
+    }
+
+    .my-profile input {
+        background: #FFFFFF;
+        border: 0.75px solid #6BBF3F;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        height: 49px !important;
+        width: 324px;
+    }
+
+    .dashboard-list-box-static {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        background-color: #F7F7F7;
+    }
+
+    .my-profile {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dashboard-list-box-static .button {
+        margin: 0px;
+        margin-top: 35px;
+    }
+
+    .ck.ck-reset.ck-editor.ck-rounded-corners {
+        width: 99%;
+        background: #FFFFFF;
+        border: 0.75px solid #6BBF3F;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+    }
+
+    .ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar, .ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners {
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border: 0.50px solid #6BBF3F;
+    }
+
+    .ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border: 0.50px solid #6BBF3F;
+    }
+
+    /* .dashboard-list-box-static img {
+        border-radius: 10px;
+    } */
 }
+
 .autocomplete {
     position: relative;
     width: 130px;
@@ -426,12 +525,6 @@ a {
 .my-8 {
     margin-top: 4rem;
     margin-bottom: 4rem;
-}
-
-@media screen and (max-width: 990px) {
-    #titlebar {
-        display: none;
-    }
 }
 </style>
 

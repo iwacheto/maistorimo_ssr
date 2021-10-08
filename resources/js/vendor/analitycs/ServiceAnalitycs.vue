@@ -319,7 +319,7 @@ export default {
     box-sizing: border-box;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    height: 44px;
+    height: 53px;
   }
 }
 
@@ -331,8 +331,10 @@ export default {
   
 }
 
-@media (max-width: 540px) {
-  
+@media (max-width: 530px) {
+  .input-wrapper-class {
+    height: 44px;
+  }
 }
 
 @media (max-width: 414px) {

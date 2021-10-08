@@ -1,35 +1,37 @@
 <template>
     <div class="mobile-green-menu-small" :class="{active: isActive}">
-        <div class="green-menu-small">
-            <router-link :to="'/projects'">
-                <div class="mobile-menu-item">
-                    <img src="/images/projects.svg" alt="projects">
+        <div class="relative-div">
+            <div class="green-menu-small">
+                <router-link :to="'/projects'">
+                    <div class="mobile-menu-item">
+                        <img src="/images/projects.svg" alt="projects">
+                    </div>
+                </router-link>
+                <div class="menu-ver-line"></div>
+                <div class="mobile-menu-item" @click="toggleAnalitycsMenu">
+                    <img src="/images/analysis.svg" alt="analysis">
                 </div>
-            </router-link>
-            <div class="menu-ver-line"></div>
-            <div class="mobile-menu-item" @click="toggleAnalitycsMenu">
-                <img src="/images/analysis.svg" alt="analysis">
+                <div class="menu-ver-line"></div>
+                <router-link :to="'/service'">
+                    <div class="mobile-menu-item">
+                        <img src="/images/services.svg" alt="services">
+                    </div>
+                </router-link>
             </div>
-            <div class="menu-ver-line"></div>
-            <router-link :to="'/service'">
-                <div class="mobile-menu-item">
-                    <img src="/images/services.svg" alt="services">
-                </div>
-            </router-link>
-        </div>
 
-        <div class="analitycs-menu" :class="{active: isActive}">
-            <ul>
-                <li>
-                    <router-link :to="'/projects_analitycs'">Анализи на проекти</router-link>
-                </li>
-                <li>
-                    <router-link :to="'/services_analitycs'">Анализи на услуги</router-link>
-                </li>
-                <li>
-                    <router-link :to="'/contacts_analitycs'">Анализи на контакти</router-link>
-                </li>
-            </ul>
+            <div class="analitycs-menu" :class="{active: isActive}">
+                <ul>
+                    <li>
+                        <router-link :to="'/projects_analitycs'">Анализи на проекти</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="'/services_analitycs'">Анализи на услуги</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="'/contacts_analitycs'">Анализи на контакти</router-link>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -47,6 +49,7 @@ export default {
         
         toggleAnalitycsMenu() {
             this.isActive = !this.isActive;
+            console.log(this.isActive);
         },
     }
 };
@@ -62,7 +65,10 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 18px 0px 32px 0px;
+        margin: 18px 0px 57px 0px;
+    }
+    .relative-div {
+        position: relative;
     }
 
     .green-menu-small {
@@ -83,6 +89,14 @@ export default {
 
     .green-menu-small a {
         margin: 14px 30px 15px 32px;
+    }
+
+    a {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+        color: #276955;
     }
 
     .green-menu-small .mobile-menu-item img {
@@ -129,7 +143,7 @@ export default {
         align-items: center;
         padding: 18px 0px;
         box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 12%);
-        margin-top: 7px;
+        z-index: 20;
     }
 
     .analitycs-menu ul li:nth-child(2) {

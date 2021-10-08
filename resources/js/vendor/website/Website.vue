@@ -918,6 +918,8 @@ div.tab-pan.active {
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
         background-color: #F7F7F7;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .dashboard-list-box {
@@ -1008,8 +1010,6 @@ div.tab-pan.active {
         margin-bottom: 0px;
     }
 
-    
-
     .tab-pan.active.show p {
         color: #565656;
         margin-left: 42px;
@@ -1037,6 +1037,7 @@ div.tab-pan.active {
         box-sizing: border-box;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
+        width: 89%;
     }
 
     .tab-pan.active.show div.my-profile input {
