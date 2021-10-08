@@ -343,6 +343,7 @@ export default {
 .slide {
     margin: 0 auto;
     cursor: pointer;
+    border-radius: 0.5rem;
 }
 .paragraph-6 {
     text-align: start;
@@ -360,6 +361,7 @@ export default {
 .bot-slide {
     width: 100%;
     cursor: pointer;
+    border-radius: 0.5rem;
 }
 
 .title-slider {
