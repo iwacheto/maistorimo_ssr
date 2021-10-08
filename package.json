@@ -40,6 +40,7 @@
         "vue-gallery": "^2.0.1",
         "vue-gallery-slideshow": "^1.5.0",
         "vue-image-upload-resize": "^2.2.1",
+        "vue-images": "^1.1.0",
         "vue-infinite-loading": "^2.4.4",
         "vue-lazyload": "^1.3.3",
         "vue-localstorage": "^0.6.2",
