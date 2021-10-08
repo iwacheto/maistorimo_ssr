@@ -264,7 +264,7 @@ export default {
 .header {
     position: absolute;
     top: clamp(6rem, 25vw, 30vw);
-    left: 14vw;
+    left: 10%;
     color: #ffffff;
     opacity: 1;
     font-size: clamp(2.5rem, 5vw, 7rem);
@@ -275,7 +275,7 @@ export default {
     position: absolute;
     color: #ffffff;
     top: clamp(2rem, 33vw, 40vw);
-    left: 14vw;
+    left: 10%;
     font-size: clamp(1.5rem, 4vw, 5rem);
     font-weight: 600;
     font-family: 'Raleway';
@@ -284,7 +284,7 @@ export default {
 .section-four {
     text-align: start;
     width: clamp(75%, 70vw, 200rem);
-    margin-left: 14%;
+    margin-left: 10%;
     color: #000000;
 }
 .title-text {
@@ -348,7 +348,7 @@ export default {
 .paragraph-6 {
     text-align: start;
     width: clamp(75%, 70vw, 200rem);
-    margin-left: 14%;
+    margin-left: 10%;
     color: #000000;
     font-size: clamp(1.3rem, 2vw, 3rem);
     line-height: clamp(2.5rem, 3.2vw, 5rem);
