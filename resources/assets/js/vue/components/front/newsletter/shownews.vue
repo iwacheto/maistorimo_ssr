@@ -259,6 +259,7 @@ export default {
     top: 3vh;
     left: 2vw;
     width: clamp(5rem, 9vw, 12rem);
+    cursor: pointer;
 }
 .header {
     position: absolute;
@@ -331,7 +332,6 @@ export default {
     margin-top: 2rem;
 }
 
-
 .section-five,
 .section-six-slider-wrap {
     background: #e5e5e5;
@@ -340,8 +340,9 @@ export default {
 .section-six-slider-wrap {
     padding-left: 1rem;
 }
-.slide{
+.slide {
     margin: 0 auto;
+    cursor: pointer;
 }
 .paragraph-6 {
     text-align: start;
@@ -358,6 +359,7 @@ export default {
 }
 .bot-slide {
     width: 100%;
+    cursor: pointer;
 }
 
 .title-slider {
