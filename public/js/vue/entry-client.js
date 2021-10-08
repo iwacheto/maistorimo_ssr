@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 259);
+/******/ 	return __webpack_require__(__webpack_require__.s = 262);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -31960,16 +31960,16 @@ VeeValidate$1.withValidation = withValidation;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_lazyload__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue2_google_maps__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vee_validate__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_front_locale_id__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_analytics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_analytics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_scrollto___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vue_scrollto__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vue_meta__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_event_bus__ = __webpack_require__(20);
@@ -33476,9 +33476,9 @@ module.exports = noop;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_front_profile_Profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_front_profile_Profile__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_front_homepage_Contacts__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_front_homepage_Contacts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_front_homepage_Contacts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_front_newsletter_newsletter__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_front_newsletter_newsletter__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_front_newsletter_newsletter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_front_newsletter_newsletter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_front_newsletter_shownews__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_front_newsletter_shownews__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_front_newsletter_shownews___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_front_newsletter_shownews__);
 
 
@@ -48919,19 +48919,618 @@ if (false) {
 }
 
 /***/ }),
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(216)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(218)
+/* template */
+var __vue_template__ = __webpack_require__(219)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0f1874cb"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/vue/components/front/newsletter/newsletter.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0f1874cb", Component.options)
+  } else {
+    hotAPI.reload("data-v-0f1874cb", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(217);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4cf0b590", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0f1874cb\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./newsletter.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0f1874cb\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./newsletter.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.newsletter-wrapper .page-image .page-image-wrapper[data-v-0f1874cb] {\n  width: 100%;\n  position: relative;\n}\n.newsletter-wrapper .page-image .page-image-wrapper img[data-v-0f1874cb] {\n    width: 100%;\n}\n.newsletter-wrapper .page-image .page-image-wrapper .mobile-img[data-v-0f1874cb] {\n    display: none;\n}\n@media only screen and (max-width: 767px) {\n.newsletter-wrapper .page-image .page-image-wrapper .mobile-img[data-v-0f1874cb] {\n        display: unset;\n}\n}\n@media only screen and (max-width: 767px) {\n.newsletter-wrapper .page-image .page-image-wrapper .desktop-img[data-v-0f1874cb] {\n      display: none;\n}\n}\n.newsletter-wrapper .page-image .page-image-wrapper .green-layer[data-v-0f1874cb] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(39, 105, 85, 0.6);\n    z-index: 2;\n}\n.newsletter-wrapper .page-image .page-image-wrapper .back-btn[data-v-0f1874cb] {\n    cursor: pointer;\n    position: absolute;\n    left: 2%;\n    top: 10%;\n    width: 70px;\n    z-index: 3;\n}\n.newsletter-wrapper .page-image .page-image-wrapper .back-btn img[data-v-0f1874cb] {\n      width: 100%;\n}\n.newsletter-wrapper .most-watched-news[data-v-0f1874cb] {\n  padding: 0 8%;\n  padding-top: 40px;\n}\n@media only screen and (max-width: 767px) {\n.newsletter-wrapper .most-watched-news[data-v-0f1874cb] {\n      padding-left: 0;\n      padding-right: 0;\n}\n}\n.newsletter-wrapper .most-watched-news .most-watched-news-title[data-v-0f1874cb] {\n    font-size: 30px;\n    font-weight: 600;\n    text-align: center;\n    color: #000000 !important;\n    margin-bottom: 70px;\n    position: relative;\n}\n.newsletter-wrapper .most-watched-news .most-watched-news-title[data-v-0f1874cb]::after {\n      content: \"\";\n      position: absolute;\n      display: block;\n      width: 60px;\n      height: 2px;\n      background: #F91942;\n      bottom: -20px;\n      right: 50%;\n      -webkit-transform: translate(50%, -50%);\n              transform: translate(50%, -50%);\n}\n.newsletter-wrapper .most-watched-news .slider-news .news-slide[data-v-0f1874cb] {\n    display: block !important;\n    width: 95% !important;\n    margin: 0 auto;\n}\n.newsletter-wrapper .most-watched-news .slider-news .news-slide .article-wrapper[data-v-0f1874cb] {\n      cursor: pointer;\n}\n.newsletter-wrapper .most-watched-news .slider-news .news-slide .slide-image[data-v-0f1874cb] {\n      width: 100%;\n}\n.newsletter-wrapper .most-watched-news .slider-news .news-slide .slide-image img[data-v-0f1874cb] {\n        width: 100%;\n        border-radius: 5px;\n}\n.newsletter-wrapper .most-watched-news .slider-news .news-slide .slide-title[data-v-0f1874cb] {\n      font-size: 25px;\n      font-weight: bold;\n      color: #000000;\n      width: 90%;\n      margin: 10px auto;\n}\n.newsletter-wrapper .most-watched-news .slider-news .news-slide .slide-description[data-v-0f1874cb] {\n      font-size: 20px;\n      color: #898989;\n      font-weight: 300;\n      width: 90%;\n      margin: 15px auto 25px auto;\n}\n.newsletter-wrapper .news-list[data-v-0f1874cb] {\n  background: #F8F8F8;\n  padding-top: 40px;\n  padding-bottom: 20px;\n}\n@media only screen and (max-width: 539px) {\n.newsletter-wrapper .news-list[data-v-0f1874cb] {\n      padding-left: 8%;\n      padding-right: 8%;\n}\n}\n.newsletter-wrapper .news-list .news-list-title[data-v-0f1874cb] {\n    font-size: 27px;\n    text-align: center;\n    color: #000000 !important;\n    margin-bottom: 70px;\n    position: relative;\n}\n.newsletter-wrapper .news-list .news-list-title[data-v-0f1874cb]::after {\n      content: \"\";\n      position: absolute;\n      display: block;\n      width: 60px;\n      height: 2px;\n      background: #F91942;\n      bottom: -20px;\n      right: 50%;\n      -webkit-transform: translate(50%, -50%);\n              transform: translate(50%, -50%);\n}\n.newsletter-wrapper .news-list .slider-news-2 .news-slide[data-v-0f1874cb] {\n    display: block !important;\n    width: 95% !important;\n    margin: 0 auto;\n}\n.newsletter-wrapper .news-list .slider-news-2 .news-slide .article-wrapper[data-v-0f1874cb] {\n      cursor: pointer;\n}\n.newsletter-wrapper .news-list .slider-news-2 .news-slide .slide-image[data-v-0f1874cb] {\n      width: 100%;\n}\n.newsletter-wrapper .news-list .slider-news-2 .news-slide .slide-image img[data-v-0f1874cb] {\n        width: 100%;\n        border-radius: 5px;\n}\n.newsletter-wrapper .news-list .slider-news-2 .news-slide .slide-title[data-v-0f1874cb] {\n      font-size: 25px;\n      font-weight: bold;\n      color: #000000;\n      width: 90%;\n      margin: 10px auto;\n}\n.newsletter-wrapper .news-list .slider-news-2 .news-slide .slide-description[data-v-0f1874cb] {\n      font-size: 20px;\n      color: #898989;\n      font-weight: 300;\n      width: 90%;\n      margin: 15px auto 25px auto;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 218 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            articles: [{
+                id: 1,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 1',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 1'
+            }, {
+                id: 2,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 2',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 2'
+            }, {
+                id: 3,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 3',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 3'
+            }, {
+                id: 4,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 4',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 4'
+            }, {
+                id: 5,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 5',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 5'
+            }, {
+                id: 6,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 6',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 6'
+            }, {
+                id: 7,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 7',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 7'
+            }, {
+                id: 8,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 8',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 8'
+            }],
+            articles_2: [{
+                id: 1,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 1',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 1'
+            }, {
+                id: 2,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 2',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 2'
+            }, {
+                id: 3,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 3',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 3'
+            }, {
+                id: 4,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 4',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 4'
+            }, {
+                id: 5,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 5',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 5'
+            }, {
+                id: 6,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 6',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 6'
+            }, {
+                id: 7,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 7',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 7'
+            }, {
+                id: 8,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 8',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 8'
+            }, {
+                id: 9,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 9',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 9'
+            }, {
+                id: 10,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 10',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 10'
+            }, {
+                id: 11,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 11',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 11'
+            }, {
+                id: 12,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 12',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 12'
+            }, {
+                id: 13,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 13',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 13'
+            }, {
+                id: 14,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 14',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 14'
+            }, {
+                id: 15,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 15',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 15'
+            }, {
+                id: 16,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 16',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 16'
+            }, {
+                id: 17,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 17',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 17'
+            }, {
+                id: 18,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 18',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 18'
+            }, {
+                id: 19,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 19',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 19'
+            }, {
+                id: 20,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 20',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 20'
+            }, {
+                id: 21,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 21',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 21'
+            }, {
+                id: 22,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 22',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 22'
+            }, {
+                id: 23,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 23',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 23'
+            }, {
+                id: 24,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 24',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 24'
+            }, {
+                id: 25,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 25',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 25'
+            }, {
+                id: 26,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 26',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 26'
+            }, {
+                id: 27,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 27',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 27'
+            }, {
+                id: 28,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 28',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 28'
+            }, {
+                id: 29,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 29',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 29'
+            }, {
+                id: 30,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 30',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 30'
+            }, {
+                id: 31,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 31',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 31'
+            }, {
+                id: 32,
+                img: '/images/slider-img1.png',
+                title: 'Etiam vitae quam quam 32',
+                description: 'Mauris feugiat justo convallis ipsum ca. Proin volutpat, sapien quis 32'
+            }]
+        };
+    },
+
+    methods: {
+        sliderFunc: function sliderFunc() {
+            $(".slider-news").slick({
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                dots: true,
+                arrows: false,
+                rows: 2,
+                autoplay: true,
+                draggable: true,
+                autoplaySpeed: 2500,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            });
+        },
+        sliderFunc2: function sliderFunc2() {
+            $(".slider-news-2").slick({
+                infinite: true,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                dots: true,
+                arrows: false,
+                rows: 2,
+                autoplay: true,
+                draggable: true,
+                autoplaySpeed: 2500,
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                }, {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }, {
+                    breakpoint: 540,
+                    settings: {
+                        rows: 4,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            });
+        },
+        openArticle: function openArticle(id) {
+            this.$router.push("/newsletter/" + id);
+        }
+    },
+    mounted: function mounted() {
+        this.sliderFunc();
+        this.sliderFunc2();
+    }
+});
+
+/***/ }),
 /* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "newsletter-wrapper" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "most-watched-news" }, [
+      _c("div", { staticClass: "most-watched-news-title" }, [
+        _vm._v("Най-гледани новини")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "slider-news" },
+        _vm._l(_vm.articles, function(article) {
+          return _c("div", { key: article.id, staticClass: "news-slide" }, [
+            _c(
+              "div",
+              {
+                staticClass: "article-wrapper",
+                on: {
+                  click: function($event) {
+                    return _vm.openArticle(article.id)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "slide-image" }, [
+                  _c("img", { attrs: { src: article.img, alt: "" } })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "slide-title" }, [
+                  _vm._v(_vm._s(article.title))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "slide-description" }, [
+                  _vm._v(_vm._s(article.description))
+                ])
+              ]
+            )
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "news-list" }, [
+      _c("div", { staticClass: "news-list-title" }, [
+        _vm._v("Списък с новини")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "slider-news-2" },
+        _vm._l(_vm.articles_2, function(article) {
+          return _c("div", { key: article.id, staticClass: "news-slide" }, [
+            _c(
+              "div",
+              {
+                staticClass: "article-wrapper",
+                on: {
+                  click: function($event) {
+                    return _vm.openArticle(article.id)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "slide-image" }, [
+                  _c("img", { attrs: { src: article.img, alt: "" } })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "slide-title" }, [
+                  _vm._v(_vm._s(article.title))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "slide-description" }, [
+                  _vm._v(_vm._s(article.description))
+                ])
+              ]
+            )
+          ])
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "page-image" }, [
+      _c("div", { staticClass: "page-image-wrapper" }, [
+        _c("img", {
+          staticClass: "desktop-img",
+          attrs: { src: "/images/newsletter-home.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "mobile-img",
+          attrs: { src: "/images/newsletter-home-mobile.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "green-layer" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "back-btn" }, [
+          _c("img", { attrs: { src: "/images/back-btn.svg", alt: "" } })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0f1874cb", module.exports)
+  }
+}
+
+/***/ }),
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(220)
+var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(236)
+var __vue_template__ = __webpack_require__(221)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/vue/components/front/newsletter/shownews.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-25892262", Component.options)
+  } else {
+    hotAPI.reload("data-v-25892262", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("Svilen")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-25892262", module.exports)
+  }
+}
+
+/***/ }),
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(223)
+/* template */
+var __vue_template__ = __webpack_require__(239)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48970,14 +49569,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 220 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__front_partials_Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__front_partials_Header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__front_partials_Footer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__front_partials_Footer__);
 //
 //
@@ -49003,19 +49602,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 221 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(222)
+  __webpack_require__(225)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(224)
+var __vue_script__ = __webpack_require__(227)
 /* template */
-var __vue_template__ = __webpack_require__(230)
+var __vue_template__ = __webpack_require__(233)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49054,13 +49653,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(223);
+var content = __webpack_require__(226);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49080,7 +49679,7 @@ if(false) {
 }
 
 /***/ }),
-/* 223 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -49094,14 +49693,14 @@ exports.push([module.i, "\n#header.cloned[data-v-65a3b6c6] {\n    background-col
 
 
 /***/ }),
-/* 224 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
@@ -49406,19 +50005,19 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 225 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(226)
+  __webpack_require__(229)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(228)
+var __vue_script__ = __webpack_require__(231)
 /* template */
-var __vue_template__ = __webpack_require__(229)
+var __vue_template__ = __webpack_require__(232)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49457,13 +50056,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 226 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(227);
+var content = __webpack_require__(230);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49483,7 +50082,7 @@ if(false) {
 }
 
 /***/ }),
-/* 227 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -49497,7 +50096,7 @@ exports.push([module.i, "\n.tab-content[data-v-8c10e580] {\n  padding-top: 10px 
 
 
 /***/ }),
-/* 228 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50206,7 +50805,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 229 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51378,7 +51977,7 @@ if (false) {
 }
 
 /***/ }),
-/* 230 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51686,19 +52285,19 @@ if (false) {
 }
 
 /***/ }),
-/* 231 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(232)
+  __webpack_require__(235)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(234)
+var __vue_script__ = __webpack_require__(237)
 /* template */
-var __vue_template__ = __webpack_require__(235)
+var __vue_template__ = __webpack_require__(238)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51737,13 +52336,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 232 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(233);
+var content = __webpack_require__(236);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -51763,7 +52362,7 @@ if(false) {
 }
 
 /***/ }),
-/* 233 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -51777,7 +52376,7 @@ exports.push([module.i, "\n#footer[data-v-447152d4] {\r\n    background-color: #
 
 
 /***/ }),
-/* 234 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51927,7 +52526,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 235 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52094,7 +52693,7 @@ if (false) {
 }
 
 /***/ }),
-/* 236 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52125,7 +52724,7 @@ if (false) {
 }
 
 /***/ }),
-/* 237 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53937,7 +54536,7 @@ var index = {
 
 
 /***/ }),
-/* 238 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54092,7 +54691,7 @@ var locale = {
 /* harmony default export */ __webpack_exports__["a"] = (locale);
 
 /***/ }),
-/* 239 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -54651,9 +55250,6 @@ var locale = {
 
 
 /***/ }),
-/* 240 */,
-/* 241 */,
-/* 242 */,
 /* 243 */,
 /* 244 */,
 /* 245 */,
@@ -54670,15 +55266,18 @@ var locale = {
 /* 256 */,
 /* 257 */,
 /* 258 */,
-/* 259 */
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(260);
-module.exports = __webpack_require__(261);
+__webpack_require__(263);
+module.exports = __webpack_require__(264);
 
 
 /***/ }),
-/* 260 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54691,282 +55290,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0__app__["a" /* default */].$mount('#app');
 
 /***/ }),
-/* 261 */
+/* 264 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */,
-/* 384 */,
-/* 385 */,
-/* 386 */,
-/* 387 */,
-/* 388 */,
-/* 389 */,
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(399)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/vue/components/front/newsletter/newsletter.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f1874cb", Component.options)
-  } else {
-    hotAPI.reload("data-v-0f1874cb", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 399 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("lora")])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0f1874cb", module.exports)
-  }
-}
-
-/***/ }),
-/* 400 */,
-/* 401 */,
-/* 402 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(403)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/vue/components/front/newsletter/shownews.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-25892262", Component.options)
-  } else {
-    hotAPI.reload("data-v-25892262", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 403 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("Svilen")])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-25892262", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
