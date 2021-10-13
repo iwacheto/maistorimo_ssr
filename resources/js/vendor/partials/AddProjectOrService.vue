@@ -18,18 +18,22 @@
 
 <style scoped>
 
-@media screen and (min-width: 991px) {
+@media only screen and (min-width: 991px) {
     .adding-buttons {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         background-color: #F8F8F8;
+        padding-top: 20px;
     }
 
     a.button {
         border-radius: 15px;
         width: 245px;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        background-color: #ffffff;
     }
 
     a.button:nth-child(2) {
@@ -40,6 +44,13 @@
         margin-left: 66px;
     }
 }
+
+ @media only screen and (max-width: 1366px) {
+    .adding-buttons {
+        padding-top: 70px;
+    }
+}
+
 @media screen and (max-width: 990px) {
     .adding-buttons {
         display: flex;
@@ -47,6 +58,7 @@
         justify-content: center;
         align-items: center;
         background-color: unset;
+        padding-top: 0px;
     }
 
     a.button.border {

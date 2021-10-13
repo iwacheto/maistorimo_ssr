@@ -1,97 +1,43 @@
 <template>
     <div>
-        <!-- <div class="adding-buttons">
-          <a class="button border with-icon">
-            <router-link to="/add-listing">
-              Добави проект
-              <i class="sl sl-icon-plus"></i>
-            </router-link>
-          </a>
-
-          <a class="button border with-icon">
-            <router-link to="/service/add-service">
-              Добави услуга
-              <i class="sl sl-icon-plus"></i>
-            </router-link>
-          </a>
-        </div> -->
-
         <AddProjectOrService/>
 
-        <!-- <Header /> --> <!-- TsB -->
-        <!-- <div class="clearfix"></div> --> <!-- TsB -->
         <!-- Titlebar -->
-        <div id="titlebar" :class="{active: isActive}">
+        <div id="titlebar" class="pc-part">
             <div class="row">
                 <div class="col-md-12">
                     <h2>Здравей, {{ user ? user.name : '' }}</h2>
-                    <!-- Breadcrumbs -->
-                    <!-- <nav id="breadcrumbs">
-            <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>Dashboard</li>
-            </ul>
-                    </nav>-->
                 </div>
-            </div>
 
-            <!-- Content -->
-            <div class="row">
-                <!-- Item -->
-                <div class="col-lg-6 col-md-6">
-                    <router-link :to="'/projects'">
-                        <div class="dashboard-stat color-1">
-                            <div class="dashboard-stat-content">
-                                <h4>{{ projectsCount }}</h4>
-                                <span>Активни проекти</span>
+                <div class="col-md-12">
+                    <div class="pc-green-menu">
+                        <router-link :to="'/projects'">
+                            <div class="pc-menu-item">
+                                <img src="/images/projects.svg" alt="projects">
+                                <p>Проекти</p>
                             </div>
-                            <div class="dashboard-stat-icon">
-                                <i class="im im-icon-Map2"></i>
-                            </div>
+                        </router-link>
+
+                        <div class="pc-menu-item" @click="toggleAnalitycsMenu">
+                            <img src="/images/analysis.svg" alt="analysis">
+                            <p>Анализи</p>
+                            <i class="fa fa-angle-down" :class="{active: isActive}"></i>
                         </div>
-                    </router-link>
-                </div>
+                        
+                        <router-link :to="'/service'">
+                            <div class="pc-menu-item">
+                                <img src="/images/services.svg" alt="services">
+                                <p>Услуги</p>
+                            </div>
+                        </router-link>
+                    </div>
 
-                <!-- Item -->
-                <div class="col-lg-6 col-md-6">
-                    <router-link :to="'/service'">
-                        <div class="dashboard-stat color-2">
-                            <div class="dashboard-stat-content">
-                                <h4>{{ servicesCount }}</h4>
-                                <span>Твоите услуги</span>
-                            </div>
-                            <div class="dashboard-stat-icon">
-                                <i class="im im-icon-Line-Chart"></i>
-                            </div>
-                        </div>
-                    </router-link>
+                    
+
                 </div>
             </div>
 
-            <div class="mobile-green-menu">
-                <router-link :to="'/projects'">
-                    <div class="mobile-menu-item">
-                        <img src="/images/projects.svg" alt="projects">
-                        <p>Проекти</p>
-                    </div>
-                </router-link>
-
-                <div class="mobile-menu-item" @click="toggleAnalitycsMenu">
-                    <img src="/images/analysis.svg" alt="analysis">
-                    <p>Анализи</p>
-                </div>
-                
-                <router-link :to="'/service'">
-                    <div class="mobile-menu-item">
-                        <img src="/images/services.svg" alt="services">
-                        <p>Услуги</p>
-                    </div>
-                </router-link>
-            </div>
-
-            <div class="analitycs-menu" :class="{active: isActive}">
+            <div class="analitycs-menu pc-menu" :class="{active: isActive}">
                 <ul>
                     <li>
                         <router-link :to="'/projects_analitycs'">Анализи на проекти</router-link>
@@ -103,6 +49,51 @@
                         <router-link :to="'/contacts_analitycs'">Анализи на контакти</router-link>
                     </li>
                 </ul>
+            </div>
+        </div>
+
+
+
+        <div id="titlebar" class="mobile-part" :class="{active: isActive}">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Здравей, {{ user ? user.name : '' }}</h2>
+                </div>
+            
+                <div class="mobile-green-menu">
+                    <router-link :to="'/projects'">
+                        <div class="mobile-menu-item">
+                            <img src="/images/projects.svg" alt="projects">
+                            <p>Проекти</p>
+                        </div>
+                    </router-link>
+
+                    <div class="mobile-menu-item" @click="toggleAnalitycsMenu">
+                        <img src="/images/analysis.svg" alt="analysis">
+                        <p>Анализи</p>
+                    </div>
+                    
+                    <router-link :to="'/service'">
+                        <div class="mobile-menu-item">
+                            <img src="/images/services.svg" alt="services">
+                            <p>Услуги</p>
+                        </div>
+                    </router-link>
+                </div>
+
+                <div class="analitycs-menu" :class="{active: isActive}">
+                    <ul>
+                        <li>
+                            <router-link :to="'/projects_analitycs'">Анализи на проекти</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="'/services_analitycs'">Анализи на услуги</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="'/contacts_analitycs'">Анализи на контакти</router-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -172,35 +163,222 @@ export default {
 </script>
 
 <style scoped>
-    .row {
-            margin-left: 0px;
-            margin-right: 0px;
+    @media screen and (min-width: 991px) {
+        .mobile-green-menu {
+            display: none;
+        }
+
+        /* .mobile-admin-footer {
+            display: none;
+        } */
+
+        .analitycs-menu {
+            display: none;
+        }
+
+        #titlebar.pc-part {
+            padding-top: 65px;
+        }
+
+        #titlebar.mobile-part {
+            display: none;
+        }
+
+        .row {
+            margin-left: 26px;
+            margin-right: 26px;
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            width: 97%;
+        }
+
+        #titlebar.pc-part h2 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 29px;
+            color: #276955;
+            text-align: center;
+            margin-top: 33px;
+            margin-bottom: 37px;
+        }
+
+        .pc-green-menu {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+        }
+
+        .pc-menu-item {
+            width: 320px;
+            height: 85px;
+            background-color: #276955;
+            color: #ffffff;
+            border-radius: 15px;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pc-menu-item:hover {
+            cursor: pointer;
+        }
+
+        .pc-menu-item i {
+            zoom: 2;
+            margin-left: 10px;
+            transform: rotate(180deg);
+        }
+
+        .pc-menu-item i.active {
+            zoom: 2;
+            margin-left: 10px;
+            transform: rotate(0deg);
+        }
+
+        .analitycs-menu.pc-menu {
+            width: 300px;
+            background-color: #FFFFFF;
+            position: absolute;
+            top: 89%;
+            left: 41%;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .analitycs-menu.pc-menu ul {
+            list-style: none;
+            padding: 10px 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .analitycs-menu.pc-menu ul li {
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .analitycs-menu.pc-menu ul li a {
+            text-align: center;
+        }
+
+        .pc-menu-item:nth-child(2) {
+            margin: 0px 56px 42px 56px;
+        }
+
+        .pc-menu-item p {
+            font-size: 25px;
+            margin: 0px;
+            margin-left: 30px;
+        }
+
+        .analitycs-menu.active {
+            display: flex;
+        }
+
+        .mobile-admin-footer {
+            background-color: #F7F7F7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 410px;
+        }
+
+        .admin-footer-line {
+            display: flex;
+            border-top: 1px solid #CACACA;
+            height: 2px;
+            width: 88%;
+        }
+
+        .admin-footer {
+            margin: 0px 33px;
+            padding: 38px 0px 30px 0px;
+        }
     }
 
-    .mobile-green-menu {
-        display: none;
+    @media screen and (max-width: 1600px) {
+        .analitycs-menu.pc-menu {
+            top: 89%;
+            left: 39%;
+        }
     }
 
-    .mobile-admin-footer {
-        display: none;
+    @media screen and (max-width: 1440px) {
+        .row {
+            width: 95.5%;
+        }
+
+        .analitycs-menu.pc-menu {
+            top: 89%;
+            left: 37%;
+        }
     }
 
-    .analitycs-menu {
-        display: none;
+    @media screen and (max-width: 1366px) {
+        .pc-menu-item {
+            width: 250px;
+        }
+
+        .pc-menu-item:nth-child(2) {
+            margin: 0px 30px 42px 30px;
+        }
+
+        .pc-menu-item p {
+            font-size: 23px;
+            margin-left: 15px;
+        }
+
+        .pc-menu-item img {
+            width: 20%;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .pc-menu-item {
+            width: 210px;
+        }
+
+        .analitycs-menu.pc-menu {
+            top: 89%;
+            left: 34%;
+        }
     }
 
     @media screen and (max-width: 990px) {
+
+        .pc-green-menu {
+            display: none;
+        }
+
+        #titlebar.pc-part {
+            display: none;
+        }
 
         a.button.border:nth-child(2) {
             margin-bottom: 20px;
         }
 
-        #titlebar {
+        #titlebar.mobile-part {
             border-top-left-radius: 25px;
             border-top-right-radius: 25px;
             padding: 30px 0px 250px 0px;
             margin-bottom: 0px;
             margin-top: 20px;
+        }
+
+        #titlebar.mobile-part .row {
+            width: 100%;
+            margin-left: 0px;
+            margin-right: 0px;
         }
 
         .row:nth-child(2) {

@@ -10,10 +10,10 @@
             <!-- Logo -->
             <div id="logo">
               <a href="/">
-                <img src="images/logo_admin.jpg" alt />
+                <img src="images/logo-menu.svg" alt />
               </a>
               <a href="/" class="dashboard-logo">
-                <img src="images/logo_admin.jpg" alt />
+                <img src="images/logo-menu.svg" alt />
               </a>
             </div>
 
@@ -187,6 +187,10 @@ export default {
     box-shadow: unset;
   }
 
+  .left-side #logo {
+    border-top-right-radius: 45px;
+  }
+
   @media screen and (min-width: 991px) { 
     .not-sticky.header-desktop {
       background-color: #f8f8f8;
@@ -227,6 +231,47 @@ export default {
       color: #276955;
     }
   }
+
+  @media screen and (max-width: 1365px) {
+    .dashboard #logo {
+      display: block;
+      background-color: #333;
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+      margin: 0;
+      min-width: 260px;
+      max-width: 260px;
+    }
+
+    header.fullwidth.dashboard .container {
+      padding-left: 285px;
+    }
+
+    .dashboard #logo a img {
+      top: 50%;
+      position: relative;
+      transform: translate3d(0, -50%, 0);
+      max-height: 50px;
+    }
+
+    .dashboard #logo a {
+      margin-left: 33px;
+    }
+
+    #logo img {
+      width: auto;
+      max-height: 50px;
+      transform: unset;
+    }
+
+    .left-side {
+      
+      width: 65%;
+      display: inline-block;
+    }
+  }
   
   @media screen and (max-width: 1024px) {
     #header .container {
@@ -236,6 +281,15 @@ export default {
     .user-name span {
       left: 100%;
     }
+
+    body #dashboard #logo, body #logo {
+      margin-top: 0px !important;
+    }
+
+    #navigation.style-1 {
+      margin-top: 22px ;
+    }
+
   }
 
   @media screen and (max-width: 990px) { 
@@ -270,6 +324,12 @@ export default {
     .dashboard #logo {
       position: unset;
       background-color: #F6F6F6;
+      border-top-right-radius: 35px;
+    }
+
+    .dashboard #logo a img {
+      position: absolute;
+      right: 15px;
     }
 
     .user-menu ul {
