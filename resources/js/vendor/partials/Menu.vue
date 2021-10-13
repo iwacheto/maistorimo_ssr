@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dashboard-side-menu">
     <a
       href="#"
       class="dashboard-responsive-nav-trigger test_trigger"
@@ -230,10 +230,16 @@ export default {
 </script>
 
 <style scoped>
+
+  .dashboard-side-menu {
+    /* display: table; */
+  }
+
   .dashboard-nav {
     min-height: 92vh;
     border-bottom-right-radius: 45px;
-    position: absolute;
+    position: fixed;
+    /* display: table-cell; */
   }
 
   .dashboard-nav ul ul li {

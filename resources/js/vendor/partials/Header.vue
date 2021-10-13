@@ -192,6 +192,11 @@ export default {
   }
 
   @media screen and (min-width: 991px) { 
+
+    .dashboard #logo {
+      position: fixed;
+      height: 10%;
+    }
     .not-sticky.header-desktop {
       background-color: #f8f8f8;
     }
@@ -236,8 +241,8 @@ export default {
     .dashboard #logo {
       display: block;
       background-color: #333;
-      position: absolute;
-      height: 100%;
+      /* position: absolute;
+      height: 100%; */
       left: 0;
       top: 0;
       margin: 0;

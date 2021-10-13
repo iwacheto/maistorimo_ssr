@@ -5,6 +5,8 @@
 
     	<MobileGreenMenuSmall/>
 
+		<div class="desk-heading">Моите услуги</div>
+
 		<div class="row">
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
@@ -134,7 +136,194 @@
 
 <style scoped>
 
+	@media only screen and (min-width: 991px) and (max-width: 1920px) {
+		.row {
+			margin-left: unset;
+			margin-right: unset;
+			background-color: #F8F8F8;
+		}
+
+		.col-lg-12.col-md-12 {
+			background: #FFFFFF;
+			border: 0.25px solid #9EA3BD;
+			box-sizing: border-box;
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+			border-radius: 7px;
+			margin: 35px 26px;
+			width: 95.5%;
+		}
+
+		.desk-heading {
+			position: absolute;
+			top: 30px;
+			left: 29px;
+			font-weight: 500;
+			font-size: 25px;
+			line-height: 29px;
+			color: #276955;
+		}
+
+		h1 {
+			font-style: normal;
+			font-weight: normal;
+			font-size: 22px;
+			line-height: 26px;
+			color: #FFFFFF;
+			background-color: #276955;
+			border-radius: 8px;
+			padding:  10px 0px 14px 22px;
+			margin: 24px 24px 25px 21px;
+		}
+
+		.dashboard-list-box {
+			box-shadow: unset;
+		}
+
+		.dashboard-list-box span {
+			position: absolute;
+			background-color: #FFFFFF;
+			width: 49px;
+			height: 50px;
+			padding: 13px 12px 16px 13px;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 23px;
+			color: #276955;
+			top: 24px;
+			right: 38px;
+			border-radius: 8px;
+			box-sizing: border-box;
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+		}
+
+		.dashboard-list-box ul {
+			margin-bottom: 66px;
+			display: block;
+		}
+
+		.dashboard-list-box ul li {
+			background: #FFFFFF;
+			border: 0.25px solid #9EA3BD;
+			box-sizing: border-box;
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+			border-radius: 14px;
+			padding: 16px;
+			margin-bottom: 18px;
+		}
+
+		.list-box-listing { 
+			max-width: unset;
+			overflow: unset;
+			max-height: unset;
+		}
+
+		.list-box-listing-img {
+			max-width: 286px;
+			max-height: 138px;
+			overflow: unset;
+		}
+
+		.list-box-listing-content .inner h3 a {
+			color: #276955;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			line-height: 29px;
+		}
+
+		.buttons-to-right {
+			display: flex;
+			opacity: unset;
+			right: 62%;
+			width: 253px;
+			height: 53px;
+			background-color: #276955;
+			border: 0.25px solid #9EA3BD;
+			box-sizing: border-box;
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+			border-radius: 14px;
+		}
+
+		.dashboard-list-box .button.gray {
+			background-color: #276955;
+		}
+
+		.dashboard-list-box .button.gray img {
+			zoom: 1.5;
+		}
+
+		.dashboard-list-box .button {
+			padding: 11px 26px;
+		}
+
+		.ver_line {
+			width: 1px;
+			height: 32px;
+			margin: 9px auto;
+			background-color: #ffffff;
+		}
+	}
+
+	@media only screen and (max-width: 1670px) {
+		.buttons-to-right {
+			right: 55%;
+		}
+	}
+
+	@media only screen and (max-width: 1600px) {
+		.buttons-to-right {
+			right: 52%;
+		}
+	}
+
+	@media only screen and (max-width: 1536px) {
+		.buttons-to-right {
+			right: 48%;
+		}
+	}
+
+	@media only screen and (max-width: 1440px) {
+		.buttons-to-right {
+			right: 45%;
+		}
+	}
+
+	@media only screen and (max-width: 1366px) {
+		.buttons-to-right {
+			right: 40%;
+		}
+	}
+
+	@media only screen and (max-width: 1266px) {
+		.buttons-to-right {
+			right: 34%;
+		}
+	}
+
+	@media only screen and (max-width: 1180px) {
+		.buttons-to-right {
+			right: 28%;
+		}
+	}
+
+	@media only screen and (max-width: 1100px) {
+		.buttons-to-right {
+			right: 20%;
+		}
+	}
+
+	@media only screen and (max-width: 1024px) {
+		.buttons-to-right {
+			right: 13%;
+		}
+	}
+
 	@media (max-width: 990px) {
+		.desk-heading {
+			display: none;
+		}
+
 		.row {
 			background-color: #F7F7F7;
 			border-top-left-radius: 25px;
@@ -252,6 +441,7 @@
 			background-color: #276955;
 			border-radius: 57px;
 			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+			right: 0%;
 		}
 
 		.dashboard-list-box .button.gray {
