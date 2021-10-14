@@ -191,12 +191,14 @@ export default {
     border-top-right-radius: 45px;
   }
 
-  @media screen and (min-width: 991px) { 
+  @media only screen and (min-width: 991px) { 
 
     .dashboard #logo {
       position: fixed;
       height: 10%;
+      background-color: #3C3E47;
     }
+
     .not-sticky.header-desktop {
       background-color: #f8f8f8;
     }
@@ -237,10 +239,10 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1365px) {
+  @media only screen and (max-width: 1365px) {
     .dashboard #logo {
       display: block;
-      background-color: #333;
+      background-color: #3C3E47;
       /* position: absolute;
       height: 100%; */
       left: 0;
@@ -278,7 +280,7 @@ export default {
     }
   }
   
-  @media screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1024px) {
     #header .container {
       display: block;
     }
@@ -297,7 +299,7 @@ export default {
 
   }
 
-  @media screen and (max-width: 990px) { 
+  @media only screen and (max-width: 990px) { 
     
     .header-desktop {
       display: none;
@@ -388,18 +390,23 @@ export default {
     }
 
     .user-menu.active {
-      width: 323%;
+      width: 253%;
     }
     .user-menu ul {
-        left: -65px;
+        left: 0px;
         width: 90%;
     }
   }
 
   @media screen and (max-width: 380px) {
+    .user-name {
+      display: flex;
+    }
+
     .user-menu ul {
         width: 87%;
     }
+
   }
 
   @media screen and (max-width: 360px) {

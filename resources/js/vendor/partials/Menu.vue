@@ -231,15 +231,12 @@ export default {
 
 <style scoped>
 
-  .dashboard-side-menu {
-    /* display: table; */
-  }
-
   .dashboard-nav {
     min-height: 92vh;
     border-bottom-right-radius: 45px;
     position: fixed;
     /* display: table-cell; */
+    background-color: #3C3E47;
   }
 
   .dashboard-nav ul ul li {
@@ -247,7 +244,7 @@ export default {
   }
 
   .dashboard-nav ul ul li span {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 20px;
   }
 
