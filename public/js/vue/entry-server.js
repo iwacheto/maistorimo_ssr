@@ -38045,8 +38045,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
-//
-//
 
 
 
@@ -38956,31 +38954,37 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("h3", { staticClass: "margin-top-20 tags_heading" }, [
-                    _c("i", { staticClass: "fa fa-tags" }),
-                    _vm._v(
-                      "\n                        Тагове\n                        "
-                    ),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "show_tags",
-                        class: [_vm.showTags ? "active" : ""],
-                        on: {
-                          click: function($event) {
-                            _vm.showTags = !_vm.showTags
-                          }
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "margin-top-20 tags_heading",
+                      on: {
+                        click: function($event) {
+                          _vm.showTags = !_vm.showTags
                         }
-                      },
-                      [
-                        !_vm.showTags
-                          ? _c("span", { staticClass: "close_tags" }, [
-                              _vm._v("+")
-                            ])
-                          : _c("span", [_vm._v("-")])
-                      ]
-                    )
-                  ]),
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fa fa-tags" }),
+                      _vm._v(
+                        "\n                        Тагове\n                        "
+                      ),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "show_tags",
+                          class: [_vm.showTags ? "active" : ""]
+                        },
+                        [
+                          !_vm.showTags
+                            ? _c("span", { staticClass: "close_tags" }, [
+                                _vm._v("+")
+                              ])
+                            : _c("span", [_vm._v("-")])
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _vm.showTags && _vm.selectTag.length > 0
                     ? _c("span", { staticClass: "tag_info" }, [
@@ -39069,28 +39073,34 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("h3", { staticClass: "tags_heading" }, [
-                    _vm._v(
-                      "\n                        Други тагове\n                        "
-                    ),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "show_tags",
-                        class: [_vm.showTags ? "active" : ""],
-                        on: {
-                          click: function($event) {
-                            _vm.showTwentyTags = !_vm.showTwentyTags
-                          }
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "tags_heading",
+                      on: {
+                        click: function($event) {
+                          _vm.showTwentyTags = !_vm.showTwentyTags
                         }
-                      },
-                      [
-                        !_vm.showTags
-                          ? _c("span", [_vm._v("+")])
-                          : _c("span", [_vm._v("-")])
-                      ]
-                    )
-                  ]),
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Други тагове\n                        "
+                      ),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "show_tags",
+                          class: [_vm.showTwentyTags ? "active" : ""]
+                        },
+                        [
+                          !_vm.showTwentyTags
+                            ? _c("span", [_vm._v("+")])
+                            : _c("span", [_vm._v("-")])
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _vm.showTwentyTags
                     ? _c(

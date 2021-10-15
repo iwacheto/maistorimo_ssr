@@ -132,12 +132,11 @@
                             </div>
                         </div>
                         
-                        <h3 class="margin-top-20 tags_heading">
+                        <h3 class="margin-top-20 tags_heading" @click="showTags = !showTags">
                             <i class="fa fa-tags"></i>
                             Тагове
                             <span
                                 class="show_tags"
-                                @click="showTags = !showTags"
                                 :class="[showTags ? 'active' : '']"
                             >
                                 <span v-if="!showTags" class="close_tags">+</span>
@@ -168,14 +167,13 @@
                             </div>
                         </div>
                         <!-- Twenty Tags -->
-                        <h3 class="tags_heading">
+                        <h3 class="tags_heading" @click="showTwentyTags = !showTwentyTags">
                             Други тагове
                             <span
-                                class="show_tags"
-                                @click="showTwentyTags = !showTwentyTags"
-                                :class="[showTags ? 'active' : '']"
+                                class="show_tags" 
+                                :class="[showTwentyTags ? 'active' : '']"
                             >
-                                <span v-if="!showTags">+</span>
+                                <span v-if="!showTwentyTags">+</span>
                                 <span v-else>-</span>
                             </span>
                         </h3>

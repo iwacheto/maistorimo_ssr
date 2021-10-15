@@ -685,6 +685,15 @@ export default {
         padding: 0px 15px;
     }
 
+    .dashboard-list-box-static .button {
+        padding: 7px 0px;
+        font-size: 14px;
+        margin: 12px 0px 35px 0px;
+        width: 165px;
+        background: #6BBF3F;
+        border-radius: 23.5px;
+    }
+
     .dashboard-list-box-static div:nth-child(1) label, .dashboard-list-box-static label {
         display: flex;
         flex-direction: column;
@@ -739,12 +748,7 @@ export default {
         width: 347px;
     }
 
-    .dashboard-list-box-static .button {
-        padding: 7px 0px;
-        font-size: 14px;
-        margin: 12px 0px 35px 0px;
-        width: 165px;
-    }
+    
 }
 
 @media only screen and (max-width: 1500px) {
