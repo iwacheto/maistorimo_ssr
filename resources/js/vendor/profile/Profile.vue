@@ -977,6 +977,16 @@ export default {
         background-color: #F7F7F7;
     }
 
+    .dashboard-list-box-static div div label svg, .dashboard-list-box-static div label svg {
+        display: flex;
+        flex-direction: column;
+        margin: 0px auto;
+    }
+
+    .dashboard-list-box-static div div label {
+        text-align: center;
+    }
+
     .row .col-lg-6.col-md-12:nth-child(2) .dashboard-list-box .dashboard-list-box-static input {
         width: 324px;
     }
