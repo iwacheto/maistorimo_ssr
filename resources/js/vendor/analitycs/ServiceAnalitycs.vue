@@ -298,9 +298,14 @@ export default {
 
   ul li {
     flex: unset;
-    min-height: 169px;
-    padding: 0px;
+    min-height: 202px;
     margin: 16px 26px 16px 16px;
+    padding: 16px 0px 16px 16px;
+    background: #FFFFFF;
+    border: 0.25px solid #9EA3BD;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
   }
 
   ul li:hover {
@@ -365,6 +370,7 @@ export default {
     border-radius: 14px;
     height: 52px;
     margin-left: 31px;
+    margin-right: 10px;
     color: #ffffff;
     max-width: 699px;
   }
