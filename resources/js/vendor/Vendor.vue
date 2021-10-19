@@ -25,4 +25,12 @@ export default {
 </script>
 
 <style scoped>
+    .dashboard-content {
+        padding: 0px;
+        margin-top: 0px; /* TsB */
+    }
+
+    .dashboard-content div {
+        background-color: #FFFFFF;
+    }
 </style>

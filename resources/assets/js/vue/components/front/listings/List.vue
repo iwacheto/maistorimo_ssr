@@ -131,13 +131,12 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <h3 class="margin-top-20 tags_heading">
+
+                        <h3 class="margin-top-20 tags_heading" @click="showTags = !showTags">
                             <i class="fa fa-tags"></i>
                             Тагове
                             <span
                                 class="show_tags"
-                                @click="showTags = !showTags"
                                 :class="[showTags ? 'active' : '']"
                             >
                                 <span v-if="!showTags" class="close_tags">+</span>
@@ -168,14 +167,13 @@
                             </div>
                         </div>
                         <!-- Twenty Tags -->
-                        <h3 class="tags_heading">
+                        <h3 class="tags_heading" @click="showTwentyTags = !showTwentyTags">
                             Други тагове
                             <span
                                 class="show_tags"
-                                @click="showTwentyTags = !showTwentyTags"
-                                :class="[showTags ? 'active' : '']"
+                                :class="[showTwentyTags ? 'active' : '']"
                             >
-                                <span v-if="!showTags">+</span>
+                                <span v-if="!showTwentyTags">+</span>
                                 <span v-else>-</span>
                             </span>
                         </h3>
@@ -241,7 +239,7 @@
                                 <a href="#" class="list" @click="className = true">
                                     <!-- <i class="fa fa-align-justify"></i> -->
                                     <i class="fa fa-th"></i>
-                                    
+
                                     <!-- <svg class="gb_Ve" focusable="false" viewBox="0 0 24 24"><path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path></svg> -->
                                 </a>
                             </div>
@@ -702,7 +700,7 @@ export default {
     }
 
     /* .margin-top-20.tags_heading span.show_tags {
-        
+
     } */
 
     .checkboxes.one-in-row.margin-bottom-15 {
@@ -711,7 +709,7 @@ export default {
 
     .col-md-6.col-xs-6 {
         float: right;
-        
+
     }
 
     .layout-switcher {
@@ -781,7 +779,7 @@ export default {
         padding-right: 0px;
     }
 
-    @media screen and (max-width: 1680px) { 
+    @media screen and (max-width: 1680px) {
         .listing-item-content {
             width: 82%;
             padding: 0px 20px;
@@ -800,7 +798,7 @@ export default {
 
         .row.margin-bottom-25 {
             display: none;
-        } 
+        }
 
         .listing-item-content {
             width: 80%;
@@ -823,25 +821,25 @@ export default {
         }
     }
 
-    @media screen and (max-width: 1190px) { 
+    @media screen and (max-width: 1190px) {
         .sidebar h3 {
             font-size: 15px;
         }
     }
 
-    @media screen and (max-width: 1118px) { 
+    @media screen and (max-width: 1118px) {
         .sidebar h3 {
             font-size: 15px;
         }
     }
 
-    @media screen and (max-width: 1100px) { 
+    @media screen and (max-width: 1100px) {
         .sidebar h3.tags_heading {
             font-size: 19px;
         }
     }
 
-    @media screen and (max-width: 1024px) { 
+    @media screen and (max-width: 1024px) {
         .header-container.container.margin-top-60 {
             margin-top: 30px !important;
         }
@@ -855,7 +853,7 @@ export default {
         }
     }
 
-    @media screen and (max-width: 1000px) { 
+    @media screen and (max-width: 1000px) {
         .col-lg-9  {
             width: 90%;
         }
@@ -876,7 +874,7 @@ export default {
         }
     }
 
-    @media screen and (max-width: 990px) { 
+    @media screen and (max-width: 990px) {
         .col-lg-6 {
             width: 100%;
         }
@@ -927,7 +925,7 @@ export default {
         }
     }
 
-    @media screen and (max-width: 768px) { 
+    @media screen and (max-width: 768px) {
         .sidebar_menu.active_button {
             transform: translateX(3px);
         }
@@ -977,6 +975,9 @@ export default {
         .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
             left: 166px !important;
         }
+        div.project_content {
+            margin-top: 0px;
+        }
 
         .sidebar_menu.active_button {
             top: 88px;
@@ -1001,7 +1002,7 @@ export default {
         }
     }
 
-    @media screen and (max-width: 720px) { 
+    @media screen and (max-width: 720px) {
         .row.project_content {
             display: flex;
             flex-direction: column;
@@ -1009,7 +1010,7 @@ export default {
 
         .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
             left: unset !important;
-            
+
         }
 
         .sidebar {

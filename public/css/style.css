@@ -975,13 +975,13 @@ input#date-picker:hover{color:#444;}
 .daterangepicker .ranges ul{list-style:none;margin:0 auto;padding:0;width:100%;}
 .booking-requests-filter{position:relative;float:right;top:14px;right:25px;background:#fff;border-radius:4px;}
 .dashboard-list-box .booking-requests-filter .sort-by{right:0;top:0;float:left;}
-#booking-date-range{float:right;background:#fff;border-radius:3px;cursor:pointer;padding:6px;display:inline-block;position:relative;margin:0;box-sizing:border-box;color:#666;font-weight:600;transition:0.3s;background-color:#fff;margin-left:15px;top:-2px;}
+#booking-date-range{ float: right; background:#fff;border-radius:3px;cursor:pointer;padding:6px;display:inline-block;position:relative;margin:0;box-sizing:border-box;color:#666;font-weight:600;transition:0.3s;background-color:#fff;margin-left:15px;top:-2px;}
 @media (max-width:768px){.booking-requests-filter{display:none;}
 }
 #booking-date-range:hover{color:#66676b;}
 #booking-date-range span{padding-right:7px;}
 #booking-date-range span:after{content:"\f107";font-family:"FontAwesome";font-size:18px;margin:0 0 0 0;right:0px;position:relative;width:auto;height:auto;display:inline-block;color:#66676b;float:right;font-weight:normal;transition:transform 0.3s;transform:translate3d(0, 0, 0) rotate(0deg);}
-#booking-date-range i{color:#999;background-color:}
+#booking-date-range i{color:#999;}
 .daterangepicker .ranges li{font-size:13px;padding:8px 12px;cursor:pointer;transition:0.3s;}
 .daterangepicker .ranges li:hover{background-color:#f4f4f4;}
 .daterangepicker .ranges li.active{background-color:#66676b;color:#fff;}
@@ -2289,8 +2289,8 @@ input[type="time"]::-webkit-clear-button{display:none;}
 @media (max-width:765px){.list-box-listing{max-height:initial;}
 .list-box-listing-img a img{max-height:150px;}
 }
-@media (max-width:705px){.nav-item a{padding:20px 5px !important;}
-}
+/* @media (max-width:705px){.nav-item a{padding:20px 5px !important;}
+} */
 @media (max-width:550px){.add-listing-headline{padding:10px 15px;}
 /* .add-listing-section{padding:0 10px 10px 10px;} */
 .add-listing-headline{width:calc(100%);max-width:100%;left:0;}
