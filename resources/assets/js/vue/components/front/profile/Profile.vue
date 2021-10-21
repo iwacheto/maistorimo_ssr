@@ -129,7 +129,6 @@
 
         </div>
         <!-- Sidebar / End -->
-
         <!-- Tabs -->
         <div class="user-projects-services">
           <ul class="nav nav-tabs nav-justified">
@@ -302,6 +301,8 @@ export default {
         this.profile = res.data;
         this.vendorDetails.user = res.data.vendor_details.id;
         this.contactAnalytic("profile");
+        console.log(this.profile);
+        console.log(this.vendorDetails);
       } catch (error) {
         console.log(error);
       }
@@ -485,7 +486,7 @@ export default {
   }
 
   .verified-badge {
-    margin-top: 80px;
+    margin-top: 60px;
   }
 
   div.user-projects-services {
@@ -496,9 +497,22 @@ export default {
     justify-content: center; /* TsB */
   }
 
+  .p_info.p_info_deckstop {
+    background-color: #F9F9F9;
+    max-width: 770px;
+    /* min-height: 100px; */
+    margin: 0px auto 20px auto;
+  }
+
+  .p_info.p_info_deckstop .profile_info.active {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
   div.p_info_deckstop span.info_span {
     display: flex !important;
     justify-content: center;
+    padding-bottom: 20px;
   }
 
   div.tab-pan div.row{
@@ -682,6 +696,14 @@ export default {
       padding: 0px;
       margin-top: 33px; */
     }
+
+    .user-profile-name {
+      max-width: 85%;
+    }
+
+    #titlebar .user-profile-name h2 {
+      font-size: 27px;
+    }
   }
 
   @media screen and (max-width: 1365px) { 
@@ -863,6 +885,10 @@ export default {
     }
 
     .company_profile .verified-badge.with-tip {
+      display: none;
+    }
+
+    .col-md-12.margin-top-0 {
       display: none;
     }
 
