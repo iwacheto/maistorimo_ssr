@@ -238,7 +238,8 @@ export default {
 <style scoped>
 
     #header.cloned {
-        background-color:#324E5B;
+        /* background-color:#324E5B; */
+        background-color:#276955;
         padding: 0px;
         mix-blend-mode: normal;
         box-shadow: 0px 3px 15px 3px rgba(0, 0, 0, 0.25);
