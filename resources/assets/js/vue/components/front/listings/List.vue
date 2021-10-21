@@ -262,7 +262,7 @@
                                     <img :src="project.project_galleries[0].url" alt />
 
                                     <div class="listing-badge now-open">
-                                        <img class="verificated-img" src="/images/very.png" alt="verificated" >
+                                        <img class="verificated-img" src="/images/very.svg" alt="verificated" >
                                     </div>
 
                                     <div class="listing-item-content">
