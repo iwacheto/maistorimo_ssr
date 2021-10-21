@@ -40445,7 +40445,7 @@ var render = function() {
                                   _c("img", {
                                     staticClass: "verificated-img",
                                     attrs: {
-                                      src: "/images/very.png",
+                                      src: "/images/very.svg",
                                       alt: "verificated"
                                     }
                                   })
