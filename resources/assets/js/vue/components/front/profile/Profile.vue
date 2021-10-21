@@ -770,7 +770,7 @@ export default {
 
   @media screen and (max-width: 1240px) { 
     #titlebar .user-profile-name h2 {
-      font-size: 24px;
+      font-size: 23px;
     }
 
     .contact-mask {
@@ -892,6 +892,10 @@ export default {
       display: none;
     }
 
+    div.p_info_mobile.p_info {
+      display: none !important;
+    }
+
     .contact-mask {
       display: none;
       /* left: 64%; */
@@ -908,6 +912,11 @@ export default {
   }
 
   @media screen and (max-width: 992px) {
+
+    .col-md-12.margin-top-0 {
+      display: none;
+    }
+
     .listing-item-container.list-layout .listing-item-inner {
       left: 0px;
     }
@@ -937,6 +946,10 @@ export default {
   }
 
   @media screen and (max-width: 990px) {
+    .col-md-12.margin-top-0 {
+      display: none;
+    }
+
     .mask {
       left: 47%;
     }
@@ -1003,6 +1016,10 @@ export default {
       left: 25%;
       top: 160px;
     }
+
+    #titlebar .user-profile-name h2 {
+      font-size: 22px;
+    }
   }
 
   @media screen and (max-width: 687px) {
@@ -1030,12 +1047,16 @@ export default {
     }
 
     .boxed-widget {
-      left: 21%;
-      top: 110px;
+      left: 23%;
+      top: 126px;
     }
 
     .listing-details-sidebar li i, .listing-details-sidebar li a, .listing-details-sidebar li a i {
       font-size: 14px;
+    }
+
+    #titlebar .user-profile-name h2 {
+      font-size: 21px;
     }
   }
 
@@ -1062,13 +1083,17 @@ export default {
       left: 32%;
     }
 
+    .company_profile .user-profile-avatar {
+      top: -5%;
+    }
+
     #titlebar .user-profile-name h2 {
       font-size: 21px;
     }
 
     .boxed-widget {
       left: 17%;
-      top: 65px;
+      top: 95px;
     }
   }
 
@@ -1091,7 +1116,7 @@ export default {
     }
 
     .company_profile {
-      left: 25%;
+      left: 27%;
       top: -19%;
     }
 
@@ -1100,8 +1125,8 @@ export default {
     }
 
     .boxed-widget {
-      left: 14%;
-      top: 78px;
+      left: 17%;
+      top: 110px;
     }
   }
 
@@ -1126,13 +1151,13 @@ export default {
 
     .company_profile .user-profile-avatar {
       left: 38%;
-      top: -3%;
+      top: 1%;
       max-width: 70px !important;
     }
 
     .boxed-widget {
-      left: 11%;
-      top: 78px;
+      left: 14%;
+      top: 120px;
       margin-top: 0px;
     }
 
@@ -1164,8 +1189,8 @@ export default {
     }
 
     .boxed-widget {
-      left: 8%;
-      top: 90px;
+      left: 12%;
+      top: 150px;
       margin-top: 0px;
     }
   }
@@ -1178,13 +1203,13 @@ export default {
     } */
 
     .mask {
-      top: -87%;
+      top: -175%;
       left: 24%;
     }
 
     .company_profile {
       left: 23%;
-      top: -75%;
+      top: -145%;
     }
 
     #titlebar .user-profile-name h2 {
@@ -1192,8 +1217,8 @@ export default {
     }
 
     .boxed-widget {
-      top: 36px;
-      left: 6%;
+      top: 82px;
+      left: 10%;
     }
   }
 
@@ -1205,15 +1230,19 @@ export default {
     } */
 
     .mask {
-      top: -88%;
+      top: -165%;
       left: 24%;
       width: 60%;
       height: 260px;
     }
 
+    #titlebar h2 {
+      line-height: 22px;
+    }
+
     .company_profile {
       left: 25%;
-      top: -80%;
+      top: -160%;
     }
 
     .company_profile .user-profile-avatar {
@@ -1225,7 +1254,7 @@ export default {
     }
 
     .boxed-widget {
-      top: 14px;
+      top: 33px;
       left: 6%;
     }
   }
@@ -1242,15 +1271,15 @@ export default {
     }
 
     .mask {
-      top: -76%;
+      top: -156%;
       left: 24%;
       width: 60%;
       height: 240px;
     }
 
     .company_profile {
-      left: 24%;
-      top: -66%;
+      left: 21%;
+      top: -141%;
       width: 80%;
     }
 
@@ -1273,8 +1302,46 @@ export default {
     }
 
     .boxed-widget {
-      top: 10px;
+      top: 31px;
       left: 2%;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .mask {
+      top: -165%;
+      left: 24%;
+      width: 60%;
+      height: 240px;
+    }
+
+    .company_profile {
+      left: 23%;
+      top: -141%;
+      width: 74%;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .mask {
+      top: -165%;
+      left: 24%;
+      width: 60%;
+      height: 209px;
+    }
+
+    .company_profile {
+      left: 20%;
+      top: -141%;
+      width: 74%;
+    }
+
+    .user-profile-avatar {
+      left: 33%;
+    }
+
+    .listing-details-sidebar li a, .listing-details-sidebar li i, .listing-details-sidebar li span {
+      font-size: 11px;
     }
   }
 
