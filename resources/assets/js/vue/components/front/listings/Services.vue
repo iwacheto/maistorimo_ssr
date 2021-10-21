@@ -286,7 +286,7 @@ export default {
             limit: 5,
             busy: false,
             page: 1,
-            className: false,
+            className: true,
             show_sidebar: false,
             results: [],
             isOpen: false,
