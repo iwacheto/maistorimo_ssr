@@ -1,5 +1,15 @@
 <template>
   <div>
+
+    <!-- Titlebar -->
+    <div id="titlebar">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Добавяне на услуга</h2>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-lg-12">
         <div id="add-article">
@@ -7,91 +17,72 @@
           <div class="add-listing-section">
             <div class="add-listing-headline">
               <h3>
-                <i class="sl sl-icon-doc"></i> Основна информация
+                <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
               </h3>
               <span v-if="error.commonError" class="error">{{error.commonError}}</span>
             </div>
 
-            <!-- Titlebar -->
-            <div id="titlebar">
-              <div class="row">
-                <div class="col-md-12">
-                  <h2>Добавяне на услуга</h2>
-                  <!-- Breadcrumbs -->
-                  <nav id="breadcrumbs">
-                    <ul>
-                      <li>
-                        <a href="#">Начало</a>
-                      </li>
-                      <li>
-                        <a href="#">Админ Панел</a>
-                      </li>
-                      <li>Добавяне на услуга</li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-
             <!-- Title -->
-            <div class="row with-forms">
-              <div class="col-md-12">
-                <!-- <p v-if="error.titleError" class="error_service">Заглавието е задължително!</p> -->
-                <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
-                <h5>
-                  Заглавие на услугата
-                  <span class="required">*</span>
-                </h5>
-                <input class="search-field" type="text" v-model="service.title" />
-              </div>
-            </div>
-
-            <div class="row with-forms">
-              <div class="col-md-12">
-                <div class="add-listing-section">
-                  <div class="add-listing-headline category_mobile">
-                    <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
-                    <div class="col-md-6">
-                      <h3 class="mb-20">
-                        <i class="im im-icon-Add-Window"></i> Категория
-                        <span class="required">*</span>
-                      </h3>
-                      <div class="row with-forms">
-                        <select class="chosen-select-no-single" v-model="service.category">
-                          <option value>Избери категория</option>
-                          <optgroup
-                            :label="mainCategory.title"
-                            v-for="mainCategory in categories"
-                            :key="mainCategory.id"
-                          >
-                            <option
-                              :value="category.id"
-                              v-for="category in mainCategory.children"
-                              :key="category.id"
-                            >{{ category.title }}</option>
-                            <option value="21">Друга</option>
-                          </optgroup>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+            <div class="section-with-forms">
+              
+              <div class="with-forms">
+                <div class="col-md-12">
+                  <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
+                  <h5>
+                    Заглавие на услугата
+                  </h5>
+                  <input class="search-field" type="text" v-model="service.title" />
                 </div>
+                    
+                <div class="col-md-12">
+                  <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
+                  <h5>Категория</h5>
+
+                  
+                  <select class="chosen-select-no-single" v-model="service.category">
+                    <option value>Избери категория</option>
+                    <optgroup
+                      :label="mainCategory.title"
+                      v-for="mainCategory in categories"
+                      :key="mainCategory.id"
+                    >
+                      <option
+                        :value="category.id"
+                        v-for="category in mainCategory.children"
+                        :key="category.id"
+                      >{{ category.title }}</option>
+                      <option value="21">Друга</option>
+                    </optgroup>
+                  </select>
+                  
+                </div>
+              </div>  
+
+              <div class="galery-section">
+                <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
+                <h5>
+                  <i class="sl sl-icon-picture"></i> Главна снимка
+                </h5>
+
+                <vue-dropzone
+                    ref="myVueDropzone"
+                    @vdropzone-success="imageUploaded"
+                    @vdropzone-drop="disableButton"
+                    id="dropzone"
+                    :options="dropzoneOptions"
+                  ></vue-dropzone>
               </div>
             </div>
 
-            <!-- Row -->
-            <div class="add-listing-section">
+            <div class="add-listing-section section-details">
               <div class="add-listing-headline">
-                <h3>
-                  <i class="sl sl-icon-doc"></i> Описание 1
-                  <span class="required">*</span>
-                </h3>
+                <h5>Описание 1</h5>
                 <div class="row with-forms">
                   <!-- Status -->
                   <div class="col-md-12">
                     <span v-if="error.firstDescriptionError" class="error">Моля напишете описание!</span>
 
-                    <label>Описание 1</label>
+                    <!-- <label>Описание 1</label> -->
                     <ckeditor
                       :editor="editorConfig.editor"
                       v-model="service.firstDescription"
@@ -100,13 +91,9 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- Row -->
-            <div class="add-listing-section">
+            
               <div class="add-listing-headline">
-                <h3>
-                  <i class="sl sl-icon-doc"></i> Описание 2
-                </h3>
+                <h5>Описание 2</h5>
                 <div class="row with-forms">
                   <!-- Status -->
                   <div class="col-md-12">
@@ -114,7 +101,7 @@
                       v-if="service.secondDescriptionError"
                       class="error"
                     >{{service.secondDescriptionError[0]}}</span>-->
-                    <label>Текст за Нас - Компания</label>
+                    <!-- <label>Текст за Нас - Компания</label> -->
                     <ckeditor
                       :editor="editorConfig.editor"
                       v-model="service.secondDescription"
@@ -124,34 +111,14 @@
                 </div>
               </div>
             </div>
-
-            <!-- Section -->
-            <div class="add-listing-section margin-top-45">
-              <div class="add-listing-headline">
-                <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span>
-                <h3>
-                  <i class="sl sl-icon-picture"></i> Главна снимка
-                  <span class="required">*</span>
-                </h3>
-              </div>
-
-              <!-- Dropzone -->
-              <vue-dropzone
-                ref="myVueDropzone"
-                @vdropzone-success="mainImageUploaded"
-                @vdropzone-removed-file="removedMainImage"
-                id="dropzoneMainImage"
-                :options="dropzoneOptionsMain"
-              ></vue-dropzone>
-            </div>
-            <!-- Section / End -->
-
             <!-- Row -->
-
-            <button @click="createService" class="button preview">
-              Създай
-              <i class="fa fa-arrow-circle-right"></i>
-            </button>
+            
+            <!-- Row -->
+            <div class="button-part">
+              <button @click="createService" class="button preview">
+                Създай
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -163,6 +130,7 @@
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import vue2Dropzone from "vue2-dropzone";
+import "vue2-dropzone/dist/vue2Dropzone.min.css";
 
 export default {
   name: "CreateService",
@@ -193,7 +161,7 @@ export default {
         categoryError: false,
         imageError: false
       },
-      dropzoneOptionsMain: {
+      dropzoneOptions: {
         url: "/vendor/galleries/uploadImage",
         maxFiles: 1,
         addRemoveLinks: true,
@@ -283,7 +251,233 @@ export default {
 </script>
 
 <style scoped>
+
+.row {
+  margin-left: unset;
+  margin-right: unset;
+}
+
 span.error {
   font-size: 14px;
+}
+
+@media screen and (min-width: 991px) {
+
+  #titlebar {
+    margin-bottom: 0px;
+  }
+
+  #titlebar h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 29px;
+    color: #276955;
+    margin: 0px 0px 40px 0px;
+  }
+
+  /* .row {
+    margin-left: unset;
+    margin-right: unset;
+    width: 100%;
+  } */
+
+  .col-lg-12 {
+    margin: 0px;
+    padding: 0px;
+    background-color: #f8f8f8;
+  }
+
+  #add-article {
+    margin: 0px 26px;
+    background: #FFFFFF;
+    border: 0.25px solid #9EA3BD;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgb(0 0 0 / 25%);
+    border-radius: 7px;
+  }
+
+  .add-listing-section {
+    box-shadow: unset;
+    border-radius: 7px;
+    padding: unset;
+  }
+
+  .add-listing-section.section-details {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .add-listing-headline {
+    border-top: 7px;
+    /* border-bottom: 1px solid #CACACA; */
+    border-bottom: unset;
+    width: unset;
+    left: unset;
+    margin: unset;
+  }
+
+  .add-listing-section.section-details .add-listing-headline {
+    padding: 25px 18px;
+  }
+
+  .add-listing-headline h3 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #276955;
+  }
+
+  .section-with-forms {
+    display: flex;
+    flex-direction: row;
+    padding-left: 25px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid #CACACA;
+    border-top: 1px solid #CACACA;
+  }
+
+  .section-with-forms .with-forms:nth-child(1) {
+    width: 34%;
+  }
+
+  .section-with-forms .galery-section {
+    width: 30%;
+  }
+
+  .with-forms {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .autocomplete {
+    width: 100%;
+  }
+
+  #add-article h5 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    color: #276955;
+    margin-left: 28px;
+  }
+
+  .col-md-12 input, .col-md-12 select {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 40px;
+    max-width: 330px;
+  }
+
+  .col-md-12 select { 
+    margin: 6px 0px;
+    padding: 0px;
+    max-width: 330px;
+  }
+
+  .multi_select_service {
+    position: relative;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px;
+  }
+
+  .vue-tags-input {
+    height: 71px;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .vue-tags-input .ti-input {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .cityInput {
+    min-width: unset;
+  }
+
+  .galery-section {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-left: 20px;
+  }
+
+  .form {
+    margin-right: 20px;
+  }
+
+  .form-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 35px;
+  }
+
+  .add-listing-section.section-details .add-listing-headline:nth-child(1) {
+    /* border-top: 1px solid #CACACA; */
+    border-bottom: unset;
+  }
+
+  .add-listing-section.section-details .add-listing-headline {
+    margin: 0px;
+  }
+
+  .dropzone {
+    margin-top: 0px;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .form div:nth-child(2) {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .button-part {
+    width: 100%;
+    margin-top: 56px;
+    margin-bottom: 61px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-part button {
+    margin: 0px auto;
+    background: #6BBF3F;
+    border-radius: 20px;
+    font-size: 20px;
+    line-height: 23px;
+    width: 354px;
+    height: 43px;
+  }
+
+  @media screen and (max-width: 991px) {
+
+  }
+
 }
 </style>

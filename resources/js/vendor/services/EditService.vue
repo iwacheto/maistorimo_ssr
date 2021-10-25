@@ -329,6 +329,7 @@ export default {
 </script>
 
 <style scoped>
+
 .select_heading {
   padding: 20px 0;
 }

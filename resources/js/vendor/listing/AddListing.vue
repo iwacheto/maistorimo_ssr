@@ -37,7 +37,6 @@
             <div class="section-with-forms">
               <!-- Title -->
               <div class="with-forms">
-                
                 <div class="col-md-12">
                   <h5>
                     Заглавие на проект
@@ -183,16 +182,6 @@
                     :config="editorConfig.editorConfig"
                   ></ckeditor>
                 </div>
-                <!-- <textarea
-                  class="WYSIWYG"
-                  name="summary"
-                  cols="40"
-                  rows="3"
-                  id="summary"
-                  spellcheck="true"
-                  v-model="project.description"
-                  @focus="makeFocus('description')"
-                ></textarea>-->
                 <span v-if="error.descriptionError" class="error">Моля добавете описание на проекта!</span>
                 <span v-if="desc_error" class="error">Описанието трябва да е поне с 15 букви!</span>
               </div>
