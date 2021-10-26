@@ -121,6 +121,11 @@
             </div>
           </div>
         </div>
+
+        <!-- Copyrights -->
+        <div class="col-md-12">
+          <div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
+        </div>
       </div>
       <vue-toastr ref="mytoast"></vue-toastr>
     </div>
@@ -265,6 +270,7 @@ span.error {
 
   #titlebar {
     margin-bottom: 0px;
+    padding-top: 29px;
   }
 
   #titlebar h2 {

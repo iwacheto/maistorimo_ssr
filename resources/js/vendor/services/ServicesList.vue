@@ -30,7 +30,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
-								<router-link class="button gray" :to="'/projects/edit/' + service.id">
+								<router-link class="button gray" :to="'/service/edit/' + service.id">
 									<img src="/images/edit-icon.svg" alt="edit icon">
 								</router-link>
 
@@ -42,7 +42,7 @@
 
 								<div class="ver_line"></div>
 
-								<a target="_blank" :href="'/project/details/'+service.id" class="button gray">
+								<a target="_blank" :href="'/service/details/'+service.id" class="button gray">
 									<img src="/images/web-icon.svg" alt="web site icon">
 								</a>
 							</div>

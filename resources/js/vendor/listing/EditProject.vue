@@ -3,24 +3,8 @@
     <!-- Titlebar -->
     <div id="titlebar">
       <div class="row">
-        <div class="col-md-12 heading_admin">
+        <div class="col-md-12">
           <h2>Добави проект</h2>
-          <a @click="goToProject" class="button preview project_link">
-            Виж Проекта
-            <i class="fa fa-arrow-circle-right"></i>
-          </a>
-          <!-- Breadcrumbs -->
-          <nav id="breadcrumbs">
-            <ul>
-              <li>
-                <a href="#">Начало</a>
-              </li>
-              <li>
-                <a href="#">Табло</a>
-              </li>
-              <li>Добави проект</li>
-            </ul>
-          </nav>
         </div>
       </div>
     </div>
@@ -33,65 +17,79 @@
             <!-- Headline -->
             <div class="add-listing-headline">
               <h3>
-                <i class="sl sl-icon-doc"></i> Основна информация
+                <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
               </h3>
             </div>
 
             <!-- Title -->
-            <div class="row with-forms">
-              <div class="col-md-12">
-                <h5>
-                  Заглавие на проекта
-                  <span class="required">*</span>
-                  <i class="tip" data-tip-content="Име на вашият бизнес"></i>
-                </h5>
-                <input class="search-field" v-model="project.title" type="text" value />
+            <div class="section-with-forms">
+              <div class="with-forms">
+                <div class="col-md-12">
+                  <h5>
+                    Заглавие на проекта
+                  </h5>
+                  <input class="search-field" v-model="project.title" type="text" value />
+                
+                  <div class="autocomplete">
+                    <h5>Град</h5>
+                    <input type="text" v-model="search" @input="onChange" class="cityInput" />
+                    <ul v-show="isOpen" class="autocomplete-results">
+                      <li
+                        v-for="(result, i) in results"
+                        :key="i"
+                        @click="setResult(result)"
+                        class="autocomplete-result"
+                      >{{ result.city }}</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
+
+              <div class="with-forms">
+                <!-- Status -->
+                <div class="col-md-6">
+                  <h5>Категория</h5>
+                  <select class="chosen-select-no-single" v-model="project.category">
+                    <option value="null">Избери категория</option>
+                    <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
+                    <optgroup
+                      :label="mainCategory.title"
+                      v-for="mainCategory in categories"
+                      :key="mainCategory.id"
+                    >
+                      <option
+                        :value="category.id"
+                        v-for="category in mainCategory.children"
+                        :key="category.id"
+                      >{{ category.title }}</option>
+                      <option value="21">Друга</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+              <div class="with-forms">
+                <div class="col-md-6">
+                  <h5>
+                    Ключови думи
+                    <i
+                      class="tip"
+                      data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
+                    ></i>
+                  </h5>
+                  <vue-tags-input
+                    v-model="tag"
+                    :tags="tags"
+                    :autocomplete-items="filteredTags"
+                    @tags-changed="newTags => project.tags = newTags"
+                  />
+                </div>
+              </div>
+
             </div>
-
-            <!-- Row -->
-            <div class="row with-forms">
-              <!-- Status -->
-              <div class="col-md-6">
-                <h5>
-                  Категория
-                  <span class="required">*</span>
-                </h5>
-                <select class="chosen-select-no-single" v-model="project.category">
-                  <option value="null">Избери категория</option>
-                  <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
-                  <optgroup
-                    :label="mainCategory.title"
-                    v-for="mainCategory in categories"
-                    :key="mainCategory.id"
-                  >
-                    <option
-                      :value="category.id"
-                      v-for="category in mainCategory.children"
-                      :key="category.id"
-                    >{{ category.title }}</option>
-                    <option value="21">Друга</option>
-                  </optgroup>
-                </select>
-              </div>
-
+            
               <!-- Type -->
-              <div class="col-md-6">
-                <h5>
-                  Ключови думи
-                  <i
-                    class="tip"
-                    data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
-                  ></i>
-                </h5>
-                <vue-tags-input
-                  v-model="tag"
-                  :tags="tags"
-                  :autocomplete-items="filteredTags"
-                  @tags-changed="newTags => project.tags = newTags"
-                />
-               </div>
-            </div>
+              
             <div class="row">
               <div class="col-md-12">
                 <h5>
@@ -110,84 +108,79 @@
                 ></multiselect>
                </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <google-map
-                  v-if="project.lat && project.lng && project.formatted_address && project.raw_data"
-                  :lat="project.lat"
-                  :lng="project.lng"
-                  :formatted_address="project.formatted_address"
-                  :placeObj="project.raw_data"
-                />
-              </div>
-            </div>
-            <!-- Row / End -->
+            
           </div>
-          <!-- Section / End -->
 
-          <!-- Section -->
-          <div class="add-listing-section margin-top-45">
-            <!-- Headline -->
+          <div class="row">
+            <div class="col-md-12">
+              <google-map
+                v-if="project.lat && project.lng && project.formatted_address && project.raw_data"
+                :lat="project.lat"
+                :lng="project.lng"
+                :formatted_address="project.formatted_address"
+                :placeObj="project.raw_data"
+              />
+            </div>
+          </div>
+
+          <div class="add-listing-section section-details">
             <div class="add-listing-headline">
               <h3>
-                <i class="sl sl-icon-docs"></i> Детайли
+                <img src="/images/info-circle-solid.svg" alt="info icon"> Детайли
               </h3>
             </div>
 
             <!-- Description -->
-            <div class="form">
-              <h5>
-                Описание
-                <span class="required">*</span>
-              </h5>
+            <div class="form-section">
+              <div class="form">
+                <h5>Описание</h5>
+                <div class="editor-item">
+                  <ckeditor
+                    :editor="editorConfig.editor"
+                    v-model="project.description"
+                    :config="editorConfig.editorConfig"
+                  ></ckeditor>
+                </div>
+              </div>
 
-              <ckeditor
-                :editor="editorConfig.editor"
-                v-model="project.description"
-                :config="editorConfig.editorConfig"
-              ></ckeditor>
+              <div class="galery-section">
+                <h5>
+                  <i class="sl sl-icon-picture"></i> Галерия
+                </h5>
+
+                <gallery :images="images" :index="index" @close="index = null"></gallery>
+                <div
+                  class="image"
+                  v-for="(image, imageIndex) in project.project_galleries"
+                  :key="imageIndex"
+                  @click="index = imageIndex"
+                  :style="{ backgroundImage: 'url(' + image.url + ')', width: '300px', height: '200px' }"
+                >
+
+                  <a @click.stop="deleteImage(imageIndex)" class="button del_btn">
+                    <i class="sl sl-icon-close"></i> Delete
+                  </a>
+
+                </div>
+                <vue-dropzone
+                  ref="myVueDropzone"
+                  @vdropzone-success="imageUploaded"
+                  id="dropzone"
+                  :options="dropzoneOptions"
+                ></vue-dropzone>
+
+              </div>
             </div>
           </div>
-          <!-- Section / End -->
 
-          <!-- Section -->
-          <div class="add-listing-section margin-top-45">
-            <!-- Headline -->
-            <div class="add-listing-headline">
-              <h3>
-                <i class="sl sl-icon-picture"></i> Галерия
-              </h3>
-            </div>
 
-            <!-- Dropzone -->
-
-            <gallery :images="images" :index="index" @close="index = null"></gallery>
-            <div
-              class="image"
-              v-for="(image, imageIndex) in project.project_galleries"
-              :key="imageIndex"
-              @click="index = imageIndex"
-              :style="{ backgroundImage: 'url(' + image.url + ')', width: '300px', height: '200px' }"
-              v-if="image.deleted != 1"
-            >
-              <a @click.stop="deleteImage(imageIndex)" class="button del_btn">
-                <i class="sl sl-icon-close"></i> Delete
-              </a>
-
-            </div>
-            <vue-dropzone
-              ref="myVueDropzone"
-              @vdropzone-success="imageUploaded"
-              id="dropzone"
-              :options="dropzoneOptions"
-            ></vue-dropzone>
+          
+          <div class="button-part">
+            <button @click="editProject" class="button preview">
+              Радактирай
+            </button>
           </div>
-          <!-- Section / End -->
 
-          <a @click="editProject" class="button preview">
-            Радактирай
-            <i class="fa fa-arrow-circle-right"></i>
-          </a>
         </div>
       </div>
 
@@ -409,5 +402,256 @@ export default {
   background-position: center center;
   border: 1px solid #ebebeb;
   margin: 5px;
+}
+
+.multiselect__input {
+  border: none !important;
+}
+.autocomplete-results {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #eeeeee;
+  height: 120px;
+  overflow: auto;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.autocomplete-result {
+  list-style: none;
+  text-align: left;
+  padding: 4px 2px;
+  cursor: pointer;
+}
+
+.autocomplete-result:hover {
+  background-color: #4aae9b;
+  color: white;
+}
+.green {
+  background: #71e7b2;
+  background: #94ecc4;
+}
+.danger {
+  background: coral;
+}
+.cityInput {
+  min-width: 300px;
+  margin-bottom: 0 !important;
+}
+.error {
+  font-size: 14px;
+  padding-left: 25px;
+  min-width: 200px;
+}
+
+.row {
+  margin-left: unset;
+  margin-right: unset;
+  width: 100%;
+}
+
+@media screen and (min-width: 991px) {
+
+  #titlebar {
+    margin-bottom: 0px;
+  }
+
+  #titlebar h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 29px;
+    color: #276955;
+    margin: 0px 0px 40px 0px;
+  }
+
+  /* .row {
+    margin-left: unset;
+    margin-right: unset;
+    width: 100%;
+  } */
+
+  .col-lg-12 {
+    margin: 0px;
+    padding: 0px;
+    background-color: #f8f8f8;
+  }
+
+  #add-listing {
+    margin: 0px 26px;
+    background: #FFFFFF;
+    border: 0.25px solid #9EA3BD;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgb(0 0 0 / 25%);
+    border-radius: 7px;
+  }
+
+  .add-listing-section {
+    box-shadow: unset;
+    border-radius: 7px;
+    padding: unset;
+  }
+
+  .add-listing-headline {
+    border-top: 7px;
+    border-bottom: 1px solid #CACACA;
+    width: unset;
+    left: unset;
+  }
+
+  .add-listing-headline h3 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #276955;
+  }
+
+  .section-with-forms {
+    display: flex;
+    flex-direction: row;
+    padding-left: 25px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid #CACACA;
+  }
+
+  .with-forms {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+  }
+
+  .autocomplete {
+    width: 100%;
+  }
+
+  #add-listing h5 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    color: #276955;
+    margin-left: 28px;
+  }
+
+  .col-md-12 input, .col-md-12 select {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 40px;
+  }
+
+  .col-md-12 select { 
+    margin: 6px 0px;
+    padding: 0px;
+  }
+
+  .multi_select_service {
+    position: relative;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px;
+  }
+
+  .vue-tags-input {
+    height: 71px;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .vue-tags-input .ti-input {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .cityInput {
+    min-width: unset;
+  }
+
+  .add-listing-section.section-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .galery-section {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-left: 20px;
+  }
+
+  .form {
+    margin-right: 20px;
+  }
+
+  .form-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 35px;
+  }
+
+  .add-listing-section.section-details .add-listing-headline:nth-child(1) {
+    border-top: 1px solid #CACACA;
+    border-bottom: unset;
+  }
+
+  .add-listing-section.section-details .add-listing-headline {
+    margin: 0px;
+  }
+
+  .dropzone {
+    margin-top: 0px;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .form div:nth-child(2) {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .button-part {
+    width: 100%;
+    margin-top: 56px;
+    margin-bottom: 61px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-part button {
+    margin: 0px auto;
+    background: #6BBF3F;
+    border-radius: 20px;
+    font-size: 20px;
+    line-height: 23px;
+    width: 354px;
+    height: 43px;
+  }
+
+  @media screen and (max-width: 991px) {
+
+  }
+
 }
 </style>

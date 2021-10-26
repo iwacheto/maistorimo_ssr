@@ -5,18 +5,6 @@
       <div class="row">
         <div class="col-md-12">
           <h2>Добавяне на проекти</h2>
-          <!-- Breadcrumbs -->
-          <!-- <nav id="breadcrumbs">
-            <ul>
-              <li>
-                <a href="#">Начало</a>
-              </li>
-              <li>
-                <a href="#">Табло</a>
-              </li>
-              <li>Добави проект</li>
-            </ul>
-          </nav> -->
         </div>
       </div>
     </div>
