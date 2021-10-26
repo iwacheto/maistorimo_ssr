@@ -660,14 +660,14 @@ export default {
     box-sizing: border-box;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    height: 40px;
-    padding: 5px;
+    height: 51px;
+    padding: 11px;
   }
 
   .vue-tags-input {
-    height: 71px;
+    /* height: 71px; */
     background: #FFFFFF;
-    border: 0.25px solid #6BBF3F;
+    /* border: 0.25px solid #6BBF3F; */
     box-sizing: border-box;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;

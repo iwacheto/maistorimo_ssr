@@ -47,7 +47,7 @@
 
               <div class="with-forms">
                 <!-- Status -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <h5>Категория</h5>
                   <select class="chosen-select-no-single" v-model="project.category">
                     <option value="null">Избери категория</option>
@@ -66,17 +66,24 @@
                     </optgroup>
                   </select>
                 </div>
+
+                <div class="col-md-12">
+                  <h5>Услуги</h5>
+                  <multiselect
+                    class="multi_select_service"
+                    v-model="userServicesTags"
+                    label="text"
+                    :multiple="true"
+                    track-by="id"
+                    :options="userServices"
+                  ></multiselect>
+                </div>
+
               </div>
 
               <div class="with-forms">
-                <div class="col-md-6">
-                  <h5>
-                    Ключови думи
-                    <i
-                      class="tip"
-                      data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
-                    ></i>
-                  </h5>
+                <div class="col-md-12">
+                  <h5>Ключови думи</h5>
                   <vue-tags-input
                     v-model="tag"
                     :tags="tags"
@@ -86,27 +93,6 @@
                 </div>
               </div>
 
-            </div>
-            
-              <!-- Type -->
-              
-            <div class="row">
-              <div class="col-md-12">
-                <h5>
-                  Услуги
-                  <i
-                    class="tip"
-                    data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
-                  ></i>
-                </h5>
-                <multiselect
-                  v-model="userServicesTags"
-                  label="text"
-                  :multiple="true"
-                  track-by="id"
-                  :options="userServices"
-                ></multiselect>
-               </div>
             </div>
             
           </div>
@@ -557,14 +543,14 @@ export default {
     box-sizing: border-box;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    height: 40px;
-    padding: 5px;
+    height: 51px;
+    
   }
 
   .vue-tags-input {
-    height: 71px;
+    /* height: 71px; */
     background: #FFFFFF;
-    border: 0.25px solid #6BBF3F;
+    /* border: 0.25px solid #6BBF3F; */
     box-sizing: border-box;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
