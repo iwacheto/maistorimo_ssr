@@ -239,6 +239,10 @@ export default {
     background-color: #3C3E47;
   }
 
+  .dashboard-nav ul li.active ul {
+    padding: 0px;
+  }
+
   .dashboard-nav ul li a {
     font-size: 16px;
   }

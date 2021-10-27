@@ -269,6 +269,10 @@ export default {
       width: 210px;
     }
 
+    .user-menu ul li {
+      margin: 0px;
+    }
+
     .user-menu ul li a {
       padding: 6px 5px 6px 5px;
     }
