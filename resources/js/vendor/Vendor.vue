@@ -28,9 +28,10 @@ export default {
     .dashboard-content {
         padding: 0px;
         margin-top: 0px; /* TsB */
+        background-color: #F7F7F7; /* TsB */
     }
 
     .dashboard-content div {
-        background-color: #FFFFFF;
+        background-color: #F7F7F7; /* TsB */
     }
 </style>
