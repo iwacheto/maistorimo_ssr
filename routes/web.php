@@ -128,3 +128,6 @@ Route::get('/{url?}', 'VueController');
 // Route::get('/project/details/{url?}', 'VueController');
 // Route::get('/service/details/{url?}', 'VueController');
 // Route::get('/profile/{url?}', 'VueController');
+
+Route::get('/articles/{url?}', 'VueController');
+Route::get('/articles/{id}/{url?}', 'VueController');

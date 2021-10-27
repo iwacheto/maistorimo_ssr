@@ -16,6 +16,8 @@ import Gdpr from './components/front/homepage/Gdpr';
 // import Article from './components/front/blog/Article';
 import Profile from './components/front/profile/Profile';
 import Contacts from './components/front/homepage/Contacts';
+import AllArticles from './components/front/articles/AllArticles';
+import Article from './components/front/articles/Article';
 
 Vue.use(VueRouter);
 Vue.use(Meta);
@@ -31,6 +33,8 @@ const routes = [
 	{ path: '/gdpr', component: Gdpr, name: 'Gdpr' },
 	{ path: '/profile/:id', component: Profile, name: 'Profile', props: true },
 	{ path: '/contacts', component: Contacts, name: 'Contacts' },
+	{ path: '/articles', component: AllArticles, name: 'AllArticles' },
+	{ path: '/articles/:id', component: Article, name: 'Article' },
 ];
 
 
