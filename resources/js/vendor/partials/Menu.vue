@@ -124,7 +124,7 @@
           <ul>
             <li>
               <a @click="e => e.target.parentElement.classList.toggle('active')">
-                <img src="/images/menu-analysis.svg" alt="analysis"><span>Анализи</span>
+                <img src="/images/menu-analysis.svg" alt="analysis">Анализи
               </a>
               <ul>
                 <li>
@@ -204,7 +204,7 @@ export default {
   },
   methods: {
     toggleMenuItems(event) {
-     
+      
     },
     async logout() {
       try {
@@ -237,6 +237,10 @@ export default {
     position: fixed;
     /* display: table-cell; */
     background-color: #3C3E47;
+  }
+
+  .dashboard-nav ul li a {
+    font-size: 16px;
   }
 
   .dashboard-nav ul ul li {
