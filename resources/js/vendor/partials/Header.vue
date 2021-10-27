@@ -18,7 +18,7 @@
             </div>
 
             <!-- Main Navigation -->
-            <nav id="navigation" class="style-1">Начало</nav>
+            <nav id="navigation" class="style-1">{{ path }}</nav>
             <div class="clearfix"></div>
             <!-- Main Navigation / End -->
           </div>
@@ -149,7 +149,8 @@ export default {
     return {
       // user: laravel.user,
       user:laravel.user,
-      isActive: false
+      isActive: false,
+      path: 'Начало',
     };
   },
   methods: {
@@ -165,19 +166,58 @@ export default {
       }
     },
     async getUser() {
-            try {
-                const res = await axios.get('/get_user');
-                this.user=res.data;
-                this.$store.state.user=res.data;
-            } catch (error) {
-                console.log(error);
-            }
-        },
+        try {
+            const res = await axios.get('/get_user');
+            this.user=res.data;
+            this.$store.state.user=res.data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    checkRoute(val) {
+      switch(val) {
+
+        case "Profile":
+          return "Профил";
+
+        case "ProjectsAnalitycs":
+          return "Анализ";
+
+        case "ServiceAnalitycs":
+          return "Анализ";
+
+        case "ContactAnalitycs":
+          return "Анализ";
+
+        case "Website":
+          return "Настройки на сайта";
+
+        case "ServicesList":
+          return "Услуги";
+        
+        case "EditService":
+          return "Услуги";
+
+        case "ProjectsList":
+          return "Проекти";
+        
+        case "EditProject":
+          return "Проекти";
+
+        default: "Начало"
+      }
+    }
   },
    
   mounted() {
-    // this.getUser();
-  }
+    this.path = this.checkRoute(this.$route.name);
+  },
+  watch: {
+    $route(to, from) {
+      this.path = this.checkRoute(this.$route.name);
+      console.log(this.$route.name);
+    }
+  },
 };
 </script>
 
