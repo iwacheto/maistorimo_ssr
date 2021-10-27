@@ -39,22 +39,22 @@
                 <ul>
                   <li>
                     <router-link :to="'/profile'">
-                      <i class="sl sl-icon-settings"></i> Профил
+                      <img src="images/profile.svg" alt="profile"> Профил
                     </router-link>
                   </li>
                   <li>
                     <router-link :to="'/website'">
-                      <i class="sl sl-icon-settings"></i> Уебсайт
+                      <img src="images/settings.svg" alt="settings"> Настройки на сайта
                     </router-link>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a target="_blank" :href="'//' + user.name + '.maistorimo.bg'">
                       <i class="sl sl-icon-globe"></i> Линк
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a @click="logout">
-                      <i class="sl sl-icon-power"></i> Излизане
+                      <img src="images/log-out.svg" alt="log out"> Излизане
                     </a>
                   </li>
                 </ul>
@@ -206,7 +206,7 @@ export default {
 
         case "Dashboard":
           return "Начало";
-          
+
         default: "Начало"
       }
     }
@@ -265,7 +265,16 @@ export default {
     }
 
     .user-menu ul {
-      right: -67px;
+      right: -76px;
+      width: 210px;
+    }
+
+    .user-menu ul li a {
+      padding: 6px 5px 6px 5px;
+    }
+
+    .user-menu ul li a img {
+      margin-right: 5px;
     }
 
     .right-side {
