@@ -151,6 +151,7 @@
                 <vue-dropzone
                   ref="myVueDropzone"
                   @vdropzone-success="imageUploaded"
+                  @vdropzone-drop="disableButton"   
                   id="dropzone"
                   :options="dropzoneOptions"
                 ></vue-dropzone>
