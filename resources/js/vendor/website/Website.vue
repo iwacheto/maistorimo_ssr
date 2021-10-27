@@ -1745,6 +1745,11 @@ div.tab-pan.active {
         margin-left: 38px;
         max-width: 85%;
         max-height: 40px;
+        background: #FFFFFF;
+        border: 0.25px solid #6BBF3F;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
     }
 
     .my-profile-terms {
