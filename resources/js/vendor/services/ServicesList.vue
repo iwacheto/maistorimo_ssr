@@ -53,9 +53,7 @@
 			</div>
 
 			<!-- Copyrights -->
-			<div class="col-md-12">
-				<div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
-			</div>
+			<Copyrights/>
 		</div>
 		<vue-toastr ref="mytoast"></vue-toastr>
 	</div>
@@ -65,6 +63,7 @@
 	import 'sweetalert2/src/sweetalert2.scss'
 	import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 	import AddProjectOrService from '../partials/AddProjectOrService.vue';
+	import Copyrights from '../partials/Copyrights.vue';
 
 	export default {
 		name: "ServicesList",
@@ -129,7 +128,8 @@
 		},
   		components: {
 			MobileGreenMenuSmall,
-			AddProjectOrService
+			AddProjectOrService,
+			Copyrights
 		}
 	}
 </script>

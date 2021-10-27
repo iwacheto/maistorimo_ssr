@@ -121,9 +121,7 @@
         </div>
         
         <!-- Copyrights -->
-        <div class="col-md-12">
-          <div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
-        </div>
+        <Copyrights/>
       </div>
       <vue-toastr ref="mytoast"></vue-toastr>
     </div>
@@ -135,6 +133,7 @@ import Snackbar from "../../global/components/Snackbar";
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import Copyrights from '../partials/Copyrights.vue';
 
 export default {
   name: "EditService",
@@ -290,7 +289,8 @@ export default {
   },
   components: {
     vueDropzone: vue2Dropzone,
-    snackbar: Snackbar
+    snackbar: Snackbar,
+    Copyrights
   }
 };
 </script>

@@ -221,9 +221,7 @@
       </div>
 
       <!-- Copyrights -->
-      <div class="col-md-12">
-        <div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
-      </div>
+      <Copyrights/>
     </div>
     <vue-toastr ref="mytoast"></vue-toastr>
   </div>
@@ -235,7 +233,7 @@ import { VueTagsInput, createTag, createTags } from "@johmun/vue-tags-input";
 import vue2Dropzone from "vue2-dropzone";
 import GoogleMap from "../../components/googleMap/GoogleMap";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
+import Copyrights from '../partials/Copyrights.vue';
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 
 export default {
@@ -500,7 +498,8 @@ export default {
     VueTagsInput,
     vueDropzone: vue2Dropzone,
     GoogleMap,
-    Multiselect
+    Multiselect,
+    Copyrights
   }
 };
 </script>

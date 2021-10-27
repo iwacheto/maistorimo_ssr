@@ -234,9 +234,11 @@
                 </div>
 
                 <!-- Copyrights -->
-                <div class="col-md-12">
+                <Copyrights/>
+                <!-- <div class="col-md-12">
                     <div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
-                </div>
+                </div> -->
+
             </div>
         </div>
 
@@ -487,9 +489,10 @@
                 </div>
 
                 <!-- Copyrights -->
-                <div class="col-md-12">
+                <Copyrights/>
+                <!-- <div class="col-md-12">
                     <div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -500,6 +503,7 @@
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
+import Copyrights from '../partials/Copyrights.vue';
 
 export default {
     data() {
@@ -528,6 +532,7 @@ export default {
     },
     components: {
         MobileGreenMenuSmall,
+        Copyrights,
     },
     mounted() {
         this.hasImage = this.user.vendor_details.profile_image != '' ? true : false;

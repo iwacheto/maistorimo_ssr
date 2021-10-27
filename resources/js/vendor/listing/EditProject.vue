@@ -172,9 +172,7 @@
       </div>
 
       <!-- Copyrights -->
-      <div class="col-md-12">
-        <div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
-      </div>
+      <Copyrights/>
     </div>
     <vue-toastr ref="mytoast"></vue-toastr>
   </div>
@@ -188,7 +186,7 @@ import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import VueGallery from "vue-gallery";
 import Snackbar from "../../global/components/Snackbar.vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
+import Copyrights from '../partials/Copyrights.vue';
 import GoogleMap from "../../components/googleMap/GoogleMap";
 
 export default {
@@ -376,7 +374,8 @@ export default {
     gallery: VueGallery,
     snackbar: Snackbar,
     GoogleMap,
-    Multiselect
+    Multiselect,
+    Copyrights
   }
 };
 </script>

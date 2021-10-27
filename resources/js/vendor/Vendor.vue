@@ -34,4 +34,10 @@ export default {
     .dashboard-content div {
         background-color: #F7F7F7; /* TsB */
     }
+
+    @media screen and (max-width: 990px) {
+        .dashboard-content div {
+            background-color: #FFFFFF; /* TsB */
+        }
+    }
 </style>
