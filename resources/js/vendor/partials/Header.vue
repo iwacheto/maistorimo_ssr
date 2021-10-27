@@ -204,6 +204,9 @@ export default {
         case "EditProject":
           return "Проекти";
 
+        case "Dashboard":
+          return "Начало";
+          
         default: "Начало"
       }
     }
@@ -211,6 +214,7 @@ export default {
    
   mounted() {
     this.path = this.checkRoute(this.$route.name);
+    console.log(this.$route.name);
   },
   watch: {
     $route(to, from) {
