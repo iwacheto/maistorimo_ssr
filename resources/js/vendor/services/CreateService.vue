@@ -1,379 +1,440 @@
 <template>
-    <div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div id="add-article">
-                    <!-- Section -->
-                    <div class="add-listing-section">
-                        <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-doc"></i> Основна информация</h3>
-                            <span v-if="error.commonError" class="error">{{
-                                error.commonError
-                            }}</span>
-                        </div>
+  <div>
+    <!-- Titlebar -->
+    <div id="titlebar">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Добавяне на услуга</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="add-article">
+          <!-- Section -->
+          <div class="add-listing-section">
+            <div class="add-listing-headline">
+              <h3>
+                <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
+              </h3>
+              <span v-if="error.commonError" class="error">{{error.commonError}}</span>
+            </div>
+            <!-- Title -->
+            <div class="section-with-forms">
 
-                        <!-- Titlebar -->
-                        <div id="titlebar">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h2>Добавяне на услуга</h2>
-                                    <!-- Breadcrumbs -->
-                                    <nav id="breadcrumbs">
-                                        <ul>
-                                            <li>
-                                                <a href="#">Начало</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Админ Панел</a>
-                                            </li>
-                                            <li>Добавяне на услуга</li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
+              <div class="with-forms">
+                <div class="col-md-12">
+                  <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
+                  <h5>
+                    Заглавие на услугата
+                  </h5>
+                  <input class="search-field" type="text" v-model="service.title" />
+                </div>
 
-                        <!-- Title -->
-                        <div class="row with-forms">
-                            <div class="col-md-12">
-                                <!-- <p v-if="error.titleError" class="error_service">Заглавието е задължително!</p> -->
-                                <span v-if="error.titleError" class="error error_service"
-                                    >Заглавието е задължително!</span
-                                >
-                                <h5>
-                                    Заглавие на услугата
-                                    <span class="required">*</span>
-                                </h5>
-                                <input class="search-field" type="text" v-model="service.title" />
-                            </div>
-                        </div>
+                <div class="col-md-12">
+                  <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
+                  <h5>Категория</h5>
 
-                        <div class="row with-forms">
-                            <div class="col-md-12">
-                                <div class="add-listing-section">
-                                    <div class="add-listing-headline category_mobile">
-                                        <span v-if="error.categoryError" class="error"
-                                            >Моля, изберете категория!</span
-                                        >
-                                        <div class="col-md-6">
-                                            <h3 class="mb-20">
-                                                <i class="im im-icon-Add-Window"></i> Категория
-                                                <span class="required">*</span>
-                                            </h3>
-                                            <div class="row with-forms p-4">
-                                                <select
-                                                    class="chosen-select-no-single"
-                                                    v-model="service.category"
-                                                >
-                                                    <option value>Избери категория</option>
-                                                    <optgroup
-                                                        :label="mainCategory.title"
-                                                        v-for="mainCategory in categories"
-                                                        :key="mainCategory.id"
-                                                    >
-                                                        <option
-                                                            :value="category.id"
-                                                            v-for="category in mainCategory.children"
-                                                            :key="category.id"
-                                                        >
-                                                            {{ category.title }}
-                                                        </option>
-                                                        <option value="21">Друга</option>
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  <select class="chosen-select-no-single" v-model="service.category">
+                    <option value>Избери категория</option>
+                    <optgroup
+                      :label="mainCategory.title"
+                      v-for="mainCategory in categories"
+                      :key="mainCategory.id"
+                    >
+                      <option
+                        :value="category.id"
+                        v-for="category in mainCategory.children"
+                        :key="category.id"
+                      >{{ category.title }}</option>
+                      <option value="21">Друга</option>
+                    </optgroup>
+                  </select>
 
-                        <!-- Row -->
-                        <div class="add-listing-section">
-                            <div class="add-listing-headline">
-                                <h3>
-                                    <i class="sl sl-icon-doc"></i> Описание 1
-                                    <span class="required">*</span>
-                                </h3>
-                                <div class="row with-forms">
-                                    <!-- Status -->
-                                    <div class="col-md-12">
-                                        <span v-if="error.firstDescriptionError" class="error"
-                                            >Моля напишете описание!</span
-                                        >
+                </div>
+              </div>
+              <div class="galery-section">
+                <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
+                <h5>
+                  <i class="sl sl-icon-picture"></i> Главна снимка
+                </h5>
+                <vue-dropzone
+                    ref="myVueDropzone"
+                    @vdropzone-success="imageUploaded"
+                    @vdropzone-drop="disableButton"
+                    id="dropzone"
+                    :options="dropzoneOptions"
+                  ></vue-dropzone>
+              </div>
+            </div>
+            <div class="add-listing-section section-details">
+              <div class="add-listing-headline">
+                <h5>Описание 1</h5>
+                <div class="row with-forms">
+                  <!-- Status -->
+                  <div class="col-md-12">
+                    <span v-if="error.firstDescriptionError" class="error">Моля напишете описание!</span>
+                    <!-- <label>Описание 1</label> -->
+                    <ckeditor
+                      :editor="editorConfig.editor"
+                      v-model="service.firstDescription"
+                      :config="editorConfig.editorConfig"
+                    ></ckeditor>
+                  </div>
+                </div>
+              </div>
 
-                                        <label>Описание 1</label>
-                                        <ckeditor
-                                            :editor="editorConfig.editor"
-                                            v-model="service.firstDescription"
-                                            :config="editorConfig.editorConfig"
-                                        ></ckeditor>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Row -->
-                        <div class="add-listing-section">
-                            <div class="add-listing-headline">
-                                <h3><i class="sl sl-icon-doc"></i> Описание 2</h3>
-                                <div class="row with-forms">
-                                    <!-- Status -->
-                                    <div class="col-md-12">
-                                        <!-- <span
+              <div class="add-listing-headline">
+                <h5>Описание 2</h5>
+                <div class="row with-forms">
+                  <!-- Status -->
+                  <div class="col-md-12">
+                    <!-- <span
                       v-if="service.secondDescriptionError"
                       class="error"
                     >{{service.secondDescriptionError[0]}}</span>-->
-                                        <label>Текст за Нас - Компания</label>
-                                        <ckeditor
-                                            :editor="editorConfig.editor"
-                                            v-model="service.secondDescription"
-                                            :config="editorConfig.editorConfig"
-                                        ></ckeditor>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="add-listing-section">
-                            <div class="add-listing-headline">
-                                <h3><i class="sl sl-icon-doc"></i>Изберете локация</h3>
-                                <div class="row with-forms">
-                                    <!-- Status -->
-                                    <div class="col-md-12">
-                                        <div class="checkboxes in-row margin-bottom-20">
-                                            <input
-                                                id="check-a"
-                                                type="checkbox"
-                                                name="check"
-                                                v-model="service.all_country"
-                                            />
-                                            <label for="check-a">В цялата страна</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12" v-if="!service.all_country">
-                                        <vue-tags-input
-                                            v-model="location"
-                                            :tags="cities"
-                                            :autocomplete-items="filteredTags"
-                                            @tags-changed="
-                                                (newTags) => (service.location = newTags)
-                                            "
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Section -->
-                        <div class="add-listing-section margin-top-45">
-                            <div class="add-listing-headline">
-                                <span v-if="error.imageError" class="error"
-                                    >Моля, качете снимка на услугата</span
-                                >
-                                <h3>
-                                    <i class="sl sl-icon-picture"></i> Главна снимка
-                                    <span class="required">*</span>
-                                </h3>
-                            </div>
-
-                            <!-- Dropzone -->
-                            <vue-dropzone
-                                ref="myVueDropzone"
-                                @vdropzone-success="mainImageUploaded"
-                                @vdropzone-removed-file="removedMainImage"
-                                id="dropzoneMainImage"
-                                :options="dropzoneOptionsMain"
-                            ></vue-dropzone>
-                        </div>
-                        <!-- Section / End -->
-
-                        <!-- Row -->
-
-                        <button @click="createService" class="button preview">
-                            Създай
-                            <i class="fa fa-arrow-circle-right"></i>
-                        </button>
-                    </div>
+                    <!-- <label>Текст за Нас - Компания</label> -->
+                    <ckeditor
+                      :editor="editorConfig.editor"
+                      v-model="service.secondDescription"
+                      :config="editorConfig.editorConfig"
+                    ></ckeditor>
+                  </div>
                 </div>
+              </div>
             </div>
-            <vue-toastr ref="mytoast"></vue-toastr>
+            <!-- Row -->
+
+            <!-- Row -->
+            <div class="button-part">
+              <button @click="createService" class="button preview">
+                Създай
+              </button>
+            </div>
+          </div>
         </div>
+        <!-- Copyrights -->
+        <Copyrights/>
+      </div>
+      <vue-toastr ref="mytoast"></vue-toastr>
     </div>
+  </div>
 </template>
-
 <script>
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import vue2Dropzone from 'vue2-dropzone';
-import { VueTagsInput } from '@johmun/vue-tags-input';
-
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import vue2Dropzone from "vue2-dropzone";
+import "vue2-dropzone/dist/vue2Dropzone.min.css";
+import Copyrights from '../partials/Copyrights.vue';
 export default {
-    name: 'CreateService',
-    data() {
-        return {
-            categories: [],
-            cities: [],
-            allCities: [],
-            autocompleteItems: [],
-            isCreated: true,
-            editorConfig: {
-                editor: ClassicEditor,
-                editorData: '<p>Content of the editor.</p>',
-                editorConfig: {
-                    // The configuration of the editor.
-                },
-            },
-            serCategories: [],
-            category: '',
-            location: '',
-            service: {
-                title: '',
-                firstDescription: '',
-                secondDescription: '',
-                category: '',
-                mainImage: {},
-                location: [],
-                all_country: false,
-            },
-            error: {
-                commonError: false,
-                titleError: false,
-                firstDescriptionError: false,
-                categoryError: false,
-                imageError: false,
-            },
-            dropzoneOptionsMain: {
-                url: '/vendor/galleries/uploadImage',
-                maxFiles: 1,
-                addRemoveLinks: true,
-                thumbnailWidth: 150,
-                maxFilesize: 15,
-                headers: { 'My-Awesome-Header': 'header value' },
-            },
-        };
+  name: "CreateService",
+  data() {
+    return {
+      categories: [],
+      isCreated: true,
+      editorConfig: {
+        editor: ClassicEditor,
+        editorData: "<p>Content of the editor.</p>",
+        editorConfig: {
+          // The configuration of the editor.
+        }
+      },
+      serCategories: [],
+      category: "",
+      service: {
+        title: "",
+        firstDescription: "",
+        secondDescription: "",
+        category: "",
+        mainImage: {}
+      },
+      error: {
+        commonError: false,
+        titleError: false,
+        firstDescriptionError: false,
+        categoryError: false,
+        imageError: false
+      },
+      dropzoneOptions: {
+        url: "/vendor/galleries/uploadImage",
+        maxFiles: 1,
+        addRemoveLinks: true,
+        thumbnailWidth: 150,
+        maxFilesize: 15,
+        headers: { "My-Awesome-Header": "header value" }
+      }
+    };
+  },
+  mounted() {
+    this.$refs.mytoast.defaultPosition = "toast-top-center";
+    this.$refs.mytoast.defaultStyle = { top: "80px" };
+    // this.getServicesCategory();
+    this.getCategories();
+  },
+  methods: {
+    getCategories() {
+      axios.get("/categories/getcat").then(({ data }) => {
+        this.categories = data;
+      });
     },
-
-    mounted() {
-        this.$refs.mytoast.defaultPosition = 'toast-top-center';
-        this.$refs.mytoast.defaultStyle = { top: '80px' };
-        this.getCategories();
-        this.getCities();
+    async getServicesCategory() {
+      try {
+        const responce = await axios.get("/vendor/service_category");
+        this.serCategories = responce.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
-
-    methods: {
-        getCategories() {
-            axios.get('/categories/getcat').then(({ data }) => {
-                this.categories = data;
-            });
-        },
-        async getServicesCategory() {
-            try {
-                const responce = await axios.get('/vendor/service_category');
-                this.serCategories = responce.data;
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        async getCities() {
-            try {
-                const responce = await axios.get('/vendor/service/get-cities');
-                this.allCities = responce.data;
-                this.autocompleteItems = responce.data.map((element) => {
-                    return {
-                        text: element.city,
-                    };
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        isEmpty(obj) {
-            for (var key in obj) {
-                if (obj.hasOwnProperty(key)) return false;
-            }
-            return true;
-        },
-        async createService() {
-            if (!this.service.title) {
-                this.error.titleError = true;
-                this.scrollToError();
-            }
-            if (!this.service.firstDescription) {
-                this.error.firstDescription = true;
-                this.scrollToError();
-            }
-            if (!this.service.category) {
-                this.error.categoryError = true;
-                this.scrollToError();
-            }
-            if (!this.service.mainImage) {
-                this.error.imageError = true;
-                this.scrollToError();
-            } else {
-                try {
-                    if (this.isCreated) {
-                        this.isCreated = false;
-
-                        if(this.service.all_country) this.service.location = [];
-
-                        if (this.service.location.length > 0) {
-                            const citiesArrayId = [];
-                            this.service.location.forEach((elem) => {
-                                citiesArrayId.push(
-                                    this.allCities.filter((el) => el.city === elem.text)[0].id
-                                );
-                            });
-                            this.service.location = citiesArrayId;
-                        }
-
-                        const res = await axios.post('/vendor/service', this.service);
-                        this.$refs.mytoast.s('Услугата бе създадена успешно!');
-                        setTimeout(() => {
-                            this.$router.push({ name: 'ServicesList' });
-                            this.isCreated = true;
-                        }, 3000);
-                    }
-                } catch (error) {
-                    console.log(error);
-                    this.isCreated = true;
-                }
-            }
-        },
-        scrollToError() {
-            setTimeout(function () {
-                let elem = document.querySelector('.error');
-                const y = elem.getBoundingClientRect();
-                elem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 500);
-        },
-        mainImageUploaded(file, response) {
-            this.service.mainImage = { url: response.url, name: file.name };
-        },
-        removedMainImage(file, error, xhr) {
-            this.service.mainImage.splice(0, 1);
-        },
+    isEmpty(obj) {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) return false;
+      }
+      return true;
     },
-
-    components: {
-        vueDropzone: vue2Dropzone,
-        VueTagsInput,
+    async createService() {
+      if (!this.service.title) {
+        this.error.titleError = true;
+        this.scrollToError();
+      }
+      if (!this.service.firstDescription) {
+        this.error.firstDescription = true;
+        this.scrollToError();
+      }
+      if (!this.service.category) {
+        this.error.categoryError = true;
+        this.scrollToError();
+      }
+      if (!this.service.mainImage) {
+        this.error.imageError = true;
+        this.scrollToError();
+      } else {
+        try {
+          if (this.isCreated) {
+            this.isCreated = false;
+            const res = await axios.post("/vendor/service", this.service);
+            this.$refs.mytoast.s("Услугата бе създадена успешно!");
+            setTimeout(() => {
+              this.$router.push({ name: "ServicesList" });
+              this.isCreated = true;
+            }, 3000);
+          }
+        } catch (error) {
+          console.log(error);
+          this.isCreated = true;
+        }
+      }
     },
-
-    computed: {
-        filteredTags() {
-            return this.autocompleteItems.filter((i) => {
-                return i.text.toLowerCase().indexOf(this.location.toLowerCase()) !== -1;
-            });
-        },
+    scrollToError() {
+      setTimeout(function() {
+        let elem = document.querySelector(".error");
+        const y = elem.getBoundingClientRect();
+        elem.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 500);
     },
+    mainImageUploaded(file, response) {
+      this.service.mainImage = { url: response.url, name: file.name };
+    },
+    removedMainImage(file, error, xhr) {
+      this.service.mainImage.splice(0, 1);
+    }
+  },
+  components: {
+    vueDropzone: vue2Dropzone,
+    Copyrights
+  }
 };
 </script>
-
 <style scoped>
-span.error {
-    font-size: 14px;
+.row {
+  margin-left: unset;
+  margin-right: unset;
 }
-.vue-tags-input{
-  max-width: 100%;
+span.error {
+  font-size: 14px;
+}
+@media screen and (min-width: 991px) {
+  #titlebar {
+    margin-bottom: 0px;
+    padding-top: 29px;
+  }
+  #titlebar h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 29px;
+    color: #276955;
+    margin: 0px 0px 40px 0px;
+  }
+  /* .row {
+    margin-left: unset;
+    margin-right: unset;
+    width: 100%;
+  } */
+  .col-lg-12 {
+    margin: 0px;
+    padding: 0px;
+    background-color: #f8f8f8;
+  }
+  #add-article {
+    margin: 0px 26px;
+    background: #FFFFFF;
+    border: 0.25px solid #9EA3BD;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgb(0 0 0 / 25%);
+    border-radius: 7px;
+  }
+  .add-listing-section {
+    box-shadow: unset;
+    border-radius: 7px;
+    padding: unset;
+  }
+  .add-listing-section.section-details {
+    display: flex;
+    flex-direction: row;
+  }
+  .add-listing-headline {
+    border-top: 7px;
+    /* border-bottom: 1px solid #CACACA; */
+    border-bottom: unset;
+    width: unset;
+    left: unset;
+    margin: unset;
+  }
+  .add-listing-section.section-details .add-listing-headline {
+    padding: 25px 18px;
+  }
+  .add-listing-headline h3 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #276955;
+  }
+  .section-with-forms {
+    display: flex;
+    flex-direction: row;
+    padding-left: 25px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid #CACACA;
+    border-top: 1px solid #CACACA;
+  }
+  .section-with-forms .with-forms:nth-child(1) {
+    width: 34%;
+  }
+  .section-with-forms .galery-section {
+    width: 30%;
+  }
+  .with-forms {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .autocomplete {
+    width: 100%;
+  }
+  #add-article h5 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    color: #276955;
+    margin-left: 28px;
+  }
+  .col-md-12 input, .col-md-12 select {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 40px;
+    max-width: 330px;
+  }
+  .col-md-12 select {
+    margin: 6px 0px;
+    padding: 0px;
+    max-width: 330px;
+  }
+  .multi_select_service {
+    position: relative;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px;
+  }
+  .vue-tags-input {
+    height: 71px;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  .vue-tags-input .ti-input {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  .cityInput {
+    min-width: unset;
+  }
+  .galery-section {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-left: 20px;
+  }
+  .form {
+    margin-right: 20px;
+  }
+  .form-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 35px;
+  }
+  .add-listing-section.section-details .add-listing-headline:nth-child(1) {
+    /* border-top: 1px solid #CACACA; */
+    border-bottom: unset;
+  }
+  .add-listing-section.section-details .add-listing-headline {
+    margin: 0px;
+  }
+  .dropzone {
+    margin-top: 0px;
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  .form div:nth-child(2) {
+    background: #FFFFFF;
+    border: 0.25px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  .button-part {
+    width: 100%;
+    margin-top: 56px;
+    margin-bottom: 61px;
+    display: flex;
+    flex-direction: column;
+  }
+  .button-part button {
+    margin: 0px auto;
+    background: #6BBF3F;
+    border-radius: 20px;
+    font-size: 20px;
+    line-height: 23px;
+    width: 354px;
+    height: 43px;
+  }
+  @media screen and (max-width: 991px) {
+  }
 }
 </style>

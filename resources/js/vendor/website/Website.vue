@@ -442,9 +442,7 @@
             </div>
 
             <!-- Copyrights -->
-            <div class="col-md-12">
-                <div class="copyrights">© 2019 Maistorimo LTD. All Rights Reserved.</div>
-            </div>
+            <Copyrights/>
         </div>
 
 
@@ -926,9 +924,7 @@
             </div>
 
             <!-- Copyrights -->
-            <div class="col-md-12">
-                <div class="copyrights">© 2019 Maistorimo LTD. All Rights Reserved.</div>
-            </div>
+            <Copyrights/>
         </div>
         <vue-toastr ref="mytoast"></vue-toastr>
     </div>
@@ -938,6 +934,7 @@
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 import GoogleMap from '../../components/googleMap/GoogleMap';
+import Copyrights from '../partials/Copyrights.vue';
 
 export default {
     data() {
@@ -1307,6 +1304,7 @@ export default {
     components: {
         GoogleMap,
         MobileGreenMenuSmall,
+        Copyrights
     },
 };
 
@@ -1745,6 +1743,11 @@ div.tab-pan.active {
         margin-left: 38px;
         max-width: 85%;
         max-height: 40px;
+        background: #FFFFFF;
+        border: 0.25px solid #6BBF3F;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
     }
 
     .my-profile-terms {

@@ -179,9 +179,7 @@
     </div>
 
     <!-- Copyrights -->
-    <div class="col-md-12">
-        <div class="copyrights">© 2019 Maistorimo LTD. All Rights Reserved.</div>
-    </div>
+    <Copyrights/>
   </div>
 </template>
 
@@ -190,6 +188,7 @@ import Datepicker from "vuejs-datepicker";
 import { analitycMixin } from "../mixins/analytic";
 import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 import {en, bg} from 'vuejs-datepicker/dist/locale'
+import Copyrights from '../partials/Copyrights.vue';
 
 export default {
   mixins: [analitycMixin],
@@ -225,7 +224,8 @@ export default {
   },
   components: {
     Datepicker,
-    MobileGreenMenuSmall
+    MobileGreenMenuSmall,
+    Copyrights
   }
 };
 </script>

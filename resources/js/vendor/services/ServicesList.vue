@@ -30,7 +30,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
-								<router-link class="button gray" :to="'/projects/edit/' + service.id">
+								<router-link class="button gray" :to="'/service/edit/' + service.id">
 									<img src="/images/edit-icon.svg" alt="edit icon">
 								</router-link>
 
@@ -42,7 +42,7 @@
 
 								<div class="ver_line"></div>
 
-								<a target="_blank" :href="'/project/details/'+service.id" class="button gray">
+								<a target="_blank" :href="'/service/details/'+service.id" class="button gray">
 									<img src="/images/web-icon.svg" alt="web site icon">
 								</a>
 							</div>
@@ -53,9 +53,7 @@
 			</div>
 
 			<!-- Copyrights -->
-			<div class="col-md-12">
-				<div class="copyrights">© 2019 Maistorimo All Rights Reserved.</div>
-			</div>
+			<Copyrights/>
 		</div>
 		<vue-toastr ref="mytoast"></vue-toastr>
 	</div>
@@ -65,6 +63,7 @@
 	import 'sweetalert2/src/sweetalert2.scss'
 	import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 	import AddProjectOrService from '../partials/AddProjectOrService.vue';
+	import Copyrights from '../partials/Copyrights.vue';
 
 	export default {
 		name: "ServicesList",
@@ -129,7 +128,8 @@
 		},
   		components: {
 			MobileGreenMenuSmall,
-			AddProjectOrService
+			AddProjectOrService,
+			Copyrights
 		}
 	}
 </script>

@@ -18,7 +18,7 @@
             </div>
 
             <!-- Main Navigation -->
-            <nav id="navigation" class="style-1">Начало</nav>
+            <nav id="navigation" class="style-1">{{ path }}</nav>
             <div class="clearfix"></div>
             <!-- Main Navigation / End -->
           </div>
@@ -39,22 +39,22 @@
                 <ul>
                   <li>
                     <router-link :to="'/profile'">
-                      <i class="sl sl-icon-settings"></i> Профил
+                      <img src="images/profile.svg" alt="profile"> Профил
                     </router-link>
                   </li>
                   <li>
                     <router-link :to="'/website'">
-                      <i class="sl sl-icon-settings"></i> Уебсайт
+                      <img src="images/settings.svg" alt="settings"> Настройки на сайта
                     </router-link>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a target="_blank" :href="'//' + user.name + '.maistorimo.bg'">
                       <i class="sl sl-icon-globe"></i> Линк
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a @click="logout">
-                      <i class="sl sl-icon-power"></i> Излизане
+                      <img src="images/log-out.svg" alt="log out"> Излизане
                     </a>
                   </li>
                 </ul>
@@ -149,7 +149,8 @@ export default {
     return {
       // user: laravel.user,
       user:laravel.user,
-      isActive: false
+      isActive: false,
+      path: 'Начало',
     };
   },
   methods: {
@@ -165,19 +166,62 @@ export default {
       }
     },
     async getUser() {
-            try {
-                const res = await axios.get('/get_user');
-                this.user=res.data;
-                this.$store.state.user=res.data;
-            } catch (error) {
-                console.log(error);
-            }
-        },
+        try {
+            const res = await axios.get('/get_user');
+            this.user=res.data;
+            this.$store.state.user=res.data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    checkRoute(val) {
+      switch(val) {
+
+        case "Profile":
+          return "Профил";
+
+        case "ProjectsAnalitycs":
+          return "Анализ";
+
+        case "ServiceAnalitycs":
+          return "Анализ";
+
+        case "ContactAnalitycs":
+          return "Анализ";
+
+        case "Website":
+          return "Настройки на сайта";
+
+        case "ServicesList":
+          return "Услуги";
+        
+        case "EditService":
+          return "Услуги";
+
+        case "ProjectsList":
+          return "Проекти";
+        
+        case "EditProject":
+          return "Проекти";
+
+        case "Dashboard":
+          return "Начало";
+
+        default: "Начало"
+      }
+    }
   },
    
   mounted() {
-    // this.getUser();
-  }
+    this.path = this.checkRoute(this.$route.name);
+    console.log(this.$route.name);
+  },
+  watch: {
+    $route(to, from) {
+      this.path = this.checkRoute(this.$route.name);
+      console.log(this.$route.name);
+    }
+  },
 };
 </script>
 
@@ -221,7 +265,20 @@ export default {
     }
 
     .user-menu ul {
-      right: -67px;
+      right: -76px;
+      width: 210px;
+    }
+
+    .user-menu ul li {
+      margin: 0px;
+    }
+
+    .user-menu ul li a {
+      padding: 6px 5px 6px 5px;
+    }
+
+    .user-menu ul li a img {
+      margin-right: 5px;
     }
 
     .right-side {
