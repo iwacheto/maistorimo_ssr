@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<div v-if="!view">
+	<div class="google-map-box">
+		<div class="google-map-text" v-if="!view">
 			<h2>Адрес</h2>
             <p>* Посочете точен адрес, за да може картата на google да ви локализира. Натиснете бутона ‘’ Добави’’ след като изберете адреса си.</p>
 			<label>
@@ -16,7 +16,8 @@
 		<gmap-map
 				:center="center"
 				:zoom="12"
-				style="width:90%; height: 400px; margin: 37px auto 0px auto;"
+				class="google-map-map"
+				style="width:70%; height: 400px; margin: 32px 38px 50px 55px;"
 		>
 			<gmap-marker
 					:position="marker.position"
@@ -155,5 +156,17 @@
 		color: #000000;
 		padding: 9px 36px;
 		margin-left: 23px;
+	}
+
+	@media only screen and (min-width: 991px) {
+		.google-map-box {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+		}
+
+		.google-map-text {
+			width: 35%;
+		}
 	}
 </style>
