@@ -52,7 +52,7 @@ class ProjectsController extends Controller
     public function getPopularProjects()
     {
         $today = \Carbon\Carbon::now()->format('Y-m-d');
-        $projects = DB::table('projects')->select(DB::raw('projects.*, SUM(object_analytics.count) as count, project_gallery.url as project_image'))
+        $projects = DB::table('projects')->select(DB::raw('projects.id, projects.title, SUM(object_analytics.count) as count, project_gallery.url as project_image'))
             ->leftJoin('object_analytics', 'projects.id', 'object_analytics.object_id')
             ->where('object_analytics.object_type', 'project')
             ->whereNotNull('project_gallery.url')
