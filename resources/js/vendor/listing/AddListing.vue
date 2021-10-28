@@ -1,229 +1,477 @@
 <template>
   <div>
-    <!-- Titlebar -->
-    <div id="titlebar">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Добавяне на проекти</h2>
+    <!-- DESKTOP PART -->
+    <div class="desktop-part">
+      <!-- Titlebar -->
+      <div id="titlebar">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Добавяне на проекти</h2>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div id="add-listing">
-          <!-- Section -->
-          <div class="add-listing-section">
-            <!-- Headline -->
-            <div class="add-listing-headline">
-              <h3>
-                <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
-              </h3>
-              <span v-if="project.commonError" class="error">{{project.commonError}}</span>
-            </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="add-listing">
+            <!-- Section -->
+            <div class="add-listing-section">
+              <!-- Headline -->
+              <div class="add-listing-headline">
+                <h3>
+                  <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
+                </h3>
+                <span v-if="project.commonError" class="error">{{project.commonError}}</span>
+              </div>
 
-            <div class="section-with-forms">
-              <!-- Title -->
-              <div class="with-forms">
-                <div class="col-md-12">
-                  <h5>
-                    Заглавие на проект
-                    <!-- <span class="required">*</span>
-                    <i class="tip" data-tip-content="Name"></i> -->
-                  </h5>
-                  <input
-                    class="search-field"
-                    v-model="project.title"
-                    type="text"
-                    value
-                    @focus="makeFocus('title')"
-                  />
-
-                  <span v-if="error.titleError" class="error">Моля попълнете заглавието!</span>
-
-                  <div class="autocomplete">
+              <div class="section-with-forms">
+                <!-- Title -->
+                <div class="with-forms">
+                  <div class="col-md-12">
                     <h5>
-                      Град
+                      Заглавие на проект
+                      <!-- <span class="required">*</span>
+                      <i class="tip" data-tip-content="Name"></i> -->
+                    </h5>
+                    <input
+                      class="search-field"
+                      v-model="project.title"
+                      type="text"
+                      value
+                      @focus="makeFocus('title')"
+                    />
+
+                    <span v-if="error.titleError" class="error">Моля попълнете заглавието!</span>
+
+                    <div class="autocomplete">
+                      <h5>
+                        Град
+                        <!-- <span class="required">*</span>
+                        <i
+                          class="tip"
+                          data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
+                        ></i> -->
+                      </h5>
+                      <span v-if="error.cityError" class="error">Моля попълнете градът!</span>
+                      <input type="text" v-model="search" @input="onChange" class="cityInput" />
+                      <ul v-show="isOpen" class="autocomplete-results">
+                        <li
+                          v-for="(result, i) in results"
+                          :key="i"
+                          @click="setResult(result)"
+                          class="autocomplete-result"
+                        >{{ result.city }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="with-forms">
+                  <!-- Status -->
+                  <div class="col-md-12">
+                    <h5>
+                      Категория
+                      <!-- <span class="required">*</span> -->
+                    </h5>
+
+                    <select
+                      class="chosen-select-no-single"
+                      v-model="project.category"
+                      @focus="makeFocus('category')"
+                    >
+                      <!-- <option value="null">Избери категория</option> -->
+                      <option value="null">Избери категория</option>
+                      <optgroup
+                        :label="mainCategory.title"
+                        v-for="mainCategory in categories"
+                        :key="mainCategory.id"
+                      >
+                        <option
+                          :value="category.id"
+                          v-for="category in mainCategory.children"
+                          :key="category.id"
+                        >{{ category.title }}</option>
+                        <option value="21">Друга</option>
+                      </optgroup>
+                      <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
+                    </select>
+                    <span v-if="error.categoryError" class="error">Моля изберете категория!</span>
+                  </div>
+
+                  <div class="col-md-12">
+                    <h5>
+                      Избери услуга
+                      <!-- <i
+                        class="tip"
+                        data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
+                      ></i> -->
+                    </h5>
+                    <multiselect
+                      class="multi_select_service"
+                      v-model="userServicesTags"
+                      label="text"
+                      :multiple="true"
+                      track-by="id"
+                      :options="userServices"
+                    ></multiselect>
+                  </div>
+
+                </div>
+
+                <div class="with-forms">
+                  
+                  <!-- Type -->
+                  <div class="col-md-12">
+                    <h5>
+                      Ключови думи
                       <!-- <span class="required">*</span>
                       <i
                         class="tip"
                         data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
                       ></i> -->
                     </h5>
-                    <span v-if="error.cityError" class="error">Моля попълнете градът!</span>
-                    <input type="text" v-model="search" @input="onChange" class="cityInput" />
-                    <ul v-show="isOpen" class="autocomplete-results">
-                      <li
-                        v-for="(result, i) in results"
-                        :key="i"
-                        @click="setResult(result)"
-                        class="autocomplete-result"
-                      >{{ result.city }}</li>
-                    </ul>
+                    <vue-tags-input
+                      v-model="tag"
+                      :tags="tags"
+                      :autocomplete-items="filteredTags"
+                      @tags-changed="newTags => project.tags = newTags"
+                    />
+                    <span v-if="error.tagsError" class="error">Моля напишете ключова дума!</span>
                   </div>
                 </div>
-              </div>
 
-              <div class="with-forms">
-                <!-- Status -->
+              </div>
+              
+              <div class="row">
                 <div class="col-md-12">
-                  <h5>
-                    Категория
-                    <!-- <span class="required">*</span> -->
-                  </h5>
-
-                  <select
-                    class="chosen-select-no-single"
-                    v-model="project.category"
-                    @focus="makeFocus('category')"
-                  >
-                    <!-- <option value="null">Избери категория</option> -->
-                    <option value="null">Избери категория</option>
-                    <optgroup
-                      :label="mainCategory.title"
-                      v-for="mainCategory in categories"
-                      :key="mainCategory.id"
-                    >
-                      <option
-                        :value="category.id"
-                        v-for="category in mainCategory.children"
-                        :key="category.id"
-                      >{{ category.title }}</option>
-                      <option value="21">Друга</option>
-                    </optgroup>
-                    <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
-                  </select>
-                  <span v-if="error.categoryError" class="error">Моля изберете категория!</span>
-                </div>
-
-                <div class="col-md-12">
-                  <h5>
-                    Избери услуга
-                    <!-- <i
-                      class="tip"
-                      data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
-                    ></i> -->
-                  </h5>
-                  <multiselect
-                    class="multi_select_service"
-                    v-model="userServicesTags"
-                    label="text"
-                    :multiple="true"
-                    track-by="id"
-                    :options="userServices"
-                  ></multiselect>
-                </div>
-
-              </div>
-
-              <!-- Row -->
-              <div class="with-forms">
-                
-                <!-- Type -->
-                <div class="col-md-12">
-                  <h5>
-                    Ключови думи
-                    <!-- <span class="required">*</span>
-                    <i
-                      class="tip"
-                      data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
-                    ></i> -->
-                  </h5>
-                  <vue-tags-input
-                    v-model="tag"
-                    :tags="tags"
-                    :autocomplete-items="filteredTags"
-                    @tags-changed="newTags => project.tags = newTags"
-                  />
-                  <span v-if="error.tagsError" class="error">Моля напишете ключова дума!</span>
+                  <google-map />
                 </div>
               </div>
-
             </div>
-            <!-- Row / End -->
+            <!-- Section / End -->
 
-            <div class="row">
-              <div class="col-md-12">
-                <google-map />
+            <!-- Section -->
+            <div class="add-listing-section section-details">
+              <!-- Headline -->
+              <div class="add-listing-headline">
+                <h3>
+                  <img src="/images/info-circle-solid.svg" alt="info icon"> Детайли
+                </h3>
               </div>
-            </div>
-          </div>
-          <!-- Section / End -->
+              <div class="form-section">
+                <!-- Description -->
+                <div class="form">
+                  <h5>Описание</h5>
 
-          <!-- Section -->
-          <div class="add-listing-section section-details">
-            <!-- Headline -->
-            <div class="add-listing-headline">
-              <h3>
-                <img src="/images/info-circle-solid.svg" alt="info icon"> Детайли
-              </h3>
-            </div>
-            <div class="form-section">
-              <!-- Description -->
-              <div class="form">
-                <h5>Описание</h5>
-
-                <div class="editor-item">
-                  <ckeditor
-                    :editor="editorConfig.editor"
-                    v-model="project.description"
-                    :config="editorConfig.editorConfig"
-                  ></ckeditor>
+                  <div class="editor-item">
+                    <ckeditor
+                      :editor="editorConfig.editor"
+                      v-model="project.description"
+                      :config="editorConfig.editorConfig"
+                    ></ckeditor>
+                  </div>
+                  <span v-if="error.descriptionError" class="error">Моля добавете описание на проекта!</span>
+                  <span v-if="desc_error" class="error">Описанието трябва да е поне с 15 букви!</span>
                 </div>
-                <span v-if="error.descriptionError" class="error">Моля добавете описание на проекта!</span>
-                <span v-if="desc_error" class="error">Описанието трябва да е поне с 15 букви!</span>
-              </div>
 
-              <div class="galery-section">
-                <!-- Headline -->
-                  
-                  <h5>
-                    <i class="sl sl-icon-picture"></i> Галерия
-                  </h5>
-                  
-                  <!-- Dropzone -->
-                  <vue-dropzone
-                    ref="myVueDropzone"
-                    @vdropzone-success="imageUploaded"
-                    @vdropzone-drop="disableButton"
-                    id="dropzone"
-                    :options="dropzoneOptions"
-                  ></vue-dropzone>
+                <div class="galery-section">
+                  <!-- Headline -->
+                    
+                    <h5>
+                      <i class="sl sl-icon-picture"></i> Галерия
+                    </h5>
+                    
+                    <!-- Dropzone -->
+                    <vue-dropzone
+                      ref="myVueDropzone"
+                      @vdropzone-success="imageUploaded"
+                      @vdropzone-drop="disableButton"
+                      id="dropzone"
+                      :options="dropzoneOptions"
+                    ></vue-dropzone>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- Section / End -->
-          <div class="errors_body">
-            <div class="errorsContent" v-if="showAllErrors">
-              <!-- <button @click="showAllErrors=!showAllErrors" class="closeMsg">X</button> -->
-              <p v-if="error.titleError" class="errorMsg">Моля попълнете заглавието!</p>
-              <p v-if="error.cityError" class="errorMsg">Моля попълнете градът!</p>
-              <p v-if="error.categoryError" class="errorMsg">Моля изберете категория!</p>
-              <p v-if="error.tagsError" class="errorMsg">Моля напишете ключова дума!</p>
-              <p v-if="error.serviceError" class="errorMsg">Моля изберете услуга!</p>
-              <p v-if="error.descriptionError" class="errorMsg">Моля добавете описание на проекта!</p>
-              <p v-if="error.imageError" class="errorMsg">Моля качете снимка на проекта!</p>
+            <!-- Section / End -->
+            <div class="errors_body">
+              <div class="errorsContent" v-if="showAllErrors">
+                <!-- <button @click="showAllErrors=!showAllErrors" class="closeMsg">X</button> -->
+                <p v-if="error.titleError" class="errorMsg">Моля попълнете заглавието!</p>
+                <p v-if="error.cityError" class="errorMsg">Моля попълнете градът!</p>
+                <p v-if="error.categoryError" class="errorMsg">Моля изберете категория!</p>
+                <p v-if="error.tagsError" class="errorMsg">Моля напишете ключова дума!</p>
+                <p v-if="error.serviceError" class="errorMsg">Моля изберете услуга!</p>
+                <p v-if="error.descriptionError" class="errorMsg">Моля добавете описание на проекта!</p>
+                <p v-if="error.imageError" class="errorMsg">Моля качете снимка на проекта!</p>
+              </div>
             </div>
-          </div>
-          <div class="button-part">
-            <button
-              @mouseover="showErrors"
-              @mouseleave="showAllErrors=!showAllErrors"
-              @click="createProject"
-              class="button preview"
-              :class="[isDisabled ? 'green' : '']"
-              :disabled="isDisabled"
-            >
-              Създай
-            </button>
+            <div class="button-part">
+              <button
+                @mouseover="showErrors"
+                @mouseleave="showAllErrors=!showAllErrors"
+                @click="createProject"
+                class="button preview"
+                :class="[isDisabled ? 'green' : '']"
+                :disabled="isDisabled"
+              >
+                Създай
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Copyrights -->
-      <Copyrights/>
+        <!-- Copyrights -->
+        <Copyrights/>
+      </div>
+      <vue-toastr ref="mytoast"></vue-toastr>
     </div>
-    <vue-toastr ref="mytoast"></vue-toastr>
+
+
+
+
+    <!-- MOBILE PART -->
+    <div class="mobile-part">
+      
+      <AddProjectOrService/>
+
+      <MobileGreenMenuSmall/>
+
+      <div class="row">
+
+        <!-- Titlebar -->
+        <div id="titlebar">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Добавяне на проекти</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizontal-line"></div>
+
+        <!-- Headline -->
+        <h3>
+          <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
+        </h3>
+        <span v-if="project.commonError" class="error">{{project.commonError}}</span>
+
+        <div class="col-lg-12">
+          <div id="add-listing">
+            <!-- Section -->
+            <div class="add-listing-section">
+              
+
+              <div class="section-with-forms">
+                <!-- Title -->
+                <div class="with-forms">
+                  <div class="col-md-12">
+                    <h5>
+                      Заглавие на проект
+                      <!-- <span class="required">*</span>
+                      <i class="tip" data-tip-content="Name"></i> -->
+                    </h5>
+                    <input
+                      class="search-field"
+                      v-model="project.title"
+                      type="text"
+                      value
+                      @focus="makeFocus('title')"
+                    />
+
+                    <span v-if="error.titleError" class="error">Моля попълнете заглавието!</span>
+
+                    <div class="autocomplete">
+                      <h5>
+                        Град
+                        <!-- <span class="required">*</span>
+                        <i
+                          class="tip"
+                          data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
+                        ></i> -->
+                      </h5>
+                      <span v-if="error.cityError" class="error">Моля попълнете градът!</span>
+                      <input type="text" v-model="search" @input="onChange" class="cityInput" />
+                      <ul v-show="isOpen" class="autocomplete-results">
+                        <li
+                          v-for="(result, i) in results"
+                          :key="i"
+                          @click="setResult(result)"
+                          class="autocomplete-result"
+                        >{{ result.city }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="with-forms">
+                  <!-- Status -->
+                  <div class="col-md-12">
+                    <h5>
+                      Категория
+                      <!-- <span class="required">*</span> -->
+                    </h5>
+
+                    <select
+                      class="chosen-select-no-single"
+                      v-model="project.category"
+                      @focus="makeFocus('category')"
+                    >
+                      <!-- <option value="null">Избери категория</option> -->
+                      <option value="null">Избери категория</option>
+                      <optgroup
+                        :label="mainCategory.title"
+                        v-for="mainCategory in categories"
+                        :key="mainCategory.id"
+                      >
+                        <option
+                          :value="category.id"
+                          v-for="category in mainCategory.children"
+                          :key="category.id"
+                        >{{ category.title }}</option>
+                        <option value="21">Друга</option>
+                      </optgroup>
+                      <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
+                    </select>
+                    <span v-if="error.categoryError" class="error">Моля изберете категория!</span>
+                  </div>
+
+                  <div class="col-md-12">
+                    <h5>
+                      Избери услуга
+                    </h5>
+                    <!-- <multiselect
+                      class="multi_select_service"
+                      v-model="userServicesTags"
+                      label="text"
+                      :multiple="true"
+                      track-by="id"
+                      :options="userServices"
+                      placeholder=" "
+                    ></multiselect> -->
+                    <div>
+                      <multiselect  class="multi_select_service" v-model="userServicesTags" :options="userServices" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder=" " label="text" track-by="id" :preselect-first="true">
+                        <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span></template>
+                      </multiselect>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="with-forms">
+                  
+                  <!-- Type -->
+                  <div class="col-md-12">
+                    <h5>
+                      Ключови думи
+                      <!-- <span class="required">*</span>
+                      <i
+                        class="tip"
+                        data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
+                      ></i> -->
+                    </h5>
+                    <vue-tags-input
+                      v-model="tag"
+                      :tags="tags"
+                      :autocomplete-items="filteredTags"
+                      @tags-changed="newTags => project.tags = newTags"
+                    />
+                    <span v-if="error.tagsError" class="error">Моля напишете ключова дума!</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <google-map />
+                </div>
+
+                <div class="horizontal-line"></div>
+              </div>
+
+              
+            </div>
+            <!-- Section / End -->
+
+            
+
+            <!-- Section -->
+            <div class="add-listing-section section-details">
+              <!-- Headline -->
+              <div class="add-listing-headline">
+                <h3>
+                  <img src="/images/info-circle-solid.svg" alt="info icon"> Детайли
+                </h3>
+              </div>
+              <div class="form-section">
+                <!-- Description -->
+                <div class="form">
+                  <h5>Описание</h5>
+
+                  <div class="editor-item">
+                    <ckeditor
+                      :editor="editorConfig.editor"
+                      v-model="project.description"
+                      :config="editorConfig.editorConfig"
+                    ></ckeditor>
+                  </div>
+                  <span v-if="error.descriptionError" class="error">Моля добавете описание на проекта!</span>
+                  <span v-if="desc_error" class="error">Описанието трябва да е поне с 15 букви!</span>
+                </div>
+
+                <div class="galery-section">
+                  <!-- Headline -->
+                    
+                    <h5>
+                      <i class="sl sl-icon-picture"></i> Галерия
+                    </h5>
+                    
+                    <!-- Dropzone -->
+                    <vue-dropzone
+                      ref="myVueDropzone"
+                      @vdropzone-success="imageUploaded"
+                      @vdropzone-drop="disableButton"
+                      id="dropzone"
+                      :options="dropzoneOptions"
+                    ></vue-dropzone>
+                </div>
+              </div>
+            </div>
+            <!-- Section / End -->
+            <div class="errors_body">
+              <div class="errorsContent" v-if="showAllErrors">
+                <!-- <button @click="showAllErrors=!showAllErrors" class="closeMsg">X</button> -->
+                <p v-if="error.titleError" class="errorMsg">Моля попълнете заглавието!</p>
+                <p v-if="error.cityError" class="errorMsg">Моля попълнете градът!</p>
+                <p v-if="error.categoryError" class="errorMsg">Моля изберете категория!</p>
+                <p v-if="error.tagsError" class="errorMsg">Моля напишете ключова дума!</p>
+                <p v-if="error.serviceError" class="errorMsg">Моля изберете услуга!</p>
+                <p v-if="error.descriptionError" class="errorMsg">Моля добавете описание на проекта!</p>
+                <p v-if="error.imageError" class="errorMsg">Моля качете снимка на проекта!</p>
+              </div>
+            </div>
+            <div class="button-part">
+              <button
+                @mouseover="showErrors"
+                @mouseleave="showAllErrors=!showAllErrors"
+                @click="createProject"
+                class="button preview"
+                :class="[isDisabled ? 'green' : '']"
+                :disabled="isDisabled"
+              >
+                Създай
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyrights -->
+        <Copyrights/>
+      </div>
+      <vue-toastr ref="mytoast"></vue-toastr>
+    </div>
+
   </div>
 </template>
 
@@ -233,6 +481,8 @@ import { VueTagsInput, createTag, createTags } from "@johmun/vue-tags-input";
 import vue2Dropzone from "vue2-dropzone";
 import GoogleMap from "../../components/googleMap/GoogleMap";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
+import AddProjectOrService from '../partials/AddProjectOrService.vue';
 import Copyrights from '../partials/Copyrights.vue';
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 
@@ -358,6 +608,7 @@ export default {
         this.userServices = data.map(a => {
           return { text: a.name, id: a.id };
         });
+        console.log(this.userServices);
       });
     },
     addService(service) {
@@ -498,6 +749,8 @@ export default {
     VueTagsInput,
     vueDropzone: vue2Dropzone,
     GoogleMap,
+    MobileGreenMenuSmall,
+    AddProjectOrService,
     Multiselect,
     Copyrights
   }
@@ -505,6 +758,15 @@ export default {
 </script>
 
 <style scoped>
+
+.mobile-part {
+  display: none;
+}
+
+.desktop-part {
+  display: flex;
+  flex-direction: column;
+}
 
 .multiselect__input {
   border: none !important;
@@ -555,6 +817,8 @@ export default {
 }
 
 @media screen and (min-width: 991px) {
+  
+
 
   #titlebar {
     margin-bottom: 0px;
@@ -568,12 +832,6 @@ export default {
     color: #276955;
     margin: 0px 0px 40px 0px;
   }
-
-  /* .row {
-    margin-left: unset;
-    margin-right: unset;
-    width: 100%;
-  } */
 
   .col-lg-12 {
     margin: 0px;
@@ -750,10 +1008,157 @@ export default {
     width: 354px;
     height: 43px;
   }
+}
 
-  @media screen and (max-width: 991px) {
-
+@media only screen and (max-width: 990px) {
+  .mobile-part {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
   }
 
+  .desktop-part {
+    display: none;
+  }
+
+  .mobile-part .row {
+    background-color: #F7F7F7;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #titlebar {
+    background-color: unset;
+    padding: 17px 0px 21px 0px;
+    margin-bottom: 0px;
+  }
+
+  #titlebar .col-md-12 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #titlebar h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #276955;
+  }
+
+  .horizontal-line {
+    width: 80%;
+    border: 1px solid #CACACA;
+  }
+
+  .mobile-part .row h3 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+    color: #276955;
+  }
+
+  .add-listing-section {
+    background-color: unset;
+    box-shadow: unset;
+  }
+
+  #add-listing h5 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    color: #276955;
+    margin: 21px 0px 10px 20px;
+  }
+
+  #add-listing input {
+    height: 49px;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* max-width: 347px; */
+  }
+
+  .autocomplete {
+    width: unset;
+  }
+
+  #add-listing select {
+    height: 49px;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* max-width: 347px; */
+  }
+
+  .multi_select_service {
+    height: 49px;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .vue-tags-input {
+    max-width: unset;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    max-height: 74px;
+  }
+  .add-listing-headline {
+    background-color: unset;
+    border-bottom: unset ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+
+  .editor-item {
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  #dropzone {
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  .button-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-part button {
+    width: 155px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    background: #6BBF3F;
+    border-radius: 20px;
+  }
 }
 </style>
