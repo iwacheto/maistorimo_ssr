@@ -56,7 +56,7 @@ class ProjectsController extends Controller
             ->leftJoin('object_analytics', 'projects.id', 'object_analytics.object_id')
             ->where('object_analytics.object_type', 'project')
             ->whereNotNull('project_gallery.url')
-            ->leftjoin('project_gallery', 'project_gallery.id', 'projects.id')
+            ->leftjoin('project_gallery', 'project_gallery.project', 'projects.id')
             ->whereNull('deleted_at')
             // ->where('project_gallery.main', 1)
             ->where('object_analytics.date', $today)->orderBy('object_analytics.count', 'DESC')->limit(10)->get();
