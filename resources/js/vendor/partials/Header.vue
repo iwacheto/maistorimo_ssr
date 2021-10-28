@@ -192,12 +192,18 @@ export default {
         case "Website":
           return "Настройки на сайта";
 
-        case "ServicesList":
+        case "CreateService":
           return "Услуги";
         
         case "EditService":
           return "Услуги";
 
+        case "ServicesList":
+          return "Услуги";
+
+        case "AddListing":
+          return "Проекти";
+        
         case "ProjectsList":
           return "Проекти";
         

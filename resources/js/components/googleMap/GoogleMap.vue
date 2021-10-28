@@ -169,4 +169,8 @@
 			width: 35%;
 		}
 	}
+
+	@media screen and (max-width: 990px) {
+		
+	}
 </style>
