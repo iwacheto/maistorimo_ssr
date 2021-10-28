@@ -59,6 +59,9 @@ class ProjectsController extends Controller
             ->leftjoin('project_gallery', 'project_gallery.project', 'projects.id')
             ->whereNull('deleted_at')
             // ->where('project_gallery.main', 1)
+            ->groupBy('projects.title')
+            ->groupBy('projects.id')
+            ->groupBy('project_gallery.url')
             ->where('object_analytics.date', $today)->orderBy('object_analytics.count', 'DESC')->limit(10)->get();
         // return $projects;
         if (count($projects) < 5) {

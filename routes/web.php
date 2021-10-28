@@ -49,7 +49,7 @@ Route::get('/get_user', 'VendorController@getUser');
 // Vendor routes
 Route::prefix('vendor')->middleware('auth')->group(function () {
     Route::get('/', 'Vendor\ProfileController@index');
-   
+
     Route::prefix('dashboard')->group(function () {
         Route::get('/get', 'Vendor\DashboardController@get');
     });
@@ -128,3 +128,7 @@ Route::get('/{url?}', 'VueController');
 // Route::get('/project/details/{url?}', 'VueController');
 // Route::get('/service/details/{url?}', 'VueController');
 // Route::get('/profile/{url?}', 'VueController');
+ Route::get('/project/details/{url?}', 'VueController');
+ Route::get('/service/details/{url?}', 'VueController');
+ Route::get('/profile/{url?}', 'VueController');
+
