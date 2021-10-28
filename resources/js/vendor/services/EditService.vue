@@ -136,6 +136,7 @@ import vue2Dropzone from 'vue2-dropzone';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Copyrights from '../partials/Copyrights.vue';
+import {VueTagsInput, createTag, createTags} from "@johmun/vue-tags-input";
 
 export default {
     name: 'EditService',
