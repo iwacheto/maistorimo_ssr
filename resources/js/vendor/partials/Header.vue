@@ -395,6 +395,8 @@ export default {
       position: unset;
       background-color: #F6F6F6;
       border-top-right-radius: 35px;
+      min-width: 200px;
+      max-width: 260px;
     }
 
     .dashboard #logo a img {
