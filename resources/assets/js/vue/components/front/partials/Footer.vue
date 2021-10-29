@@ -124,8 +124,8 @@ export default {
 <style scoped>
 
 #footer {
-    /* background-color: #324E5B; */
-    background-color: #276955;
+    background-color: #324E5B;
+    /* background-color: #276955; */
     color: #fff;
     padding-top: 40px;
     padding-bottom: 64px;

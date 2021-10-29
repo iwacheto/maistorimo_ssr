@@ -154,23 +154,13 @@
         <h3>
           <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
         </h3>
-        
-
-
-
+        <span v-if="error.commonError" class="error">{{error.commonError}}</span>
 
         <div class="col-lg-12">
           <div id="add-article">
             <!-- Section -->
             <div class="add-listing-section">
-              <div class="add-listing-headline">
-                
-                <span v-if="error.commonError" class="error">{{error.commonError}}</span>
-              </div>
-
-              <!-- Title -->
               <div class="section-with-forms">
-                
                 <div class="with-forms">
                   <div class="col-md-12">
                     <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
@@ -217,7 +207,7 @@
                       id="dropzone"
                       :options="dropzoneOptions"
                     ></vue-dropzone>
-                </div>
+                </div> 
               </div>
 
               <div class="add-listing-section section-details">
@@ -419,6 +409,7 @@ export default {
   margin-left: unset;
   margin-right: unset;
 }
+
 span.error {
   font-size: 14px;
 }
@@ -609,7 +600,7 @@ span.error {
   }
 }
 
-@media screen and (max-width: 990px) {
+@media only screen and (max-width: 990px) {
   .mobile-part {
     display: flex;
     flex-direction: column;
@@ -618,6 +609,146 @@ span.error {
 
   .desktop-part {
     display: none;
+  }
+
+  .mobile-part .row {
+    background-color: #F7F7F7;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #titlebar {
+    background-color: unset;
+    padding: 17px 0px 21px 0px;
+    margin-bottom: 0px;
+  }
+
+  #titlebar .col-md-12 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #titlebar h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #276955;
+  }
+
+  .horizontal-line {
+    width: 80%;
+    border: 1px solid #CACACA;
+  }
+
+  .mobile-part .row h3 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+    color: #276955;
+  }
+
+  .add-listing-section {
+    background-color: unset;
+    box-shadow: unset;
+  }
+
+  #add-article h5 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    color: #276955;
+    margin: 21px 0px 10px 20px;
+  }
+
+  #add-article input {
+    height: 49px;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* max-width: 347px; */
+  }
+
+  .autocomplete {
+    width: unset;
+  }
+
+  #add-article select {
+    height: 49px;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* max-width: 347px; */
+  }
+
+  .multi_select_service {
+    height: 49px;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .vue-tags-input {
+    max-width: unset;
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    max-height: 74px;
+  }
+  .add-listing-headline {
+    background-color: unset;
+    border-bottom: unset ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+
+  .editor-item {
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  #dropzone {
+    background: #FFFFFF;
+    border: 0.75px solid #6BBF3F;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  .button-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-part button {
+    width: 155px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    background: #6BBF3F;
+    border-radius: 20px;
   }
 }
 </style>
