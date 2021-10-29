@@ -379,6 +379,10 @@
 			background-color: #F7F7F7;
 		}
 
+		.dashboard-list-box ul li {
+			flex: 1 1 35%;
+		}
+
 		.list-box-listing {
 			box-shadow: 0px 2px 4px rgb(0 0 0 / 25%);
 			border-radius: 25px;
@@ -461,6 +465,12 @@
 			height: 23px;
 			margin: 9px auto;
 			background-color: #ffffff;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.dashboard-list-box ul li {
+			flex: 1 1 55%;
 		}
 	}
 
