@@ -133,24 +133,38 @@
 
     <!-- MOBILE  PART -->
     <div class="mobile-part">
-      <!-- Titlebar -->
-      <div id="titlebar">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Добавяне на услуга</h2>
-          </div>
-        </div>
-      </div>
+
+      <AddProjectOrService/>
+
+      <MobileGreenMenuSmall/>
 
       <div class="row">
+
+        <!-- Titlebar -->
+        <div id="titlebar">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Добавяне на услуга</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizontal-line"></div>
+
+        <h3>
+          <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
+        </h3>
+        
+
+
+
+
         <div class="col-lg-12">
           <div id="add-article">
             <!-- Section -->
             <div class="add-listing-section">
               <div class="add-listing-headline">
-                <h3>
-                  <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
-                </h3>
+                
                 <span v-if="error.commonError" class="error">{{error.commonError}}</span>
               </div>
 
@@ -268,6 +282,8 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import Copyrights from '../partials/Copyrights.vue';
+import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
+import AddProjectOrService from '../partials/AddProjectOrService.vue';
 
 export default {
   name: "CreateService",
@@ -383,7 +399,9 @@ export default {
   },
   components: {
     vueDropzone: vue2Dropzone,
-    Copyrights
+    Copyrights,
+    MobileGreenMenuSmall,
+    AddProjectOrService,
   }
 };
 </script>
