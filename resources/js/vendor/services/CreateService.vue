@@ -1,131 +1,264 @@
 <template>
   <div>
 
-    <!-- Titlebar -->
-    <div id="titlebar">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Добавяне на услуга</h2>
+    <!-- DESKTOP PART -->
+    <div class="desktop-part">
+      <!-- Titlebar -->
+      <div id="titlebar">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Добавяне на услуга</h2>
+          </div>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="add-article">
+            <!-- Section -->
+            <div class="add-listing-section">
+              <div class="add-listing-headline">
+                <h3>
+                  <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
+                </h3>
+                <span v-if="error.commonError" class="error">{{error.commonError}}</span>
+              </div>
+
+              <!-- Title -->
+              <div class="section-with-forms">
+                
+                <div class="with-forms">
+                  <div class="col-md-12">
+                    <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
+                    <h5>
+                      Заглавие на услугата
+                    </h5>
+                    <input class="search-field" type="text" v-model="service.title" />
+                  </div>
+                      
+                  <div class="col-md-12">
+                    <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
+                    <h5>Категория</h5>
+
+                    
+                    <select class="chosen-select-no-single" v-model="service.category">
+                      <option value>Избери категория</option>
+                      <optgroup
+                        :label="mainCategory.title"
+                        v-for="mainCategory in categories"
+                        :key="mainCategory.id"
+                      >
+                        <option
+                          :value="category.id"
+                          v-for="category in mainCategory.children"
+                          :key="category.id"
+                        >{{ category.title }}</option>
+                        <option value="21">Друга</option>
+                      </optgroup>
+                    </select>
+                    
+                  </div>
+                </div>  
+
+                <div class="galery-section">
+                  <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
+                  <h5>
+                    <i class="sl sl-icon-picture"></i> Главна снимка
+                  </h5>
+
+                  <vue-dropzone
+                      ref="myVueDropzone"
+                      @vdropzone-success="imageUploaded"
+                      @vdropzone-drop="disableButton"
+                      id="dropzone"
+                      :options="dropzoneOptions"
+                    ></vue-dropzone>
+                </div>
+              </div>
+
+              <div class="add-listing-section section-details">
+                <div class="add-listing-headline">
+                  <h5>Описание 1</h5>
+                  <div class="row with-forms">
+                    <!-- Status -->
+                    <div class="col-md-12">
+                      <span v-if="error.firstDescriptionError" class="error">Моля напишете описание!</span>
+
+                      <!-- <label>Описание 1</label> -->
+                      <ckeditor
+                        :editor="editorConfig.editor"
+                        v-model="service.firstDescription"
+                        :config="editorConfig.editorConfig"
+                      ></ckeditor>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="add-listing-headline">
+                  <h5>Описание 2</h5>
+                  <div class="row with-forms">
+                    <!-- Status -->
+                    <div class="col-md-12">
+                      <!-- <span
+                        v-if="service.secondDescriptionError"
+                        class="error"
+                      >{{service.secondDescriptionError[0]}}</span>-->
+                      <!-- <label>Текст за Нас - Компания</label> -->
+                      <ckeditor
+                        :editor="editorConfig.editor"
+                        v-model="service.secondDescription"
+                        :config="editorConfig.editorConfig"
+                      ></ckeditor>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Row -->
+              
+              <!-- Row -->
+              <div class="button-part">
+                <button @click="createService" class="button preview">
+                  Създай
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copyrights -->
+          <Copyrights/>
+        </div>
+        <vue-toastr ref="mytoast"></vue-toastr>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div id="add-article">
-          <!-- Section -->
-          <div class="add-listing-section">
-            <div class="add-listing-headline">
-              <h3>
-                <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
-              </h3>
-              <span v-if="error.commonError" class="error">{{error.commonError}}</span>
-            </div>
-
-            <!-- Title -->
-            <div class="section-with-forms">
-              
-              <div class="with-forms">
-                <div class="col-md-12">
-                  <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
-                  <h5>
-                    Заглавие на услугата
-                  </h5>
-                  <input class="search-field" type="text" v-model="service.title" />
-                </div>
-                    
-                <div class="col-md-12">
-                  <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
-                  <h5>Категория</h5>
-
-                  
-                  <select class="chosen-select-no-single" v-model="service.category">
-                    <option value>Избери категория</option>
-                    <optgroup
-                      :label="mainCategory.title"
-                      v-for="mainCategory in categories"
-                      :key="mainCategory.id"
-                    >
-                      <option
-                        :value="category.id"
-                        v-for="category in mainCategory.children"
-                        :key="category.id"
-                      >{{ category.title }}</option>
-                      <option value="21">Друга</option>
-                    </optgroup>
-                  </select>
-                  
-                </div>
-              </div>  
-
-              <div class="galery-section">
-                <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
-                <h5>
-                  <i class="sl sl-icon-picture"></i> Главна снимка
-                </h5>
-
-                <vue-dropzone
-                    ref="myVueDropzone"
-                    @vdropzone-success="imageUploaded"
-                    @vdropzone-drop="disableButton"
-                    id="dropzone"
-                    :options="dropzoneOptions"
-                  ></vue-dropzone>
-              </div>
-            </div>
-
-            <div class="add-listing-section section-details">
-              <div class="add-listing-headline">
-                <h5>Описание 1</h5>
-                <div class="row with-forms">
-                  <!-- Status -->
-                  <div class="col-md-12">
-                    <span v-if="error.firstDescriptionError" class="error">Моля напишете описание!</span>
-
-                    <!-- <label>Описание 1</label> -->
-                    <ckeditor
-                      :editor="editorConfig.editor"
-                      v-model="service.firstDescription"
-                      :config="editorConfig.editorConfig"
-                    ></ckeditor>
-                  </div>
-                </div>
-              </div>
-            
-              <div class="add-listing-headline">
-                <h5>Описание 2</h5>
-                <div class="row with-forms">
-                  <!-- Status -->
-                  <div class="col-md-12">
-                    <!-- <span
-                      v-if="service.secondDescriptionError"
-                      class="error"
-                    >{{service.secondDescriptionError[0]}}</span>-->
-                    <!-- <label>Текст за Нас - Компания</label> -->
-                    <ckeditor
-                      :editor="editorConfig.editor"
-                      v-model="service.secondDescription"
-                      :config="editorConfig.editorConfig"
-                    ></ckeditor>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Row -->
-            
-            <!-- Row -->
-            <div class="button-part">
-              <button @click="createService" class="button preview">
-                Създай
-              </button>
-            </div>
+    <!-- MOBILE  PART -->
+    <div class="mobile-part">
+      <!-- Titlebar -->
+      <div id="titlebar">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Добавяне на услуга</h2>
           </div>
         </div>
-
-        <!-- Copyrights -->
-        <Copyrights/>
       </div>
-      <vue-toastr ref="mytoast"></vue-toastr>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="add-article">
+            <!-- Section -->
+            <div class="add-listing-section">
+              <div class="add-listing-headline">
+                <h3>
+                  <img src="/images/info-circle-solid.svg" alt="info icon"> Основна информация
+                </h3>
+                <span v-if="error.commonError" class="error">{{error.commonError}}</span>
+              </div>
+
+              <!-- Title -->
+              <div class="section-with-forms">
+                
+                <div class="with-forms">
+                  <div class="col-md-12">
+                    <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
+                    <h5>
+                      Заглавие на услугата
+                    </h5>
+                    <input class="search-field" type="text" v-model="service.title" />
+                  </div>
+                      
+                  <div class="col-md-12">
+                    <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
+                    <h5>Категория</h5>
+
+                    
+                    <select class="chosen-select-no-single" v-model="service.category">
+                      <option value>Избери категория</option>
+                      <optgroup
+                        :label="mainCategory.title"
+                        v-for="mainCategory in categories"
+                        :key="mainCategory.id"
+                      >
+                        <option
+                          :value="category.id"
+                          v-for="category in mainCategory.children"
+                          :key="category.id"
+                        >{{ category.title }}</option>
+                        <option value="21">Друга</option>
+                      </optgroup>
+                    </select>
+                    
+                  </div>
+                </div>  
+
+                <div class="galery-section">
+                  <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
+                  <h5>
+                    <i class="sl sl-icon-picture"></i> Главна снимка
+                  </h5>
+
+                  <vue-dropzone
+                      ref="myVueDropzone"
+                      @vdropzone-success="imageUploaded"
+                      @vdropzone-drop="disableButton"
+                      id="dropzone"
+                      :options="dropzoneOptions"
+                    ></vue-dropzone>
+                </div>
+              </div>
+
+              <div class="add-listing-section section-details">
+                <div class="add-listing-headline">
+                  <h5>Описание 1</h5>
+                  <div class="row with-forms">
+                    <!-- Status -->
+                    <div class="col-md-12">
+                      <span v-if="error.firstDescriptionError" class="error">Моля напишете описание!</span>
+
+                      <!-- <label>Описание 1</label> -->
+                      <ckeditor
+                        :editor="editorConfig.editor"
+                        v-model="service.firstDescription"
+                        :config="editorConfig.editorConfig"
+                      ></ckeditor>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="add-listing-headline">
+                  <h5>Описание 2</h5>
+                  <div class="row with-forms">
+                    <!-- Status -->
+                    <div class="col-md-12">
+                      <!-- <span
+                        v-if="service.secondDescriptionError"
+                        class="error"
+                      >{{service.secondDescriptionError[0]}}</span>-->
+                      <!-- <label>Текст за Нас - Компания</label> -->
+                      <ckeditor
+                        :editor="editorConfig.editor"
+                        v-model="service.secondDescription"
+                        :config="editorConfig.editorConfig"
+                      ></ckeditor>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Row -->
+              
+              <!-- Row -->
+              <div class="button-part">
+                <button @click="createService" class="button preview">
+                  Създай
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copyrights -->
+          <Copyrights/>
+        </div>
+        <vue-toastr ref="mytoast"></vue-toastr>
+      </div>
     </div>
   </div>
 </template>
@@ -256,6 +389,15 @@ export default {
 </script>
 
 <style scoped>
+
+.mobile-part {
+  display: none;
+}
+
+.desktop-part {
+  display: flex;
+  flex-direction: column;
+}
 
 .row {
   margin-left: unset;
@@ -485,5 +627,17 @@ span.error {
 
   }
 
+}
+
+@media screen and (max-width: 990px) {
+  .mobile-part {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+  }
+
+  .desktop-part {
+    display: none;
+  }
 }
 </style>
