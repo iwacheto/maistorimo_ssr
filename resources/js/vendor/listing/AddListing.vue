@@ -242,7 +242,7 @@
         <div id="titlebar">
           <div class="row">
             <div class="col-md-12">
-              <h2>Добавяне на проекти</h2>
+              <h2>Добави на проект</h2>
             </div>
           </div>
         </div>
@@ -259,8 +259,6 @@
           <div id="add-listing">
             <!-- Section -->
             <div class="add-listing-section">
-              
-
               <div class="section-with-forms">
                 <!-- Title -->
                 <div class="with-forms">
@@ -818,8 +816,6 @@ export default {
 
 @media screen and (min-width: 991px) {
   
-
-
   #titlebar {
     margin-bottom: 0px;
   }
