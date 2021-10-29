@@ -276,7 +276,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import vue2Dropzone from "vue2-dropzone";
@@ -405,7 +404,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 
 .mobile-part {
@@ -421,18 +419,14 @@ export default {
   margin-left: unset;
   margin-right: unset;
 }
-
 span.error {
   font-size: 14px;
 }
-
 @media screen and (min-width: 991px) {
-
   #titlebar {
     margin-bottom: 0px;
     padding-top: 29px;
   }
-
   #titlebar h2 {
     font-style: normal;
     font-weight: 500;
@@ -441,19 +435,16 @@ span.error {
     color: #276955;
     margin: 0px 0px 40px 0px;
   }
-
   /* .row {
     margin-left: unset;
     margin-right: unset;
     width: 100%;
   } */
-
   .col-lg-12 {
     margin: 0px;
     padding: 0px;
     background-color: #f8f8f8;
   }
-
   #add-article {
     margin: 0px 26px;
     background: #FFFFFF;
@@ -462,18 +453,15 @@ span.error {
     box-shadow: 0px 2px 10px rgb(0 0 0 / 25%);
     border-radius: 7px;
   }
-
   .add-listing-section {
     box-shadow: unset;
     border-radius: 7px;
     padding: unset;
   }
-
   .add-listing-section.section-details {
     display: flex;
     flex-direction: row;
   }
-
   .add-listing-headline {
     border-top: 7px;
     /* border-bottom: 1px solid #CACACA; */
@@ -482,11 +470,9 @@ span.error {
     left: unset;
     margin: unset;
   }
-
   .add-listing-section.section-details .add-listing-headline {
     padding: 25px 18px;
   }
-
   .add-listing-headline h3 {
     font-style: normal;
     font-weight: normal;
@@ -494,7 +480,6 @@ span.error {
     line-height: 23px;
     color: #276955;
   }
-
   .section-with-forms {
     display: flex;
     flex-direction: row;
@@ -503,25 +488,20 @@ span.error {
     border-bottom: 1px solid #CACACA;
     border-top: 1px solid #CACACA;
   }
-
   .section-with-forms .with-forms:nth-child(1) {
     width: 34%;
   }
-
   .section-with-forms .galery-section {
     width: 30%;
   }
-
   .with-forms {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-
   .autocomplete {
     width: 100%;
   }
-
   #add-article h5 {
     font-style: normal;
     font-weight: bold;
@@ -530,7 +510,6 @@ span.error {
     color: #276955;
     margin-left: 28px;
   }
-
   .col-md-12 input, .col-md-12 select {
     background: #FFFFFF;
     border: 0.25px solid #6BBF3F;
@@ -540,13 +519,11 @@ span.error {
     height: 40px;
     max-width: 330px;
   }
-
-  .col-md-12 select { 
+  .col-md-12 select {
     margin: 6px 0px;
     padding: 0px;
     max-width: 330px;
   }
-
   .multi_select_service {
     position: relative;
     background: #FFFFFF;
@@ -557,7 +534,6 @@ span.error {
     height: 40px;
     padding: 5px;
   }
-
   .vue-tags-input {
     height: 71px;
     background: #FFFFFF;
@@ -566,7 +542,6 @@ span.error {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-
   .vue-tags-input .ti-input {
     background: #FFFFFF;
     border: 0.25px solid #6BBF3F;
@@ -574,38 +549,31 @@ span.error {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-
   .cityInput {
     min-width: unset;
   }
-
   .galery-section {
     display: flex;
     flex-direction: column;
     width: 45%;
     margin-left: 20px;
   }
-
   .form {
     margin-right: 20px;
   }
-
   .form-section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0px 35px;
   }
-
   .add-listing-section.section-details .add-listing-headline:nth-child(1) {
     /* border-top: 1px solid #CACACA; */
     border-bottom: unset;
   }
-
   .add-listing-section.section-details .add-listing-headline {
     margin: 0px;
   }
-
   .dropzone {
     margin-top: 0px;
     background: #FFFFFF;
@@ -614,7 +582,6 @@ span.error {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-
   .form div:nth-child(2) {
     background: #FFFFFF;
     border: 0.25px solid #6BBF3F;
@@ -622,7 +589,6 @@ span.error {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-
   .button-part {
     width: 100%;
     margin-top: 56px;
@@ -630,7 +596,6 @@ span.error {
     display: flex;
     flex-direction: column;
   }
-
   .button-part button {
     margin: 0px auto;
     background: #6BBF3F;
@@ -640,11 +605,8 @@ span.error {
     width: 354px;
     height: 43px;
   }
-
   @media screen and (max-width: 991px) {
-
   }
-
 }
 
 @media screen and (max-width: 990px) {

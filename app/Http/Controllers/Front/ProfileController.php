@@ -15,10 +15,14 @@ class ProfileController extends Controller
     {
 
         $user = User::with([
-            'projects',
+            'projects' => function($query) {
+                $query->orderBy('created_at', 'DESC');
+            },
             'vendorDetails',
             'websiteSettings',
-            'services',
+            'services' => function($query) {
+                $query->orderBy('created_at', 'DESC');
+            },
         ])->find($id);
         // dd($user['projects'][0]['ProjectMainImage']['url']);
         foreach ($user['projects'] as &$project) {

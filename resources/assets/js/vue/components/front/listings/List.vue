@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <h3 class="margin-top-20 tags_heading" @click="showTags = !showTags">
                             <i class="fa fa-tags"></i>
                             Тагове
@@ -170,7 +170,7 @@
                         <h3 class="tags_heading" @click="showTwentyTags = !showTwentyTags">
                             Други тагове
                             <span
-                                class="show_tags" 
+                                class="show_tags"
                                 :class="[showTwentyTags ? 'active' : '']"
                             >
                                 <span v-if="!showTwentyTags">+</span>
@@ -239,7 +239,7 @@
                                 <a href="#" class="list" @click="className = true">
                                     <!-- <i class="fa fa-align-justify"></i> -->
                                     <i class="fa fa-th"></i>
-                                    
+
                                     <!-- <svg class="gb_Ve" focusable="false" viewBox="0 0 24 24"><path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path></svg> -->
                                 </a>
                             </div>
@@ -252,7 +252,7 @@
                         <div
                             v-for="project in projects"
                             :key="project.id"
-                            :class="[className ? 'col-lg-12 col-md-12' : 'col-lg-6 col-md-12']"
+                            :class="[className ? 'col-lg-3 col-md-6' : 'col-lg-6 col-md-12']"
                         >
                             <router-link
                                 :to="'/project/details/' + project.id"
@@ -262,7 +262,7 @@
                                     <img :src="project.project_galleries[0].url" alt />
 
                                     <div class="listing-badge now-open">
-                                        <img class="verificated-img" src="/images/very.png" alt="verificated" >
+                                        <img class="verificated-img" src="/images/very.svg" alt="verificated" >
                                     </div>
 
                                     <div class="listing-item-content">
@@ -346,7 +346,7 @@ export default {
             limit: 5,
             busy: false,
             page: 1,
-            className: false,
+            className: true,
             show_sidebar: false,
             results: [],
             isOpen: false,
@@ -544,16 +544,16 @@ export default {
     }
 
     div.fixed {
-        width: 32%;
+        width: 16%;
         background: linear-gradient(87.84deg, rgba(196, 196, 196, 0) -0.93%, rgba(233, 233, 233, 0.234457) 96.54%, #E4E3E3 134.75%);
     }
 
     .col-lg-9 {
-        width: 68%;
+        width: 84%;
     }
 
     .sidebar {
-        margin-left: 15.5%;
+        margin-left: -3.5%;
         margin-bottom: 142px;
     }
 
@@ -577,7 +577,7 @@ export default {
         border: 1px solid #66B7A3;
         box-sizing: border-box;
         border-radius: 36px;
-        min-height: 37px;
+        min-height: 30px;
         max-width: 289px;
     }
 
@@ -588,6 +588,7 @@ export default {
         border-radius: 36px;
         min-height: 37px;
         max-width: 289px;
+        font-size: 14px;
     }
 
     .main_cats span {
@@ -597,7 +598,7 @@ export default {
     }
 
     .category_sidebar div {
-        font-size: 14px;
+        font-size: 12px;
         max-width: 289px;
         padding-left: 26px;
     }
@@ -612,17 +613,29 @@ export default {
         color: #DE5B4A;
     }
 
+    .col-lg-6 {
+        width: 50%;
+    }
+
+    .col-lg-3 {
+        width: 33%;
+    }
+
+    .col-lg-6.col-md-12 a.listing-item-container.compact div.listing-item div.listing-item-content {
+        left: 120px;
+    }
+
     .widget img {
         position: absolute;
         left: 15px;
-        top: 18px;
+        top: 8px;
     }
 
     .widget h3 {
-        font-size: 22px;
+        font-size: 17px;
         background-color: #276955;
         color: #fff;
-        padding: 17px 0px;
+        padding: 10px 0px;
         border-radius: 35px;
         text-transform: uppercase;
         font-weight: bold;
@@ -646,8 +659,13 @@ export default {
         border: 1px solid #74AEA1;
         box-sizing: border-box;
         border-radius: 34.5px;
-        font-size: 16px;
+        font-size: 14px;
         padding: 0px 22px;
+        height: 36px !important;
+    }
+
+    input#autocomplete-nput {
+        height: 36px;
     }
 
     .tags_heading {
@@ -657,10 +675,11 @@ export default {
         border: 1px solid #276955;
         box-sizing: border-box;
         border-radius: 36px;
-        min-height: 57px;
+        min-height: 40px;
         max-width: 289px;
-        padding: 18px 18px;
+        padding: 8px 18px;
         position: relative;
+        font-size: 20px;
     }
 
     .tags_heading h3 {
@@ -681,7 +700,7 @@ export default {
     }
 
     /* .margin-top-20.tags_heading span.show_tags {
-        
+
     } */
 
     .checkboxes.one-in-row.margin-bottom-15 {
@@ -690,7 +709,7 @@ export default {
 
     .col-md-6.col-xs-6 {
         float: right;
-        
+
     }
 
     .layout-switcher {
@@ -745,7 +764,7 @@ export default {
         min-height: 80px;
         /* min-width: 293px; */
         /* width: 325px; */
-        width: 80%;
+        width: 85%;
         background-color: #EFCA4E;
         color: #000;
         position: absolute;
@@ -753,20 +772,22 @@ export default {
         border-top-left-radius: 55px;
         border-top: 5px solid #fff;
         border-left: 5px solid #fff;
-        left: 126px;
+        left: 80px;
         display: flex;
         justify-content: center;
         align-items: center;
         padding-right: 0px;
     }
 
-    @media screen and (max-width: 1680px) { 
+    @media screen and (max-width: 1680px) {
         .listing-item-content {
-            width: 77%;
+            width: 82%;
+            padding: 0px 20px;
         }
 
         .listing-item-content h3 {
-            width: 77%;
+            width: 90%;
+            font-size: 18px;
         }
     }
 
@@ -774,38 +795,51 @@ export default {
         .col-lg-9 {
             margin-top: 25px;
         }
+
         .row.margin-bottom-25 {
             display: none;
-        } 
+        }
 
         .listing-item-content {
-            width: 85%;
+            width: 80%;
         }
 
         .listing-item-content h3 {
-            width: 77%;
+            width: 97%;
+        }
+
+        .listing-item-content {
+            left: 70px;
+        }
+
+        .widget img {
+            left: 7px;
+        }
+
+        .tags_heading {
+            font-size: 18px;
         }
     }
 
-    @media screen and (max-width: 1190px) { 
+    @media screen and (max-width: 1190px) {
         .sidebar h3 {
-            font-size: 21px;
+            font-size: 15px;
         }
     }
 
-    @media screen and (max-width: 1118px) { 
+    @media screen and (max-width: 1118px) {
         .sidebar h3 {
-            font-size: 20px;
+            font-size: 15px;
         }
     }
 
-    @media screen and (max-width: 1100px) { 
+    @media screen and (max-width: 1100px) {
         .sidebar h3.tags_heading {
             font-size: 19px;
         }
     }
 
-    @media screen and (max-width: 1024px) { 
+    @media screen and (max-width: 1024px) {
         .header-container.container.margin-top-60 {
             margin-top: 30px !important;
         }
@@ -819,7 +853,7 @@ export default {
         }
     }
 
-    @media screen and (max-width: 1000px) { 
+    @media screen and (max-width: 1000px) {
         .col-lg-9  {
             width: 90%;
         }
@@ -830,13 +864,31 @@ export default {
         }
 
         .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
-            left: 300px;
-            width: 65%;
+            left: 215px;
+            width: 75%;
         }
 
         .sidebar_menu.active_button {
             transform: translateX(-25px);
             z-index: 99;
+        }
+    }
+
+    @media screen and (max-width: 990px) {
+        .col-lg-6 {
+            width: 100%;
+        }
+
+        .col-lg-3 {
+            width: 95%;
+        }
+
+        .col-lg-6.col-md-12 a.listing-item-container.compact div.listing-item div.listing-item-content {
+            left: 170px;
+        }
+
+        .listing-item-content {
+            left: 170px;
         }
     }
 
@@ -873,7 +925,7 @@ export default {
         }
     }
 
-    @media screen and (max-width: 768px) { 
+    @media screen and (max-width: 768px) {
         .sidebar_menu.active_button {
             transform: translateX(3px);
         }
@@ -913,12 +965,16 @@ export default {
     }
 
     @media screen and (max-width: 766px) {
+
         div.fixed.active_sidebar {
             width: 34% !important;
             top: 87px;
             z-index: 11;
         }
 
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            left: 166px !important;
+        }
         div.project_content {
             margin-top: 0px;
         }
@@ -946,7 +1002,17 @@ export default {
         }
     }
 
-    @media screen and (max-width: 720px) { 
+    @media screen and (max-width: 720px) {
+        .row.project_content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-lg-9.col-md-9.col-sm-9.gallery_listing.gallery_listing_active {
+            left: unset !important;
+
+        }
+
         .sidebar {
             margin-left: 9%;
         }
@@ -1011,6 +1077,10 @@ export default {
 
         .col-lg-9 {
             left: 60px;
+        }
+
+        .col-lg-6.col-md-12 a.listing-item-container.compact div.listing-item div.listing-item-content {
+            left: 110px;
         }
     }
 

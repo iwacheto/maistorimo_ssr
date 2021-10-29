@@ -71,7 +71,6 @@
 				if (this.currentPlace) {
 					let marker = {};
 
-						console.log('here');
 						marker = {
 							lat: this.currentPlace.geometry.location.lat(),
 							lng: this.currentPlace.geometry.location.lng()

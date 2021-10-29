@@ -569,6 +569,8 @@ export default {
       }
       if (!this.project.description) {
         this.error.descriptionError = true;
+      } else {
+        this.error.descriptionError = false;
       }
       if (!this.project.category) {
         this.error.categoryError = true;

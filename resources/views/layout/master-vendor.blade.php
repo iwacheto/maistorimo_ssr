@@ -89,7 +89,6 @@
 
 	{{--// <-- Variables prepended to this view--}}
 	@include ('layout.footer')
-
 </body>
 
 </html>
