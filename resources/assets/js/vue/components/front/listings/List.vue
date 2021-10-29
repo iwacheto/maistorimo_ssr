@@ -262,7 +262,7 @@
                                     <img :src="project.project_galleries[0].url" alt />
 
                                     <div class="listing-badge now-open">
-                                        <img class="verificated-img" src="/images/very.png" alt="verificated" >
+                                        <img class="verificated-img" src="/images/very.svg" alt="verificated" >
                                     </div>
 
                                     <div class="listing-item-content">
@@ -346,7 +346,7 @@ export default {
             limit: 5,
             busy: false,
             page: 1,
-            className: false,
+            className: true,
             show_sidebar: false,
             results: [],
             isOpen: false,
