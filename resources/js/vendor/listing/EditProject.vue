@@ -30,8 +30,15 @@
                     <h5>
                       Заглавие на проекта
                     </h5>
-                    <input class="search-field" v-model="project.title" type="text" value />
-                  
+                    <!-- <input class="search-field" v-model="project.title" type="text" value /> -->
+                    <input
+                      class="search-field"
+                      v-model="project.title"
+                      type="text"
+                      value
+                      @focus="makeFocus('title')"
+                    />
+
                     <div class="autocomplete">
                       <h5>Град</h5>
                       <input type="text" v-model="search" @input="onChange" class="cityInput" />
@@ -270,61 +277,6 @@
                       </multiselect>
                     </div>
                   </div>
-                </div>
-
-                <div class="with-forms">
-                  <!-- Status -->
-                  <div class="col-md-12">
-                    <h5>
-                      Категория
-                      <!-- <span class="required">*</span> -->
-                    </h5>
-
-                    <select
-                      class="chosen-select-no-single"
-                      v-model="project.category"
-                      @focus="makeFocus('category')"
-                    >
-                      <!-- <option value="null">Избери категория</option> -->
-                      <option value="null">Избери категория</option>
-                      <optgroup
-                        :label="mainCategory.title"
-                        v-for="mainCategory in categories"
-                        :key="mainCategory.id"
-                      >
-                        <option
-                          :value="category.id"
-                          v-for="category in mainCategory.children"
-                          :key="category.id"
-                        >{{ category.title }}</option>
-                        <option value="21">Друга</option>
-                      </optgroup>
-                      
-                    </select>
-                    
-                  </div>
-
-                  <div class="col-md-12">
-                    <h5>
-                      Избери услуга
-                    </h5>
-                    <!-- <multiselect
-                      class="multi_select_service"
-                      v-model="userServicesTags"
-                      label="text"
-                      :multiple="true"
-                      track-by="id"
-                      :options="userServices"
-                      placeholder=" "
-                    ></multiselect> -->
-                    <div>
-                      <multiselect  class="multi_select_service" v-model="userServicesTags" :options="userServices" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder=" " label="text" track-by="id" :preselect-first="true">
-                        <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span></template>
-                      </multiselect>
-                    </div>
-
-                  </div>
-
                 </div>
 
                 <div class="with-forms">
@@ -995,7 +947,7 @@ export default {
   }
 
   .multi_select_service {
-    height: 49px;
+    height: 60px;
     background: #FFFFFF;
     border: 0.75px solid #6BBF3F;
     box-sizing: border-box;
