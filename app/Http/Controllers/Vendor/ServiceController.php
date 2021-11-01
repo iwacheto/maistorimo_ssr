@@ -68,14 +68,14 @@ class ServiceController extends Controller
                 'first_description'  => $data['firstDescription'],
                 'second_description' => $data['secondDescription'],
                 'category_id'        => $data['category'],
-                'all_country'        => $data['all_country'] ? 1 : 0,
+                // 'all_country'        => $data['all_country'] ? 1 : 0,
                 'image_url'          => $data['mainImage']['url'],
                 'image_name'         => $data['mainImage']['name']
             ]);
 
-            $cities = City::find($data['location']);
+            // $cities = City::find($data['location']);
 
-            $service->cities()->attach($cities);
+            // $service->cities()->attach($cities);
             return $service;
         }
     }
@@ -139,7 +139,7 @@ class ServiceController extends Controller
             'first_description'  => $request['first_description'],
             'second_description' => $request['second_description'],
             'category_id'        => $request['service_id'],
-            'all_country'        => $request['all_country'],
+            // 'all_country'        => $request['all_country'],
             'image_url'          => $request['mainImage'][0]['url'],
             'image_name'         => $request['mainImage'][0]['name'],
         ]);

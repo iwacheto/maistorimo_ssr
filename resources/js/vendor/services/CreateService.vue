@@ -26,7 +26,7 @@
 
               <!-- Title -->
               <div class="section-with-forms">
-                
+
                 <div class="with-forms">
                   <div class="col-md-12">
                     <span v-if="error.titleError" class="error error_service">Заглавието е задължително!</span>
@@ -35,12 +35,12 @@
                     </h5>
                     <input class="search-field" type="text" v-model="service.title" />
                   </div>
-                      
+
                   <div class="col-md-12">
                     <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
                     <h5>Категория</h5>
 
-                    
+
                     <select class="chosen-select-no-single" v-model="service.category">
                       <option value>Избери категория</option>
                       <optgroup
@@ -56,9 +56,9 @@
                         <option value="21">Друга</option>
                       </optgroup>
                     </select>
-                    
+
                   </div>
-                </div>  
+                </div>
 
                 <div class="galery-section">
                   <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
@@ -68,7 +68,7 @@
 
                   <vue-dropzone
                       ref="myVueDropzone"
-                      @vdropzone-success="imageUploaded"
+                      @vdropzone-success="mainImageUploaded"
                       @vdropzone-drop="disableButton"
                       id="dropzone"
                       :options="dropzoneOptions"
@@ -93,7 +93,7 @@
                     </div>
                   </div>
                 </div>
-              
+
                 <div class="add-listing-headline">
                   <h5>Описание 2</h5>
                   <div class="row with-forms">
@@ -114,7 +114,7 @@
                 </div>
               </div>
               <!-- Row -->
-              
+
               <!-- Row -->
               <div class="button-part">
                 <button @click="createService" class="button preview">
@@ -169,12 +169,12 @@
                     </h5>
                     <input class="search-field" type="text" v-model="service.title" />
                   </div>
-                      
+
                   <div class="col-md-12">
                     <span v-if="error.categoryError" class="error">Моля, изберете категория!</span>
                     <h5>Категория</h5>
 
-                    
+
                     <select class="chosen-select-no-single" v-model="service.category">
                       <option value>Избери категория</option>
                       <optgroup
@@ -190,9 +190,9 @@
                         <option value="21">Друга</option>
                       </optgroup>
                     </select>
-                    
+
                   </div>
-                </div>  
+                </div>
 
                 <div class="galery-section">
                   <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
@@ -207,7 +207,7 @@
                       id="dropzone"
                       :options="dropzoneOptions"
                     ></vue-dropzone>
-                </div> 
+                </div>
               </div>
 
               <div class="add-listing-section section-details">
@@ -227,7 +227,7 @@
                     </div>
                   </div>
                 </div>
-              
+
                 <div class="add-listing-headline">
                   <h5>Описание 2</h5>
                   <div class="row with-forms">
@@ -248,7 +248,7 @@
                 </div>
               </div>
               <!-- Row -->
-              
+
               <!-- Row -->
               <div class="button-part">
                 <button @click="createService" class="button preview">
@@ -294,7 +294,8 @@ export default {
         firstDescription: "",
         secondDescription: "",
         category: "",
-        mainImage: {}
+        mainImage: {},
+        all_country: 1
       },
       error: {
         commonError: false,
