@@ -7,6 +7,8 @@
 
     <MobileGreenMenuSmall/>
 
+    <loader :active="loaderActive" :text="'Моля изчакайте!'" />
+
     <div class="desk-heading">Моите проекти</div>
 
     <div class="row">
@@ -49,7 +51,7 @@
           </ul>
         </div>
       </div>
-
+      
       <!-- Copyrights -->
       <Copyrights/>
     </div>
@@ -64,6 +66,8 @@ import "sweetalert2/src/sweetalert2.scss";
 import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 import AddProjectOrService from '../partials/AddProjectOrService.vue';
 import Copyrights from '../partials/Copyrights.vue';
+import Loader from '../../components/Loader.vue'; // TsB - loader
+import loaderMixin from '../mixins/loader'; // TsB - loader
 
 export default {
   data() {
@@ -72,6 +76,7 @@ export default {
       projectNumbers: 0
     };
   },
+  mixins: [loaderMixin], // TsB - loader
   mounted() {
     this.$refs.mytoast.defaultPosition = "toast-top-center";
     this.$refs.mytoast.defaultStyle = { top: "80px" };
@@ -104,17 +109,22 @@ export default {
       }
     },
     getProjects(event) {
+      this.showLoader(); //TsB - loader
+      
       window.axios.get("/vendor/projects/get").then(({ data }) => {
         this.projects = data;
         console.log(this.projects);
         this.projectNumbers = this.projects.length;
+        this.hideLoader(); // TsB - loader
       });
+      
     }
   },
   components: {
     MobileGreenMenuSmall,
     AddProjectOrService,
-    Copyrights
+    Copyrights,
+    Loader, // TsB - loader
   }
 };
 </script>
@@ -194,6 +204,7 @@ export default {
       border-radius: 14px;
       padding: 16px;
       margin-bottom: 18px;
+      flex: 1 1 51%;
     }
 
     .list-box-listing { 

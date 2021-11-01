@@ -205,6 +205,9 @@
                 <p v-if="error.imageError" class="errorMsg">Моля качете снимка на проекта!</p>
               </div>
             </div>
+            
+            <loader :active="loaderActive" :text="'Моля изчакайте!'" />
+
             <div class="button-part">
               <button
                 @mouseover="showErrors"
@@ -449,6 +452,9 @@
                 <p v-if="error.imageError" class="errorMsg">Моля качете снимка на проекта!</p>
               </div>
             </div>
+
+            <loader :active="loaderActive" :text="'Моля изчакайте!'" />
+
             <div class="button-part">
               <button
                 @mouseover="showErrors"
@@ -483,6 +489,8 @@ import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 import AddProjectOrService from '../partials/AddProjectOrService.vue';
 import Copyrights from '../partials/Copyrights.vue';
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
+import Loader from '../../components/Loader.vue'; // TsB - loader
+import loaderMixin from '../mixins/loader'; // TsB - loader
 
 export default {
   data() {
@@ -542,6 +550,7 @@ export default {
       categoryItems: []
     };
   },
+  mixins: [loaderMixin], // TsB - loader
   computed: {
     filteredTags() {
       return this.autocompleteItems.filter(i => {
@@ -661,12 +670,16 @@ export default {
       this.project.formatted_address = position.formatted_address;
       this.project.raw_data = position.raw_data;
       this.project.userServices = this.userServicesTags;
+      // this.allErrors = true; //TsB - loader
+      // console.log(this.allErrors);
       if (this.allErrors == false) {
         return;
       }
 
       try {
         if (this.isCreated) {
+          this.showLoader(); //TsB - loader
+          console.log('after showLoader');
           this.isCreated = false;
           const res = await axios.post("/vendor/projects/add", this.project);
           this.$refs.mytoast.s("Проектът бе създаден успешно!");
@@ -674,6 +687,8 @@ export default {
             this.$router.push({ name: "ProjectsList" });
             this.isCreated = true;
           }, 3000);
+          this.hideLoader(); // TsB - loader
+          console.log('after hideLoader');
         }
       } catch (error) {
         this.isCreated = true;
@@ -752,7 +767,8 @@ export default {
     MobileGreenMenuSmall,
     AddProjectOrService,
     Multiselect,
-    Copyrights
+    Copyrights,
+    Loader, // TsB - loader
   }
 };
 </script>

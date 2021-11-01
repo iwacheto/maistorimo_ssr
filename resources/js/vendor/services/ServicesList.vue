@@ -5,6 +5,8 @@
 
     	<MobileGreenMenuSmall/>
 
+		<loader :active="loaderActive" :text="'Моля изчакайте!'" />
+
 		<div class="desk-heading">Моите услуги</div>
 
 		<div class="row">
@@ -64,6 +66,8 @@
 	import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 	import AddProjectOrService from '../partials/AddProjectOrService.vue';
 	import Copyrights from '../partials/Copyrights.vue';
+	import Loader from '../../components/Loader.vue'; // TsB - loader
+	import loaderMixin from '../mixins/loader'; // TsB - loader
 
 	export default {
 		name: "ServicesList",
@@ -74,6 +78,7 @@
 				servicesNumber: 0,
 			}
 		},
+		mixins: [loaderMixin], // TsB - loader
 		mounted() {
 			this.getServices();
 			this.$refs.mytoast.defaultPosition = "toast-top-center";
@@ -83,12 +88,14 @@
 		methods: {
 			async getServices() {
 				try {
-					const res = await axios.get('/vendor/service');
+					this.showLoader(); //TsB - loader
 					
+					const res = await axios.get('/vendor/service');
 					this.services = res.data;
 					// console.log(this.services);
 					this.servicesNumber = this.services.length;
-					
+					this.hideLoader(); // TsB - loader
+				
 				}
 				catch (error) {
 					// console.log(error);
@@ -129,7 +136,8 @@
   		components: {
 			MobileGreenMenuSmall,
 			AddProjectOrService,
-			Copyrights
+			Copyrights,
+			Loader, // TsB - loader
 		}
 	}
 </script>

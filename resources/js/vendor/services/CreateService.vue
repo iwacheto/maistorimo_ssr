@@ -115,6 +115,8 @@
               </div>
               <!-- Row -->
 
+              <loader :active="loaderActive" :text="'Моля изчакайте!'" />
+              
               <!-- Row -->
               <div class="button-part">
                 <button @click="createService" class="button preview">
@@ -249,6 +251,8 @@
               </div>
               <!-- Row -->
 
+              <loader :active="loaderActive" :text="'Моля изчакайте!'" />
+
               <!-- Row -->
               <div class="button-part">
                 <button @click="createService" class="button preview">
@@ -273,6 +277,8 @@ import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import Copyrights from '../partials/Copyrights.vue';
 import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 import AddProjectOrService from '../partials/AddProjectOrService.vue';
+import Loader from '../../components/Loader.vue'; // TsB - loader
+import loaderMixin from '../mixins/loader'; // TsB - loader
 
 export default {
   name: "CreateService",
@@ -314,6 +320,7 @@ export default {
       }
     };
   },
+  mixins: [loaderMixin], // TsB - loader
   mounted() {
     this.$refs.mytoast.defaultPosition = "toast-top-center";
     this.$refs.mytoast.defaultStyle = { top: "80px" };
@@ -392,6 +399,7 @@ export default {
     Copyrights,
     MobileGreenMenuSmall,
     AddProjectOrService,
+    Loader, // TsB - loader
   }
 };
 </script>
