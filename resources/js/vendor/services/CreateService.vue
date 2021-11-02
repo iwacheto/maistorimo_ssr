@@ -116,7 +116,7 @@
               <!-- Row -->
 
               <loader :active="loaderActive" :text="'Моля изчакайте!'" />
-              
+
               <!-- Row -->
               <div class="button-part">
                 <button @click="createService" class="button preview">
@@ -366,6 +366,7 @@ export default {
       } else {
         try {
           if (this.isCreated) {
+            this.showLoader(); //TsB - loader
             this.isCreated = false;
             const res = await axios.post("/vendor/service", this.service);
             this.$refs.mytoast.s("Услугата бе създадена успешно!");
@@ -373,6 +374,7 @@ export default {
               this.$router.push({ name: "ServicesList" });
               this.isCreated = true;
             }, 3000);
+            this.hideLoader(); // TsB - loader
           }
         } catch (error) {
           console.log(error);

@@ -670,7 +670,7 @@ export default {
       this.project.formatted_address = position.formatted_address;
       this.project.raw_data = position.raw_data;
       this.project.userServices = this.userServicesTags;
-      // this.allErrors = true; //TsB - loader
+      this.allErrors = true; //TsB - loader
       // console.log(this.allErrors);
       if (this.allErrors == false) {
         return;

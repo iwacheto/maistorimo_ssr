@@ -373,15 +373,17 @@ export default {
             border-radius: 35px;
             border: 1px solid #74aea1;
             background-color: #324E5B;
+            z-index: 999;
         }
 
         .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
             background-color: #E3C24F;
+            cursor: pointer;
         }
     }
 
     @media screen and (max-width: 768px) {
-
+        
     }
 
     @media screen and (max-width: 560px) { 
@@ -398,6 +400,7 @@ export default {
         .header-widget {
             border-top: 0px;
             padding: 10px 0px;
+            
         }
     }
 
