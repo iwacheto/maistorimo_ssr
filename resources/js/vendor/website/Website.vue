@@ -918,6 +918,8 @@
                         </div>
                     </div>
 
+                    <loader :active="loaderActive" :text="'Моля изчакайте!'" />
+
                     <button class="button save-button" @click="saveWebsite">Запази</button>
                     
                 </div>
@@ -935,6 +937,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MobileGreenMenuSmall from '../partials/MobileGreenMenuSmall.vue';
 import GoogleMap from '../../components/googleMap/GoogleMap';
 import Copyrights from '../partials/Copyrights.vue';
+import Loader from '../../components/Loader.vue'; // TsB - loader
+import loaderMixin from '../mixins/loader'; // TsB - loader
 
 export default {
     data() {
@@ -1142,6 +1146,7 @@ export default {
             },
         };
     },
+    mixins: [loaderMixin], // TsB - loader
     created() {
         // this.getUser();
     },
@@ -1257,12 +1262,14 @@ export default {
             this.user.website_settings.formatted_address = position.formatted_address;
             this.user.website_settings.raw_data = position.raw_data;
             // console.log(this.user.website_settings);
+            this.showLoader(); //TsB - loader
             window.axios
                 .post('/vendor/website/save', this.user)
                 .then(({ data }) => {
                     self.user.vendor_details.profile_image = data.url;
                     // this.showErrors();
-                    this.$refs.mytoast.s('Успешно променихте настройките на Уебсайта Ви!');
+                    //this.$refs.mytoast.s('Успешно променихте настройките на Уебсайта Ви!');
+                    this.hideLoader(); // TsB - loader
                 })
                 .catch((error) => {
                     let err = error.response.data.errors;
@@ -1279,6 +1286,7 @@ export default {
                         });
                     }
                 });
+                
         },
         scrollToError() {
             setTimeout(function () {
@@ -1304,7 +1312,8 @@ export default {
     components: {
         GoogleMap,
         MobileGreenMenuSmall,
-        Copyrights
+        Copyrights,
+        Loader
     },
 };
 

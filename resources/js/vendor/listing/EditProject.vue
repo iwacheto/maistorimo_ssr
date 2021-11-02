@@ -536,7 +536,9 @@ export default {
       this.project.formatted_address = position.formatted_address;
       this.project.raw_data = position.raw_data;
       this.project.userServicesTags = this.userServicesTags;
-       try {
+
+      try {
+        
         const res = await axios.post(
           "/vendor/projects/" + this.project.id + "/edit",
           this.project
@@ -581,7 +583,7 @@ export default {
     Multiselect,
     MobileGreenMenuSmall,
     AddProjectOrService,
-    Copyrights
+    Copyrights,
   }
 };
 </script>

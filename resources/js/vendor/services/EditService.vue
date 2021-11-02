@@ -336,6 +336,7 @@ export default {
         getCategories() {
             axios.get('/categories/getcat').then(({ data }) => {
                 this.categories = data;
+                console.log(this.categories);
             });
         },
         async getCities() {
@@ -438,7 +439,7 @@ export default {
                         element.id = this.allCities.filter((el) => el.city === element.text)[0].id;
                 });
             }
-            console.log(this.service);
+            
             try {
                 const res = await axios.put('/vendor/service/' + this.id, this.service);
 
