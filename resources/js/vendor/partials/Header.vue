@@ -245,6 +245,7 @@ export default {
 
     .dashboard #logo {
       position: fixed;
+      min-height: 80px;
       height: 10%;
       background-color: #3C3E47;
     }
