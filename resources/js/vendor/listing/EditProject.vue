@@ -524,6 +524,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
+      console.log(this.project);
+      
     },
     imageUploaded(file, response) {
       this.project.project_galleries.push(response);
