@@ -5,7 +5,91 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="user-profile-titlebar">
+            <div class="user-profile">
+              
+              <!-- USER PROFILE IMAGE -->
+              <div class="user-profile-img">
+                <img :src="profile.vendor_details.profile_image" alt />
+              </div>
+              
+              <!-- USER PROFILE COMPANY NAME -->
+              <div class="user-profile-name">
+                <h2>{{ profile.vendor_details.company_name }}</h2>
+              </div>
+
+              <!-- USER PROFILE COMPANY INFO -->
+              <div class="user-profile-info">
+                <div class="left-side-items">
+                  <div v-if="profile.vendor_details.phone_number">
+                    <!-- <i class="sl sl-icon-phone"></i> -->
+                    <img src="/images/phone-icon.svg" alt="phone">
+                    <span v-if="showPhone">+359</span>
+                    <span v-else>
+                      <a
+                        :href="'tel:'+profile.vendor_details.phone_number"
+                      >{{ profile.vendor_details.phone_number }}</a>
+                    </span>
+                    <span class="phone_button" @click="contactAnalytic('phone')" v-if="showPhone">Покажи</span>
+                    <span class="phone_button" @click="hidePhone" v-if="!showPhone">Скрий</span>
+                  </div>
+
+                  <div v-if="profile.vendor_details.website">
+                    <a
+                      :href="'//' + profile.vendor_details.website"
+                      target="_blank"
+                      class="listing-links"
+                      @click="contactAnalytic('website')"
+                    >
+                      <!-- <i class="fa fa-link"></i> -->
+                      <img src="/images/globe-icon.svg" alt="website">
+                      {{ profile.vendor_details.website }}
+                    </a>
+                  </div>
+                </div>
+
+                <div class="right-side-items">
+                  <div v-if="profile.vendor_details.email_address">
+                    <!-- <i class="fa fa-envelope-o"></i> -->
+                    <img src="/images/mail-icon.svg" alt="email">
+                    <a
+                      :href="'mailto:'+profile.vendor_details.email_address"
+                      @click="contactAnalytic('email')"
+                    >{{ profile.vendor_details.email_address }}</a>
+                  </div>
+
+                  <div v-if="profile.vendor_details.facebook_link">
+                    <a
+                      :href="profile.vendor_details.facebook_link"
+                      target="_blank"
+                      class="facebook-profile"
+                      @click="contactAnalytic('facebook')"
+                    >
+                      <!-- <i class="fa fa-facebook-square"></i> Facebook -->
+                      <img src="/images/fb-icon.svg" alt="email"> Facebook
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="user-profile-description">
+                
+                <div class="desc-box" v-if="profile.vendor_details.information">
+                  <button @click="changeInfoClass" class="desc-show-more-button">{{ info_button }}</button>
+
+                  <p
+                    class="profile_info"
+                    v-html="profile.vendor_details.information"
+                    :class="[active ? 'active' : '']"
+                  ></p>
+                  
+                </div>
+
+              </div>
+
+            </div>
+            
+            <!-- <div class="user-profile-titlebar">
               <div class="mask">
                 <div class="blur-background"></div>
               </div>
@@ -16,34 +100,35 @@
                 <div class="user-profile-name">
                   <h2>{{ profile.vendor_details.company_name }}</h2>
                   <div class="star-rating" data-rating="5"></div>
-                </div>
+                </div> -->
 
                 <!-- Profile Info -->
-                <div class="p_info p_info_mobile" v-if="profile.vendor_details.information">
+                <!-- <div class="p_info p_info_mobile" v-if="profile.vendor_details.information">
                   <p
                     class="profile_info"
                     v-html="profile.vendor_details.information"
                     :class="[active ? 'active' : '']"
                   ></p>
                   <span @click="changeInfoClass" class="info_span">{{ info_button }}</span>
-                </div>
+                </div> -->
                 <!-- End Profile Info -->
 
                 <!-- Verified Badge -->
-                <div
+                <!-- <div
                   class="verified-badge with-tip"
                   data-tip-content="Account has been verified and belongs to the person or organization represented."
                 >
                   <i class="sl sl-icon-user-following"></i> Потвърден акаунт
                 </div>
-              </div>
+              </div> -->
 
               <!-- Contact -->
-              <div class="contact-mask">
+              <!-- <div class="contact-mask">
                 <div class="contact-blur-background"></div>
-              </div>
-              <div class="boxed-widget"> <!-- margin-top-30 margin-bottom-50 -->
-                <h3>Контакти</h3>
+              </div> -->
+
+              <!-- <div class="boxed-widget"> margin-top-30 margin-bottom-50 -->
+                <!-- <h3>Контакти</h3>
                 <ul class="listing-details-sidebar">
                   <li v-if="profile.vendor_details.phone_number">
                     <i class="sl sl-icon-phone"></i>
@@ -90,24 +175,12 @@
                   </li>
                 </ul>
 
-                <!-- Reply to review popup -->
-                <!-- <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-                  <div class="small-dialog-header">
-                    <h3>Изпрати съобщение</h3>
-                  </div>
-                  <div class="message-reply margin-top-0">
-                    <textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
-                    <button class="button">Изпрати съобщение</button>
-                  </div>
-                </div>-->
-                <!--
-                <a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim">
-                  <i class="sl sl-icon-envelope-open"></i> Изпрати съобщение
-                </a>-->
-              </div>
+              </div> -->
               <!-- Contact / End-->
 
-            </div>
+            <!-- </div> -->
+
+            
           </div>
         </div>
       </div>
@@ -117,7 +190,7 @@
       <div class="row sticky-wrapper">
         <!-- Sidebar
         ==================================================-->
-        <div class="col-md-12 margin-top-0">
+        <!-- <div class="col-md-12 margin-top-0">
           <div class="p_info p_info_deckstop" v-if="profile.vendor_details.information">
             <p
               class="profile_info"
@@ -127,7 +200,7 @@
             <span @click="changeInfoClass" class="info_span">{{ info_button }}</span>
           </div>
 
-        </div>
+        </div> -->
         <!-- Sidebar / End -->
         <!-- Tabs -->
         <div class="user-projects-services">
@@ -326,117 +399,150 @@ export default {
 <style scoped>
   /* TsB */
 
+  #titlebar {
+    padding-top: 12px !important;
+  }
+
+  #titlebar div.container {
+    /* position: absolute; */
+    top: 19%;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .container .row {
+    margin-left: unset;
+    margin-right: unset;
+    width: 100%;
+  }
+
+  .row .col-lg-12 {
+    width: 100%;
+  }
+
+  .user-profile {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-profile-img {
+    margin-top: -70px;
+  }
+
+  .user-profile-img img {
+    border-radius: 50%;
+    width: 141px;
+    height: 141px;
+    overflow: hidden;
+    background: #C4C4C4;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  #titlebar .user-profile-name {
+    position: unset;
+    left: 0px;
+  }
+
+  #titlebar .user-profile-name h2 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #324E5B;
+    margin: 12px 0px;
+    padding: 0px;
+  }
+
+  .user-projects-services {
+    margin-top: 50px;
+  }
+
+  .user-profile-info {
+    width: 731px;
+    height: 136px;
+    background: #F7F7F7;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    padding-left: 70px;
+  }
+
+  .left-side-items, .right-side-items {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0px auto;
+  }
+
+  .left-side-items img, .right-side-items img {
+    margin-right: 32px;
+    width: 33px;
+  }
+
+  .left-side-items div:nth-child(1), .right-side-items div:nth-child(1) {
+    margin-bottom: 24px;
+  }
+
+  #titlebar .left-side-items span, #titlebar .left-side-items span a {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    color: #324E5B;
+    margin: 0px;
+  }
+
+  .listing-links {
+    margin-bottom: 0px;
+  }
+
+  .user-profile-description {
+    background: #F7F7F7;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    min-height: 220px;
+    max-width: 82%;
+    padding: 0px 30px 25px 30px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .desc-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .desc-show-more-button {
+    min-width: 195px;
+    height: 34px;
+    background: #6BBF3F;
+    border-radius: 19.5px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #6bbf3f;
+    margin: 20px auto;
+    padding: 5px 34px;
+  }
+
   .row.sticky-wrapper {
       flex-direction: column;
       display: flex;
   }
 
-  #titlebar {
-    padding-top: 44px !important;
-  }
-
-  #titlebar div.container {
-    position: absolute;
-    top: 19%;
-    z-index: 1;
-  }
-
-  .mask {
-    position: absolute;
-    top: 4%;
-    left: 20%;
-    width: 40%;
-    height: 240px;
-    border: 2px solid #66B7A3;
-    border-radius: 20px;
-    z-index: 10;
-    overflow: hidden;
-    /* filter: blur(3px); */
-  }
-
-  .blur-background {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-image: url('/images/main-picture.jpg');
-    z-index: 1;
-    padding-left: 20%;
-    padding-top: 20%;
-    background-position-x: -253px;
-    background-position-y: -47px;
-    filter: blur(15px);
-  }
-
-  .company_profile {
-    position: absolute;
-    top: 45px;
-    left: 23%;
-    z-index: 40;
-  }
-
-  .verified-badge {
-    background-color: #276955;
-  }
-
-  .contact-mask {
-    left: 94%;
-    width: 40%;
-    height: 240px;
-    border: 2px solid #66B7A3;
-    border-radius: 20px;
-    position: absolute;
-  }
-
-  .contact-blur-background {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-image: url('/images/main-picture.jpg');
-    z-index: 1;
-    padding-left: 20%;
-    padding-top: 20%;
-    background-position-x: -1128px;
-    background-position-y: -38px;
-    filter: blur(20px);
-  }
-
-  .boxed-widget {
-    left: 100%;
-    padding-top: 18px;
-    background-color: unset;
-    padding: 0px;
-    margin-top: 24px;
-  }
-
-  .boxed-widget h3 {
-    border-bottom: unset;
-    padding: 0px;
-    margin-bottom: 20px;
-    height: 53px;
-    width: 337px;
-    background-color: #276955;
-    padding: 16px 0px;
-    color: #fff;
-    border-radius: 4px;
-  }
-
-  .listing-details-sidebar {
-    padding-left: 90px;
-  }
-
   #titlebar span a, #titlebar span {
     color: #fff;
-  }
-
-  .listing-details-sidebar li i, .listing-details-sidebar li a, .listing-details-sidebar li a i {
-    color: #fff;
-    font-size: 16px;
   }
 
   .background-img {
@@ -455,6 +561,7 @@ export default {
     width: 100% !important;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -60px;
   }
 
   .sticky-wrapper {
@@ -471,7 +578,6 @@ export default {
     padding-right: 15% !important;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     text-align: center;
   }
@@ -481,38 +587,12 @@ export default {
     display: none;
   }
 
-  .user-profile-titlebar {
-      justify-content: space-between;
-  }
-
-  .verified-badge {
-    margin-top: 60px;
-  }
-
   div.user-projects-services {
     position: unset !important;
-}
+  }
 
   div.user-projects-services ul.nav.nav-tabs.nav-justified {
     justify-content: center; /* TsB */
-  }
-
-  .p_info.p_info_deckstop {
-    background-color: #F9F9F9;
-    max-width: 770px;
-    /* min-height: 100px; */
-    margin: 0px auto 20px auto;
-  }
-
-  .p_info.p_info_deckstop .profile_info.active {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  div.p_info_deckstop span.info_span {
-    display: flex !important;
-    justify-content: center;
-    padding-bottom: 20px;
   }
 
   div.tab-pan div.row{
@@ -538,315 +618,14 @@ export default {
     background-color: #276955;
   }
 
-  @media screen and (max-width: 1679px) {
-    .mask {
-      top: 4%;
-      left: 20%;
-      width: 40%;
-      height: 240px;
-    }
-
-    .blur-background {
-      top: 0%;
-      left: 0%;
-      width: 100%;
-      height: 100%;
-      padding-left: 20%;
-      padding-top: 20%;
-      background-position-x: -324px;
-      background-position-y: -47px;
-    }
-
-    .company_profile {
-      top: 45px;
-      left: 23%;
-    }
-
-    .contact-mask {
-      left: 84%;
-      width: 40%;
-      height: 240px;
-    }
-
-    .contact-blur-background {
-      top: 0%;
-      left: 0%;
-      width: 100%;
-      height: 100%;
-
-      padding-left: 20%;
-      padding-top: 20%;
-      background-position-x: -1150px;
-      background-position-y: -38px;
-
-    }
-
-    .boxed-widget {
-      left: 90%;
-      padding-top: 18px;
-      background-color: unset;
-      padding: 0px;
-      margin-top: 24px;
-    }
-  }
-
-  @media screen and (max-width: 1500px) {
-    .mask {
-      top: 4%;
-      left: 10%;
-      /* width: 40%;
-      height: 240px; */
-    }
-
-    .blur-background {
-      background-size: 300%;
-      /* top: 0%; */
-      left: 31%;
-      /* width: 100%;
-      height: 100%;
-      padding-left: 20%;
-      padding-top: 20%; */
-      background-position-x: -253px;
-      /* background-position-y: -47px; */
-    }
-
-    .company_profile {
-      top: 45px;
-      left: 13%;
-    }
-
-    .contact-mask {
-      top: 7%;
-      left: 72%;
-      /* width: 40%;
-      height: 240px; */
-    }
-
-    .contact-blur-background {
-      /* top: 0%;
-      left: 0%;
-      width: 100%;
-      height: 100%;
-
-      padding-left: 20%;
-      padding-top: 20%; */
-      background-position-x: -1150px;
-      /* background-position-y: -38px; */
-
-    }
-
-    .boxed-widget {
-      left: 78%;
-      /* padding-top: 18px;
-      background-color: unset;
-      padding: 0px; */
-      margin-top: 33px;
-    }
-  }
-
-  @media screen and (max-width: 1440px) {
-    /* .mask {
-      top: 4%;
-      left: 10%;
-      width: 40%;
-      height: 240px;
-    } */
-
-    .blur-background {
-      background-size: 290%;
-      /* top: 0%;
-      left: 37%;
-      width: 100%;
-      height: 100%;
-      padding-left: 20%;
-      padding-top: 20%; */
-      background-position-x: -262px;
-      /* background-position-y: -47px; */
-    }
-
-    /* .company_profile {
-      top: 45px;
-      left: 13%;
-    } */
-
-    .contact-mask {
-      /* top: 7%; */
-      left: 67%;
-      /* width: 40%;
-      height: 240px; */
-    }
-
-    .contact-blur-background {
-      /* top: 0%;
-      left: 0%;
-      width: 100%;
-      height: 100%;
-
-      padding-left: 20%;
-      padding-top: 20%; */
-      background-position-x: -1105px;
-      /* background-position-y: -38px; */
-
-    }
-
-    .boxed-widget {
-      left: 72%;
-      /* padding-top: 18px;
-      background-color: unset;
-      padding: 0px;
-      margin-top: 33px; */
-    }
-
-    .user-profile-name {
-      max-width: 85%;
-    }
-
-    #titlebar .user-profile-name h2 {
-      font-size: 27px;
-    }
-  }
-
-  @media screen and (max-width: 1365px) {
-    .mask {
-      /* top: 4%; */
-      left: 8%;
-      /* width: 40%;
-      height: 240px; */
-    }
-
-    .blur-background {
-      background-size: 270%;
-      /* top: 0%; */
-      left: 0%;
-      width: 100%;
-      height: 100%;
-      /* padding-left: 20%;
-      padding-top: 20%; */
-      background-position-x: -31px;
-      background-position-y: 3px;
-    }
-
-    /* .company_profile {
-      top: 45px;
-      left: 13%;
-    } */
-
-    .user-profile-avatar {
-      left: -26px;
-    }
-
-    .user-profile-name {
-      left: 67px;
-    }
-
-    .contact-mask {
-      /* top: 7%; */
-      left: 72%;
-      /* width: 40%;
-      height: 240px; */
-    }
-
-    .contact-blur-background {
-      /* top: 0%;
-      left: 0%;
-      width: 100%;
-      height: 100%;
-
-      padding-left: 20%;
-      padding-top: 20%; */
-      background-position-x: -1031px;
-      /* background-position-y: -38px; */
-
-    }
-
-    .boxed-widget {
-      left: 76%;
-      /* padding-top: 18px;
-      background-color: unset;
-      padding: 0px;
-      margin-top: 33px; */
-    }
-  }
-
-  @media screen and (max-width: 1240px) {
-    #titlebar .user-profile-name h2 {
-      font-size: 23px;
-    }
-
-    .contact-mask {
-      /* top: 7%; */
-      left: 77%;
-      /* width: 40%;
-      height: 240px; */
-    }
-
-    .boxed-widget {
-      left: 79%;
-      /* padding-top: 18px;
-      background-color: unset;
-      padding: 0px;
-      margin-top: 33px; */
-    }
-  }
-
-  @media screen and (max-width: 1140px) {
-    .mask {
-      /* top: 4%; */
-      left: 3%;
-      /* width: 40%;
-      height: 240px; */
-    }
-
-    .blur-background {
-      background-size: 260%;
-      /* top: 0%; */
-      left: 0%;
-      width: 100%;
-      height: 100%;
-      /* padding-left: 20%;
-      padding-top: 20%; */
-      background-position-x: 20px;
-      /* background-position-y: 3px; */
-    }
-
-    .company_profile {
-      left: 8%;
-    }
-
-    .contact-mask {
-      left: 71%;
-    }
-
-    .contact-blur-background {
-      background-position-x: -1069px;
-    }
-
-    .boxed-widget {
-      left: 73%;
-    }
-  }
-
-  @media screen and (max-width: 1080px) {
-    .contact-mask {
-      left: 65%;
-    }
-
-    .boxed-widget {
-      left: 67%;
-    }
-  }
-
   @media screen and (max-width: 1024px) {
     #titlebar {
       padding-top: 0px !important;
     }
 
     .background-img {
-      /* background-image: url('/images/main-picture.jpg') !important;
-      background-repeat: no-repeat !important;
-      background-size: 100% !important; */
       width: 100%;
-      height: 548px;
+      height: 348px;
     }
 
     .row.col-lg-12.col-md-12 {
@@ -858,167 +637,23 @@ export default {
       width: 100% !important;
     }
 
-    .mask {
-      left: 33%;
-      height: 358px;
-    }
-
-    .blur-background {
-      background-position-x: -325px;
-      background-position-y: -125px;
-      background-size: 276%;
-    }
-
-    .company_profile {
-      left: 36%;
-      height: 200px;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 35%;
-      top: -10%;
-    }
-
-    .company_profile .user-profile-name {
-      left: 6%;
-      top: 48%;
-    }
-
-    .company_profile .verified-badge.with-tip {
-      display: none;
-    }
-
-    .col-md-12.margin-top-0 {
-      display: none;
-    }
-
-    div.p_info_mobile.p_info {
-      display: none !important;
-    }
-
-    .contact-mask {
-      display: none;
-      /* left: 64%; */
-    }
-
-    .boxed-widget {
-      left: 31%;
-      top: 175px;
-    }
-
-    .boxed-widget h3 {
-      display: none;
-    }
   }
 
-  @media screen and (max-width: 992px) {
-
-    .col-md-12.margin-top-0 {
-      display: none;
-    }
+  /* @media screen and (max-width: 992px) {
 
     .listing-item-container.list-layout .listing-item-inner {
       left: 0px;
     }
-
-    .company_profile {
-      left: 38%;
-      width: 32%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 30%;
-      top: -13%;
-    }
-
-    .company_profile .user-profile-name {
-      justify-content: unset;
-      position: unset;
-      left: 3%;
-    }
-
-    .company_profile .user-profile-name h2{
-      padding-left: 54px;
-    }
-  }
+  } */
 
   @media screen and (max-width: 990px) {
-    .col-md-12.margin-top-0 {
-      display: none;
-    }
-
-    .mask {
-      left: 47%;
-    }
-
-    .company_profile {
-      left: 49%;
-      width: 37%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 35%;
-    }
-
-    .boxed-widget {
-      left: 39%;
-      width: fit-content;
-    }
-
-    .company_profile .user-profile-name h2{
-      padding-left: 47px;
-    }
-  }
-
-  @media screen and (max-width: 876px) {
-    .mask {
-      left: 40%;
-    }
-
-    .company_profile {
-      left: 40%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 37%;
-    }
-
-    .boxed-widget {
-      left: 31%;
-    }
+    
   }
 
   @media screen and (max-width: 768px) {
-    #titlebar .container {
-      width: 100%;
-    }
 
     .background-img {
       height: 510px;
-    }
-
-    .mask {
-      top: -12%;
-      left: 33%;
-    }
-    .company_profile {
-      left: 34%;
-    }
-
-    .company_profile .user-profile-avatar {
-      max-width: 90px;
-    }
-
-    .boxed-widget {
-      left: 25%;
-      top: 160px;
-    }
-
-    #titlebar .user-profile-name h2 {
-      font-size: 22px;
     }
   }
 
@@ -1027,73 +662,12 @@ export default {
     .background-img {
       height: 458px;
     }
-
-    .mask {
-      top: -36%;
-      left: 31%;
-    }
-
-    .company_profile {
-      left: 30%;
-      top: 10%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 38%;
-    }
-
-    .company_profile .user-profile-name h2 {
-      font-size: 21px;
-    }
-
-    .boxed-widget {
-      left: 23%;
-      top: 126px;
-    }
-
-    .listing-details-sidebar li i, .listing-details-sidebar li a, .listing-details-sidebar li a i {
-      font-size: 14px;
-    }
-
-    #titlebar .user-profile-name h2 {
-      font-size: 21px;
-    }
   }
 
   @media screen and (max-width: 620px) {
 
     .background-img {
       height: 414px;
-    }
-
-    .mask {
-      top: -44%;
-      left: 28%;
-      height: 330px;
-      width: 45%;
-    }
-
-    .company_profile {
-      left: 30%;
-      top: -25%;
-      width: 42%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 32%;
-    }
-
-    .company_profile .user-profile-avatar {
-      top: -5%;
-    }
-
-    #titlebar .user-profile-name h2 {
-      font-size: 21px;
-    }
-
-    .boxed-widget {
-      left: 17%;
-      top: 95px;
     }
   }
 
@@ -1107,62 +681,12 @@ export default {
     .background-img {
       height: 406px;
     }
-
-    .mask {
-      top: -43%;
-      left: 28%;
-      /* height: 330px;
-      width: 45%; */
-    }
-
-    .company_profile {
-      left: 27%;
-      top: -19%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 42%;
-    }
-
-    .boxed-widget {
-      left: 17%;
-      top: 110px;
-    }
   }
 
   @media screen and (max-width: 530px) {
 
     .background-img {
       height: 390px;
-    }
-
-    .mask {
-      top: -51%;
-      left: 25%;
-      height: 285px;
-      width: 50%;
-    }
-
-    .company_profile {
-      left: 25%;
-      top: -40%;
-      width: 50%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 38%;
-      top: 1%;
-      max-width: 70px !important;
-    }
-
-    .boxed-widget {
-      left: 14%;
-      top: 120px;
-      margin-top: 0px;
-    }
-
-    .boxed-widget .listing-details-sidebar.social-profiles{
-      margin: 0px;
     }
   }
 
@@ -1171,91 +695,12 @@ export default {
     .background-img {
       height: 390px;
     }
-
-    .mask {
-      top: -43%;
-      left: 24%;
-      height: 285px;
-      width: 55%;
-    }
-
-    .company_profile {
-      left: 23%;
-      top: -30%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 42%;
-    }
-
-    .boxed-widget {
-      left: 12%;
-      top: 150px;
-      margin-top: 0px;
-    }
-  }
-
-  @media screen and (max-width: 450px) {
-
-    /* .background-img {
-      height: 390px;
-      width: 120%;
-    } */
-
-    .mask {
-      top: -175%;
-      left: 24%;
-    }
-
-    .company_profile {
-      left: 23%;
-      top: -145%;
-    }
-
-    #titlebar .user-profile-name h2 {
-      font-size: 19px;
-    }
-
-    .boxed-widget {
-      top: 82px;
-      left: 10%;
-    }
   }
 
   @media screen and (max-width: 414px) {
 
-    /* .background-img {
-      height: 390px;
-      width: 120%;
-    } */
-
-    .mask {
-      top: -165%;
-      left: 24%;
-      width: 60%;
-      height: 260px;
-    }
-
     #titlebar h2 {
       line-height: 22px;
-    }
-
-    .company_profile {
-      left: 25%;
-      top: -160%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 40%;
-    }
-
-    .company_profile .user-profile-name h2 {
-      font-size: 20px;
-    }
-
-    .boxed-widget {
-      top: 33px;
-      left: 6%;
     }
   }
 
@@ -1264,84 +709,6 @@ export default {
     .background-img {
       height: 300px;
       width: 100%;
-      /*overflow: hidden;
-       object-fit: cover;
-      object-position: center; */
-
-    }
-
-    .mask {
-      top: -156%;
-      left: 24%;
-      width: 60%;
-      height: 240px;
-    }
-
-    .company_profile {
-      left: 21%;
-      top: -141%;
-      width: 80%;
-    }
-
-    .company_profile .user-profile-avatar {
-      left: 26%;
-    }
-
-    .company_profile .user-profile-avatar img {
-      width: 85%;
-    }
-
-    .company_profile .user-profile-name {
-      font-size: 18px;
-      margin-top: -30px;
-    }
-
-    .company_profile .user-profile-name h2 {
-      font-size: 18px;
-      margin-top: -32px;
-    }
-
-    .boxed-widget {
-      top: 31px;
-      left: 2%;
-    }
-  }
-
-  @media screen and (max-width: 360px) {
-    .mask {
-      top: -165%;
-      left: 24%;
-      width: 60%;
-      height: 240px;
-    }
-
-    .company_profile {
-      left: 23%;
-      top: -141%;
-      width: 74%;
-    }
-  }
-
-  @media screen and (max-width: 320px) {
-    .mask {
-      top: -165%;
-      left: 24%;
-      width: 60%;
-      height: 209px;
-    }
-
-    .company_profile {
-      left: 20%;
-      top: -141%;
-      width: 74%;
-    }
-
-    .user-profile-avatar {
-      left: 33%;
-    }
-
-    .listing-details-sidebar li a, .listing-details-sidebar li i, .listing-details-sidebar li span {
-      font-size: 11px;
     }
   }
 
