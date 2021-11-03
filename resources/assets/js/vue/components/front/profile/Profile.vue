@@ -647,68 +647,122 @@ export default {
   } */
 
   @media screen and (max-width: 990px) {
-    
-  }
-
-  @media screen and (max-width: 768px) {
-
-    .background-img {
-      height: 510px;
+    #titlebar .container, #titlebar .container .row .col-md-12 {
+      padding-left: unset;
+      padding-right: unset;
     }
-  }
 
-  @media screen and (max-width: 687px) {
-
-    .background-img {
-      height: 458px;
+    .user-profile-info {
+      width: 100%;
+      box-shadow: unset;
+      flex-direction: column;
+      height: unset;
     }
-  }
 
-  @media screen and (max-width: 620px) {
+    .user-profile-description {
+      box-shadow: unset;
+      max-width: 100%;
+    }
 
-    .background-img {
-      height: 414px;
+    .left-side-items div:nth-child(1), .right-side-items div:nth-child(1) {
+      margin-bottom: unset;
+    }
+
+    .left-side-items div, .right-side-items div {
+      margin: 20px 0px;
+    }
+
+    .left-side-items div:nth-child(2) {
+      margin-bottom: 0px;
     }
   }
 
   @media screen and (max-width: 560px) {
 
-    #titlebar.gradient {
-      margin: 0px !important;
-      padding: 0px !important;
+    .left-side-items, .right-side-items {
+      width: 62%;
     }
 
-    .background-img {
-      height: 406px;
+    .user-profile-description {
+      min-height: unset;
     }
   }
 
   @media screen and (max-width: 530px) {
 
-    .background-img {
-      height: 390px;
+    #titlebar {
+      margin-top: unset;
     }
   }
 
   @media screen and (max-width: 480px) {
 
-    .background-img {
-      height: 390px;
+    .user-profile-img {
+      margin-top: -95px;
+    }
+
+    .left-side-items, .right-side-items {
+      width: 75%;
     }
   }
 
   @media screen and (max-width: 414px) {
 
-    #titlebar h2 {
-      line-height: 22px;
+    .user-profile-img {
+      margin-top: -141px;
     }
+
+    .projects-container {
+      margin-top: -25px;
+    }
+
+    div.col-md-4 {
+      flex: 55%;
+    }
+
+    .left-side-items, .right-side-items {
+      width: 92%;
+    }
+
   }
 
   @media screen and (max-width: 380px) {
 
-    .background-img {
-      height: 300px;
+    .user-profile-img {
+      margin-top: -161px;
+    }
+
+    .left-side-items, .right-side-items {
       width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+
+    .user-profile-img {
+      margin-top: -181px;
+    }
+
+    .user-profile-info {
+      padding-left: 50px;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+
+    .user-profile-img {
+      margin-top: -211px;
+    }
+  }
+
+  @media screen and (max-width: 280px) {
+
+    .user-profile-img {
+      margin-top: -231px;
+    }
+
+    .user-profile-info {
+      padding-left: 20px;
     }
   }
 
