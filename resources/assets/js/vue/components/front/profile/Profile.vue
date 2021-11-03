@@ -79,9 +79,15 @@
 
                   <p
                     class="profile_info"
-                    v-html="profile.vendor_details.information"
+                    v-html="profile.vendor_details.information.substring(0,subNumb) + subText"
                     :class="[active ? 'active' : '']"
                   ></p>
+<!-- 
+                  <p
+                    class="profile_info"
+                    v-html="profile.vendor_details.information"
+                    :class="[active ? 'active' : '']"
+                  ></p> -->
                   
                 </div>
 
@@ -341,6 +347,8 @@ export default {
     },
   data() {
     return {
+      subNumb: 80,
+      subText: ' ...',
       activeItem: "home",
       showMore: false,
       isActiveContent: true,
@@ -362,10 +370,15 @@ export default {
   methods: {
     changeInfoClass() {
       this.active = !this.active;
+      
       if (this.info_button == "Покажи повече") {
         this.info_button = this.info_2;
+        this.subNumb = 800;
+        this.subText = ''
       } else {
         this.info_button = this.info_1;
+        this.subNumb = 80;
+        this.subText = ' ...';
       }
     },
     async getProfile() {
@@ -508,7 +521,7 @@ export default {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
     min-height: 220px;
-    max-width: 82%;
+    max-width: 82.5%;
     padding: 0px 30px 25px 30px;
     margin-top: 24px;
     display: flex;
