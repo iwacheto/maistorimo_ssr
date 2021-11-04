@@ -38,7 +38,7 @@
 <script>
 export default {
     mounted() {
-        return this.snackbarAlert('Проектър бе създаден успешно!');
+        // return this.snackbarAlert('Проектър бе създаден успешно!');
     },
     data() {
         return {
@@ -46,7 +46,7 @@ export default {
         };
     },
     methods: {
-        
+
         toggleAnalitycsMenu() {
             this.isActive = !this.isActive;
             console.log(this.isActive);
@@ -154,7 +154,7 @@ export default {
 @media screen and (max-width: 720px) {
 
     .analitycs-menu.active {
-        
+
         left: 230px;
     }
 }
@@ -162,7 +162,7 @@ export default {
 @media screen and (max-width: 560px) {
 
     .analitycs-menu.active {
-        
+
         left: 152px;
     }
 }
@@ -170,7 +170,7 @@ export default {
 @media screen and (max-width: 414px) {
 
     .analitycs-menu.active {
-        
+
         left: 79px;
     }
 }
@@ -178,7 +178,7 @@ export default {
 @media screen and (max-width: 380px) {
 
     .analitycs-menu.active {
-        
+
         left: 62px;
     }
 }
@@ -186,7 +186,7 @@ export default {
 @media screen and (max-width: 360px) {
 
     .analitycs-menu.active {
-        
+
         left: 50px;
     }
 }
@@ -194,7 +194,7 @@ export default {
 @media screen and (max-width: 320px) {
 
     .analitycs-menu.active {
-        
+
         left: 32px;
     }
 }

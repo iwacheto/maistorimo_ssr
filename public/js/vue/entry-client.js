@@ -47840,33 +47840,35 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "user-profile-description" }, [
-                    _vm.profile.vendor_details.information
-                      ? _c("div", { staticClass: "desc-box" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "desc-show-more-button",
-                              on: { click: _vm.changeInfoClass }
-                            },
-                            [_vm._v(_vm._s(_vm.info_button))]
-                          ),
-                          _vm._v(" "),
-                          _c("p", {
-                            staticClass: "profile_info",
-                            class: [_vm.active ? "active" : ""],
-                            domProps: {
-                              innerHTML: _vm._s(
-                                _vm.profile.vendor_details.information.substring(
-                                  0,
-                                  _vm.subNumb
-                                ) + _vm.subText
-                              )
-                            }
-                          })
-                        ])
-                      : _vm._e()
-                  ])
+                  _vm.profile.vendor_details.information
+                    ? _c("div", { staticClass: "user-profile-description" }, [
+                        _vm.profile.vendor_details.information
+                          ? _c("div", { staticClass: "desc-box" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "desc-show-more-button",
+                                  on: { click: _vm.changeInfoClass }
+                                },
+                                [_vm._v(_vm._s(_vm.info_button))]
+                              ),
+                              _vm._v(" "),
+                              _c("p", {
+                                staticClass: "profile_info",
+                                class: [_vm.active ? "active" : ""],
+                                domProps: {
+                                  innerHTML: _vm._s(
+                                    _vm.profile.vendor_details.information.substring(
+                                      0,
+                                      _vm.subNumb
+                                    ) + _vm.subText
+                                  )
+                                }
+                              })
+                            ])
+                          : _vm._e()
+                      ])
+                    : _vm._e()
                 ])
               ])
             ])

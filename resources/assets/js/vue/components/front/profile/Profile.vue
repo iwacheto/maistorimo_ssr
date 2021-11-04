@@ -6,12 +6,12 @@
         <div class="row">
           <div class="col-md-12">
             <div class="user-profile">
-              
+
               <!-- USER PROFILE IMAGE -->
               <div class="user-profile-img">
                 <img :src="profile.vendor_details.profile_image" alt />
               </div>
-              
+
               <!-- USER PROFILE COMPANY NAME -->
               <div class="user-profile-name">
                 <h2>{{ profile.vendor_details.company_name }}</h2>
@@ -72,8 +72,8 @@
                 </div>
               </div>
 
-              <div class="user-profile-description">
-                
+              <div class="user-profile-description" v-if="profile.vendor_details.information">
+
                 <div class="desc-box" v-if="profile.vendor_details.information">
                   <button @click="changeInfoClass" class="desc-show-more-button">{{ info_button }}</button>
 
@@ -82,19 +82,19 @@
                     v-html="profile.vendor_details.information.substring(0,subNumb) + subText"
                     :class="[active ? 'active' : '']"
                   ></p>
-<!-- 
+<!--
                   <p
                     class="profile_info"
                     v-html="profile.vendor_details.information"
                     :class="[active ? 'active' : '']"
                   ></p> -->
-                  
+
                 </div>
 
               </div>
 
             </div>
-            
+
             <!-- <div class="user-profile-titlebar">
               <div class="mask">
                 <div class="blur-background"></div>
@@ -186,7 +186,7 @@
 
             <!-- </div> -->
 
-            
+
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@ export default {
   methods: {
     changeInfoClass() {
       this.active = !this.active;
-      
+
       if (this.info_button == "Покажи повече") {
         this.info_button = this.info_2;
         this.subNumb = 800;

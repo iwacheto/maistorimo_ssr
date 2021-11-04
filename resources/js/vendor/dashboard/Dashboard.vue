@@ -23,7 +23,7 @@
                             <p>Анализи</p>
                             <i class="fa fa-angle-down" :class="{active: isActive}"></i>
                         </div>
-                        
+
                         <router-link :to="'/service'">
                             <div class="pc-menu-item">
                                 <img src="/images/services.svg" alt="services">
@@ -32,7 +32,7 @@
                         </router-link>
                     </div>
 
-                    
+
 
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="col-md-12">
                     <h2>Здравей, {{ user ? user.name : '' }}</h2>
                 </div>
-            
+
                 <div class="mobile-green-menu">
                     <router-link :to="'/projects'">
                         <div class="mobile-menu-item">
@@ -72,7 +72,7 @@
                         <img src="/images/analysis.svg" alt="analysis">
                         <p>Анализи</p>
                     </div>
-                    
+
                     <router-link :to="'/service'">
                         <div class="mobile-menu-item">
                             <img src="/images/services.svg" alt="services">
@@ -112,7 +112,7 @@ import AddProjectOrService from '../partials/AddProjectOrService.vue';
 
 export default {
     mounted() {
-        return this.snackbarAlert('Проектър бе създаден успешно!');
+        // return this.snackbarAlert('Проектър бе създаден успешно!');
     },
     data() {
         return {
@@ -415,7 +415,7 @@ export default {
             cursor: pointer;
         }
 
-        .mobile-menu-item:nth-child(3) img { 
+        .mobile-menu-item:nth-child(3) img {
             zoom: 1.3;
         }
 
@@ -445,7 +445,7 @@ export default {
 
         .analitycs-menu.active {
             display: flex;
-            
+
         }
 
         .analitycs-menu {
@@ -474,7 +474,7 @@ export default {
         #titlebar.active {
             padding-bottom: 77px;
         }
-        
+
     }
 
     @media screen and (max-width: 414px) {

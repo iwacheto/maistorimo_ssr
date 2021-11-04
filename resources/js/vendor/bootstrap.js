@@ -24,6 +24,7 @@ Vue.component('vue-toastr', VueToastr);
 
 Vue.use(CKEditor);
 
+Vue.config.silent = true
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 
 // Import and use Vue Froala lib.
