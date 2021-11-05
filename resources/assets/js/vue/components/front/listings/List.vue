@@ -284,7 +284,7 @@
 
                                 <div class="listing-badge now-open">Некатегоризиран</div>
 
-                                <div class="listing-item-content">
+                                <div class="listing-item-content missing-data">
                                     <h3>
                                         Не е намерено нищо
                                         <i class="verified-icon"></i>
@@ -755,7 +755,7 @@ export default {
         border-radius: 55px;
     }
 
-    .listing-item-container.compact .listing-item {
+    .listing-item-container.compact .listing-item, .no_results .listing-item {
         border-radius: 35px;
         position: relative;
     }
@@ -777,6 +777,11 @@ export default {
         justify-content: center;
         align-items: center;
         padding-right: 0px;
+    }
+
+    .listing-item .listing-item-content.missing-data {
+        left: unset !important;
+        right: 0px;
     }
 
     @media screen and (max-width: 1680px) {
