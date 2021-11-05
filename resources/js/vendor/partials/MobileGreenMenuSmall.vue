@@ -119,7 +119,7 @@ export default {
     }
 
     .analitycs-menu.active {
-        display: flex;
+        display: flex !important;
         position: absolute;
         top: 57px;
         left: 365px;

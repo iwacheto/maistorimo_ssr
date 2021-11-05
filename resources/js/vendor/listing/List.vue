@@ -179,7 +179,7 @@ export default {
       background-color: #FFFFFF;
       width: 49px;
       height: 50px;
-      padding: 13px 18px 16px 20px;
+      padding: 13px 18px 16px 15px;
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
@@ -360,7 +360,7 @@ export default {
       padding-left: 20px;
       padding-right: 18px; */
       width: 49px;
-      padding: 13px 18px 16px 20px;
+      padding: 13px 18px 16px 15px;
       font-style: normal;
       font-weight: 500;
       font-size: 20px;

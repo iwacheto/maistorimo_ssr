@@ -11,7 +11,9 @@ import VueAnalytics from 'vue-analytics';
 import VueScrollTo from 'vue-scrollto';
 import VueMeta from 'vue-meta'
 
-Vue.use(VueScrollTo)
+Vue.use(VueScrollTo, {
+	offset: 0
+})
 
 
 
