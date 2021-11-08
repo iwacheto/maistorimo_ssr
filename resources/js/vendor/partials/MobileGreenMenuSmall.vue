@@ -1,5 +1,5 @@
 <template>
-    <div class="mobile-green-menu-small" :class="{active: isActive}">
+    <div class="mobile-green-menu-small">
         <div class="relative-div">
             <div class="green-menu-small">
                 <router-link :to="'/projects'">

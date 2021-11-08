@@ -634,7 +634,9 @@ export default {
       });
     },
     imageUploaded(file, response) {
+      console.log('imageUploaded');
       this.project.images.push(response);
+      console.log(response);
       this.isDisabled = false;
     },
     disableButton() {
@@ -653,9 +655,17 @@ export default {
     },
     scrollToError() {
       setTimeout(function() {
+        // let elem = document.querySelector(".error");
+        // const y = elem.getBoundingClientRect();
+        // elem.scrollIntoView({ behavior: "smooth", block: "center" });
+        
+        // TsB
         let elem = document.querySelector(".error");
-        const y = elem.getBoundingClientRect();
-        elem.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (!elem) {return}
+        if (elem) {
+          const y = elem.getBoundingClientRect();
+          elem.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
       }, 500);
     },
     setResult(result) {

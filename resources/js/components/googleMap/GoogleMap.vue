@@ -4,8 +4,10 @@
 			<h2>Адрес</h2>
             <p>* Посочете точен адрес, за да може картата на google да ви локализира. Натиснете бутона ‘’ Добави’’ след като изберете адреса си.</p>
 			<label>
+				<!-- :options="{fields: ['geometry']}" this part is added from TsB -->
 				<gmap-autocomplete
 						:value="full_address"
+						:options="{fields: ['geometry', 'formatted_address']}"
 						@place_changed="setPlace">
 				</gmap-autocomplete>
 
