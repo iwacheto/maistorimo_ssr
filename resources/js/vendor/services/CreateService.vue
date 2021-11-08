@@ -204,7 +204,7 @@
 
                   <vue-dropzone
                       ref="myVueDropzone"
-                      @vdropzone-success="imageUploaded"
+                      @vdropzone-success="mainImageUploaded"
                       @vdropzone-drop="disableButton"
                       id="dropzone"
                       :options="dropzoneOptions"
