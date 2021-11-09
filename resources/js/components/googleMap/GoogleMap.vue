@@ -60,6 +60,7 @@
 				this.marker.position = {lat:this.center.lat, lng:this.center.lng};
 				this.place=this.placeObj;
 				this.full_address = this.formatted_address;
+				console.log('Line 64');
 			},
 			// receives a place object via the autocomplete component
 			setPlace(place) {
@@ -78,9 +79,7 @@
 							lng: this.currentPlace.geometry.location.lng()
 						};
 
-
 					this.marker = {position: marker};
-
 					this.place = this.currentPlace;
 					this.center = marker;
 					this.currentPlace = null;

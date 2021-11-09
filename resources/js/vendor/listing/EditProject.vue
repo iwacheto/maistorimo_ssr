@@ -90,13 +90,18 @@
                                     <div class="col-md-12">
                                         <h5>Услуги</h5>
                                         <multiselect
-                                            class="multi_select_service"
-                                            v-model="userServicesTags"
-                                            label="text"
-                                            :multiple="true"
-                                            track-by="id"
-                                            :options="userServices"
-                                        ></multiselect>
+                                          style="background: #ffffff; max-height: 290px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
+                                          v-model="userServicesTags"
+                                          tag-placeholder="Добави като нова услуга"
+                                          placeholder="Добави услуга"
+                                          label="text" 
+                                          track-by="id" 
+                                          :options="userServices" 
+                                          :multiple="true" 
+                                          :taggable="true" 
+                                          @tag="addTag">
+                                          <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
+                                        </multiselect>
                                     </div>
                                 </div>
 
@@ -277,17 +282,17 @@
                                             <!-- <option value="null">Избери категория</option> -->
                                             <option value="null">Избери категория</option>
                                             <!-- <optgroup
-                        :label="mainCategory.title"
-                        v-for="mainCategory in categories"
-                        :key="mainCategory.id"
-                      >
-                        <option
-                          :value="category.id"
-                          v-for="category in mainCategory.children"
-                          :key="category.id"
-                        >{{ category.title }}</option>
-                        <option value="21">Друга</option>
-                      </optgroup> -->
+                                                    :label="mainCategory.title"
+                                                    v-for="mainCategory in categories"
+                                                    :key="mainCategory.id"
+                                                  >
+                                                    <option
+                                                      :value="category.id"
+                                                      v-for="category in mainCategory.children"
+                                                      :key="category.id"
+                                                    >{{ category.title }}</option>
+                                                    <option value="21">Друга</option>
+                                                  </optgroup> -->
                                             <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
                                         </select>
                                     </div>
@@ -295,29 +300,19 @@
                                     <div class="col-md-12">
                                         <h5>Избери услуга</h5>
                                         <div>
-                                            <multiselect
-                                                class="multi_select_service"
-                                                v-model="userServicesTags"
-                                                :options="userServices"
-                                                :multiple="true"
-                                                :close-on-select="false"
-                                                :clear-on-select="false"
-                                                :preserve-search="true"
-                                                placeholder=" "
-                                                label="text"
-                                                track-by="id"
-                                                :preselect-first="true"
-                                            >
-                                                <template
-                                                    slot="selection"
-                                                    slot-scope="{ values, isOpen }"
-                                                    ><span
-                                                        class="multiselect__single"
-                                                        v-if="values.length &amp;&amp; !isOpen"
-                                                        >{{ values.length }} options selected</span
-                                                    ></template
-                                                >
-                                            </multiselect>
+                                          <multiselect
+                                              style="background: #ffffff; max-height: 210px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
+                                              v-model="userServicesTags"
+                                              tag-placeholder="Добави като нова услуга"
+                                              placeholder="Добави услуга"
+                                              label="text" 
+                                              track-by="id" 
+                                              :options="userServices" 
+                                              :multiple="true" 
+                                              :taggable="true" 
+                                              @tag="addTag">
+                                            <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
+                                          </multiselect>
                                         </div>
                                     </div>
                                 </div>
@@ -487,6 +482,15 @@ export default {
         },
     },
     methods: {
+        // TsB
+        addTag (newTag) {
+          const tag = {
+            name: newTag,
+            code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+          }
+          this.userServices.push(tag)
+          this.userServicesTags.push(tag)
+        },
         isMobile() {
             if (
                 /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -633,7 +637,6 @@ export default {
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .mobile-part {
     display: none;
@@ -653,9 +656,10 @@ export default {
     margin: 5px;
 }
 
-.multiselect__input {
+/* .multiselect__input {
     border: none !important;
-}
+} */
+
 .autocomplete-results {
     padding: 0;
     margin: 0;
@@ -799,7 +803,7 @@ export default {
         padding: 0px;
     }
 
-    .multi_select_service {
+    /* .multi_select_service {
         position: relative;
         background: #ffffff;
         border: 0.25px solid #6bbf3f;
@@ -807,7 +811,7 @@ export default {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
         height: 51px;
-    }
+    } */
 
     .vue-tags-input {
         /* height: 71px; */
@@ -991,7 +995,7 @@ export default {
         /* max-width: 347px; */
     }
 
-    .multi_select_service {
+    /* .multi_select_service {
         height: 60px;
         background: #ffffff;
         border: 0.75px solid #6bbf3f;
@@ -999,7 +1003,7 @@ export default {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         padding: 10px;
-    }
+    } */
 
     .vue-tags-input {
         max-width: unset;

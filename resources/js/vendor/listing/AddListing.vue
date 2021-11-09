@@ -107,13 +107,19 @@
                       ></i> -->
                     </h5>
                     <multiselect
-                      class="multi_select_service"
-                      v-model="userServicesTags"
-                      label="text"
-                      :multiple="true"
-                      track-by="id"
-                      :options="userServices"
-                    ></multiselect>
+                        class="multi_select_service"
+                        style="background: #ffffff; max-height: 210px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
+                        v-model="userServicesTags"
+                        tag-placeholder="Добави като нова услуга"
+                        placeholder="Добави услуга"
+                        label="text" 
+                        track-by="id" 
+                        :options="userServices" 
+                        :multiple="true" 
+                        :taggable="true" 
+                        @tag="addTag">
+                      <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
+                    </multiselect>
                   </div>
 
                 </div>
@@ -350,11 +356,38 @@
                       placeholder=" "
                     ></multiselect> -->
                     <div>
-                      <multiselect  class="multi_select_service" v-model="userServicesTags" :options="userServices" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder=" " label="text" track-by="id" :preselect-first="true">
+                      <!-- <multiselect  
+                      class="multi_select_service" 
+                      v-model="userServicesTags" 
+                      :options="userServices" 
+                      :multiple="true" 
+                      :close-on-select="false" 
+                      :clear-on-select="false" 
+                      :preserve-search="true"
+                      :searchable="false"
+                      :show-labels="true" 
+                      placeholder=" " 
+                      label="text" 
+                      track-by="id" 
+                      :preselect-first="true">
                         <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span></template>
-                      </multiselect>
-                    </div>
+                      </multiselect> -->
 
+                      <multiselect
+                        class="multi_select_service"
+                        style="background: #ffffff; max-height: 210px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
+                        v-model="userServicesTags"
+                        tag-placeholder="Добави като нова услуга"
+                        placeholder="Добави услуга"
+                        label="text" 
+                        track-by="id" 
+                        :options="userServices" 
+                        :multiple="true" 
+                        :taggable="true" 
+                        @tag="addTag">
+                      <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
+                    </multiselect>
+                    </div>
                   </div>
 
                 </div>
@@ -566,6 +599,17 @@ export default {
     this.getServices();
   },
   methods: {
+
+    // TsB
+    addTag (newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+      }
+      this.userServices.push(tag)
+      this.userServicesTags.push(tag)
+    },
+
     showErrors() {
       this.showAllErrors = !this.showAllErrors;
       if (!this.project.title) {
@@ -658,7 +702,7 @@ export default {
         // let elem = document.querySelector(".error");
         // const y = elem.getBoundingClientRect();
         // elem.scrollIntoView({ behavior: "smooth", block: "center" });
-        
+
         // TsB
         let elem = document.querySelector(".error");
         if (!elem) {return}
@@ -934,17 +978,6 @@ export default {
     padding: 0px;
   }
 
-  .multi_select_service {
-    position: relative;
-    background: #FFFFFF;
-    border: 0.25px solid #6BBF3F;
-    box-sizing: border-box;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    height: 51px;
-    padding: 11px;
-  }
-
   .vue-tags-input {
     /* height: 71px; */
     background: #FFFFFF;
@@ -1125,15 +1158,10 @@ export default {
     /* max-width: 347px; */
   }
 
-  .multi_select_service {
-    height: 49px;
-    background: #FFFFFF;
-    border: 0.75px solid #6BBF3F;
-    box-sizing: border-box;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    padding: 10px;
-  }
+  /* .multi_select_service.multiselect--active {
+    list-style-type: none;
+    text-decoration: none;
+  } */
 
   .vue-tags-input {
     max-width: unset;
