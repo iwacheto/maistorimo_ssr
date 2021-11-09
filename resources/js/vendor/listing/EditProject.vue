@@ -99,7 +99,7 @@
                                           :options="userServices" 
                                           :multiple="true" 
                                           :taggable="true" 
-                                          @tag="addTag">
+                                          @tag="addTags">
                                           <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
                                         </multiselect>
                                     </div>
@@ -165,6 +165,13 @@
                                         :index="index"
                                         @close="index = null"
                                     ></gallery>
+                                    <vue-dropzone
+                                        ref="myVueDropzone"
+                                        @vdropzone-success="imageUploaded"
+                                        @vdropzone-drop="disableButton"
+                                        id="dropzone"
+                                        :options="dropzoneOptions"
+                                    ></vue-dropzone>
                                     <div
                                         class="image"
                                         v-for="(image, imageIndex) in project.project_galleries"
@@ -183,13 +190,7 @@
                                             <i class="sl sl-icon-close"></i> Delete
                                         </a>
                                     </div>
-                                    <vue-dropzone
-                                        ref="myVueDropzone"
-                                        @vdropzone-success="imageUploaded"
-                                        @vdropzone-drop="disableButton"
-                                        id="dropzone"
-                                        :options="dropzoneOptions"
-                                    ></vue-dropzone>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -301,16 +302,16 @@
                                         <h5>Избери услуга</h5>
                                         <div>
                                           <multiselect
-                                              style="background: #ffffff; max-height: 210px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
-                                              v-model="userServicesTags"
-                                              tag-placeholder="Добави като нова услуга"
-                                              placeholder="Добави услуга"
-                                              label="text" 
-                                              track-by="id" 
-                                              :options="userServices" 
-                                              :multiple="true" 
-                                              :taggable="true" 
-                                              @tag="addTag">
+                                            style="background: #ffffff; max-height: 210px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
+                                            v-model="userServicesTags"
+                                            tag-placeholder="Добави като нова услуга"
+                                            placeholder="Добави услуга"
+                                            label="text"
+                                            track-by="id"
+                                            :options="userServices"
+                                            :multiple="true"
+                                            :taggable="true"
+                                            @tag="addTags">
                                             <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
                                           </multiselect>
                                         </div>
@@ -320,14 +321,7 @@
                                 <div class="with-forms">
                                     <!-- Type -->
                                     <div class="col-md-12">
-                                        <h5>
-                                            Ключови думи
-                                            <!-- <span class="required">*</span>
-                      <i
-                        class="tip"
-                        data-tip-content="Максимум 15 ключови думи, описващи вашият бизнес"
-                      ></i> -->
-                                        </h5>
+                                        <h5>Ключови думи</h5>
                                         <vue-tags-input
                                             v-model="tag"
                                             :tags="tags"
@@ -483,7 +477,7 @@ export default {
     },
     methods: {
         // TsB
-        addTag (newTag) {
+        addTags (newTag) {
           const tag = {
             name: newTag,
             code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
