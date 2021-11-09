@@ -1,406 +1,406 @@
 <template>
-    <div>
-        <!-- DESKTOP PART -->
-        <div class="desktop-part" v-if="!isMobile()">
-            <!-- Titlebar -->
-            <div id="titlebar">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Добави проект</h2>
+  <div>
+    <!-- DESKTOP PART -->
+    <div class="desktop-part" v-if="!isMobile()">
+      <!-- Titlebar -->
+      <div id="titlebar">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Добави проект</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="add-listing">
+            <!-- Section -->
+            <div class="add-listing-section">
+              <!-- Headline -->
+              <div class="add-listing-headline">
+                <h3>
+                  <img src="/images/info-circle-solid.svg" alt="info icon" />
+                  Основна информация
+                </h3>
+              </div>
+
+              <!-- Title -->
+              <div class="section-with-forms">
+                <div class="with-forms">
+                  <div class="col-md-12">
+                    <h5>Заглавие на проекта</h5>
+                    <!-- <input class="search-field" v-model="project.title" type="text" value /> -->
+                    <input
+                      class="search-field"
+                      v-model="project.title"
+                      type="text"
+                      value
+                      @focus="makeFocus('title')"
+                    />
+
+                    <div class="autocomplete">
+                      <h5>Град</h5>
+                      <input
+                        type="text"
+                        v-model="search"
+                        @input="onChange"
+                        class="cityInput"
+                      />
+                      <ul v-show="isOpen" class="autocomplete-results">
+                        <li
+                          v-for="(result, i) in results"
+                          :key="i"
+                          @click="setResult(result)"
+                          class="autocomplete-result"
+                        >
+                          {{ result.city }}
+                        </li>
+                      </ul>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="add-listing">
-                        <!-- Section -->
-                        <div class="add-listing-section">
-                            <!-- Headline -->
-                            <div class="add-listing-headline">
-                                <h3>
-                                    <img src="/images/info-circle-solid.svg" alt="info icon" />
-                                    Основна информация
-                                </h3>
-                            </div>
-
-                            <!-- Title -->
-                            <div class="section-with-forms">
-                                <div class="with-forms">
-                                    <div class="col-md-12">
-                                        <h5>Заглавие на проекта</h5>
-                                        <!-- <input class="search-field" v-model="project.title" type="text" value /> -->
-                                        <input
-                                            class="search-field"
-                                            v-model="project.title"
-                                            type="text"
-                                            value
-                                            @focus="makeFocus('title')"
-                                        />
-
-                                        <div class="autocomplete">
-                                            <h5>Град</h5>
-                                            <input
-                                                type="text"
-                                                v-model="search"
-                                                @input="onChange"
-                                                class="cityInput"
-                                            />
-                                            <ul v-show="isOpen" class="autocomplete-results">
-                                                <li
-                                                    v-for="(result, i) in results"
-                                                    :key="i"
-                                                    @click="setResult(result)"
-                                                    class="autocomplete-result"
-                                                >
-                                                    {{ result.city }}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="with-forms">
-                                    <!-- Status -->
-                                    <div class="col-md-12">
-                                        <h5>Категория</h5>
-                                        <select
-                                            class="chosen-select-no-single"
-                                            v-model="project.category"
-                                        >
-                                            <option value="null">Избери категория</option>
-                                            <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
-                                            <optgroup
-                                                :label="mainCategory.title"
-                                                v-for="mainCategory in categories"
-                                                :key="mainCategory.id"
-                                            >
-                                                <option
-                                                    :value="category.id"
-                                                    v-for="category in mainCategory.children"
-                                                    :key="category.id"
-                                                >
-                                                    {{ category.title }}
-                                                </option>
-                                                <option value="21">Друга</option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <h5>Услуги</h5>
-                                        <multiselect
-                                          style="background: #ffffff; max-height: 290px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
-                                          v-model="userServicesTags"
-                                          tag-placeholder="Добави като нова услуга"
-                                          placeholder="Добави услуга"
-                                          label="text" 
-                                          track-by="id" 
-                                          :options="userServices" 
-                                          :multiple="true" 
-                                          :taggable="true" 
-                                          @tag="addTags">
-                                          <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
-                                        </multiselect>
-                                    </div>
-                                </div>
-
-                                <div class="with-forms">
-                                    <div class="col-md-12">
-                                        <h5>Ключови думи</h5>
-                                        <vue-tags-input
-                                            v-model="tag"
-                                            :tags="tags"
-                                            :autocomplete-items="filteredTags"
-                                            @tags-changed="(newTags) => (project.tags = newTags)"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <google-map
-                                    v-if="
-                                        project.lat &&
-                                        project.lng &&
-                                        project.formatted_address &&
-                                        project.raw_data
-                                    "
-                                    :lat="project.lat"
-                                    :lng="project.lng"
-                                    :formatted_address="project.formatted_address"
-                                    :placeObj="project.raw_data"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="add-listing-section section-details">
-                            <div class="add-listing-headline">
-                                <h3>
-                                    <img src="/images/info-circle-solid.svg" alt="info icon" />
-                                    Детайли
-                                </h3>
-                            </div>
-
-                            <!-- Description -->
-                            <div class="form-section">
-                                <div class="form">
-                                    <h5>Описание</h5>
-                                    <div class="editor-item">
-                                        <ckeditor
-                                            :editor="editorConfig.editor"
-                                            v-model="project.description"
-                                            :config="editorConfig.editorConfig"
-                                        ></ckeditor>
-                                    </div>
-                                </div>
-
-                                <div class="galery-section">
-                                    <h5><i class="sl sl-icon-picture"></i> Галерия</h5>
-
-                                    <gallery
-                                        :images="images"
-                                        :index="index"
-                                        @close="index = null"
-                                    ></gallery>
-                                    <vue-dropzone
-                                        ref="myVueDropzone"
-                                        @vdropzone-success="imageUploaded"
-                                        @vdropzone-drop="disableButton"
-                                        id="dropzone"
-                                        :options="dropzoneOptions"
-                                    ></vue-dropzone>
-                                    <div
-                                        class="image"
-                                        v-for="(image, imageIndex) in project.project_galleries"
-                                        :key="imageIndex"
-                                        @click="index = imageIndex"
-                                        :style="{
-                                            backgroundImage: 'url(' + image.url + ')',
-                                            width: '300px',
-                                            height: '200px',
-                                        }"
-                                    >
-                                        <a
-                                            @click.stop="deleteImage(imageIndex)"
-                                            class="button del_btn"
-                                        >
-                                            <i class="sl sl-icon-close"></i> Delete
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="button-part">
-                            <button @click="editProject" class="button preview">Радактирай</button>
-                        </div>
-                    </div>
+                  </div>
                 </div>
 
-                <!-- Copyrights -->
-                <Copyrights />
+                <div class="with-forms">
+                  <!-- Status -->
+                  <div class="col-md-12">
+                      <h5>Категория</h5>
+                      <select
+                        class="chosen-select-no-single"
+                        v-model="project.category"
+                      >
+                        <option value="null">Избери категория</option>
+                        <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
+                        <optgroup
+                          :label="mainCategory.title"
+                          v-for="mainCategory in categories"
+                          :key="mainCategory.id"
+                        >
+                          <option
+                            :value="category.id"
+                            v-for="category in mainCategory.children"
+                            :key="category.id"
+                          >
+                            {{ category.title }}
+                          </option>
+                          <option value="21">Друга</option>
+                        </optgroup>
+                    </select>
+                  </div>
+
+                  <div class="col-md-12">
+                    <h5>Услуги</h5>
+                    <multiselect
+                      style="background: #ffffff; max-height: 290px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
+                      v-model="userServicesTags"
+                      tag-placeholder="Добави като нова услуга"
+                      placeholder="Добави услуга"
+                      label="text" 
+                      track-by="id" 
+                      :options="userServices" 
+                      :multiple="true" 
+                      :taggable="true" 
+                      @tag="addTags">
+                      <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
+                    </multiselect>
+                  </div>
+                </div>
+
+                <div class="with-forms">
+                  <div class="col-md-12">
+                    <h5>Ключови думи</h5>
+                    <vue-tags-input
+                      v-model="tag"
+                      :tags="tags"
+                      :autocomplete-items="filteredTags"
+                      @tags-changed="(newTags) => (project.tags = newTags)"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            <vue-toastr ref="mytoast"></vue-toastr>
+
+              <div class="row">
+                  <div class="col-md-12">
+                      <google-map
+                          v-if="
+                              project.lat &&
+                              project.lng &&
+                              project.formatted_address &&
+                              project.raw_data
+                          "
+                          :lat="project.lat"
+                          :lng="project.lng"
+                          :formatted_address="project.formatted_address"
+                          :placeObj="project.raw_data"
+                      />
+                  </div>
+              </div>
+
+              <div class="add-listing-section section-details">
+                  <div class="add-listing-headline">
+                      <h3>
+                          <img src="/images/info-circle-solid.svg" alt="info icon" />
+                          Детайли
+                      </h3>
+                  </div>
+
+                  <!-- Description -->
+                  <div class="form-section">
+                      <div class="form">
+                          <h5>Описание</h5>
+                          <div class="editor-item">
+                              <ckeditor
+                                  :editor="editorConfig.editor"
+                                  v-model="project.description"
+                                  :config="editorConfig.editorConfig"
+                              ></ckeditor>
+                          </div>
+                      </div>
+
+                      <div class="galery-section">
+                          <h5><i class="sl sl-icon-picture"></i> Галерия</h5>
+
+                          <gallery
+                              :images="images"
+                              :index="index"
+                              @close="index = null"
+                          ></gallery>
+                          <vue-dropzone
+                              ref="myVueDropzone"
+                              @vdropzone-success="imageUploaded"
+                              @vdropzone-drop="disableButton"
+                              id="dropzone"
+                              :options="dropzoneOptions"
+                          ></vue-dropzone>
+                          <div
+                              class="image"
+                              v-for="(image, imageIndex) in project.project_galleries"
+                              :key="imageIndex"
+                              @click="index = imageIndex"
+                              :style="{
+                                  backgroundImage: 'url(' + image.url + ')',
+                                  width: '300px',
+                                  height: '200px',
+                              }"
+                          >
+                              <a
+                                  @click.stop="deleteImage(imageIndex)"
+                                  class="button del_btn"
+                              >
+                                  <i class="sl sl-icon-close"></i> Delete
+                              </a>
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+
+              <div class="button-part">
+                  <button @click="editProject" class="button preview">Радактирай</button>
+              </div>
+          </div>
         </div>
 
-        <!-- MOBILE PART -->
-        <div class="mobile-part" v-if="isMobile()">
-            <AddProjectOrService />
+        <!-- Copyrights -->
+        <Copyrights />
+      </div>
+      <vue-toastr ref="mytoast"></vue-toastr>
+    </div>
 
-            <MobileGreenMenuSmall />
+    <!-- MOBILE PART -->
+    <div class="mobile-part" v-if="isMobile()">
+      <AddProjectOrService />
 
-            <div class="row">
-                <!-- Titlebar -->
-                <div id="titlebar">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Добави проект</h2>
-                        </div>
+      <MobileGreenMenuSmall />
+
+      <div class="row">
+        <!-- Titlebar -->
+        <div id="titlebar">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Добави проект</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizontal-line"></div>
+
+        <h3>
+          <img src="/images/info-circle-solid.svg" alt="info icon" /> Основна информация
+        </h3>
+
+        <div class="col-lg-12">
+          <div id="add-listing">
+            <!-- Section -->
+            <div class="add-listing-section">
+              <div class="section-with-forms">
+                  <!-- Title -->
+                <div class="with-forms">
+                  <div class="col-md-12">
+                    <h5>Заглавие на проект</h5>
+                    <input
+                        class="search-field"
+                        v-model="project.title"
+                        type="text"
+                        value
+                    />
+
+                    <div class="autocomplete">
+                      <h5>Град</h5>
+                      <input
+                          type="text"
+                          v-model="search"
+                          @input="onChange"
+                          class="cityInput"
+                      />
+                      <ul v-show="isOpen" class="autocomplete-results">
+                        <li
+                          v-for="(result, i) in results"
+                          :key="i"
+                          @click="setResult(result)"
+                          class="autocomplete-result"
+                        >
+                          {{ result.city }}
+                        </li>
+                      </ul>
                     </div>
+                  </div>
+                </div>
+
+                <div class="with-forms">
+                    <!-- Status -->
+                    <div class="col-md-12">
+                      <h5>
+                        Категория
+                        <!-- <span class="required">*</span> -->
+                      </h5>
+
+                      <select
+                        class="chosen-select-no-single"
+                        v-model="project.category"
+                        @focus="makeFocus('category')"
+                      >
+                        <!-- <option value="null">Избери категория</option> -->
+                          <option value="null">Избери категория</option>
+                          <!-- <optgroup
+                                  :label="mainCategory.title"
+                                  v-for="mainCategory in categories"
+                                  :key="mainCategory.id"
+                                >
+                                  <option
+                                    :value="category.id"
+                                    v-for="category in mainCategory.children"
+                                    :key="category.id"
+                                  >{{ category.title }}</option>
+                                  <option value="21">Друга</option>
+                                </optgroup> -->
+                          <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
+                      </select>
+                    </div>
+
+                  <div class="col-md-12">
+                    <h5>Избери услуга</h5>
+                    <div>
+                      <multiselect
+                        style="background: #ffffff; max-height: 210px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
+                        v-model="userServicesTags"
+                        tag-placeholder="Добави като нова услуга"
+                        placeholder="Добави услуга"
+                        label="text"
+                        track-by="id"
+                        :options="userServices"
+                        :multiple="true"
+                        :taggable="true"
+                        @tag="addTags">
+                        <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
+                      </multiselect>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="with-forms">
+                  <!-- Type -->
+                  <div class="col-md-12">
+                    <h5>Ключови думи</h5>
+                    <vue-tags-input
+                      v-model="tag"
+                      :tags="tags"
+                      :autocomplete-items="filteredTags"
+                      @tags-changed="(newTags) => (project.tags = newTags)"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <google-map />
                 </div>
 
                 <div class="horizontal-line"></div>
+              </div>
+            </div>
 
+            <div class="add-listing-section section-details">
+              <!-- Headline -->
+              <div class="add-listing-headline">
                 <h3>
-                    <img src="/images/info-circle-solid.svg" alt="info icon" /> Основна информация
+                  <img src="/images/info-circle-solid.svg" alt="info icon" />
+                  Детайли
                 </h3>
+              </div>
+              <div class="form-section">
+                <!-- Description -->
+                <div class="form">
+                  <h5>Описание</h5>
 
-                <div class="col-lg-12">
-                    <div id="add-listing">
-                        <!-- Section -->
-                        <div class="add-listing-section">
-                            <div class="section-with-forms">
-                                <!-- Title -->
-                                <div class="with-forms">
-                                    <div class="col-md-12">
-                                        <h5>Заглавие на проект</h5>
-                                        <input
-                                            class="search-field"
-                                            v-model="project.title"
-                                            type="text"
-                                            value
-                                        />
-
-                                        <div class="autocomplete">
-                                            <h5>Град</h5>
-                                            <input
-                                                type="text"
-                                                v-model="search"
-                                                @input="onChange"
-                                                class="cityInput"
-                                            />
-                                            <ul v-show="isOpen" class="autocomplete-results">
-                                                <li
-                                                    v-for="(result, i) in results"
-                                                    :key="i"
-                                                    @click="setResult(result)"
-                                                    class="autocomplete-result"
-                                                >
-                                                    {{ result.city }}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="with-forms">
-                                    <!-- Status -->
-                                    <div class="col-md-12">
-                                        <h5>
-                                            Категория
-                                            <!-- <span class="required">*</span> -->
-                                        </h5>
-
-                                        <select
-                                            class="chosen-select-no-single"
-                                            v-model="project.category"
-                                            @focus="makeFocus('category')"
-                                        >
-                                            <!-- <option value="null">Избери категория</option> -->
-                                            <option value="null">Избери категория</option>
-                                            <!-- <optgroup
-                                                    :label="mainCategory.title"
-                                                    v-for="mainCategory in categories"
-                                                    :key="mainCategory.id"
-                                                  >
-                                                    <option
-                                                      :value="category.id"
-                                                      v-for="category in mainCategory.children"
-                                                      :key="category.id"
-                                                    >{{ category.title }}</option>
-                                                    <option value="21">Друга</option>
-                                                  </optgroup> -->
-                                            <!-- <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.title }}</option> -->
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <h5>Избери услуга</h5>
-                                        <div>
-                                          <multiselect
-                                            style="background: #ffffff; max-height: 210px; overflow: scroll; border: 0.75px solid #6BBF3F; box-shadow: 0px 2px 4px rgb(0 0 0 / 25%); border-radius: 10px; padding: 10px;"
-                                            v-model="userServicesTags"
-                                            tag-placeholder="Добави като нова услуга"
-                                            placeholder="Добави услуга"
-                                            label="text"
-                                            track-by="id"
-                                            :options="userServices"
-                                            :multiple="true"
-                                            :taggable="true"
-                                            @tag="addTags">
-                                            <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
-                                          </multiselect>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="with-forms">
-                                    <!-- Type -->
-                                    <div class="col-md-12">
-                                        <h5>Ключови думи</h5>
-                                        <vue-tags-input
-                                            v-model="tag"
-                                            :tags="tags"
-                                            :autocomplete-items="filteredTags"
-                                            @tags-changed="(newTags) => (project.tags = newTags)"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <google-map />
-                                </div>
-
-                                <div class="horizontal-line"></div>
-                            </div>
-                        </div>
-
-                        <div class="add-listing-section section-details">
-                            <!-- Headline -->
-                            <div class="add-listing-headline">
-                                <h3>
-                                    <img src="/images/info-circle-solid.svg" alt="info icon" />
-                                    Детайли
-                                </h3>
-                            </div>
-                            <div class="form-section">
-                                <!-- Description -->
-                                <div class="form">
-                                    <h5>Описание</h5>
-
-                                    <div class="editor-item">
-                                        <ckeditor
-                                            :editor="editorConfig.editor"
-                                            v-model="project.description"
-                                            :config="editorConfig.editorConfig"
-                                        ></ckeditor>
-                                    </div>
-                                </div>
-
-                                <div class="galery-section">
-                                    <!-- Headline -->
-
-                                    <h5><i class="sl sl-icon-picture"></i> Галерия</h5>
-
-                                    <!-- Dropzone -->
-                                    <vue-dropzone
-                                        ref="myVueDropzone"
-                                        @vdropzone-success="imageUploaded"
-                                        @vdropzone-drop="disableButton"
-                                        id="dropzone"
-                                        :options="dropzoneOptions"
-                                    ></vue-dropzone>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="button-part">
-                            <button
-                                @mouseover="showErrors"
-                                @mouseleave="showAllErrors = !showAllErrors"
-                                @click="createProject"
-                                class="button preview"
-                                :class="[isDisabled ? 'green' : '']"
-                                :disabled="isDisabled"
-                            >
-                                Създай
-                            </button>
-                        </div>
-                    </div>
+                  <div class="editor-item">
+                    <ckeditor
+                      :editor="editorConfig.editor"
+                      v-model="project.description"
+                      :config="editorConfig.editorConfig"
+                    ></ckeditor>
+                  </div>
                 </div>
 
-                <!-- Copyrights -->
-                <Copyrights />
+                <div class="galery-section">
+                  <!-- Headline -->
+
+                  <h5><i class="sl sl-icon-picture"></i> Галерия</h5>
+
+                  <!-- Dropzone -->
+                  <vue-dropzone
+                    ref="myVueDropzone"
+                    @vdropzone-success="imageUploaded"
+                    @vdropzone-drop="disableButton"
+                    id="dropzone"
+                    :options="dropzoneOptions"
+                  ></vue-dropzone>
+                </div>
+              </div>
             </div>
-            <vue-toastr ref="mytoast"></vue-toastr>
+
+            <div class="button-part">
+              <button
+                @mouseover="showErrors"
+                @mouseleave="showAllErrors = !showAllErrors"
+                @click="createProject"
+                class="button preview"
+                :class="[isDisabled ? 'green' : '']"
+                :disabled="isDisabled"
+              >
+                Създай
+              </button>
+            </div>
+          </div>
         </div>
+
+        <!-- Copyrights -->
+        <Copyrights />
+      </div>
+      <vue-toastr ref="mytoast"></vue-toastr>
     </div>
+  </div>
 </template>
 
 <script>

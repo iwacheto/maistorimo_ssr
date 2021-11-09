@@ -19,7 +19,7 @@
                 </router-link>
             </div>
 
-            <div class="analitycs-menu" :class="{active: isActive}">
+            <div id="menu-items" class="analitycs-menu" ref="menu_items" :class="{active: isActive}">
                 <ul>
                     <li>
                         <router-link :to="'/projects_analitycs'">Анализи на проекти</router-link>
@@ -38,7 +38,7 @@
 <script>
 export default {
     mounted() {
-        // return this.snackbarAlert('Проектър бе създаден успешно!');
+        
     },
     data() {
         return {
@@ -46,10 +46,11 @@ export default {
         };
     },
     methods: {
-
         toggleAnalitycsMenu() {
-            this.isActive = !this.isActive;
-            console.log(this.isActive);
+            // this.isActive = !this.isActive;
+            // console.log(this.isActive);
+            let element = this.$refs.menu_items;
+            element.classList.toggle("active");
         },
     }
 };
