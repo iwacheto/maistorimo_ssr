@@ -740,6 +740,7 @@ span.error {
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
+    overflow: hidden;
   }
 
   .desktop-part {

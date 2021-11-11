@@ -599,7 +599,6 @@ export default {
     this.getServices();
   },
   methods: {
-
     // TsB
     addTag (newTag) {
       const tag = {

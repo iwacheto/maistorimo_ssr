@@ -461,12 +461,14 @@ export default {
         };
     },
     mounted() {
+      // setTimeout(() => {
         this.$refs.mytoast.defaultPosition = 'toast-top-center';
         this.$refs.mytoast.defaultStyle = { top: '80px' };
         this.getCategories();
         this.getTags();
         this.getProject();
         this.getServices();
+      // }, 1000);
     },
     computed: {
         filteredTags() {
@@ -904,6 +906,7 @@ export default {
         display: flex;
         flex-direction: column;
         background-color: #ffffff;
+        overflow: hidden;
     }
 
     .desktop-part {
