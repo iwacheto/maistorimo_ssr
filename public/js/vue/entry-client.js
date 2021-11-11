@@ -38126,6 +38126,13 @@ var count = 0;
     },
 
     methods: {
+        showSidebar: function showSidebar() {
+            this.show_sidebar = !this.show_sidebar;
+            this.scrollTop();
+        },
+        scrollTop: function scrollTop() {
+            window.scrollTo(0, 0);
+        },
         searchTimeOut: function searchTimeOut() {
             var _this = this;
 
@@ -38660,11 +38667,7 @@ var render = function() {
             {
               staticClass: "sidebar_menu",
               class: [_vm.show_sidebar ? "active_button" : ""],
-              on: {
-                click: function($event) {
-                  _vm.show_sidebar = !_vm.show_sidebar
-                }
-              }
+              on: { click: _vm.showSidebar }
             },
             [
               _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] }),
@@ -39850,7 +39853,7 @@ var count = 0;
         this.setFilters();
     },
     mounted: function mounted() {
-        window.scrollTo(0, 0);
+        this.scrollTop(0, 0);
     },
 
     watch: {
@@ -39861,7 +39864,7 @@ var count = 0;
         $route: function $route(to, from) {
             var _this = this;
 
-            window.scrollTo(0, 0);
+            this.scrollTop(0, 0);
             var query = this.$route.query;
             if (Object.keys(query).length === 0) {
                 this.page = 1;
@@ -39878,8 +39881,12 @@ var count = 0;
         }
     },
     methods: {
-        scrollTop: function scrollTop() {
-            window.scrollTo(0, 0);
+        showSidebar: function showSidebar() {
+            this.show_sidebar = !this.show_sidebar;
+            this.scrollTop(0, 0);
+        },
+        scrollTop: function scrollTop(x, y) {
+            window.scrollTo(x, y);
         },
         onChange: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
@@ -40061,11 +40068,7 @@ var render = function() {
           {
             staticClass: "sidebar_menu",
             class: [_vm.show_sidebar ? "active_button" : ""],
-            on: {
-              click: function($event) {
-                _vm.show_sidebar = !_vm.show_sidebar
-              }
-            }
+            on: { click: _vm.showSidebar }
           },
           [
             _c("span", { class: [_vm.show_sidebar ? "active_span" : ""] }),

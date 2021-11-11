@@ -5,7 +5,7 @@
         <div class="container">
             <button
                 class="sidebar_menu"
-                @click="show_sidebar = !show_sidebar"
+                @click="showSidebar"
                 :class="[show_sidebar ? 'active_button' : '']"
             >
                 <span :class="[show_sidebar ? 'active_span' : '']"></span>
@@ -374,6 +374,14 @@ export default {
         this.getTags();
     },
     methods: {
+        showSidebar() {
+            this.show_sidebar = !this.show_sidebar;
+            this.scrollTop();
+        },
+        scrollTop() {
+            window.scrollTo(0, 0);
+        },
+        
         searchTimeOut() {
             if (this.timer) {
                 clearTimeout(this.timer);

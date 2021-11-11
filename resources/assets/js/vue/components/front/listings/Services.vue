@@ -5,7 +5,7 @@
         <div class="container">
             <button
                 class="sidebar_menu"
-                @click="show_sidebar = !show_sidebar"
+                @click="showSidebar"
                 :class="[show_sidebar ? 'active_button' : '']"
             >
                 <span :class="[show_sidebar ? 'active_span' : '']"></span>
@@ -297,7 +297,7 @@ export default {
         this.setFilters();
     },
     mounted() {
-        window.scrollTo(0, 0);
+        this.scrollTop(0,0);
     },
     watch: {
         filters: {
@@ -305,7 +305,7 @@ export default {
             deep: true,
         },
         $route(to, from) {
-            window.scrollTo(0, 0);
+            this.scrollTop(0,0);
             let query = this.$route.query;
             if (Object.keys(query).length === 0) {
                 this.page = 1;
@@ -322,8 +322,12 @@ export default {
         },
     },
     methods: {
-        scrollTop() {
-            window.scrollTo(0, 0);
+        showSidebar() {
+            this.show_sidebar = !this.show_sidebar;
+            this.scrollTop(0,0);
+        },
+        scrollTop(x,y) {
+            window.scrollTo(x, y);
         },
         async onChange() {
             this.isOpen = true;
