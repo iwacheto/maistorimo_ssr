@@ -2,7 +2,7 @@
     <div>
 
         <!-- DESKTOP PART -->
-        <div class="desktop-part">
+        <div class="desktop-part" v-if="!isMobile()">
         <!-- Titlebar -->
         <div id="titlebar">
             <div class="row">
@@ -133,7 +133,7 @@
         </div>
 
         <!-- MOBILE  PART -->
-        <div class="mobile-part">
+        <div class="mobile-part" v-if="isMobile()">
 
         <AddProjectOrService/>
 
@@ -170,12 +170,12 @@
                         </h5>
                         <input class="search-field" type="text" v-model="service.title" />
                     </div>
-                        
+
                     <div class="col-md-12">
                         <!-- <span v-if="error.categoryError" class="error">Моля, изберете категория!</span> -->
                         <h5>Категория</h5>
 
-                        
+
                         <select class="chosen-select-no-single" v-model="service.category">
                         <option value>Избери категория</option>
                         <optgroup
@@ -191,9 +191,9 @@
                             <option value="21">Друга</option>
                         </optgroup>
                         </select>
-                        
+
                     </div>
-                    </div>  
+                    </div>
 
                     <div class="galery-section">
                     <!-- <span v-if="error.imageError" class="error">Моля, качете снимка на услугата</span> -->
@@ -208,7 +208,7 @@
                         id="dropzone"
                         :options="dropzoneOptions"
                         ></vue-dropzone>
-                    </div> 
+                    </div>
                 </div>
 
                 <div class="add-listing-section section-details">
@@ -228,7 +228,7 @@
                         </div>
                     </div>
                     </div>
-                
+
                     <div class="add-listing-headline">
                     <h5>Описание 2</h5>
                     <div class="row with-forms">
@@ -249,7 +249,7 @@
                     </div>
                 </div>
                 <!-- Row -->
-                
+
                 <!-- Row -->
                 <div class="button-part">
                     <button @click="createService" class="button preview">
@@ -330,6 +330,17 @@ export default {
         this.getCities();
     },
     methods: {
+        isMobile() {
+            if (
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                    navigator.userAgent
+                )
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         goToProject() {
             window.open('/service/details/' + this.service.id, '_blank');
         },
@@ -439,7 +450,7 @@ export default {
                         element.id = this.allCities.filter((el) => el.city === element.text)[0].id;
                 });
             }
-            
+
             try {
                 const res = await axios.put('/vendor/service/' + this.id, this.service);
 
