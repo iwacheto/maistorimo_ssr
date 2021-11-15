@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- DESKTOP PART -->
-    <div class="desktop-part">
+    <div class="desktop-part"  v-if="!isMobile()">
       <!-- Titlebar -->
       <div id="titlebar">
         <div class="row">
@@ -112,11 +112,11 @@
                         v-model="userServicesTags"
                         tag-placeholder="Добави като нова услуга"
                         placeholder="Добави услуга"
-                        label="text" 
-                        track-by="id" 
-                        :options="userServices" 
-                        :multiple="true" 
-                        :taggable="true" 
+                        label="text"
+                        track-by="id"
+                        :options="userServices"
+                        :multiple="true"
+                        :taggable="true"
                         @tag="addTag">
                       <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
                     </multiselect>
@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="with-forms">
-                  
+
                   <!-- Type -->
                   <div class="col-md-12">
                     <h5>
@@ -147,7 +147,7 @@
                 </div>
 
               </div>
-              
+
               <div class="row">
                 <div class="col-md-12">
                   <google-map />
@@ -182,11 +182,11 @@
 
                 <div class="galery-section">
                   <!-- Headline -->
-                    
+
                     <h5>
                       <i class="sl sl-icon-picture"></i> Галерия
                     </h5>
-                    
+
                     <!-- Dropzone -->
                     <vue-dropzone
                       ref="myVueDropzone"
@@ -211,7 +211,7 @@
                 <p v-if="error.imageError" class="errorMsg">Моля качете снимка на проекта!</p>
               </div>
             </div>
-            
+
             <loader :active="loaderActive" :text="'Моля изчакайте!'" />
 
             <div class="button-part">
@@ -239,8 +239,8 @@
 
 
     <!-- MOBILE PART -->
-    <div class="mobile-part">
-      
+    <div class="mobile-part" v-if="isMobile()">
+
       <AddProjectOrService/>
 
       <MobileGreenMenuSmall/>
@@ -356,19 +356,19 @@
                       placeholder=" "
                     ></multiselect> -->
                     <div>
-                      <!-- <multiselect  
-                      class="multi_select_service" 
-                      v-model="userServicesTags" 
-                      :options="userServices" 
-                      :multiple="true" 
-                      :close-on-select="false" 
-                      :clear-on-select="false" 
+                      <!-- <multiselect
+                      class="multi_select_service"
+                      v-model="userServicesTags"
+                      :options="userServices"
+                      :multiple="true"
+                      :close-on-select="false"
+                      :clear-on-select="false"
                       :preserve-search="true"
                       :searchable="false"
-                      :show-labels="true" 
-                      placeholder=" " 
-                      label="text" 
-                      track-by="id" 
+                      :show-labels="true"
+                      placeholder=" "
+                      label="text"
+                      track-by="id"
                       :preselect-first="true">
                         <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span></template>
                       </multiselect> -->
@@ -379,11 +379,11 @@
                         v-model="userServicesTags"
                         tag-placeholder="Добави като нова услуга"
                         placeholder="Добави услуга"
-                        label="text" 
-                        track-by="id" 
-                        :options="userServices" 
-                        :multiple="true" 
-                        :taggable="true" 
+                        label="text"
+                        track-by="id"
+                        :options="userServices"
+                        :multiple="true"
+                        :taggable="true"
                         @tag="addTag">
                       <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} брой услуги</span></template>
                     </multiselect>
@@ -393,7 +393,7 @@
                 </div>
 
                 <div class="with-forms">
-                  
+
                   <!-- Type -->
                   <div class="col-md-12">
                     <h5>
@@ -424,11 +424,11 @@
                 <div class="horizontal-line"></div>
               </div>
 
-              
+
             </div>
             <!-- Section / End -->
 
-            
+
 
             <!-- Section -->
             <div class="add-listing-section section-details">
@@ -456,11 +456,11 @@
 
                 <div class="galery-section">
                   <!-- Headline -->
-                    
+
                     <h5>
                       <i class="sl sl-icon-picture"></i> Галерия
                     </h5>
-                    
+
                     <!-- Dropzone -->
                     <vue-dropzone
                       ref="myVueDropzone"
@@ -600,7 +600,18 @@ export default {
   },
   methods: {
     // TsB
-    addTag (newTag) {
+    isMobile() {
+        if (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                navigator.userAgent
+            )
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+addTag (newTag) {
       const tag = {
         name: newTag,
         code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
@@ -886,7 +897,7 @@ export default {
 }
 
 @media screen and (min-width: 991px) {
-  
+
   #titlebar {
     margin-bottom: 0px;
   }
@@ -972,7 +983,7 @@ export default {
     height: 40px;
   }
 
-  .col-md-12 select { 
+  .col-md-12 select {
     margin: 6px 0px;
     padding: 0px;
   }
